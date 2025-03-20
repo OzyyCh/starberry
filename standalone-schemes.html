@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Схемы удобрений для клубники - Автономная версия</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="schemes.css">
+    <style>
+        /* Стили для индикатора автономного режима */
+        .standalone-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Информация о режиме работы */
+        .standalone-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--light-accent);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .standalone-info strong {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="img/strawberry-icon.svg" alt="Клубника" class="logo-icon">
+                <h1>Схемы удобрений для клубники</h1>
+            </div>
+            <div class="standalone-indicator">Автономная версия</div>
+            <nav>
+                <ul>
+                    <li><a href="standalone.html">Калькулятор</a></li>
+                    <li><a href="standalone-schemes.html" class="active">Схемы удобрений</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="standalone-info">
+            <strong>Автономный режим:</strong> Все данные сохраняются локально в вашем браузере. Сервер не требуется.
+        </div>
+
+        <main class="schemes-container">
+            <section id="schemesTabs" class="schemes-tabs">
+                <!-- Вкладки будут созданы через JavaScript -->
+            </section>
+            
+            <section id="schemesContent" class="schemes-content">
+                <div class="scheme-welcome">
+                    <h2>Схемы удобрений для выращивания клубники</h2>
+                    <p>Выберите стадию роста для просмотра подробных рекомендаций по внесению удобрений</p>
+                    <div class="lifecycle-chart-container">
+                        <h3>Жизненный цикл клубники</h3>
+                        <canvas id="lifecycleChart"></canvas>
+                    </div>
+                </div>
+                <!-- Контент схем будет добавлен через JavaScript -->
+            </section>
+            
+            <section id="areaCalculator" class="area-calculator">
+                <h2>Калькулятор площади</h2>
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="rowLength">Длина ряда (м):</label>
+                        <input type="number" id="rowLength" min="1" value="60" step="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="rowCount">Количество рядов:</label>
+                        <input type="number" id="rowCount" min="1" value="15" step="1">
+                    </div>
+                    <button id="calculateAreaBtn" class="action-button">Рассчитать</button>
+                    
+                    <div id="areaResults" class="area-results" style="display: none;">
+                        <div class="result-item">
+                            <span class="result-label">Площадь (м²):</span>
+                            <span id="areaInSquareMeters" class="result-value">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Площадь (сотки):</span>
+                            <span id="areaInSotki" class="result-value">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Площадь (га):</span>
+                            <span id="areaInHectares" class="result-value">0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Кол-во растений (шт.):</span>
+                            <span id="plantsCount" class="result-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Модальное окно со справочником удобрений -->
+        <div id="fertilizerInfoModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Справочник удобрений для клубники</h2>
+                <div class="fertilizer-list" id="fertilizerList">
+                    <!-- List will be generated by JS -->
+                </div>
+                <div class="modal-actions">
+                    <button id="addCustomFertilizerBtn" class="action-button">Добавить своё удобрение</button>
+                    <button id="manageFertilizersBtn" class="action-button secondary">Управление удобрениями</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Модальное окно для добавления пользовательского удобрения -->
+        <div id="customFertilizerModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeCustomFertModal">&times;</span>
+                <h2>Добавление пользовательского удобрения</h2>
+                <form id="customFertilizerForm" class="fertilizer-form">
+                    <div class="form-group">
+                        <label for="fertName">Название удобрения:</label>
+                        <input type="text" id="fertName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertDescription">Описание:</label>
+                        <textarea id="fertDescription" name="description" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertStage">Стадия роста:</label>
+                        <select id="fertStage" name="stage" required>
+                            <!-- Опции будут добавлены через JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertWeek">Неделя:</label>
+                        <select id="fertWeek" name="week" required>
+                            <!-- Опции будут добавлены через JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertAmount">Количество:</label>
+                        <input type="number" id="fertAmount" name="amount" step="0.01" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertUnit">Единица измерения:</label>
+                        <select id="fertUnit" name="unit" required>
+                            <option value="кг">кг</option>
+                            <option value="г">г</option>
+                            <option value="л">л</option>
+                            <option value="мл">мл</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertNote">Примечание (необязательно):</label>
+                        <textarea id="fertNote" name="note" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="action-button">Добавить</button>
+                        <button type="button" id="cancelCustomFert" class="action-button secondary">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Модальное окно для управления пользовательскими удобрениями -->
+        <div id="manageFertilizersModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeManageFertModal">&times;</span>
+                <h2>Управление пользовательскими удобрениями</h2>
+                <div id="customFertilizersList" class="custom-fertilizers-list">
+                    <!-- Список будет сгенерирован через JavaScript -->
+                </div>
+                <div class="modal-actions">
+                    <button id="backToFertInfoBtn" class="action-button secondary">Назад</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme-toggle">
+            <input type="checkbox" id="themeSwitch">
+            <label for="themeSwitch" class="toggle-label">Тёмная тема</label>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Калькулятор удобрений для клубники | Все права защищены</p>
+        </footer>
+    </div>
+
+    <!-- Скрипты для работы со схемами удобрений -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="data/fertilizers.js"></script>
+    <script src="standalone.js"></script>
+    <script src="schemes.js"></script>
+</body>
+</html>

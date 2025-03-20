@@ -1,0 +1,2157 @@
+:root {
+    --primary-color: #e91e63; /* Розовый - основной цвет */
+    --primary-dark: #c2185b; /* Темно-розовый */
+    --primary-light: #f8bbd0; /* Светло-розовый */
+    --accent-color: #4caf50; /* Зеленый - акцентный цвет */
+    --accent-dark: #388e3c; /* Темно-зеленый */
+    --light-accent: rgba(76, 175, 80, 0.15); /* Светло-зеленый с прозрачностью */
+    
+    --background-color: #f5f5f5; /* Светло-серый фон */
+    --card-bg: #ffffff; /* Белый фон для карточек */
+    --text-color: #212121; /* Почти черный для основного текста */
+    --text-secondary: #757575; /* Серый для вторичного текста */
+    --light-text: #9e9e9e; /* Светло-серый для неактивных элементов */
+    --border-color: #e0e0e0; /* Цвет границ */
+    
+    --border-radius: 12px; /* Скругление углов */
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Тень */
+    --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Тень для карточек */
+    
+    --header-height: 80px; /* Высота шапки */
+    --footer-height: 80px; /* Высота подвала */
+}
+
+[data-theme="dark"] {
+    --primary-color: #ff4081; /* Яркий розовый для темной темы */
+    --primary-dark: #f50057; /* Насыщенный розовый */
+    --primary-light: rgba(244, 143, 177, 0.15); /* Полупрозрачный розовый */
+    --accent-color: #69f0ae; /* Яркий зеленый для темной темы */
+    --accent-dark: #00e676; /* Насыщенный зеленый */
+    --light-accent: rgba(105, 240, 174, 0.15); /* Полупрозрачный зеленый */
+    
+    --background-color: #121212; /* Почти черный фон */
+    --card-bg: #1e1e1e; /* Темно-серый фон для карточек */
+    --text-color: #ffffff; /* Белый для основного текста */
+    --text-secondary: #b0b0b0; /* Светло-серый для вторичного текста */
+    --light-text: #757575; /* Серый для неактивных элементов */
+    --border-color: #333333; /* Цвет границ */
+    
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Тень */
+    --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Тень для карточек */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    padding-bottom: calc(var(--footer-height) + 20px);
+    background-image: linear-gradient(to bottom, rgba(76, 175, 80, 0.05), rgba(76, 175, 80, 0.1)), url('./img/strawberry-pattern.svg');
+    background-repeat: repeat;
+    background-size: 200px;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px 20px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    color: var(--primary-color);
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(76,175,80,0.05) 0%, rgba(76,175,80,0.15) 100%);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid var(--accent-color);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background-image: url('img/strawberry-pattern.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.07;
+    transform: rotate(10deg);
+}
+
+.strawberry-icon-container {
+    padding: 20px;
+    margin-right: 20px;
+    background-color: rgba(231, 76, 60, 0.15);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.strawberry-icon {
+    width: 5.5rem;
+    height: 5.5rem;
+    background-image: url('img/strawberry-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.strawberry-icon:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.title-container {
+    text-align: left;
+    flex: 1;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    position: relative;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 3px;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 10px 0 0 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .strawberry-icon-container {
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .strawberry-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .title-container {
+        text-align: center;
+    }
+    
+    header h1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Навигация */
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    padding: 10px 20px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 30px;
+    margin: 0 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.nav-link i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.nav-text {
+    display: inline-block;
+}
+
+.nav-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.calculator-icon:before {
+    content: '\f1ec'; /* Иконка калькулятора */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: inherit;
+}
+
+.area-icon:before {
+    content: '\f5cb'; /* Иконка линейки/измерений */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: inherit;
+}
+
+.guide-icon:before {
+    content: '\f02d'; /* Иконка справочника */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: inherit;
+}
+
+.nav-link:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.7s ease;
+}
+
+.nav-link:hover:before {
+    left: 100%;
+}
+
+.nav-link:hover {
+    background-color: var(--hover-color);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 8px rgba(233, 30, 99, 0.25);
+}
+
+.theme-toggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.theme-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Калькулятор */
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-grow: 1;
+}
+
+/* Секция ввода */
+.card-wrapper {
+    width: 100%;
+}
+
+.input-section {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section-title {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.inputs-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.input-wrapper {
+    margin-top: 5px;
+}
+
+.growth-stages-section, .weeks-section {
+    margin-bottom: 30px;
+}
+
+.subsection-title {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.stages-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stage-card {
+    background-color: var(--background-color);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.stage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stage-card.active {
+    background-color: rgba(233, 30, 99, 0.05);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+}
+
+.stage-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stage-strawberry-icon {
+    width: 45px;
+    height: 45px;
+    background-image: url('img/strawberry-stage-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.stage-card:hover .stage-icon {
+    transform: scale(1.1);
+}
+
+.stage-card.active .stage-icon {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.stage-info h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.stage-info p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.weeks-cards {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.week-card {
+    width: 100px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    padding: 15px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.week-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.week-card.active {
+    background-color: rgba(76, 175, 80, 0.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+}
+
+.week-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--light-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.week-card:hover .week-number {
+    transform: scale(1.1);
+}
+
+.week-card.active .week-number {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.week-info {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.number-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.number-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.stage-button, .week-button {
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+}
+
+.stage-button:before, .week-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.stage-button:hover:before, .week-button:hover:before {
+    left: 100%;
+}
+
+.stage-button:hover, .week-button:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stage-button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(233, 30, 99, 0.25);
+    animation: pulseStage 2s infinite;
+}
+
+.week-button.active {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.25);
+    animation: pulseWeek 2s infinite;
+}
+
+@keyframes pulseStage {
+    0% {
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 5px rgba(233, 30, 99, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+    }
+}
+
+@keyframes pulseWeek {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 5px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+    border-color: var(--accent-color);
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.calculate-btn {
+    display: block;
+    width: 280px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(233, 30, 99, 0.3);
+    text-transform: none;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.calculate-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(233, 30, 99, 0.4);
+}
+
+.calculate-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.calculate-btn:hover:before {
+    left: 100%;
+}
+
+.calculate-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Секция результатов */
+.results-section {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.results-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--light-text);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.error-message {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.results-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.results-summary {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    gap: 15px;
+    overflow: hidden;
+}
+
+.summary-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-icon {
+    background-color: rgba(233, 30, 99, 0.1);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.summary-icon .material-icon {
+    font-size: 20px;
+}
+
+.summary-info {
+    flex-grow: 1;
+}
+
+.summary-label {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.summary-value {
+    margin: 3px 0 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+.results-tables {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.results-table-container, .results-chart-container {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.results-table-container h3, .results-chart-container h3 {
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.results-table th, .results-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    vertical-align: top;
+}
+
+.results-table th {
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+.results-table th:nth-child(1) {
+    width: 30%;
+}
+
+.results-table th:nth-child(2) {
+    width: 15%;
+}
+
+.results-table th:nth-child(3) {
+    width: 55%;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.results-table .note-cell {
+    font-style: italic;
+    color: var(--accent-color);
+    font-size: 0.85em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.4;
+    word-wrap: break-word;
+    display: block;
+    padding-right: 5px;
+}
+
+.chart-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.chart-container h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.fertilizer-results-title {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.fertilizer-results-title i {
+    margin-right: 8px;
+    color: #2ecc71;
+}
+
+.fertilizer-note-user {
+    margin-top: 5px;
+    margin-bottom: 8px;
+    font-style: italic;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 8px;
+}
+
+/* Стили для карточек удобрений в результатах расчета */
+.fertilizer-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.fertilizer-card-result {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border-left: 4px solid transparent;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.fertilizer-card-result:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.fertilizer-icon {
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.fertilizer-info {
+    flex-grow: 1;
+}
+
+.fertilizer-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+    color: var(--text-color);
+}
+
+.fertilizer-amount {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.quote-container {
+    margin: 10px 0;
+    position: relative;
+}
+
+.card-quote, .spray-quote {
+    position: relative;
+    padding: 12px 15px;
+    margin: 0;
+    border-radius: 4px;
+    font-style: italic;
+}
+
+.card-quote:before, .spray-quote:before {
+    content: '"';
+    font-size: 1.5rem;
+    position: absolute;
+    left: 5px;
+    top: -8px;
+    font-family: Georgia, serif;
+    font-weight: bold;
+}
+
+/* Стили для цитат разных типов удобрений */
+.spray-quote {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-left: 3px solid #2ecc71;
+}
+
+.spray-quote:before {
+    color: #2ecc71;
+}
+
+.nitrogen-quote {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left: 3px solid #3498db;
+}
+
+.nitrogen-quote:before {
+    color: #3498db;
+}
+
+.phosphorus-quote {
+    background-color: rgba(230, 126, 34, 0.1);
+    border-left: 3px solid #e67e22;
+}
+
+.phosphorus-quote:before {
+    color: #e67e22;
+}
+
+.potassium-quote {
+    background-color: rgba(155, 89, 182, 0.1);
+    border-left: 3px solid #9b59b6;
+}
+
+.potassium-quote:before {
+    color: #9b59b6;
+}
+
+.calcium-quote {
+    background-color: rgba(149, 165, 166, 0.1);
+    border-left: 3px solid #95a5a6;
+}
+
+.calcium-quote:before {
+    color: #95a5a6;
+}
+
+.magnesium-quote {
+    background-color: rgba(26, 188, 156, 0.1);
+    border-left: 3px solid #1abc9c;
+}
+
+.magnesium-quote:before {
+    color: #1abc9c;
+}
+
+.stimulant-quote {
+    background-color: rgba(241, 196, 15, 0.1);
+    border-left: 3px solid #f1c40f;
+}
+
+.stimulant-quote:before {
+    color: #f1c40f;
+}
+
+.foliar-quote {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-left: 3px solid #2ecc71;
+}
+
+.foliar-quote:before {
+    color: #2ecc71;
+}
+
+.complex-quote {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-left: 3px solid #e74c3c;
+}
+
+.complex-quote:before {
+    color: #e74c3c;
+}
+
+.custom-quote {
+    background-color: rgba(156, 39, 176, 0.1);
+    border-left: 3px solid #9c27b0;
+}
+
+.custom-quote:before {
+    color: #9c27b0;
+}
+
+.card-quote p, .spray-quote p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.4;
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.05);
+}
+
+.fertilizer-note {
+    margin-top: 5px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.fertilizer-note-bold {
+    font-weight: 600;
+    color: var(--text-color);
+    font-style: normal;
+}
+
+/* Цвета для разных типов удобрений */
+.fertilizer-card-result.nitrogen {
+    border-left-color: #3498db;
+}
+
+.fertilizer-card-result.phosphorus {
+    border-left-color: #e67e22;
+}
+
+.fertilizer-card-result.potassium {
+    border-left-color: #9b59b6;
+}
+
+.fertilizer-card-result.calcium {
+    border-left-color: #95a5a6;
+}
+
+.fertilizer-card-result.magnesium {
+    border-left-color: #1abc9c;
+}
+
+.fertilizer-card-result.stimulant {
+    border-left-color: #f1c40f;
+}
+
+.fertilizer-card-result.foliar {
+    border-left-color: #2ecc71;
+}
+
+.fertilizer-card-result.complex {
+    border-left-color: #e74c3c;
+}
+
+.fertilizer-card-result.spray {
+    border-left-color: #00e5ff;
+    background-color: #84ffff1a; /* Светло-голубой фон */
+}
+
+.fertilizer-card-result .fertilizer-info {
+    width: 100%;
+}
+
+.fertilizer-card-result .calculate-spray-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.fertilizer-card-result .calculate-spray-btn:hover {
+    background-color: #c0392b;
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 400px;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.action-button {
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+}
+
+.action-button i {
+    margin-right: 8px;
+}
+
+.action-button:hover {
+    background-color: var(--accent-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Стили для калькулятора площади */
+.area-calculator-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.area-results {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.area-results-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.area-result-card {
+    background-color: var(--background-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.area-result-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.area-result-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.area-result-value {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.area-diagram-container {
+    background-color: var(--background-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.area-diagram-container h3 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.area-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.area-diagram canvas {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.area-diagram-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.area-results-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 50px auto;
+    padding: 30px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--light-text);
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+.fertilizer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.fertilizer-type-header {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.fertilizer-type-header h2 {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.fertilizer-type-header h2 .fert-icon {
+    margin-right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+}
+
+.fertilizer-type-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.fertilizer-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--background-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.fertilizer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.fertilizer-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.fertilizer-card-header h3 {
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+.fertilizer-card-body {
+    margin-bottom: 15px;
+}
+
+.fertilizer-card-body p {
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.fertilizer-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.fertilizer-type-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    background-color: var(--light-accent);
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Стили для пользовательских удобрений */
+.custom-fertilizer-card {
+    border-left: 3px solid var(--primary-color);
+}
+
+.custom-fert-stages {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.custom-fert-stages small {
+    display: block;
+    width: 100%;
+    color: var(--light-text);
+    margin-bottom: 5px;
+}
+
+.custom-fert-stage {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    background-color: var(--primary-light);
+    color: var(--text-color);
+}
+
+/* Поддержка темной темы для карточек */
+[data-theme="dark"] .fertilizer-card {
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .fertilizer-type-tag {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+[data-theme="dark"] .custom-fert-stage {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+/* Переключатель темы */
+.theme-toggle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#themeSwitch {
+    opacity: 0;
+    position: absolute;
+}
+
+.toggle-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.toggle-label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: var(--light-text);
+    transition: background-color 0.3s ease;
+}
+
+.toggle-label:after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+#themeSwitch:checked + .toggle-label:before {
+    background-color: var(--primary-color);
+}
+
+#themeSwitch:checked + .toggle-label:after {
+    left: 22px;
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    color: var(--light-text);
+    font-size: 0.9rem;
+    box-shadow: var(--box-shadow);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .calculator-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-tables {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 30px auto;
+    }
+    
+    .fertilizer-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+    }
+    
+    .action-button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .inputs-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .fertilizer-cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .stage-card {
+        min-height: 200px;
+    }
+    
+    .nav-link {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        margin: 0 5px;
+    }
+}
+
+/* Иконки */
+.icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+.icon-seedling {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234caf50' d='M7,2V4H8V18H11V20H13V22H15V20H17V18H20V15H22V13H20V11H18V9H16V7H14V5H12V3H10V1H8V2H7M11,10V15H13V10H16V13H18V11H14V8H11V10Z'/%3E%3C/svg%3E");
+}
+
+.icon-flower {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e91e63' d='M12,12A3,3 0 0,1 9,9A3,3 0 0,1 12,6A3,3 0 0,1 15,9A3,3 0 0,1 12,12M12,18.3L9,16.1L6,18.3L6.7,14.9L3.9,12.6L7.3,12.2L9,9L10.7,12.2L14.1,12.6L11.3,14.9L12,18.3M12,4A5,5 0 0,0 7,9A5,5 0 0,0 12,14A5,5 0 0,0 17,9A5,5 0 0,0 12,4Z'/%3E%3C/svg%3E");
+}
+
+.icon-strawberry {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e91e63' d='M20,10C22,13 17,22 15,22C13,22 13,21 12,21C11,21 11,22 9,22C7,22 2,13 4,10C6,7 9,7 11,8V5C5.38,8.07 4.11,3.78 4.11,3.78C4.11,3.78 6.77,0.19 11,5V3H13V8C15,7 18,7 20,10Z'/%3E%3C/svg%3E");
+}
+
+/* Анимации */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Иконки удобрений */
+.fert-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 10px;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fert-icon i {
+    font-size: 1.2rem;
+}
+
+.fert-icon:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nitrogen-icon {
+    background-color: #3498db; /* Синий для азота */
+}
+
+.phosphorus-icon {
+    background-color: #e67e22; /* Оранжевый для фосфора */
+}
+
+.potassium-icon {
+    background-color: #9b59b6; /* Фиолетовый для калия */
+}
+
+.calcium-icon {
+    background-color: #95a5a6; /* Серый для кальция */
+}
+
+.magnesium-icon {
+    background-color: #1abc9c; /* Бирюзовый для магния */
+}
+
+.stimulant-icon {
+    background-color: #f1c40f; /* Желтый для стимуляторов */
+}
+
+.foliar-icon {
+    background-color: #2ecc71; /* Зеленый для листовых подкормок */
+}
+
+.complex-icon {
+    background-color: #e74c3c; /* Красный для комплексных */
+}
+
+.spray-icon {
+    background-color: #e74c3c; /* Красный для опрыскивания */
+}
+
+.custom-icon {
+    background-color: #9c27b0; /* Фиолетовый для пользовательских */
+    background-image: linear-gradient(45deg, #9c27b0, #673ab7);
+}
+
+.default-icon {
+    background-color: #607d8b; /* Синий серый для остальных */
+}
+
+/* Улучшенная таблица результатов */
+.amount-cell {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.results-table tr {
+    transition: background-color 0.3s ease;
+}
+
+.results-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .results-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Стили для управления пользовательскими удобрениями */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.action-button.secondary {
+    background-color: var(--background-color);
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.15);
+}
+
+.action-button.secondary:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--accent-dark);
+    border-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+.fertilizer-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Стили для калькулятора опрыскивания */
+.spray-modal-content {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.4s ease-out, slideUp 0.4s ease-out;
+    max-width: 860px;
+}
+
+.spray-formula-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    border-left: 4px solid #4CAF50; /* Зеленый цвет для опрыскивания */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.spray-formula {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(76,175,80,0.05) 0%, rgba(76,175,80,0.15) 100%);
+    padding: 12px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    border-left: 3px solid #4CAF50;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.4;
+    flex-wrap: wrap;
+}
+
+.spray-text {
+    font-style: italic;
+    color: #4CAF50;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+/* Сохраняем стили для использования в других местах */
+.spray-formula-title {
+    font-weight: 700;
+    color: #4CAF50;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.spray-formula-components {
+    display: inline;
+}
+
+.spray-component-amount {
+    font-weight: 700;
+    color: #2196F3;
+    background-color: rgba(33, 150, 243, 0.1);
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin: 0 2px;
+}
+
+.spray-component-unit {
+    font-weight: 500;
+    color: #607D8B;
+    font-style: italic;
+    margin-right: 3px;
+}
+
+.spray-formula i {
+    margin-right: 10px;
+    color: #4CAF50; /* Зеленый цвет для опрыскивания */
+}
+
+.spray-calculator-form {
+    margin-top: 25px;
+}
+
+.section-title-small {
+    color: #4CAF50; /* Зеленый цвет для опрыскивания */
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-title-small i {
+    margin-right: 8px;
+    color: #4CAF50; /* Зеленый цвет для опрыскивания */
+}
+
+.calculated-results {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    border-left: 4px solid #4CAF50; /* Зеленый цвет для опрыскивания */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.spray-calculation-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.spray-result-item {
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #4CAF50; /* Зеленый цвет для опрыскивания */
+}
+
+.spray-result-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.spray-result-header h4 {
+    color: #4CAF50; /* Зеленый цвет для опрыскивания */
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.spray-result-header h4 i {
+    margin-right: 8px;
+}
+
+.spray-result-body {
+    padding: 5px;
+}
+
+.spray-result-item-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 10px 0;
+    padding: 8px 12px;
+    background-color: var(--card-bg);
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.spray-result-item-value .component-name {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.spray-result-item-value .component-amount {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-actions .action-button {
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    background-color: #4CAF50; /* Зеленый цвет для калькулятора опрыскивания */
+    color: white;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.25);
+}
+
+.modal-actions .action-button i {
+    margin-right: 8px;
+}
+
+.modal-actions .action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+.modal-actions .action-button.secondary {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-actions .action-button.secondary:hover {
+    background-color: var(--border-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Вспомогательные классы */
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 15px;
+}
+
+/* Класс для элемента с ошибкой */
+.component-amount.error {
+    color: #e74c3c;
+}
+
+/* Анимация обновления результатов */
+@keyframes updatePulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.03);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.spray-result-item.updated {
+    animation: updatePulse 0.5s ease-in-out;
+}
+
+.spray-result-item-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Анимация пульсации для кнопки */
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.25);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.25);
+    }
+}
+
+.pulse-animation {
+    animation: buttonPulse 0.5s ease-in-out;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 480px) {
+    .spray-calculation-results {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-link {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .site-nav {
+        flex-wrap: wrap;
+    }
+    
+    .input-section {
+        padding: 20px 15px;
+    }
+    
+    .summary-card {
+        padding: 10px;
+    }
+    
+    .summary-icon {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .summary-value {
+        font-size: 1rem;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    .stage-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .week-card {
+        width: 80px;
+    }
+    
+    .fertilizer-card-result {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+    
+    .fertilizer-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .fertilizer-cards-container {
+        gap: 10px;
+    }
+    
+    .calculate-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    /* Улучшение отображения модального окна калькулятора опрыскивания на мобильных устройствах */
+    .spray-formula {
+        font-size: 1rem;
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .spray-formula i {
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+    
+    .modal-summary {
+        flex-direction: column;
+    }
+    
+    .spray-modal-content {
+        padding: 15px;
+        width: 95%;
+    }
+}

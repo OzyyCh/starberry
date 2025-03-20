@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор удобрений для клубники - Автономная версия</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Стили для индикатора автономного режима */
+        .standalone-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Информация о режиме работы */
+        .standalone-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--light-accent);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .standalone-info strong {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Калькулятор удобрений для клубники</h1>
+            <div class="standalone-indicator">Автономная версия</div>
+        </header>
+        
+        <div class="standalone-info">
+            <strong>Автономный режим:</strong> Все данные сохраняются локально в вашем браузере. Сервер не требуется.
+        </div>
+
+        <main>
+            <div class="calculator-container">
+                <div class="calculator-form-container">
+                    <h2>Параметры расчета</h2>
+                    
+                    <form id="calculatorForm" class="calculator-form">
+                        <div class="input-container">
+                            <label for="bedLength">Длина билона (м):</label>
+                            <input type="number" id="bedLength" min="1" step="1" value="60" required>
+                        </div>
+                        
+                        <div class="input-container">
+                            <label for="numBeds">Количество билонов:</label>
+                            <input type="number" id="numBeds" min="1" step="1" value="15" required>
+                        </div>
+                        
+                        <div class="stages-selection">
+                            <h3>Выберите стадию роста:</h3>
+                            <div class="button-group" id="stageButtons">
+                                <!-- Кнопки стадий будут добавлены через JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="weeks-selection">
+                            <h3>Выберите неделю:</h3>
+                            <div class="button-group" id="weekButtons">
+                                <!-- Кнопки недель будут добавлены через JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="calculate-button">Рассчитать</button>
+                    </form>
+                    
+                    <div class="reference-link">
+                        <a href="#" id="fertilizerInfoLink">Справочник удобрений</a>
+                    </div>
+                </div>
+                
+                <div class="results-container" id="resultsContainer" style="display: none;">
+                    <h2>Результаты расчета удобрений</h2>
+                    
+                    <div class="results-placeholder">
+                        <p>Введите параметры расчета и нажмите кнопку "Рассчитать"</p>
+                    </div>
+                    
+                    <div class="results-summary">
+                        <div class="summary-item">
+                            <p class="summary-label">Длина билона:</p>
+                            <p class="summary-value"><span id="resultBedSize">60</span> м</p>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <p class="summary-label">Количество билонов:</p>
+                            <p class="summary-value"><span id="resultBedCount">15</span></p>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <p class="summary-label">Фаза роста:</p>
+                            <p class="summary-value"><span id="resultStage">Отрастание цветоносов</span></p>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <p class="summary-label">Неделя:</p>
+                            <p class="summary-value"><span id="resultWeek">1</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="results-tables">
+                        <div class="results-table-container" style="grid-column: 1 / -1;">
+                            <h3 class="fertilizer-results-title">Необходимые удобрения</h3>
+                            <div class="fertilizer-cards-container" id="fertilizerCardsContainer">
+                                <!-- Карточки с удобрениями будут добавлены через JavaScript -->
+                            </div>
+                            <!-- Сохраняем таблицу для совместимости, но скрываем её -->
+                            <div class="table-responsive" style="display: none;">
+                                <table id="fertilizerTable" class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th width="40%">Удобрение</th>
+                                            <th width="20%">Количество</th>
+                                            <th width="40%">Примечание</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Результаты будут добавлены через JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results-actions">
+                        <button id="exportButton" class="action-button">Экспорт PDF</button>
+                        <button id="printButton" class="action-button">Печать</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Модальное окно со справочником удобрений -->
+        <div id="fertilizerInfoModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Справочник удобрений для клубники</h2>
+                <div class="fertilizer-list" id="fertilizerList">
+                    <!-- List will be generated by JS -->
+                </div>
+                <div class="modal-actions">
+                    <button id="addCustomFertilizerBtn" class="action-button">Добавить своё удобрение</button>
+                    <button id="manageFertilizersBtn" class="action-button secondary">Управление удобрениями</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Модальное окно для добавления пользовательского удобрения -->
+        <div id="customFertilizerModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeCustomFertModal">&times;</span>
+                <h2>Добавление пользовательского удобрения</h2>
+                <form id="customFertilizerForm" class="fertilizer-form">
+                    <div class="form-group">
+                        <label for="fertName">Название удобрения:</label>
+                        <input type="text" id="fertName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertDescription">Описание:</label>
+                        <textarea id="fertDescription" name="description" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertStage">Стадия роста:</label>
+                        <select id="fertStage" name="stage" required>
+                            <!-- Опции будут добавлены через JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertWeek">Неделя:</label>
+                        <select id="fertWeek" name="week" required>
+                            <!-- Опции будут добавлены через JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertAmount">Количество:</label>
+                        <input type="number" id="fertAmount" name="amount" step="0.01" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertUnit">Единица измерения:</label>
+                        <select id="fertUnit" name="unit" required>
+                            <option value="кг">кг</option>
+                            <option value="г">г</option>
+                            <option value="л">л</option>
+                            <option value="мл">мл</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fertNote">Примечание (необязательно):</label>
+                        <textarea id="fertNote" name="note" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="action-button">Добавить</button>
+                        <button type="button" id="cancelCustomFert" class="action-button secondary">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Модальное окно для управления пользовательскими удобрениями -->
+        <div id="manageFertilizersModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeManageFertModal">&times;</span>
+                <h2>Управление пользовательскими удобрениями</h2>
+                <div id="customFertilizersList" class="custom-fertilizers-list">
+                    <!-- Список будет сгенерирован через JavaScript -->
+                </div>
+                <div class="modal-actions">
+                    <button id="backToFertInfoBtn" class="action-button secondary">Назад</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme-toggle">
+            <input type="checkbox" id="themeSwitch">
+            <label for="themeSwitch" class="toggle-label">Тёмная тема</label>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Калькулятор удобрений для клубники | Все права защищены</p>
+        </footer>
+    </div>
+
+    <!-- Скрипты для работы калькулятора -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="data/fertilizers.js"></script>
+    <script src="standalone.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

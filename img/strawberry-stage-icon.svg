@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg 
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 512 512"
+   version="1.1">
+  <g>
+    <!-- Основная форма клубники -->
+    <path
+       d="M 255,90 C 225,90 160,125 130,200 C 100,275 110,350 140,390 C 170,430 220,450 255,450 C 255,450 255,90 255,90 Z"
+       fill="#d83232" />
+    <path
+       d="M 255,90 C 285,90 350,125 380,200 C 410,275 400,350 370,390 C 340,430 290,450 255,450 C 255,450 255,90 255,90 Z"
+       fill="#b32424" />
+    
+    <!-- Листики -->
+    <path
+       d="M 255,90 C 235,60 180,45 150,60 C 180,65 200,75 220,90 C 235,80 245,75 255,90 Z"
+       fill="#4CAF50" />
+    <path
+       d="M 255,90 C 275,60 330,45 360,60 C 330,65 310,75 290,90 C 275,80 265,75 255,90 Z"
+       fill="#2F8932" />
+    
+    <!-- Семечки -->
+    <!-- Левая сторона -->
+    <ellipse cx="200" cy="160" rx="15" ry="12" fill="#ffd54f" />
+    <ellipse cx="170" cy="210" rx="15" ry="12" fill="#ffd54f" />
+    <ellipse cx="190" cy="260" rx="15" ry="12" fill="#ffd54f" />
+    <ellipse cx="170" cy="310" rx="15" ry="12" fill="#ffd54f" />
+    <ellipse cx="190" cy="360" rx="15" ry="12" fill="#ffd54f" />
+    <ellipse cx="220" cy="410" rx="15" ry="12" fill="#ffd54f" />
+    
+    <!-- Правая сторона -->
+    <ellipse cx="310" cy="160" rx="15" ry="12" fill="#ffb300" />
+    <ellipse cx="340" cy="210" rx="15" ry="12" fill="#ffb300" />
+    <ellipse cx="320" cy="260" rx="15" ry="12" fill="#ffb300" />
+    <ellipse cx="340" cy="310" rx="15" ry="12" fill="#ffb300" />
+    <ellipse cx="320" cy="360" rx="15" ry="12" fill="#ffb300" />
+    <ellipse cx="290" cy="410" rx="15" ry="12" fill="#ffb300" />
+  </g>
+</svg>

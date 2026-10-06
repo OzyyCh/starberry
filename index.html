@@ -882,7 +882,7 @@
                     <div class="form-group">
                         <label class="form-label">Ширина междурядья (по центрам):</label>
                         <div class="input-group">
-                            <input type="number" id="rowWidth" class="form-input" min="0.8" max="2.5" value="1.4" step="0.1">
+                            <input type="number" id="rowWidth" class="form-input" min="0.3" max="3.0" value="1.4" step="0.1">
                             <span class="input-suffix">м</span>
                         </div>
                     </div>
@@ -969,12 +969,18 @@
                         </select>
                     </div>
 
-                    <!-- Water per Plant Target -->
+<!-- Irrigation Duration (Minutes) -->
                     <div class="form-group">
-                        <label class="form-label">Суточная норма воды на 1 куст:</label>
+                        <label class="form-label">Время работы полива (минуты):</label>
                         <div class="input-group">
-                            <input type="number" id="waterPerPlant" class="form-input" min="0.1" max="2.5" value="0.4" step="0.05">
-                            <span class="input-suffix">л/куст</span>
+                            <input type="number" id="irrigationMinutes" class="form-input" min="10" max="300" value="40" step="5">
+                            <span class="input-suffix">минут</span>
+                        </div>
+                        <div class="preset-chips">
+                            <button type="button" class="preset-chip" onclick="setTimerPreset(20)">20 мин</button>
+                            <button type="button" class="preset-chip" onclick="setTimerPreset(30)">30 мин</button>
+                            <button type="button" class="preset-chip" onclick="setTimerPreset(40)">40 мин</button>
+                            <button type="button" class="preset-chip" onclick="setTimerPreset(60)">1 час</button>
                         </div>
                     </div>
 
@@ -1078,6 +1084,10 @@
                             <div class="water-stat-val highlight" id="statIrrigationTime">0 ч 20 мин</div>
                         </div>
                         <div class="water-stat">
+                            <div class="water-stat-label">Расход всей системы</div>
+                            <div class="water-stat-val" id="statSystemFlow">8.00 <small>м³/ч</small></div>
+                        </div>
+                        <div class="water-stat">
                             <div class="water-stat-label">Всас краника помпы</div>
                             <div class="water-stat-val highlight" style="color: var(--secondary);" id="statSuctionRate">8.0 <small>л/мин</small></div>
                         </div>
@@ -1085,10 +1095,10 @@
                             <div class="water-stat-label">Объем воды озера</div>
                             <div class="water-stat-val" id="statWaterVolume">2.67 <small>м³</small></div>
                         </div>
-                        <div class="water-stat">
-                            <div class="water-stat-label">Выходной EC и pH</div>
-                            <div class="water-stat-val" id="statEC" style="color: var(--secondary);">EC ~1.4 <small>| pH 5.8-6.2</small></div>
-                        </div>
+                    </div>
+                    <div style="margin-top: 12px; padding: 10px 14px; background: var(--bg-card-subtle); border-radius: var(--radius-sm); border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                        <span style="font-size: 0.84rem; font-weight: 600;">📊 Концентрация и баланс в капле:</span>
+                        <span id="statEC" style="font-size: 0.92rem; font-weight: 800; color: var(--secondary);">EC ~1.45 mS/cm | pH 5.8–6.2</span>
                     </div>
                 </div>
 
@@ -1375,7 +1385,7 @@
         const emitterFlowInput = document.getElementById('emitterFlow');
         const dripSpacingInput = document.getElementById('dripSpacing');
         const tapesPerBedSelect = document.getElementById('tapesPerBed');
-        const waterPerPlantInput = document.getElementById('waterPerPlant');
+        const irrigationMinutesInput = document.getElementById('irrigationMinutes');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
 
         // Metrics Display
@@ -1409,6 +1419,15 @@
             calculateAll();
         }
 
+        
+        function setTimerPreset(min) {
+            const input = document.getElementById('irrigationMinutes');
+            if (input) {
+                input.value = min;
+                calculateAll();
+            }
+        }
+
         function setSpacingPreset(val) {
             dripSpacingInput.value = val;
             calculateAll();
@@ -1428,11 +1447,11 @@
             const inputs = [
                 bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, 
                 plantStepInput, emitterFlowInput, dripSpacingInput, tapesPerBedSelect, 
-                waterPerPlantInput, sprayerVolumeInput, barrelVolumeInput
+                irrigationMinutesInput, sprayerVolumeInput, barrelVolumeInput
             ];
 
             inputs.forEach(el => {
-                el.addEventListener('input', calculateAll);
+                if (el) el.addEventListener('input', calculateAll);
             });
 
             document.getElementById('modeTanksBtn').addEventListener('click', () => setDisplayMode('tanks'));
@@ -1566,41 +1585,38 @@
             const systemFlowLph = totalEmitters * emitterLph;
             const systemFlowM3h = systemFlowLph / 1000;
 
-            statSystemFlow.innerHTML = `${systemFlowM3h.toFixed(2)} <small>м³/ч (${Math.round(systemFlowLph).toLocaleString('ru-RU')} л/ч)</small>`;
-            dripInfoSummary.textContent = `Капельницы ${emitterLph} л/ч через ${dripSpacingCm} см (${tapesPerBed} лент/бугор)`;
+            if (statSystemFlow) statSystemFlow.innerHTML = `${systemFlowM3h.toFixed(2)} <small>м³/ч (${Math.round(systemFlowLph).toLocaleString('ru-RU')} л/ч)</small>`;
+            if (dripInfoSummary) dripInfoSummary.textContent = `Капельницы ${emitterLph} л/ч через ${dripSpacingCm} см (${tapesPerBed} лент/бугор)`;
 
-            // Water Target
-            const waterPerPlantLiters = parseFloat(waterPerPlantInput.value) || 0.4;
-            const totalWaterLiters = Math.round(plants * waterPerPlantLiters);
-            const totalWaterM3 = (totalWaterLiters / 1000).toFixed(2);
-            statWaterVolume.innerHTML = `${totalWaterM3} <small>м³ (${totalWaterLiters.toLocaleString('ru-RU')} л)</small>`;
-
-            // Irrigation Time & Pump Suction Calculation
+            // Irrigation Duration from User input (Minutes)
+            const totalMinutes = parseFloat(document.getElementById('irrigationMinutes')?.value) || 40;
             const barrelVol = parseFloat(document.getElementById('barrelVolume')?.value) || 160;
             const statSuctionRate = document.getElementById('statSuctionRate');
 
-            if (systemFlowLph > 0 && totalWaterLiters > 0) {
-                const totalHours = totalWaterLiters / systemFlowLph;
-                const hours = Math.floor(totalHours);
-                const minutes = Math.round((totalHours - hours) * 60);
-                const totalMinutes = Math.max(1, Math.round(totalHours * 60));
+            // Format hours and minutes for timer display
+            const h = Math.floor(totalMinutes / 60);
+            const m = Math.round(totalMinutes % 60);
+            if (h === 0) {
+                statIrrigationTime.textContent = `${m} мин`;
+            } else if (m === 0) {
+                statIrrigationTime.textContent = `${h} ч`;
+            } else {
+                statIrrigationTime.textContent = `${h} ч ${m} мин`;
+            }
 
-                if (hours === 0) {
-                    statIrrigationTime.textContent = `${minutes} мин`;
-                } else if (minutes === 0) {
-                    statIrrigationTime.textContent = `${hours} ч`;
-                } else {
-                    statIrrigationTime.textContent = `${hours} ч ${minutes} мин`;
-                }
+            // Total Water Pumped from Lake in this irrigation run
+            const totalWaterLiters = Math.round(systemFlowLph * (totalMinutes / 60));
+            const totalWaterM3 = (totalWaterLiters / 1000).toFixed(2);
+            if (statWaterVolume) statWaterVolume.innerHTML = `${totalWaterM3} <small>м³ (${totalWaterLiters.toLocaleString('ru-RU')} л)</small>`;
 
-                // If feeding is delivered during active irrigation (e.g. over total irrigation time or half time)
+            // Pump Suction Rate for 160L Barrel
+            if (totalMinutes > 0) {
                 const suctionLpm = (barrelVol / totalMinutes).toFixed(1);
                 if (statSuctionRate) {
                     statSuctionRate.innerHTML = `${suctionLpm} <small>л/мин</small>`;
-                    statSuctionRate.title = `Краник на всасе помпы должен забирать ${suctionLpm} л/мин, чтобы бочка ${barrelVol} л ушла равномерно за ${totalMinutes} минут полива`;
+                    statSuctionRate.title = `Краник на помпе забирает ${suctionLpm} л/мин, чтобы бочка ${barrelVol} л ушла ровно за ${totalMinutes} минут`;
                 }
             } else {
-                statIrrigationTime.textContent = "—";
                 if (statSuctionRate) statSuctionRate.textContent = "—";
             }
 
@@ -1655,7 +1671,7 @@
             if (totalWaterLiters > 0) {
                 const concGL = (totalFertGrams / totalWaterLiters).toFixed(2);
                 const estEC = (0.4 + (concGL * 0.85)).toFixed(2);
-                statEC.innerHTML = `~${estEC} <small>mS/cm</small>`;
+                if (statEC) statEC.innerHTML = `EC ~${estEC} mS/cm | <small style='color:var(--text-muted);'>Целевой pH 5.8–6.2 (кислотой)</small>`;
                 if (estEC > 1.8) {
                     statEC.style.color = '#ef4444';
                     statEC.title = "Внимание: Высокая концентрация! Опасность засоления корней. Разделите полив на 2 дня.";
@@ -1804,7 +1820,7 @@
                 emitterFlow: emitterFlowInput.value,
                 dripSpacing: dripSpacingInput.value,
                 tapesPerBed: tapesPerBedSelect.value,
-                waterPerPlant: waterPerPlantInput.value,
+                irrigationMinutes: irrigationMinutesInput?.value || '40',
                 sprayerVolume: sprayerVolumeInput.value,
                 barrelVolume: document.getElementById('barrelVolume')?.value || '160'
             };
@@ -1824,7 +1840,7 @@
                     if (parsed.emitterFlow) emitterFlowInput.value = parsed.emitterFlow;
                     if (parsed.dripSpacing) dripSpacingInput.value = parsed.dripSpacing;
                     if (parsed.tapesPerBed) tapesPerBedSelect.value = parsed.tapesPerBed;
-                    if (parsed.waterPerPlant) waterPerPlantInput.value = parsed.waterPerPlant;
+                    if (parsed.irrigationMinutes && document.getElementById('irrigationMinutes')) document.getElementById('irrigationMinutes').value = parsed.irrigationMinutes;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
                     if (parsed.barrelVolume && document.getElementById('barrelVolume')) document.getElementById('barrelVolume').value = parsed.barrelVolume;
                 } catch(e) {}

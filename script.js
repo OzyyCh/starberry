@@ -189,37 +189,37 @@ const AGRO_STAGES = {
             {
                 name: "Монокалийфосфат (MKP)",
                 formula: "0-52-34 (KH2PO4)",
-                desc: "Высококонцентрированное фосфорно-калийное водорастворимое удобрение. Стимулирует мощное развитие корневой системы на старте, закладку цветоносов и цветение. Вносится строго в Бак Б."
+                desc: "Высококонцентрированное фосфорно-калийное водорастворимое удобрение. Стимулирует мощное развитие корневой системы на старте, закладку цветоносов и цветение. Вносится строго в Бочку Б."
             },
             {
                 name: "Калиевая селитра (KNO3)",
                 formula: "13-0-46",
-                desc: "Идеальный источник легкодоступного нитратного азота и калия. Отвечает за налив ягод, накопление сахаров (Brix), плотность мякоти и товарный вид. Отлично сочетается с кальциевой селитрой в Баке А."
+                desc: "Идеальный источник легкодоступного нитратного азота и калия. Отвечает за налив ягод, накопление сахаров (Brix), плотность мякоти и товарный вид. Отлично сочетается с кальциевой селитрой в Бочке А."
             },
             {
                 name: "Кальциевая селитра (Ca(NO3)2)",
                 formula: "15.5% N, 26.5% CaO",
-                desc: "Фундаментальный элемент для клубники. Укрепляет стенки клеток, защищает от серой гнили (ботритиса), предотвращает размягчение ягоды при сборе. Нельзя смешивать с сульфатами и фосфатами (выпадает гипс)! Вносится в Бак А."
+                desc: "Фундаментальный элемент для клубники. Укрепляет стенки клеток, защищает от серой гнили (ботритиса), предотвращает размягчение ягоды при сборе. Нельзя смешивать с сульфатами и фосфатами (выпадает гипс)! Вносится в Бочку А."
             },
             {
                 name: "Магниевая селитра (Mg(NO3)2)",
                 formula: "11% N, 16% MgO",
-                desc: "Магний входит в состав хлорофилла и активирует фотосинтез. Предотвращает межжилковый хлороз листьев, особенно при высокой нагрузке ягодой. Вносится в Бак Б."
+                desc: "Магний входит в состав хлорофилла и активирует фотосинтез. Предотвращает межжилковый хлороз листьев, особенно при высокой нагрузке ягодой. Вносится в Бочку Б."
             },
             {
                 name: "Аммиачная селитра (NH4NO3)",
                 formula: "34.4% N",
-                desc: "Быстрый весенний старт вегетации при холодной почве (+8...+10 °C). Содержит как аммонийный, так и нитратный азот. Вносится в Бак А."
+                desc: "Быстрый весенний старт вегетации при холодной почве (+8...+10 °C). Содержит как аммонийный, так и нитратный азот. Вносится в Бочку А."
             },
             {
                 name: "Teraflex S (Терафлекс Ягодный)",
                 formula: "Комплекс NPK + Micro",
-                desc: "Специализированное сбалансированное хелатное водорастворимое удобрение, разработанное специально для клубники и ягодных культур. Вносится в Бак Б."
+                desc: "Специализированное сбалансированное хелатное водорастворимое удобрение, разработанное специально для клубники и ягодных культур. Вносится в Бочку Б."
             },
             {
                 name: "Bombardier (Бомбардир)",
                 formula: "Фульвокислоты + аминокислоты",
-                desc: "Мощный органический почвенный биостимулятор природного происхождения. Улучшает микрофлору почвы, снимает пестицидный стресс, стимулирует поглощение минеральных элементов. Вносится в Бак Б."
+                desc: "Мощный органический почвенный биостимулятор природного происхождения. Улучшает микрофлору почвы, снимает пестицидный стресс, стимулирует поглощение минеральных элементов. Вносится в Бочку Б."
             },
             {
                 name: "Rhyzo (Ризо)",
@@ -247,18 +247,12 @@ const AGRO_STAGES = {
         const bedLengthInput = document.getElementById('bedLength');
         const bedCountInput = document.getElementById('bedCount');
         const rowWidthInput = document.getElementById('rowWidth');
-        const linesPerRowSelect = document.getElementById('linesPerRow');
-        const plantStepInput = document.getElementById('plantStep');
-        const emitterFlowInput = document.getElementById('emitterFlow');
-        const dripSpacingInput = document.getElementById('dripSpacing');
-        const tapesPerBedSelect = document.getElementById('tapesPerBed');
-        const irrigationMinutesInput = document.getElementById('irrigationMinutes');
+        const barrelVolumeInput = document.getElementById('barrelVolume');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
 
         // Metrics Display
         const metricTape = document.getElementById('metricTape');
         const metricArea = document.getElementById('metricArea');
-        const metricPlants = document.getElementById('metricPlants');
         const metricHaRatio = document.getElementById('metricHaRatio');
 
         // Containers
@@ -273,32 +267,8 @@ const AGRO_STAGES = {
         const foliarSection = document.getElementById('foliarSection');
         const foliarBody = document.getElementById('foliarBody');
         const foliarTanksCount = document.getElementById('foliarTanksCount');
-
-        // Irrigation Stats
-        const statIrrigationTime = document.getElementById('statIrrigationTime');
-        const statSystemFlow = document.getElementById('statSystemFlow');
-        const statWaterVolume = document.getElementById('statWaterVolume');
-        const statEC = document.getElementById('statEC');
-        const dripInfoSummary = document.getElementById('dripInfoSummary');
-
-        function setEmitterPreset(val) {
-            emitterFlowInput.value = val;
-            calculateAll();
-        }
-
-        
-        function setTimerPreset(min) {
-            const input = document.getElementById('irrigationMinutes');
-            if (input) {
-                input.value = min;
-                calculateAll();
-            }
-        }
-
-        function setSpacingPreset(val) {
-            dripSpacingInput.value = val;
-            calculateAll();
-        }
+        const summaryAreaText = document.getElementById('summaryAreaText');
+        const summaryFluidText = document.getElementById('summaryFluidText');
 
         function initApp() {
             loadSavedSettings();
@@ -310,12 +280,7 @@ const AGRO_STAGES = {
         }
 
         function setupEventListeners() {
-            const barrelVolumeInput = document.getElementById('barrelVolume');
-            const inputs = [
-                bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, 
-                plantStepInput, emitterFlowInput, dripSpacingInput, tapesPerBedSelect, 
-                irrigationMinutesInput, sprayerVolumeInput, barrelVolumeInput
-            ];
+            const inputs = [bedLengthInput, bedCountInput, rowWidthInput, barrelVolumeInput, sprayerVolumeInput];
 
             inputs.forEach(el => {
                 if (el) el.addEventListener('input', calculateAll);
@@ -327,18 +292,14 @@ const AGRO_STAGES = {
 
             document.getElementById('savePresetBtn').addEventListener('click', () => {
                 saveSettings();
-                alert('Параметры вашей плантации и капельной ленты успешно сохранены в памяти браузера!');
+                alert('Параметры плантации успешно сохранены!');
             });
 
             document.getElementById('printJobBtn').addEventListener('click', () => {
                 const stage = AGRO_STAGES[currentStage];
                 const area = (getCalculatedArea() / 100).toFixed(1);
-                const plants = getCalculatedPlants().toLocaleString('ru-RU');
-                const flow = emitterFlowInput.value;
-                const spacing = dripSpacingInput.value;
-                const timeText = statIrrigationTime.textContent;
                 document.getElementById('printMeta').textContent = 
-                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${plants} кустов) | Капля: ${flow} л/ч через ${spacing} см | Время полива: ${timeText} | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
+                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${getCalculatedArea()} м²) | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
                 window.print();
             });
 
@@ -416,16 +377,7 @@ const AGRO_STAGES = {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
             const width = parseFloat(rowWidthInput.value) || 1.4;
-            return length * count * width;
-        }
-
-        function getCalculatedPlants() {
-            const length = parseFloat(bedLengthInput.value) || 0;
-            const count = parseFloat(bedCountInput.value) || 0;
-            const lines = parseInt(linesPerRowSelect.value) || 2;
-            const stepMeters = (parseFloat(plantStepInput.value) || 30) / 100;
-            const totalTape = length * count;
-            return Math.round((totalTape * lines) / stepMeters);
+            return Math.round(length * count * width * 100) / 100;
         }
 
         function calculateAll() {
@@ -434,58 +386,14 @@ const AGRO_STAGES = {
             const totalBedMeters = length * count;
             const areaM2 = getCalculatedArea();
             const haRatio = areaM2 / 10000;
-            const plants = getCalculatedPlants();
+            const areaSotkas = (areaM2 / 100).toFixed(1);
 
             // Plantation Metrics
-            metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
-            metricArea.textContent = (areaM2 / 100).toFixed(1);
-            metricPlants.textContent = plants.toLocaleString('ru-RU');
-            metricHaRatio.textContent = haRatio.toFixed(3);
+            if (metricTape) metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
+            if (metricArea) metricArea.textContent = areaSotkas;
+            if (metricHaRatio) metricHaRatio.textContent = `${haRatio.toFixed(3)}`;
 
-            // Drip Hardware Calculations
-            const emitterLph = parseFloat(emitterFlowInput.value) || 1.6;
-            const dripSpacingCm = parseFloat(dripSpacingInput.value) || 20;
-            const tapesPerBed = parseInt(tapesPerBedSelect.value) || 1;
-
-            const totalTapeMeters = totalBedMeters * tapesPerBed;
-            const totalEmitters = Math.round(totalTapeMeters / (dripSpacingCm / 100));
-            const systemFlowLph = totalEmitters * emitterLph;
-            const systemFlowM3h = systemFlowLph / 1000;
-
-            if (statSystemFlow) statSystemFlow.innerHTML = `${systemFlowM3h.toFixed(2)} <small>м³/ч (${Math.round(systemFlowLph).toLocaleString('ru-RU')} л/ч)</small>`;
-            if (dripInfoSummary) dripInfoSummary.textContent = `Капельницы ${emitterLph} л/ч через ${dripSpacingCm} см (${tapesPerBed} лент/бугор)`;
-
-            // Irrigation Duration from User input (Minutes)
-            const totalMinutes = parseFloat(document.getElementById('irrigationMinutes')?.value) || 40;
-            const barrelVol = parseFloat(document.getElementById('barrelVolume')?.value) || 160;
-            const statSuctionRate = document.getElementById('statSuctionRate');
-
-            // Format hours and minutes for timer display
-            const h = Math.floor(totalMinutes / 60);
-            const m = Math.round(totalMinutes % 60);
-            if (h === 0) {
-                statIrrigationTime.textContent = `${m} мин`;
-            } else if (m === 0) {
-                statIrrigationTime.textContent = `${h} ч`;
-            } else {
-                statIrrigationTime.textContent = `${h} ч ${m} мин`;
-            }
-
-            // Total Water Pumped from Lake in this irrigation run
-            const totalWaterLiters = Math.round(systemFlowLph * (totalMinutes / 60));
-            const totalWaterM3 = (totalWaterLiters / 1000).toFixed(2);
-            if (statWaterVolume) statWaterVolume.innerHTML = `${totalWaterM3} <small>м³ (${totalWaterLiters.toLocaleString('ru-RU')} л)</small>`;
-
-            // Pump Suction Rate for 160L Barrel
-            if (totalMinutes > 0) {
-                const suctionLpm = (barrelVol / totalMinutes).toFixed(1);
-                if (statSuctionRate) {
-                    statSuctionRate.innerHTML = `${suctionLpm} <small>л/мин</small>`;
-                    statSuctionRate.title = `Краник на помпе забирает ${suctionLpm} л/мин, чтобы бочка ${barrelVol} л ушла ровно за ${totalMinutes} минут`;
-                }
-            } else {
-                if (statSuctionRate) statSuctionRate.textContent = "—";
-            }
+            const bVol = barrelVolumeInput?.value || 160;
 
             // Fertigation Data
             const stage = AGRO_STAGES[currentStage];
@@ -496,6 +404,8 @@ const AGRO_STAGES = {
             let tankBItems = [];
             let allItems = [];
             let totalFertGrams = 0;
+            let tankAWeightGrams = 0;
+            let tankBWeightGrams = 0;
 
             weekData.fertilizers.forEach(fert => {
                 const exactDoseKg = fert.normHa * haRatio;
@@ -529,37 +439,37 @@ const AGRO_STAGES = {
                 allItems.push(itemData);
                 if (fert.tank === 'A') {
                     tankAItems.push(itemData);
+                    tankAWeightGrams += gramVal;
                 } else {
                     tankBItems.push(itemData);
+                    tankBWeightGrams += gramVal;
                 }
             });
 
-            // Diagnostics (EC and Concentration)
-            if (totalWaterLiters > 0) {
-                const concGL = (totalFertGrams / totalWaterLiters).toFixed(2);
-                const estEC = (0.4 + (concGL * 0.85)).toFixed(2);
-                if (statEC) statEC.innerHTML = `EC ~${estEC} mS/cm | <small style='color:var(--text-muted);'>Целевой pH 5.8–6.2 (кислотой)</small>`;
-                if (estEC > 1.8) {
-                    statEC.style.color = '#ef4444';
-                    statEC.title = "Внимание: Высокая концентрация! Опасность засоления корней. Разделите полив на 2 дня.";
-                } else {
-                    statEC.style.color = 'var(--secondary)';
-                    statEC.title = "Оптимальная концентрация для корневой системы клубники";
-                }
-            }
+            // Update Tank Header Totals
+            if (tankATotalWeight) tankATotalWeight.textContent = tankAWeightGrams >= 1000 ? `${(tankAWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankAWeightGrams)} г`;
+            if (tankBTotalWeight) tankBTotalWeight.textContent = tankBWeightGrams >= 1000 ? `${(tankBWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankBWeightGrams)} г`;
 
-            renderFertigationResults(tankAItems, tankBItems, allItems);
+            renderFertigationResults(tankAItems, tankBItems, allItems, bVol);
             renderFoliarResults(weekData.foliar, haRatio);
+
+            // Water Diagnostics text
+            const haFluidNormLiters = 300;
+            const plantationFluidLiters = haFluidNormLiters * haRatio;
+            const sprayerVolumeLiters = parseFloat(sprayerVolumeInput.value) || 16;
+            const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
+
+            if (summaryAreaText) summaryAreaText.textContent = `${areaSotkas} соток`;
+            if (summaryFluidText) summaryFluidText.textContent = `~${plantationFluidLiters.toFixed(1)} л (~${tanksNeeded} заправок ранца)`;
         }
 
-        function renderFertigationResults(tankA, tankB, all) {
+        function renderFertigationResults(tankA, tankB, all, bVol) {
             tankABody.innerHTML = '';
             tankBBody.innerHTML = '';
 
             if (displayMode === 'tanks') {
                 chemicalAlert.style.display = 'flex';
                 tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 640 ? 'repeat(2, 1fr)' : '1fr';
-                const bVol = document.getElementById('barrelVolume')?.value || 160;
                 document.querySelector('.tank-a-header span').textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
                 document.querySelector('.tank-b-header span').textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
                 populateTankList(tankABody, tankA);
@@ -568,9 +478,9 @@ const AGRO_STAGES = {
             } else if (displayMode === 'days') {
                 chemicalAlert.style.display = 'flex';
                 chemicalAlert.innerHTML = `
-                    <span style="font-size: 18px;">📅</span>
+                    <span style="font-size: 20px;">📅</span>
                     <div>
-                        <strong>Схема полива по дням (для 1 бака):</strong> Вносите удобрения из Дня 1 и Дня 2 с интервалом в 2–3 дня чистой воды, чтобы предотвратить выпадение осадка в почве.
+                        <strong>Схема полива по дням (для 1 бочки):</strong> Вносите удобрения из Дня 1 и Дня 2 с интервалом в 2–3 дня чистой воды, чтобы предотвратить выпадение осадка в почве.
                     </div>
                 `;
                 document.querySelector('.tank-a-header span').textContent = "📆 ДЕНЬ 1 (Полив кальцием и селитрой)";
@@ -682,14 +592,8 @@ const AGRO_STAGES = {
                 bedLength: bedLengthInput.value,
                 bedCount: bedCountInput.value,
                 rowWidth: rowWidthInput.value,
-                linesPerRow: linesPerRowSelect.value,
-                plantStep: plantStepInput.value,
-                emitterFlow: emitterFlowInput.value,
-                dripSpacing: dripSpacingInput.value,
-                tapesPerBed: tapesPerBedSelect.value,
-                irrigationMinutes: irrigationMinutesInput?.value || '40',
-                sprayerVolume: sprayerVolumeInput.value,
-                barrelVolume: document.getElementById('barrelVolume')?.value || '160'
+                barrelVolume: barrelVolumeInput.value,
+                sprayerVolume: sprayerVolumeInput.value
             };
             localStorage.setItem('starberry_settings', JSON.stringify(settings));
         }
@@ -702,14 +606,8 @@ const AGRO_STAGES = {
                     if (parsed.bedLength) bedLengthInput.value = parsed.bedLength;
                     if (parsed.bedCount) bedCountInput.value = parsed.bedCount;
                     if (parsed.rowWidth) rowWidthInput.value = parsed.rowWidth;
-                    if (parsed.linesPerRow) linesPerRowSelect.value = parsed.linesPerRow;
-                    if (parsed.plantStep) plantStepInput.value = parsed.plantStep;
-                    if (parsed.emitterFlow) emitterFlowInput.value = parsed.emitterFlow;
-                    if (parsed.dripSpacing) dripSpacingInput.value = parsed.dripSpacing;
-                    if (parsed.tapesPerBed) tapesPerBedSelect.value = parsed.tapesPerBed;
-                    if (parsed.irrigationMinutes && document.getElementById('irrigationMinutes')) document.getElementById('irrigationMinutes').value = parsed.irrigationMinutes;
+                    if (parsed.barrelVolume) barrelVolumeInput.value = parsed.barrelVolume;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
-                    if (parsed.barrelVolume && document.getElementById('barrelVolume')) document.getElementById('barrelVolume').value = parsed.barrelVolume;
                 } catch(e) {}
             }
         }

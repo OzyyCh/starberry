@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starberry Pro — Профессиональный калькулятор питания клубники</title>
+    <title>Starberry Pro — Профессиональный калькулятор питания и полива клубники</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -71,7 +71,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             padding: 16px 20px 60px;
             width: 100%;
@@ -159,68 +159,26 @@
             transform: translateY(-1px);
         }
 
-        /* Nav Pills */
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            background: var(--bg-card);
-            padding: 6px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border);
-            overflow-x: auto;
-        }
-
-        .nav-tab {
-            flex: 1;
-            min-width: 140px;
-            padding: 10px 16px;
-            background: transparent;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 0.92rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .nav-tab.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
-        }
-
-        .nav-tab:hover:not(.active) {
-            background: var(--bg-card-subtle);
-            color: var(--text-main);
-        }
-
         /* Layout Grid */
         .layout-grid {
             display: grid;
-            grid-template-columns: 360px 1fr;
+            grid-template-columns: 390px 1fr;
             gap: 24px;
             align-items: start;
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .layout-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Plantation Configuration Panel */
+        /* Card Component */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 24px;
+            padding: 22px;
             box-shadow: var(--shadow);
             margin-bottom: 24px;
         }
@@ -229,26 +187,26 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border);
         }
 
         .card-title {
-            font-size: 1.12rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 15px;
         }
 
         .form-label {
             display: block;
-            font-size: 0.86rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 6px;
             color: var(--text-main);
@@ -263,12 +221,12 @@
         .form-input {
             width: 100%;
             padding: 10px 14px;
-            padding-right: 48px;
+            padding-right: 56px;
             background: var(--bg-card-subtle);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
             color: var(--text-main);
-            font-size: 0.95rem;
+            font-size: 0.94rem;
             font-weight: 600;
             transition: var(--transition);
         }
@@ -283,19 +241,45 @@
         .input-suffix {
             position: absolute;
             right: 12px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-muted);
             pointer-events: none;
+        }
+
+        /* Preset Chips */
+        .preset-chips {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .preset-chip {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .preset-chip:hover {
+            border-color: var(--tank-a);
+            color: var(--tank-a);
+            background: var(--tank-a-light);
         }
 
         /* Calculated Plantation Metrics */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 16px;
-            padding-top: 16px;
+            gap: 10px;
+            margin-top: 14px;
+            padding-top: 14px;
             border-top: 1px dashed var(--border);
         }
 
@@ -307,7 +291,7 @@
         }
 
         .metric-label {
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 700;
@@ -315,14 +299,14 @@
         }
 
         .metric-value {
-            font-size: 1.15rem;
+            font-size: 1.12rem;
             font-weight: 800;
             color: var(--text-main);
             margin-top: 2px;
         }
 
         .metric-value small {
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 600;
             color: var(--text-muted);
         }
@@ -438,7 +422,7 @@
             box-shadow: 0 3px 8px rgba(225, 29, 72, 0.3);
         }
 
-        /* Mode Selector: Tanks vs Days */
+        /* Mode Selector */
         .mode-selector {
             display: flex;
             gap: 8px;
@@ -471,7 +455,7 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        /* Alert Callout for Chemical Compatibility */
+        /* Alert Callout */
         .alert-tank {
             background: #fffbeb;
             border: 1px solid #fef3c7;
@@ -579,7 +563,7 @@
             color: var(--text-muted);
         }
 
-        /* Foliar Spraying Section */
+        /* Foliar Section */
         .foliar-card {
             background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(5, 150, 105, 0.02) 100%);
             border: 1px solid var(--secondary);
@@ -618,20 +602,20 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 18px 20px;
+            padding: 20px;
             margin-bottom: 24px;
         }
 
         .water-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-top: 12px;
+            margin-top: 14px;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .water-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -640,20 +624,25 @@
             padding: 12px;
             border-radius: var(--radius-sm);
             text-align: center;
+            border: 1px solid var(--border);
         }
 
         .water-stat-label {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
         }
 
         .water-stat-val {
-            font-size: 1.25rem;
+            font-size: 1.22rem;
             font-weight: 800;
             color: var(--text-main);
             margin-top: 4px;
+        }
+
+        .water-stat-val.highlight {
+            color: var(--tank-a);
         }
 
         /* Action Buttons */
@@ -700,7 +689,7 @@
             background: var(--border);
         }
 
-        /* Handbook Modal */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -802,13 +791,13 @@
             line-height: 1.45;
         }
 
-        /* Printable Sheet Optimization */
+        /* Printable */
         @media print {
             body {
                 background: white !important;
                 color: black !important;
             }
-            header, .nav-tabs, .stages-selector, .weeks-container, .mode-selector, .actions-bar, .theme-toggle, .btn-icon {
+            header, .stages-selector, .weeks-container, .mode-selector, .actions-bar, .btn-icon {
                 display: none !important;
             }
             .layout-grid {
@@ -831,7 +820,6 @@
             display: none;
         }
 
-        /* Footer */
         footer {
             margin-top: auto;
             text-align: center;
@@ -845,7 +833,7 @@
     <div class="container">
         <!-- Print Header -->
         <div class="print-only-header">
-            <h1 style="font-size: 20pt; margin-bottom: 4px;">Наряд-задание на фертигацию клубники</h1>
+            <h1 style="font-size: 20pt; margin-bottom: 4px;">Наряд-задание на полив и фертигацию клубники</h1>
             <p id="printMeta" style="font-size: 11pt; color: #444;"></p>
         </div>
 
@@ -855,7 +843,7 @@
                 <div class="brand-icon">🍓</div>
                 <div class="brand-text">
                     <h1>Starberry Pro <span class="badge-pro">Agro</span></h1>
-                    <p>Профессиональный расчет фертигации и листового питания клубники</p>
+                    <p>Профессиональный расчет питания, времени полива и капельной ленты</p>
                 </div>
             </div>
             <div class="header-actions">
@@ -866,11 +854,12 @@
 
         <!-- Main Content -->
         <div class="layout-grid">
-            <!-- Left Column: Plantation Settings -->
+            <!-- Left Column: Plantation & Drip Tape Settings -->
             <aside>
+                <!-- Plantation Dimensions -->
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">🌱 Параметры плантации</h2>
+                        <h2 class="card-title">🌱 Параметры участка</h2>
                         <span style="font-size: 0.78rem; font-weight: 600; color: var(--secondary);">II–III год</span>
                     </div>
 
@@ -915,7 +904,7 @@
                     <!-- Calculated Plantation Metrics -->
                     <div class="metrics-grid">
                         <div class="metric-badge">
-                            <div class="metric-label">Длина капли</div>
+                            <div class="metric-label">Длина бугров</div>
                             <div class="metric-value"><span id="metricTape">1 000</span> <small>м</small></div>
                         </div>
                         <div class="metric-badge">
@@ -933,17 +922,71 @@
                     </div>
                 </div>
 
-                <!-- Irrigation Parameters -->
+                <!-- Drip Tape & Irrigation Hardware -->
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">💧 Капельный полив</h2>
+                        <h2 class="card-title">💧 Капельная лента и вылив</h2>
+                        <span style="font-size: 0.74rem; font-weight: 700; color: var(--tank-a); background: var(--tank-a-light); padding: 2px 6px; border-radius: 4px;">Сектор</span>
                     </div>
 
+                    <!-- Emitter Flow Rate with Quick Presets -->
                     <div class="form-group">
-                        <label class="form-label">Суточная норма вылива на 1 куст:</label>
+                        <label class="form-label">Водовылив 1 капельницы (л/ч):</label>
                         <div class="input-group">
-                            <input type="number" id="waterPerPlant" class="form-input" min="0.1" max="2.0" value="0.4" step="0.05">
+                            <input type="number" id="emitterFlow" class="form-input" min="0.4" max="15.0" value="1.6" step="0.1">
+                            <span class="input-suffix">л/час</span>
+                        </div>
+                        <div class="preset-chips">
+                            <button type="button" class="preset-chip" onclick="setEmitterPreset(1.0)">1.0 л/ч</button>
+                            <button type="button" class="preset-chip" onclick="setEmitterPreset(1.4)">1.4 л/ч</button>
+                            <button type="button" class="preset-chip" onclick="setEmitterPreset(1.6)">1.6 л/ч (стандарт)</button>
+                            <button type="button" class="preset-chip" onclick="setEmitterPreset(2.0)">2.0 л/ч</button>
+                            <button type="button" class="preset-chip" onclick="setEmitterPreset(5.0)">5.0 л/ч (мощная)</button>
+                        </div>
+                    </div>
+
+                    <!-- Emitter Spacing -->
+                    <div class="form-group">
+                        <label class="form-label">Шаг капельниц в ленте:</label>
+                        <div class="input-group">
+                            <input type="number" id="dripSpacing" class="form-input" min="10" max="100" value="20" step="5">
+                            <span class="input-suffix">см</span>
+                        </div>
+                        <div class="preset-chips">
+                            <button type="button" class="preset-chip" onclick="setSpacingPreset(10)">10 см</button>
+                            <button type="button" class="preset-chip" onclick="setSpacingPreset(15)">15 см</button>
+                            <button type="button" class="preset-chip" onclick="setSpacingPreset(20)">20 см</button>
+                            <button type="button" class="preset-chip" onclick="setSpacingPreset(30)">30 см</button>
+                        </div>
+                    </div>
+
+                    <!-- Lines of drip tape per bed -->
+                    <div class="form-group">
+                        <label class="form-label">Капельных лент на 1 бугор (билон):</label>
+                        <select id="tapesPerBed" class="form-input">
+                            <option value="1" selected>1 капельная лента на бугор</option>
+                            <option value="2">2 капельные ленты (под каждый ряд)</option>
+                        </select>
+                    </div>
+
+                    <!-- Water per Plant Target -->
+                    <div class="form-group">
+                        <label class="form-label">Суточная норма воды на 1 куст:</label>
+                        <div class="input-group">
+                            <input type="number" id="waterPerPlant" class="form-input" min="0.1" max="2.5" value="0.4" step="0.05">
                             <span class="input-suffix">л/куст</span>
+                        </div>
+                    </div>
+
+                    <!-- Barrel & Sprayer Volumes -->
+                    <div class="form-group">
+                        <label class="form-label">Объем каждой бочки (Бак А и Бак Б):</label>
+                        <div class="input-group">
+                            <input type="number" id="barrelVolume" class="form-input" min="50" max="2000" value="160" step="10">
+                            <span class="input-suffix">литров</span>
+                        </div>
+                        <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 3px;">
+                            Две бочки по 160 л у помпы на берегу
                         </div>
                     </div>
 
@@ -960,14 +1003,10 @@
             <!-- Right Column: Interactive Calculator -->
             <main>
                 <!-- Stage Buttons -->
-                <div class="stages-selector" id="stageButtonsContainer">
-                    <!-- Populated by JS -->
-                </div>
+                <div class="stages-selector" id="stageButtonsContainer"></div>
 
                 <!-- Week Selector Chips -->
-                <div class="weeks-container" id="weekChipsContainer">
-                    <!-- Populated by JS -->
-                </div>
+                <div class="weeks-container" id="weekChipsContainer"></div>
 
                 <!-- Display Mode Switcher -->
                 <div class="mode-selector">
@@ -982,11 +1021,15 @@
                     </button>
                 </div>
 
-                <!-- Chemical Alert -->
+                <!-- Chemical & Lake Water Advice -->
                 <div class="alert-tank" id="chemicalAlert">
-                    <span style="font-size: 18px;">⚠️</span>
+                    <span style="font-size: 20px;">🛡️</span>
                     <div>
-                        <strong>Правило несовместимости:</strong> Кальциевую селитру нельзя смешивать в концентрированном виде с сульфатами и монокалийфосфатом! Используйте раздельные баки (А и Б) либо вносите их в разные дни полива.
+                        <strong>Две бочки (А и Б) + вода из озера:</strong><br>
+                        • <strong>Бочка А:</strong> Кальциевая селитра + калиевая/аммиачная селитры (без фосфатов и сульфатов).<br>
+                        • <strong>Бочка Б:</strong> Монокалийфосфат (MKP), Терафлекс, Магний, Rhyzo/Bombardier.<br>
+                        • <strong>Вода из озера (pH):</strong> Озёрная вода щелочная (pH 7.8–8.5). Добавляйте кислоту для снижения <strong>pH до нормы 5.8–6.2</strong>.<br>
+                        • <strong>Крепость солей (EC):</strong> Регулируйте краником на всасе помпы — чем больше примешивается чистой воды, тем ниже и мягче EC на выходе из капельницы.
                     </div>
                 </div>
 
@@ -998,9 +1041,7 @@
                             <span>📦 БАК А (Кальций + Селитры)</span>
                             <small id="tankATotalWeight">0 г</small>
                         </div>
-                        <div class="tank-body" id="tankABody">
-                            <!-- Items -->
-                        </div>
+                        <div class="tank-body" id="tankABody"></div>
                     </div>
 
                     <!-- Tank B -->
@@ -1009,9 +1050,7 @@
                             <span>📦 БАК Б (Фосфор, Калий, Магний, Био)</span>
                             <small id="tankBTotalWeight">0 г</small>
                         </div>
-                        <div class="tank-body" id="tankBBody">
-                            <!-- Items -->
-                        </div>
+                        <div class="tank-body" id="tankBBody"></div>
                     </div>
                 </div>
 
@@ -1024,26 +1063,31 @@
                         </div>
                         <span style="font-size: 0.84rem; font-weight: 600; color: var(--text-muted);" id="foliarTanksCount"></span>
                     </div>
-                    <div id="foliarBody">
-                        <!-- Items -->
-                    </div>
+                    <div id="foliarBody"></div>
                 </div>
 
-                <!-- Water & EC Diagnostics Card -->
+                <!-- Water, System Flow Rate & Irrigation Timer Diagnostics -->
                 <div class="water-card">
-                    <h3 style="font-size: 0.96rem; font-weight: 700; margin-bottom: 8px;">📊 Режим полива и концентрация раствора</h3>
+                    <h3 style="font-size: 0.98rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+                        <span>⏱️ Полив, настройка краника помпы и нормы</span>
+                        <span id="dripInfoSummary" style="font-size: 0.8rem; font-weight: 600; color: var(--tank-a);">Капельницы 1.6 л/ч через 20 см</span>
+                    </h3>
                     <div class="water-grid">
                         <div class="water-stat">
-                            <div class="water-stat-label">Объем воды на полив</div>
+                            <div class="water-stat-label">Время полива (таймер)</div>
+                            <div class="water-stat-val highlight" id="statIrrigationTime">0 ч 20 мин</div>
+                        </div>
+                        <div class="water-stat">
+                            <div class="water-stat-label">Всас краника помпы</div>
+                            <div class="water-stat-val highlight" style="color: var(--secondary);" id="statSuctionRate">8.0 <small>л/мин</small></div>
+                        </div>
+                        <div class="water-stat">
+                            <div class="water-stat-label">Объем воды озера</div>
                             <div class="water-stat-val" id="statWaterVolume">2.67 <small>м³</small></div>
                         </div>
                         <div class="water-stat">
-                            <div class="water-stat-label">Концентрация солей</div>
-                            <div class="water-stat-val" id="statConcentration">2.8 <small>г/л</small></div>
-                        </div>
-                        <div class="water-stat">
-                            <div class="water-stat-label">Расчетный EC раствора</div>
-                            <div class="water-stat-val" id="statEC" style="color: var(--secondary);">~1.45 <small>mS/cm</small></div>
+                            <div class="water-stat-label">Выходной EC и pH</div>
+                            <div class="water-stat-val" id="statEC" style="color: var(--secondary);">EC ~1.4 <small>| pH 5.8-6.2</small></div>
                         </div>
                     </div>
                 </div>
@@ -1054,7 +1098,7 @@
                         🖨️ Распечатать наряд на полив / PDF
                     </button>
                     <button class="btn-action btn-secondary" id="savePresetBtn">
-                        💾 Запомнить параметры участка
+                        💾 Запомнить параметры плантации
                     </button>
                 </div>
             </main>
@@ -1067,9 +1111,7 @@
                     <h3 class="modal-title">Справочник удобрений и препаратов (Agrostrimedit)</h3>
                     <button class="modal-close" id="closeHandbookBtn">&times;</button>
                 </div>
-                <div class="modal-body" id="handbookContent">
-                    <!-- Populated by JS -->
-                </div>
+                <div class="modal-body" id="handbookContent"></div>
             </div>
         </div>
 
@@ -1078,9 +1120,7 @@
         </footer>
     </div>
 
-    <!-- Application Script -->
     <script>
-        // Agronomic Data Model based on Agrostrimedit recommendations
         const AGRO_STAGES = {
             growth: {
                 id: "growth",
@@ -1324,14 +1364,17 @@
         // State
         let currentStage = 'growth';
         let currentWeek = 1;
-        let displayMode = 'tanks'; // 'tanks', 'days', 'all'
+        let displayMode = 'tanks';
 
-        // DOM Elements
+        // DOM Inputs
         const bedLengthInput = document.getElementById('bedLength');
         const bedCountInput = document.getElementById('bedCount');
         const rowWidthInput = document.getElementById('rowWidth');
         const linesPerRowSelect = document.getElementById('linesPerRow');
         const plantStepInput = document.getElementById('plantStep');
+        const emitterFlowInput = document.getElementById('emitterFlow');
+        const dripSpacingInput = document.getElementById('dripSpacing');
+        const tapesPerBedSelect = document.getElementById('tapesPerBed');
         const waterPerPlantInput = document.getElementById('waterPerPlant');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
 
@@ -1354,12 +1397,23 @@
         const foliarBody = document.getElementById('foliarBody');
         const foliarTanksCount = document.getElementById('foliarTanksCount');
 
-        // Water Stats
+        // Irrigation Stats
+        const statIrrigationTime = document.getElementById('statIrrigationTime');
+        const statSystemFlow = document.getElementById('statSystemFlow');
         const statWaterVolume = document.getElementById('statWaterVolume');
-        const statConcentration = document.getElementById('statConcentration');
         const statEC = document.getElementById('statEC');
+        const dripInfoSummary = document.getElementById('dripInfoSummary');
 
-        // Init
+        function setEmitterPreset(val) {
+            emitterFlowInput.value = val;
+            calculateAll();
+        }
+
+        function setSpacingPreset(val) {
+            dripSpacingInput.value = val;
+            calculateAll();
+        }
+
         function initApp() {
             loadSavedSettings();
             renderStages();
@@ -1370,7 +1424,14 @@
         }
 
         function setupEventListeners() {
-            [bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, plantStepInput, waterPerPlantInput, sprayerVolumeInput].forEach(el => {
+            const barrelVolumeInput = document.getElementById('barrelVolume');
+            const inputs = [
+                bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, 
+                plantStepInput, emitterFlowInput, dripSpacingInput, tapesPerBedSelect, 
+                waterPerPlantInput, sprayerVolumeInput, barrelVolumeInput
+            ];
+
+            inputs.forEach(el => {
                 el.addEventListener('input', calculateAll);
             });
 
@@ -1380,19 +1441,21 @@
 
             document.getElementById('savePresetBtn').addEventListener('click', () => {
                 saveSettings();
-                alert('Параметры вашей плантации успешно сохранены в памяти браузера!');
+                alert('Параметры вашей плантации и капельной ленты успешно сохранены в памяти браузера!');
             });
 
             document.getElementById('printJobBtn').addEventListener('click', () => {
                 const stage = AGRO_STAGES[currentStage];
                 const area = (getCalculatedArea() / 100).toFixed(1);
                 const plants = getCalculatedPlants().toLocaleString('ru-RU');
+                const flow = emitterFlowInput.value;
+                const spacing = dripSpacingInput.value;
+                const timeText = statIrrigationTime.textContent;
                 document.getElementById('printMeta').textContent = 
-                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${plants} кустов) | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
+                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${plants} кустов) | Капля: ${flow} л/ч через ${spacing} см | Время полива: ${timeText} | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
                 window.print();
             });
 
-            // Theme toggle
             const themeBtn = document.getElementById('themeToggleBtn');
             themeBtn.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
@@ -1467,7 +1530,7 @@
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
             const width = parseFloat(rowWidthInput.value) || 1.4;
-            return length * count * width; // m²
+            return length * count * width;
         }
 
         function getCalculatedPlants() {
@@ -1482,22 +1545,64 @@
         function calculateAll() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
-            const totalTape = length * count;
+            const totalBedMeters = length * count;
             const areaM2 = getCalculatedArea();
             const haRatio = areaM2 / 10000;
             const plants = getCalculatedPlants();
 
-            // Update Metrics Display
-            metricTape.textContent = totalTape.toLocaleString('ru-RU');
+            // Plantation Metrics
+            metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
             metricArea.textContent = (areaM2 / 100).toFixed(1);
             metricPlants.textContent = plants.toLocaleString('ru-RU');
             metricHaRatio.textContent = haRatio.toFixed(3);
 
-            // Water Calculation
+            // Drip Hardware Calculations
+            const emitterLph = parseFloat(emitterFlowInput.value) || 1.6;
+            const dripSpacingCm = parseFloat(dripSpacingInput.value) || 20;
+            const tapesPerBed = parseInt(tapesPerBedSelect.value) || 1;
+
+            const totalTapeMeters = totalBedMeters * tapesPerBed;
+            const totalEmitters = Math.round(totalTapeMeters / (dripSpacingCm / 100));
+            const systemFlowLph = totalEmitters * emitterLph;
+            const systemFlowM3h = systemFlowLph / 1000;
+
+            statSystemFlow.innerHTML = `${systemFlowM3h.toFixed(2)} <small>м³/ч (${Math.round(systemFlowLph).toLocaleString('ru-RU')} л/ч)</small>`;
+            dripInfoSummary.textContent = `Капельницы ${emitterLph} л/ч через ${dripSpacingCm} см (${tapesPerBed} лент/бугор)`;
+
+            // Water Target
             const waterPerPlantLiters = parseFloat(waterPerPlantInput.value) || 0.4;
             const totalWaterLiters = Math.round(plants * waterPerPlantLiters);
             const totalWaterM3 = (totalWaterLiters / 1000).toFixed(2);
             statWaterVolume.innerHTML = `${totalWaterM3} <small>м³ (${totalWaterLiters.toLocaleString('ru-RU')} л)</small>`;
+
+            // Irrigation Time & Pump Suction Calculation
+            const barrelVol = parseFloat(document.getElementById('barrelVolume')?.value) || 160;
+            const statSuctionRate = document.getElementById('statSuctionRate');
+
+            if (systemFlowLph > 0 && totalWaterLiters > 0) {
+                const totalHours = totalWaterLiters / systemFlowLph;
+                const hours = Math.floor(totalHours);
+                const minutes = Math.round((totalHours - hours) * 60);
+                const totalMinutes = Math.max(1, Math.round(totalHours * 60));
+
+                if (hours === 0) {
+                    statIrrigationTime.textContent = `${minutes} мин`;
+                } else if (minutes === 0) {
+                    statIrrigationTime.textContent = `${hours} ч`;
+                } else {
+                    statIrrigationTime.textContent = `${hours} ч ${minutes} мин`;
+                }
+
+                // If feeding is delivered during active irrigation (e.g. over total irrigation time or half time)
+                const suctionLpm = (barrelVol / totalMinutes).toFixed(1);
+                if (statSuctionRate) {
+                    statSuctionRate.innerHTML = `${suctionLpm} <small>л/мин</small>`;
+                    statSuctionRate.title = `Краник на всасе помпы должен забирать ${suctionLpm} л/мин, чтобы бочка ${barrelVol} л ушла равномерно за ${totalMinutes} минут полива`;
+                }
+            } else {
+                statIrrigationTime.textContent = "—";
+                if (statSuctionRate) statSuctionRate.textContent = "—";
+            }
 
             // Fertigation Data
             const stage = AGRO_STAGES[currentStage];
@@ -1549,9 +1654,6 @@
             // Diagnostics (EC and Concentration)
             if (totalWaterLiters > 0) {
                 const concGL = (totalFertGrams / totalWaterLiters).toFixed(2);
-                statConcentration.innerHTML = `${concGL} <small>г/л</small>`;
-                
-                // Estimated EC: baseline ~0.4 mS/cm from tap water + ~0.9 mS/cm per 1 g/l of salts
                 const estEC = (0.4 + (concGL * 0.85)).toFixed(2);
                 statEC.innerHTML = `~${estEC} <small>mS/cm</small>`;
                 if (estEC > 1.8) {
@@ -1563,10 +1665,7 @@
                 }
             }
 
-            // Render Fertigation Output depending on mode
             renderFertigationResults(tankAItems, tankBItems, allItems);
-
-            // Foliar Spraying Calculation
             renderFoliarResults(weekData.foliar, haRatio);
         }
 
@@ -1577,9 +1676,9 @@
             if (displayMode === 'tanks') {
                 chemicalAlert.style.display = 'flex';
                 tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 640 ? 'repeat(2, 1fr)' : '1fr';
-                document.querySelector('.tank-a-header span').textContent = "📦 БАК А (Кальций + Селитры)";
-                document.querySelector('.tank-b-header span').textContent = "📦 БАК Б (Фосфор, Калий, Магний, Био)";
-                
+                const bVol = document.getElementById('barrelVolume')?.value || 160;
+                document.querySelector('.tank-a-header span').textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
+                document.querySelector('.tank-b-header span').textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
                 populateTankList(tankABody, tankA);
                 populateTankList(tankBBody, tankB);
                 document.querySelector('.tank-b-header').parentElement.style.display = 'block';
@@ -1637,7 +1736,6 @@
 
             foliarSection.style.display = 'block';
             const sprayerVolumeLiters = parseFloat(sprayerVolumeInput.value) || 16;
-            // Standard working fluid rate for strawberry: 300 Liters per 1 ha
             const haFluidNormLiters = 300;
             const plantationFluidLiters = haFluidNormLiters * haRatio;
             const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
@@ -1645,12 +1743,9 @@
             foliarTanksCount.textContent = `На участок: ~${plantationFluidLiters.toFixed(1)} л раствора (~${tanksNeeded} заправок опрыскивателя)`;
 
             foliarData.forEach(item => {
-                // Calculation on 1 sprayer (e.g. 16L):
-                // Item dose on 1 ha / 300L * sprayerVolume
-                const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters; // in ml or g per liter
+                const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters;
                 const dosePerSprayer = dosePerLiter * sprayerVolumeLiters;
 
-                // Total for entire plantation
                 const totalForPlantation = item.normHa * haRatio;
                 let totalDisplay = "";
                 if (item.unit === 'л') {
@@ -1706,8 +1801,12 @@
                 rowWidth: rowWidthInput.value,
                 linesPerRow: linesPerRowSelect.value,
                 plantStep: plantStepInput.value,
+                emitterFlow: emitterFlowInput.value,
+                dripSpacing: dripSpacingInput.value,
+                tapesPerBed: tapesPerBedSelect.value,
                 waterPerPlant: waterPerPlantInput.value,
-                sprayerVolume: sprayerVolumeInput.value
+                sprayerVolume: sprayerVolumeInput.value,
+                barrelVolume: document.getElementById('barrelVolume')?.value || '160'
             };
             localStorage.setItem('starberry_settings', JSON.stringify(settings));
         }
@@ -1722,13 +1821,16 @@
                     if (parsed.rowWidth) rowWidthInput.value = parsed.rowWidth;
                     if (parsed.linesPerRow) linesPerRowSelect.value = parsed.linesPerRow;
                     if (parsed.plantStep) plantStepInput.value = parsed.plantStep;
+                    if (parsed.emitterFlow) emitterFlowInput.value = parsed.emitterFlow;
+                    if (parsed.dripSpacing) dripSpacingInput.value = parsed.dripSpacing;
+                    if (parsed.tapesPerBed) tapesPerBedSelect.value = parsed.tapesPerBed;
                     if (parsed.waterPerPlant) waterPerPlantInput.value = parsed.waterPerPlant;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
+                    if (parsed.barrelVolume && document.getElementById('barrelVolume')) document.getElementById('barrelVolume').value = parsed.barrelVolume;
                 } catch(e) {}
             }
         }
 
-        // Start
         window.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>

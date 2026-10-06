@@ -1,5 +1,4 @@
-// Agronomic Data Model based on Agrostrimedit recommendations
-        const AGRO_STAGES = {
+const AGRO_STAGES = {
             growth: {
                 id: "growth",
                 title: "I. Отрастание цветоносов",
@@ -242,14 +241,17 @@
         // State
         let currentStage = 'growth';
         let currentWeek = 1;
-        let displayMode = 'tanks'; // 'tanks', 'days', 'all'
+        let displayMode = 'tanks';
 
-        // DOM Elements
+        // DOM Inputs
         const bedLengthInput = document.getElementById('bedLength');
         const bedCountInput = document.getElementById('bedCount');
         const rowWidthInput = document.getElementById('rowWidth');
         const linesPerRowSelect = document.getElementById('linesPerRow');
         const plantStepInput = document.getElementById('plantStep');
+        const emitterFlowInput = document.getElementById('emitterFlow');
+        const dripSpacingInput = document.getElementById('dripSpacing');
+        const tapesPerBedSelect = document.getElementById('tapesPerBed');
         const waterPerPlantInput = document.getElementById('waterPerPlant');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
 
@@ -272,12 +274,23 @@
         const foliarBody = document.getElementById('foliarBody');
         const foliarTanksCount = document.getElementById('foliarTanksCount');
 
-        // Water Stats
+        // Irrigation Stats
+        const statIrrigationTime = document.getElementById('statIrrigationTime');
+        const statSystemFlow = document.getElementById('statSystemFlow');
         const statWaterVolume = document.getElementById('statWaterVolume');
-        const statConcentration = document.getElementById('statConcentration');
         const statEC = document.getElementById('statEC');
+        const dripInfoSummary = document.getElementById('dripInfoSummary');
 
-        // Init
+        function setEmitterPreset(val) {
+            emitterFlowInput.value = val;
+            calculateAll();
+        }
+
+        function setSpacingPreset(val) {
+            dripSpacingInput.value = val;
+            calculateAll();
+        }
+
         function initApp() {
             loadSavedSettings();
             renderStages();
@@ -288,7 +301,14 @@
         }
 
         function setupEventListeners() {
-            [bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, plantStepInput, waterPerPlantInput, sprayerVolumeInput].forEach(el => {
+            const barrelVolumeInput = document.getElementById('barrelVolume');
+            const inputs = [
+                bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, 
+                plantStepInput, emitterFlowInput, dripSpacingInput, tapesPerBedSelect, 
+                waterPerPlantInput, sprayerVolumeInput, barrelVolumeInput
+            ];
+
+            inputs.forEach(el => {
                 el.addEventListener('input', calculateAll);
             });
 
@@ -298,19 +318,21 @@
 
             document.getElementById('savePresetBtn').addEventListener('click', () => {
                 saveSettings();
-                alert('Параметры вашей плантации успешно сохранены в памяти браузера!');
+                alert('Параметры вашей плантации и капельной ленты успешно сохранены в памяти браузера!');
             });
 
             document.getElementById('printJobBtn').addEventListener('click', () => {
                 const stage = AGRO_STAGES[currentStage];
                 const area = (getCalculatedArea() / 100).toFixed(1);
                 const plants = getCalculatedPlants().toLocaleString('ru-RU');
+                const flow = emitterFlowInput.value;
+                const spacing = dripSpacingInput.value;
+                const timeText = statIrrigationTime.textContent;
                 document.getElementById('printMeta').textContent = 
-                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${plants} кустов) | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
+                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${plants} кустов) | Капля: ${flow} л/ч через ${spacing} см | Время полива: ${timeText} | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
                 window.print();
             });
 
-            // Theme toggle
             const themeBtn = document.getElementById('themeToggleBtn');
             themeBtn.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
@@ -385,7 +407,7 @@
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
             const width = parseFloat(rowWidthInput.value) || 1.4;
-            return length * count * width; // m²
+            return length * count * width;
         }
 
         function getCalculatedPlants() {
@@ -400,22 +422,64 @@
         function calculateAll() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
-            const totalTape = length * count;
+            const totalBedMeters = length * count;
             const areaM2 = getCalculatedArea();
             const haRatio = areaM2 / 10000;
             const plants = getCalculatedPlants();
 
-            // Update Metrics Display
-            metricTape.textContent = totalTape.toLocaleString('ru-RU');
+            // Plantation Metrics
+            metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
             metricArea.textContent = (areaM2 / 100).toFixed(1);
             metricPlants.textContent = plants.toLocaleString('ru-RU');
             metricHaRatio.textContent = haRatio.toFixed(3);
 
-            // Water Calculation
+            // Drip Hardware Calculations
+            const emitterLph = parseFloat(emitterFlowInput.value) || 1.6;
+            const dripSpacingCm = parseFloat(dripSpacingInput.value) || 20;
+            const tapesPerBed = parseInt(tapesPerBedSelect.value) || 1;
+
+            const totalTapeMeters = totalBedMeters * tapesPerBed;
+            const totalEmitters = Math.round(totalTapeMeters / (dripSpacingCm / 100));
+            const systemFlowLph = totalEmitters * emitterLph;
+            const systemFlowM3h = systemFlowLph / 1000;
+
+            statSystemFlow.innerHTML = `${systemFlowM3h.toFixed(2)} <small>м³/ч (${Math.round(systemFlowLph).toLocaleString('ru-RU')} л/ч)</small>`;
+            dripInfoSummary.textContent = `Капельницы ${emitterLph} л/ч через ${dripSpacingCm} см (${tapesPerBed} лент/бугор)`;
+
+            // Water Target
             const waterPerPlantLiters = parseFloat(waterPerPlantInput.value) || 0.4;
             const totalWaterLiters = Math.round(plants * waterPerPlantLiters);
             const totalWaterM3 = (totalWaterLiters / 1000).toFixed(2);
             statWaterVolume.innerHTML = `${totalWaterM3} <small>м³ (${totalWaterLiters.toLocaleString('ru-RU')} л)</small>`;
+
+            // Irrigation Time & Pump Suction Calculation
+            const barrelVol = parseFloat(document.getElementById('barrelVolume')?.value) || 160;
+            const statSuctionRate = document.getElementById('statSuctionRate');
+
+            if (systemFlowLph > 0 && totalWaterLiters > 0) {
+                const totalHours = totalWaterLiters / systemFlowLph;
+                const hours = Math.floor(totalHours);
+                const minutes = Math.round((totalHours - hours) * 60);
+                const totalMinutes = Math.max(1, Math.round(totalHours * 60));
+
+                if (hours === 0) {
+                    statIrrigationTime.textContent = `${minutes} мин`;
+                } else if (minutes === 0) {
+                    statIrrigationTime.textContent = `${hours} ч`;
+                } else {
+                    statIrrigationTime.textContent = `${hours} ч ${minutes} мин`;
+                }
+
+                // If feeding is delivered during active irrigation (e.g. over total irrigation time or half time)
+                const suctionLpm = (barrelVol / totalMinutes).toFixed(1);
+                if (statSuctionRate) {
+                    statSuctionRate.innerHTML = `${suctionLpm} <small>л/мин</small>`;
+                    statSuctionRate.title = `Краник на всасе помпы должен забирать ${suctionLpm} л/мин, чтобы бочка ${barrelVol} л ушла равномерно за ${totalMinutes} минут полива`;
+                }
+            } else {
+                statIrrigationTime.textContent = "—";
+                if (statSuctionRate) statSuctionRate.textContent = "—";
+            }
 
             // Fertigation Data
             const stage = AGRO_STAGES[currentStage];
@@ -467,9 +531,6 @@
             // Diagnostics (EC and Concentration)
             if (totalWaterLiters > 0) {
                 const concGL = (totalFertGrams / totalWaterLiters).toFixed(2);
-                statConcentration.innerHTML = `${concGL} <small>г/л</small>`;
-                
-                // Estimated EC: baseline ~0.4 mS/cm from tap water + ~0.9 mS/cm per 1 g/l of salts
                 const estEC = (0.4 + (concGL * 0.85)).toFixed(2);
                 statEC.innerHTML = `~${estEC} <small>mS/cm</small>`;
                 if (estEC > 1.8) {
@@ -481,10 +542,7 @@
                 }
             }
 
-            // Render Fertigation Output depending on mode
             renderFertigationResults(tankAItems, tankBItems, allItems);
-
-            // Foliar Spraying Calculation
             renderFoliarResults(weekData.foliar, haRatio);
         }
 
@@ -495,9 +553,9 @@
             if (displayMode === 'tanks') {
                 chemicalAlert.style.display = 'flex';
                 tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 640 ? 'repeat(2, 1fr)' : '1fr';
-                document.querySelector('.tank-a-header span').textContent = "📦 БАК А (Кальций + Селитры)";
-                document.querySelector('.tank-b-header span').textContent = "📦 БАК Б (Фосфор, Калий, Магний, Био)";
-                
+                const bVol = document.getElementById('barrelVolume')?.value || 160;
+                document.querySelector('.tank-a-header span').textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
+                document.querySelector('.tank-b-header span').textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
                 populateTankList(tankABody, tankA);
                 populateTankList(tankBBody, tankB);
                 document.querySelector('.tank-b-header').parentElement.style.display = 'block';
@@ -555,7 +613,6 @@
 
             foliarSection.style.display = 'block';
             const sprayerVolumeLiters = parseFloat(sprayerVolumeInput.value) || 16;
-            // Standard working fluid rate for strawberry: 300 Liters per 1 ha
             const haFluidNormLiters = 300;
             const plantationFluidLiters = haFluidNormLiters * haRatio;
             const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
@@ -563,12 +620,9 @@
             foliarTanksCount.textContent = `На участок: ~${plantationFluidLiters.toFixed(1)} л раствора (~${tanksNeeded} заправок опрыскивателя)`;
 
             foliarData.forEach(item => {
-                // Calculation on 1 sprayer (e.g. 16L):
-                // Item dose on 1 ha / 300L * sprayerVolume
-                const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters; // in ml or g per liter
+                const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters;
                 const dosePerSprayer = dosePerLiter * sprayerVolumeLiters;
 
-                // Total for entire plantation
                 const totalForPlantation = item.normHa * haRatio;
                 let totalDisplay = "";
                 if (item.unit === 'л') {
@@ -624,8 +678,12 @@
                 rowWidth: rowWidthInput.value,
                 linesPerRow: linesPerRowSelect.value,
                 plantStep: plantStepInput.value,
+                emitterFlow: emitterFlowInput.value,
+                dripSpacing: dripSpacingInput.value,
+                tapesPerBed: tapesPerBedSelect.value,
                 waterPerPlant: waterPerPlantInput.value,
-                sprayerVolume: sprayerVolumeInput.value
+                sprayerVolume: sprayerVolumeInput.value,
+                barrelVolume: document.getElementById('barrelVolume')?.value || '160'
             };
             localStorage.setItem('starberry_settings', JSON.stringify(settings));
         }
@@ -640,11 +698,14 @@
                     if (parsed.rowWidth) rowWidthInput.value = parsed.rowWidth;
                     if (parsed.linesPerRow) linesPerRowSelect.value = parsed.linesPerRow;
                     if (parsed.plantStep) plantStepInput.value = parsed.plantStep;
+                    if (parsed.emitterFlow) emitterFlowInput.value = parsed.emitterFlow;
+                    if (parsed.dripSpacing) dripSpacingInput.value = parsed.dripSpacing;
+                    if (parsed.tapesPerBed) tapesPerBedSelect.value = parsed.tapesPerBed;
                     if (parsed.waterPerPlant) waterPerPlantInput.value = parsed.waterPerPlant;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
+                    if (parsed.barrelVolume && document.getElementById('barrelVolume')) document.getElementById('barrelVolume').value = parsed.barrelVolume;
                 } catch(e) {}
             }
         }
 
-        // Start
         window.addEventListener('DOMContentLoaded', initApp);

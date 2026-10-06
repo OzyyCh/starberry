@@ -7,6 +7,9 @@ const AGRO_STAGES = {
                 weeks: {
                     1: {
                         week: 1,
+                        targetEC: "1.0 – 1.2 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Начало сезона: корни только просыпаются в холодной почве. Держите ЕС мягким (1.0–1.2), чтобы не обжечь молодые волоски корней.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -17,6 +20,9 @@ const AGRO_STAGES = {
                     },
                     2: {
                         week: 2,
+                        targetEC: "1.2 – 1.3 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Активный рост молодых листьев. Включается кальциевая селитра в Бочку А и Bombardier в Бочку Б для активации микрофлоры.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -28,6 +34,9 @@ const AGRO_STAGES = {
                     },
                     3: {
                         week: 3,
+                        targetEC: "1.2 – 1.4 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Выдвижение цветоносов. Обязательна первая листовая обработка (Amifort + Fruka) для защиты от температурных стрессов.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -49,6 +58,9 @@ const AGRO_STAGES = {
                 weeks: {
                     1: {
                         week: 1,
+                        targetEC: "1.3 – 1.5 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Бутонизация и раскрытие первых цветков. Подключается Teraflex S с микроэлементами. Fruka по листу улучшает прорастание пыльцы.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
@@ -61,6 +73,9 @@ const AGRO_STAGES = {
                     },
                     2: {
                         week: 2,
+                        targetEC: "1.4 – 1.5 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Массовое цветение и завязывание. Кальций формирует плотную клеточную структуру будущей ягоды.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
@@ -82,6 +97,9 @@ const AGRO_STAGES = {
                 weeks: {
                     1: {
                         week: 1,
+                        targetEC: "1.5 – 1.6 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Налив первых ягод. Добавляется магниевая селитра для стимуляции фотосинтеза при растущей нагрузке урожаем.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
@@ -94,6 +112,9 @@ const AGRO_STAGES = {
                     },
                     2: {
                         week: 2,
+                        targetEC: "1.5 – 1.7 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Массовый налив и первые спелые ягоды. Калий (KNO3) отвечает за сладость и аромат. Листовая подкормка Amifort снимает стресс.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
@@ -107,6 +128,9 @@ const AGRO_STAGES = {
                     },
                     3: {
                         week: 3,
+                        targetEC: "1.6 – 1.8 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Пик плодоношения. Высокий ЕС даёт плотную транспортабельную ягоду с высоким сахаром (Brix). В жару выше +30°C держите ЕС около 1.4–1.5.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
                             { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
@@ -118,6 +142,9 @@ const AGRO_STAGES = {
                     },
                     4: {
                         week: 4,
+                        targetEC: "1.5 – 1.7 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Продолжение сбора урожая. Кальций 15 кг/га предотвращает размягчение ягоды в жару.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
                             { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
@@ -127,6 +154,9 @@ const AGRO_STAGES = {
                     },
                     5: {
                         week: 5,
+                        targetEC: "1.4 – 1.6 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Вторая волна сбора. Повторный ввод Bombardier поддерживает микрофлору и корни при длительной нагрузке.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
                             { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
@@ -137,6 +167,9 @@ const AGRO_STAGES = {
                     },
                     6: {
                         week: 6,
+                        targetEC: "1.3 – 1.5 mS/cm",
+                        targetPH: "5.8 – 6.2",
+                        ecAdvice: "Завершающие сборы. Дозировки плавно снижаются, подготавливая растения к послеуборочному периоду.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
                             { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
@@ -154,6 +187,9 @@ const AGRO_STAGES = {
                 weeks: {
                     1: {
                         week: 1,
+                        targetEC: "1.2 – 1.4 mS/cm",
+                        targetPH: "6.0 – 6.4",
+                        ecAdvice: "Закладка цветоносов на следующий год. Высокий фосфор (MKP 13 кг/га) стимулирует дифференциацию генеративных почек.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 13, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -164,6 +200,9 @@ const AGRO_STAGES = {
                     },
                     2: {
                         week: 2,
+                        targetEC: "1.2 – 1.3 mS/cm",
+                        targetPH: "6.0 – 6.4",
+                        ecAdvice: "Укрепление корневой шейки и корней перед осенним охлаждением почвы.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
                             { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
@@ -174,6 +213,9 @@ const AGRO_STAGES = {
                     },
                     3: {
                         week: 3,
+                        targetEC: "1.1 – 1.3 mS/cm",
+                        targetPH: "6.0 – 6.4",
+                        ecAdvice: "Финальная подкормка сезона. Калий и магний повышают зимостойкость и предотвращают вымерзание сердечка куста.",
                         fertilizers: [
                             { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 5, unit: "кг", tank: "B" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -247,13 +289,21 @@ const AGRO_STAGES = {
         const bedLengthInput = document.getElementById('bedLength');
         const bedCountInput = document.getElementById('bedCount');
         const rowWidthInput = document.getElementById('rowWidth');
+        const linesPerRowSelect = document.getElementById('linesPerRow');
+        const plantStepInput = document.getElementById('plantStep');
+        const calcBasisSelect = document.getElementById('calcBasis');
         const barrelVolumeInput = document.getElementById('barrelVolume');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
 
         // Metrics Display
         const metricTape = document.getElementById('metricTape');
         const metricArea = document.getElementById('metricArea');
-        const metricHaRatio = document.getElementById('metricHaRatio');
+        const metricPlants = document.getElementById('metricPlants');
+
+        // Monitor elements
+        const targetEcVal = document.getElementById('targetEcVal');
+        const targetPhVal = document.getElementById('targetPhVal');
+        const targetEcAdvice = document.getElementById('targetEcAdvice');
 
         // Containers
         const stageButtonsContainer = document.getElementById('stageButtonsContainer');
@@ -263,7 +313,6 @@ const AGRO_STAGES = {
         const tankATotalWeight = document.getElementById('tankATotalWeight');
         const tankBTotalWeight = document.getElementById('tankBTotalWeight');
         const tanksResultContainer = document.getElementById('tanksResultContainer');
-        const chemicalAlert = document.getElementById('chemicalAlert');
         const foliarSection = document.getElementById('foliarSection');
         const foliarBody = document.getElementById('foliarBody');
         const foliarTanksCount = document.getElementById('foliarTanksCount');
@@ -280,7 +329,10 @@ const AGRO_STAGES = {
         }
 
         function setupEventListeners() {
-            const inputs = [bedLengthInput, bedCountInput, rowWidthInput, barrelVolumeInput, sprayerVolumeInput];
+            const inputs = [
+                bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, 
+                plantStepInput, calcBasisSelect, barrelVolumeInput, sprayerVolumeInput
+            ];
 
             inputs.forEach(el => {
                 if (el) el.addEventListener('input', calculateAll);
@@ -292,14 +344,14 @@ const AGRO_STAGES = {
 
             document.getElementById('savePresetBtn').addEventListener('click', () => {
                 saveSettings();
-                alert('Параметры плантации успешно сохранены!');
+                alert('Параметры плантации успешно сохранены в памяти браузера!');
             });
 
             document.getElementById('printJobBtn').addEventListener('click', () => {
                 const stage = AGRO_STAGES[currentStage];
                 const area = (getCalculatedArea() / 100).toFixed(1);
                 document.getElementById('printMeta').textContent = 
-                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${getCalculatedArea()} м²) | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
+                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${getCalculatedPlants().toLocaleString('ru-RU')} кустов) | Целевой EC: ${stage.weeks[currentWeek].targetEC} | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
                 window.print();
             });
 
@@ -380,18 +432,38 @@ const AGRO_STAGES = {
             return Math.round(length * count * width * 100) / 100;
         }
 
+        function getCalculatedPlants() {
+            const length = parseFloat(bedLengthInput.value) || 0;
+            const count = parseFloat(bedCountInput.value) || 0;
+            const lines = parseInt(linesPerRowSelect?.value) || 2;
+            const stepMeters = (parseFloat(plantStepInput?.value) || 19) / 100;
+            const totalTape = length * count;
+            if (stepMeters <= 0) return 0;
+            return Math.round((totalTape * lines) / stepMeters);
+        }
+
         function calculateAll() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
             const totalBedMeters = length * count;
             const areaM2 = getCalculatedArea();
-            const haRatio = areaM2 / 10000;
             const areaSotkas = (areaM2 / 100).toFixed(1);
+            const totalPlants = getCalculatedPlants();
+
+            // Calculation basis: by plants density vs pure area
+            // Standard strawberry density on 1 ha is ~45,000 plants
+            const STANDARD_HA_PLANTS = 45000;
+            const basis = calcBasisSelect?.value || 'plants';
+            
+            let effectiveHaRatio = areaM2 / 10000;
+            if (basis === 'plants') {
+                effectiveHaRatio = totalPlants / STANDARD_HA_PLANTS;
+            }
 
             // Plantation Metrics
             if (metricTape) metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
             if (metricArea) metricArea.textContent = areaSotkas;
-            if (metricHaRatio) metricHaRatio.textContent = `${haRatio.toFixed(3)}`;
+            if (metricPlants) metricPlants.textContent = totalPlants.toLocaleString('ru-RU');
 
             const bVol = barrelVolumeInput?.value || 160;
 
@@ -399,6 +471,11 @@ const AGRO_STAGES = {
             const stage = AGRO_STAGES[currentStage];
             const weekData = stage.weeks[currentWeek];
             if (!weekData) return;
+
+            // Update Target EC and pH Monitor
+            if (targetEcVal) targetEcVal.textContent = weekData.targetEC;
+            if (targetPhVal) targetPhVal.textContent = weekData.targetPH;
+            if (targetEcAdvice) targetEcAdvice.textContent = weekData.ecAdvice;
 
             let tankAItems = [];
             let tankBItems = [];
@@ -408,13 +485,13 @@ const AGRO_STAGES = {
             let tankBWeightGrams = 0;
 
             weekData.fertilizers.forEach(fert => {
-                const exactDoseKg = fert.normHa * haRatio;
+                const exactDoseKg = fert.normHa * effectiveHaRatio;
                 let displayDose = "";
                 let gramVal = exactDoseKg * 1000;
                 totalFertGrams += gramVal;
 
                 if (fert.unit === 'л') {
-                    const exactDoseL = fert.normHa * haRatio;
+                    const exactDoseL = fert.normHa * effectiveHaRatio;
                     if (exactDoseL < 1) {
                         displayDose = `${Math.round(exactDoseL * 1000)} мл`;
                     } else {
@@ -451,11 +528,11 @@ const AGRO_STAGES = {
             if (tankBTotalWeight) tankBTotalWeight.textContent = tankBWeightGrams >= 1000 ? `${(tankBWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankBWeightGrams)} г`;
 
             renderFertigationResults(tankAItems, tankBItems, allItems, bVol);
-            renderFoliarResults(weekData.foliar, haRatio);
+            renderFoliarResults(weekData.foliar, effectiveHaRatio);
 
             // Water Diagnostics text
             const haFluidNormLiters = 300;
-            const plantationFluidLiters = haFluidNormLiters * haRatio;
+            const plantationFluidLiters = haFluidNormLiters * (areaM2 / 10000);
             const sprayerVolumeLiters = parseFloat(sprayerVolumeInput.value) || 16;
             const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
 
@@ -467,31 +544,25 @@ const AGRO_STAGES = {
             tankABody.innerHTML = '';
             tankBBody.innerHTML = '';
 
+            const tankATitle = document.getElementById('tankATitleText');
+            const tankBTitle = document.getElementById('tankBTitleText');
+
             if (displayMode === 'tanks') {
-                chemicalAlert.style.display = 'flex';
-                tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 640 ? 'repeat(2, 1fr)' : '1fr';
-                document.querySelector('.tank-a-header span').textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
-                document.querySelector('.tank-b-header span').textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
+                tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 680 ? 'repeat(2, 1fr)' : '1fr';
+                if (tankATitle) tankATitle.textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
+                if (tankBTitle) tankBTitle.textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
                 populateTankList(tankABody, tankA);
                 populateTankList(tankBBody, tankB);
                 document.querySelector('.tank-b-header').parentElement.style.display = 'block';
             } else if (displayMode === 'days') {
-                chemicalAlert.style.display = 'flex';
-                chemicalAlert.innerHTML = `
-                    <span style="font-size: 20px;">📅</span>
-                    <div>
-                        <strong>Схема полива по дням (для 1 бочки):</strong> Вносите удобрения из Дня 1 и Дня 2 с интервалом в 2–3 дня чистой воды, чтобы предотвратить выпадение осадка в почве.
-                    </div>
-                `;
-                document.querySelector('.tank-a-header span').textContent = "📆 ДЕНЬ 1 (Полив кальцием и селитрой)";
-                document.querySelector('.tank-b-header span').textContent = "📆 ДЕНЬ 2 (Полив калием, фосфором и магнием)";
+                if (tankATitle) tankATitle.textContent = "📆 ДЕНЬ 1 (Полив кальцием и селитрой)";
+                if (tankBTitle) tankBTitle.textContent = "📆 ДЕНЬ 2 (Полив калием, фосфором и магнием)";
                 populateTankList(tankABody, tankA);
                 populateTankList(tankBBody, tankB);
                 document.querySelector('.tank-b-header').parentElement.style.display = 'block';
             } else {
-                chemicalAlert.style.display = 'none';
                 tanksResultContainer.style.gridTemplateColumns = '1fr';
-                document.querySelector('.tank-a-header span').textContent = "📋 ВСЕ УДОБРЕНИЯ НА ЭТУ НЕДЕЛЮ";
+                if (tankATitle) tankATitle.textContent = "📋 ВСЕ УДОБРЕНИЯ НА ЭТУ НЕДЕЛЮ";
                 populateTankList(tankABody, all);
                 document.querySelector('.tank-b-header').parentElement.style.display = 'none';
             }
@@ -499,7 +570,7 @@ const AGRO_STAGES = {
 
         function populateTankList(container, items) {
             if (items.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted); font-size: 0.88rem;">В этот бак на текущей неделе препараты не вносятся.</div>`;
+                container.innerHTML = `<div style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.9rem;">В этот бак на текущей неделе препараты не вносятся.</div>`;
                 return;
             }
 
@@ -533,7 +604,7 @@ const AGRO_STAGES = {
             const plantationFluidLiters = haFluidNormLiters * haRatio;
             const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
 
-            foliarTanksCount.textContent = `На участок: ~${plantationFluidLiters.toFixed(1)} л раствора (~${tanksNeeded} заправок опрыскивателя)`;
+            foliarTanksCount.textContent = `Расход на плантацию: ~${plantationFluidLiters.toFixed(1)} л (~${tanksNeeded} заправок)`;
 
             foliarData.forEach(item => {
                 const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters;
@@ -592,6 +663,9 @@ const AGRO_STAGES = {
                 bedLength: bedLengthInput.value,
                 bedCount: bedCountInput.value,
                 rowWidth: rowWidthInput.value,
+                linesPerRow: linesPerRowSelect?.value || '2',
+                plantStep: plantStepInput?.value || '19',
+                calcBasis: calcBasisSelect?.value || 'plants',
                 barrelVolume: barrelVolumeInput.value,
                 sprayerVolume: sprayerVolumeInput.value
             };
@@ -606,6 +680,9 @@ const AGRO_STAGES = {
                     if (parsed.bedLength) bedLengthInput.value = parsed.bedLength;
                     if (parsed.bedCount) bedCountInput.value = parsed.bedCount;
                     if (parsed.rowWidth) rowWidthInput.value = parsed.rowWidth;
+                    if (parsed.linesPerRow && linesPerRowSelect) linesPerRowSelect.value = parsed.linesPerRow;
+                    if (parsed.plantStep && plantStepInput) plantStepInput.value = parsed.plantStep;
+                    if (parsed.calcBasis && calcBasisSelect) calcBasisSelect.value = parsed.calcBasis;
                     if (parsed.barrelVolume) barrelVolumeInput.value = parsed.barrelVolume;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
                 } catch(e) {}

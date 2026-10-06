@@ -3,395 +3,1733 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор удобрений для клубники</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Starberry Pro — Профессиональный калькулятор питания клубники</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e11d48;
+            --primary-hover: #be123c;
+            --primary-light: #ffe4e6;
+            --secondary: #059669;
+            --secondary-light: #d1fae5;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --tank-a: #2563eb;
+            --tank-a-light: #eff6ff;
+            --tank-b: #7c3aed;
+            --tank-b-light: #f5f3ff;
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-subtle: #f1f5f9;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #090d16;
+            --bg-card: #131b2e;
+            --bg-card-subtle: #1c2640;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #23314e;
+            --border-hover: #334469;
+            --primary-light: rgba(225, 29, 72, 0.18);
+            --secondary-light: rgba(5, 150, 105, 0.18);
+            --accent-light: rgba(245, 158, 11, 0.18);
+            --tank-a-light: rgba(37, 99, 235, 0.18);
+            --tank-b-light: rgba(124, 58, 237, 0.18);
+            --shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 12px 25px -4px rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px 60px;
+            width: 100%;
+        }
+
+        /* Top Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 6px 14px rgba(225, 29, 72, 0.35);
+        }
+
+        .brand-text h1 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .badge-pro {
+            font-size: 0.68rem;
+            padding: 2px 7px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .brand-text p {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .btn-icon:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Nav Pills */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            background: var(--bg-card);
+            padding: 6px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            flex: 1;
+            min-width: 140px;
+            padding: 10px 16px;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: var(--bg-card-subtle);
+            color: var(--text-main);
+        }
+
+        /* Layout Grid */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Plantation Configuration Panel */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 1.12rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.86rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            padding-right: 48px;
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+            background: var(--bg-card);
+        }
+
+        .input-suffix {
+            position: absolute;
+            right: 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        /* Calculated Plantation Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .metric-badge {
+            background: var(--bg-card-subtle);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .metric-label {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .metric-value {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 2px;
+        }
+
+        .metric-value small {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Stage Selector Carousel */
+        .stages-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .stages-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stage-btn {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px 12px;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stage-btn:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .stage-btn.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15);
+        }
+
+        .stage-btn-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stage-btn-icon {
+            font-size: 22px;
+        }
+
+        .stage-btn-weeks {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--bg-card-subtle);
+            color: var(--text-muted);
+        }
+
+        .stage-btn.active .stage-btn-weeks {
+            background: var(--primary);
+            color: white;
+        }
+
+        .stage-btn-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.25;
+        }
+
+        .stage-btn-subtitle {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+        }
+
+        /* Week Chips */
+        .weeks-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 4px 2px 14px;
+            margin-bottom: 18px;
+        }
+
+        .week-chip {
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .week-chip:hover {
+            border-color: var(--border-hover);
+        }
+
+        .week-chip.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 3px 8px rgba(225, 29, 72, 0.3);
+        }
+
+        /* Mode Selector: Tanks vs Days */
+        .mode-selector {
+            display: flex;
+            gap: 8px;
+            background: var(--bg-card-subtle);
+            padding: 4px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 8px 12px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .mode-btn.active {
+            background: var(--bg-card);
+            color: var(--text-main);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Alert Callout for Chemical Compatibility */
+        .alert-tank {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            font-size: 0.86rem;
+            color: #92400e;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        [data-theme="dark"] .alert-tank {
+            background: rgba(245, 158, 11, 0.12);
+            border-color: rgba(245, 158, 11, 0.25);
+            color: #fde68a;
+        }
+
+        /* Result Sections (Tanks A and B) */
+        .tanks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .tanks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tank-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .tank-header {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .tank-a-header {
+            background: var(--tank-a-light);
+            color: var(--tank-a);
+            border-bottom: 2px solid var(--tank-a);
+        }
+
+        .tank-b-header {
+            background: var(--tank-b-light);
+            color: var(--tank-b);
+            border-bottom: 2px solid var(--tank-b);
+        }
+
+        .tank-body {
+            padding: 14px 16px;
+        }
+
+        .fert-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .fert-item:last-child {
+            border-bottom: none;
+        }
+
+        .fert-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .fert-formula {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .fert-amount-box {
+            text-align: right;
+        }
+
+        .fert-amount {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .fert-ha-norm {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* Foliar Spraying Section */
+        .foliar-card {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(5, 150, 105, 0.02) 100%);
+            border: 1px solid var(--secondary);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            margin-bottom: 24px;
+        }
+
+        .foliar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .foliar-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .foliar-badge {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: var(--secondary);
+            color: white;
+            font-weight: 700;
+        }
+
+        /* Water and EC Diagnostics */
+        .water-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            margin-bottom: 24px;
+        }
+
+        .water-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 640px) {
+            .water-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .water-stat {
+            background: var(--bg-card-subtle);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+
+        .water-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .water-stat-val {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 4px;
+        }
+
+        /* Action Buttons */
+        .actions-bar {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-hover);
+            background: var(--border);
+        }
+
+        /* Handbook Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 760px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-top {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-size: 1.18rem;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .handbook-item {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .handbook-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .handbook-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .handbook-formula {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-card-subtle);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .handbook-desc {
+            font-size: 0.88rem;
+            color: var(--text-main);
+            margin-top: 6px;
+            line-height: 1.45;
+        }
+
+        /* Printable Sheet Optimization */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            header, .nav-tabs, .stages-selector, .weeks-container, .mode-selector, .actions-bar, .theme-toggle, .btn-icon {
+                display: none !important;
+            }
+            .layout-grid {
+                display: block !important;
+            }
+            .card {
+                border: 1px solid #000 !important;
+                box-shadow: none !important;
+                margin-bottom: 16px !important;
+                break-inside: avoid;
+            }
+            .print-only-header {
+                display: block !important;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        }
+
+        .print-only-header {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 24px 0;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Print Header -->
+        <div class="print-only-header">
+            <h1 style="font-size: 20pt; margin-bottom: 4px;">Наряд-задание на фертигацию клубники</h1>
+            <p id="printMeta" style="font-size: 11pt; color: #444;"></p>
+        </div>
+
+        <!-- App Header -->
         <header>
-            <div class="header-container">
-                <div class="strawberry-icon-container">
-                    <div class="strawberry-icon"></div>
+            <div class="header-brand">
+                <div class="brand-icon">🍓</div>
+                <div class="brand-text">
+                    <h1>Starberry Pro <span class="badge-pro">Agro</span></h1>
+                    <p>Профессиональный расчет фертигации и листового питания клубники</p>
                 </div>
-                <div class="title-container">
-                    <h1 class="main-title">Калькулятор удобрений для клубники</h1>
-                    <p class="main-subtitle">Точный расчёт необходимых удобрений для вашей клубничной плантации</p>
-                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" id="openHandbookBtn" title="Справочник удобрений">📖</button>
+                <button class="btn-icon" id="themeToggleBtn" title="Сменить тему">🌙</button>
             </div>
         </header>
 
-        <nav class="site-nav">
-            <div class="nav-container">
-                <a href="index.html" class="nav-link active"><i class="fas fa-calculator"></i><span class="nav-text">КАЛЬКУЛЯТОР</span></a>
-                <a href="#" class="nav-link" id="fertilizerInfoLink"><i class="fas fa-book"></i><span class="nav-text">СПРАВОЧНИК</span></a>
-            </div>
-            <div class="theme-toggle">
-                <button id="themeSwitch" class="theme-btn"><i class="fas fa-moon"></i></button>
-            </div>
-        </nav>
+        <!-- Main Content -->
+        <div class="layout-grid">
+            <!-- Left Column: Plantation Settings -->
+            <aside>
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">🌱 Параметры плантации</h2>
+                        <span style="font-size: 0.78rem; font-weight: 600; color: var(--secondary);">II–III год</span>
+                    </div>
 
-        <main class="calculator-container">
-            <div class="card-wrapper">
-                <div class="input-section">
-                    <h2 class="section-title">Калькулятор нормы удобрений</h2>
-                    
-                    <div class="inputs-summary">
-                        <div class="summary-card">
-                            <div class="summary-icon">
-                                <i class="fas fa-ruler"></i>
-                            </div>
-                            <div class="summary-info">
-                                <p class="summary-label">Длина билона (метры):</p>
-                                <div class="input-wrapper">
-                                    <input type="number" id="bedLength" min="1" value="100" class="number-input">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="summary-card">
-                            <div class="summary-icon">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
-                            <div class="summary-info">
-                                <p class="summary-label">Количество билонов:</p>
-                                <div class="input-wrapper">
-                                    <input type="number" id="bedCount" min="1" value="10" class="number-input">
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <label class="form-label">Длина одного билона (бугра):</label>
+                        <div class="input-group">
+                            <input type="number" id="bedLength" class="form-input" min="1" value="100" step="5">
+                            <span class="input-suffix">метров</span>
                         </div>
                     </div>
-                    
-                    <div class="growth-stages-section">
-                        <h3 class="subsection-title">Выберите стадию роста:</h3>
-                        <div class="stages-cards" id="stageButtons">
-                            <div class="stage-card active" data-stage="growth">
-                                <div class="stage-icon">
-                                    <i class="fas fa-seedling"></i>
-                                </div>
-                                <div class="stage-info">
-                                    <h4>Отрастание</h4>
-                                    <p>Начальный рост молодых листьев</p>
-                                </div>
-                            </div>
-                            <div class="stage-card" data-stage="flowering">
-                                <div class="stage-icon">
-                                    <i class="fas fa-spa"></i>
-                                </div>
-                                <div class="stage-info">
-                                    <h4>Цветение</h4>
-                                    <p>Образование и раскрытие бутонов</p>
-                                </div>
-                            </div>
-                            <div class="stage-card" data-stage="fruiting">
-                                <div class="stage-icon">
-                                    <div class="stage-strawberry-icon"></div>
-                                </div>
-                                <div class="stage-info">
-                                    <h4>Плодоношение</h4>
-                                    <p>Формирование и созревание ягод</p>
-                                </div>
-                            </div>
-                            <div class="stage-card" data-stage="dormant">
-                                <div class="stage-icon">
-                                    <i class="fas fa-snowflake"></i>
-                                </div>
-                                <div class="stage-info">
-                                    <h4>Закладка почек</h4>
-                                    <p>Подготовка к периоду покоя</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="weeks-section">
-                        <h3 class="subsection-title">Выберите неделю:</h3>
-                        <div class="weeks-cards" id="weekButtons">
-                            <div class="week-card active" data-week="1">
-                                <div class="week-number">1</div>
-                                <div class="week-info">Неделя 1</div>
-                            </div>
-                            <div class="week-card" data-week="2">
-                                <div class="week-number">2</div>
-                                <div class="week-info">Неделя 2</div>
-                            </div>
-                            <div class="week-card" data-week="3">
-                                <div class="week-number">3</div>
-                                <div class="week-info">Неделя 3</div>
-                            </div>
-                            <div class="week-card" data-week="4" style="display: none;">
-                                <div class="week-number">4</div>
-                                <div class="week-info">Неделя 4</div>
-                            </div>
-                            <div class="week-card" data-week="5" style="display: none;">
-                                <div class="week-number">5</div>
-                                <div class="week-info">Неделя 5</div>
-                            </div>
-                            <div class="week-card" data-week="6" style="display: none;">
-                                <div class="week-number">6</div>
-                                <div class="week-info">Неделя 6</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="button-wrapper">
-                        <button id="calculateButton" class="calculate-btn">
-                            <i class="fas fa-calculator"></i> Рассчитать
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </main>
 
-        <!-- Модальное окно со справочником удобрений -->
-        <div id="fertilizerInfoModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2>Справочник удобрений для клубники</h2>
-                <div class="fertilizer-list" id="fertilizerList">
-                    <!-- List will be generated by JS -->
-                </div>
-                <div class="modal-actions">
-                    <button id="addCustomFertilizerBtn" class="action-button">Добавить своё удобрение</button>
-                    <button id="manageFertilizersBtn" class="action-button secondary">Управление удобрениями</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для добавления пользовательского удобрения -->
-        <div id="customFertilizerModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal" id="closeCustomFertModal">&times;</span>
-                <h2>Добавление пользовательского удобрения</h2>
-                <form id="customFertilizerForm" class="fertilizer-form">
                     <div class="form-group">
-                        <label for="fertName">Название удобрения:</label>
-                        <input type="text" id="fertName" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fertDescription">Описание:</label>
-                        <textarea id="fertDescription" name="description" rows="3" required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fertStage">Стадия роста:</label>
-                        <select id="fertStage" name="stage" required>
-                            <!-- Опции будут добавлены через JavaScript -->
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fertWeek">Неделя:</label>
-                        <select id="fertWeek" name="week" required>
-                            <!-- Опции будут добавлены через JavaScript -->
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fertAmount">Количество:</label>
-                        <input type="number" id="fertAmount" name="amount" step="0.01" min="0" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fertUnit">Единица измерения:</label>
-                        <select id="fertUnit" name="unit" required>
-                            <option value="кг">кг</option>
-                            <option value="г">г</option>
-                            <option value="л">л</option>
-                            <option value="мл">мл</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fertNote">Примечание (необязательно):</label>
-                        <textarea id="fertNote" name="note" rows="2"></textarea>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button type="submit" class="action-button">Добавить</button>
-                        <button type="button" id="cancelCustomFert" class="action-button secondary">Отмена</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для управления пользовательскими удобрениями -->
-        <div id="manageFertilizersModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal" id="closeManageFertModal">&times;</span>
-                <h2>Управление пользовательскими удобрениями</h2>
-                <div id="customFertilizersList" class="custom-fertilizers-list">
-                    <!-- Список будет сгенерирован через JavaScript -->
-                </div>
-                <div class="modal-actions">
-                    <button id="backToFertInfoBtn" class="action-button secondary">Назад</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Модальное окно для калькулятора опрыскивания -->
-        <div id="sprayCalculatorModal" class="modal">
-            <div class="modal-content spray-modal-content">
-                <span class="close-modal" id="closeSprayCalcModal">&times;</span>
-                <h2>Калькулятор опрыскивания</h2>
-                
-                <div class="spray-summary modal-summary">
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-spray-can"></i>
-                        </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Формула опрыскивания:</p>
-                            <p class="summary-value"><span id="sprayFormula" class="spray-formula"></span></p>
+                        <label class="form-label">Количество билонов:</label>
+                        <div class="input-group">
+                            <input type="number" id="bedCount" class="form-input" min="1" value="10" step="1">
+                            <span class="input-suffix">шт</span>
                         </div>
                     </div>
-                    
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-tint"></i>
-                        </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Объем воды (литры):</p>
-                            <div class="input-wrapper">
-                                <input type="number" id="waterVolume" name="waterVolume" value="16" min="1" step="0.5" required class="number-input">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <form id="sprayCalculatorForm" class="spray-calculator-form">
-                    <div class="section-title-small">
-                        <i class="fas fa-flask"></i> Результаты расчета компонентов
-                    </div>
-                    
-                    <div id="sprayCalculationResults" class="spray-calculation-results">
-                        <div class="spray-result-item">
-                            <div class="spray-result-header">
-                                <h4><i class="fas fa-prescription-bottle"></i> Стандартный объем (16 л)</h4>
-                            </div>
-                            <div class="spray-result-body" id="standardVolumeResult">
-                                <!-- Результаты будут добавлены через JavaScript -->
-                            </div>
-                        </div>
-                        <div class="spray-result-item">
-                            <div class="spray-result-header">
-                                <h4><i class="fas fa-prescription-bottle-alt"></i> Выбранный объем (<span id="selectedVolume">16</span> л)</h4>
-                            </div>
-                            <div class="spray-result-body" id="customVolumeResult">
-                                <!-- Результаты будут добавлены через JavaScript -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-actions">
-                        <button type="button" id="calculateSprayBtn" class="action-button">
-                            <i class="fas fa-calculator"></i> Рассчитать
-                        </button>
-                        <button type="button" id="closeSprayCalcBtn" class="action-button secondary">
-                            <i class="fas fa-times"></i> Закрыть
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
-        <!-- Модальное окно для результатов расчета удобрений -->
-        <div id="resultsModal" class="modal">
-            <div class="modal-content results-modal-content">
-                <span class="close-modal" id="closeResultsModal">&times;</span>
-                <h2>Результаты расчета удобрений</h2>
-                <div class="results-summary modal-summary">
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-ruler"></i>
-                        </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Длина билона:</p>
-                            <p class="summary-value"><span id="modalBedSize">100</span> м</p>
+                    <div class="form-group">
+                        <label class="form-label">Ширина междурядья (по центрам):</label>
+                        <div class="input-group">
+                            <input type="number" id="rowWidth" class="form-input" min="0.8" max="2.5" value="1.4" step="0.1">
+                            <span class="input-suffix">м</span>
                         </div>
                     </div>
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Количество билонов:</p>
-                            <p class="summary-value"><span id="modalBedCount">10</span> шт</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Стадия роста:</p>
-                            <p class="summary-value"><span id="modalStage">Отрастание</span></p>
+
+                    <div class="form-group">
+                        <label class="form-label">Строчек на бугре и шаг кустов:</label>
+                        <div style="display: flex; gap: 8px;">
+                            <select id="linesPerRow" class="form-input" style="flex: 1; padding-right: 10px;">
+                                <option value="2" selected>2 строчки (шахматка)</option>
+                                <option value="1">1 строчка</option>
+                            </select>
+                            <div class="input-group" style="width: 110px;">
+                                <input type="number" id="plantStep" class="form-input" min="15" max="50" value="30" step="2">
+                                <span class="input-suffix">см</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="summary-card">
-                        <div class="summary-icon">
-                            <i class="fas fa-calendar-week"></i>
+
+                    <!-- Calculated Plantation Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-badge">
+                            <div class="metric-label">Длина капли</div>
+                            <div class="metric-value"><span id="metricTape">1 000</span> <small>м</small></div>
                         </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Неделя:</p>
-                            <p class="summary-value"><span id="modalWeek">1</span></p>
+                        <div class="metric-badge">
+                            <div class="metric-label">Площадь</div>
+                            <div class="metric-value"><span id="metricArea">14</span> <small>соток</small></div>
                         </div>
-                    </div>
-                    <div class="summary-card area-card" style="display: none;">
-                        <div class="summary-icon">
-                            <i class="fas fa-vector-square"></i>
+                        <div class="metric-badge">
+                            <div class="metric-label">Число кустов</div>
+                            <div class="metric-value"><span id="metricPlants">6 667</span> <small>шт</small></div>
                         </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Площадь участка:</p>
-                            <p class="summary-value"><span id="modalAreaHectares">0</span> га</p>
-                        </div>
-                    </div>
-                    <div class="summary-card plants-card" style="display: none;">
-                        <div class="summary-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <div class="summary-info">
-                            <p class="summary-label">Количество растений:</p>
-                            <p class="summary-value"><span id="modalPlantsCount">0</span> шт</p>
+                        <div class="metric-badge">
+                            <div class="metric-label">Доля от 1 га</div>
+                            <div class="metric-value"><span id="metricHaRatio">0.140</span> <small>га</small></div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="fertilizer-results-modal">
-                    <h3 class="fertilizer-results-title">Необходимые удобрения</h3>
-                    <div class="fertilizer-cards-container" id="modalFertilizerCards">
-                        <!-- Карточки с удобрениями будут добавлены через JavaScript -->
+
+                <!-- Irrigation Parameters -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">💧 Капельный полив</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Суточная норма вылива на 1 куст:</label>
+                        <div class="input-group">
+                            <input type="number" id="waterPerPlant" class="form-input" min="0.1" max="2.0" value="0.4" step="0.05">
+                            <span class="input-suffix">л/куст</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Объем опрыскивателя (по листу):</label>
+                        <div class="input-group">
+                            <input type="number" id="sprayerVolume" class="form-input" min="5" max="600" value="16" step="1">
+                            <span class="input-suffix">литров</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="chart-container" id="modalChartContainer">
-                    <h3>Диаграмма распределения удобрений</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="modalFertilizerChart"></canvas>
-                    </div>
+            </aside>
+
+            <!-- Right Column: Interactive Calculator -->
+            <main>
+                <!-- Stage Buttons -->
+                <div class="stages-selector" id="stageButtonsContainer">
+                    <!-- Populated by JS -->
                 </div>
-                
-                <div class="results-actions">
-                    <button id="modalExportButton" class="action-button">
-                        <i class="fas fa-file-pdf"></i> Экспорт в PDF
+
+                <!-- Week Selector Chips -->
+                <div class="weeks-container" id="weekChipsContainer">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Display Mode Switcher -->
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="tanks" id="modeTanksBtn">
+                        🛡️ Разделение на Бак А и Бак Б
                     </button>
-                    <button id="modalPrintButton" class="action-button">
-                        <i class="fas fa-print"></i> Печать
+                    <button class="mode-btn" data-mode="days" id="modeDaysBtn">
+                        📅 Раздельный полив по дням (для 1 бака)
                     </button>
+                    <button class="mode-btn" data-mode="all" id="modeAllBtn">
+                        📋 Общий список
+                    </button>
+                </div>
+
+                <!-- Chemical Alert -->
+                <div class="alert-tank" id="chemicalAlert">
+                    <span style="font-size: 18px;">⚠️</span>
+                    <div>
+                        <strong>Правило несовместимости:</strong> Кальциевую селитру нельзя смешивать в концентрированном виде с сульфатами и монокалийфосфатом! Используйте раздельные баки (А и Б) либо вносите их в разные дни полива.
+                    </div>
+                </div>
+
+                <!-- Results: Tanks A and B -->
+                <div class="tanks-grid" id="tanksResultContainer">
+                    <!-- Tank A -->
+                    <div class="tank-card">
+                        <div class="tank-header tank-a-header">
+                            <span>📦 БАК А (Кальций + Селитры)</span>
+                            <small id="tankATotalWeight">0 г</small>
+                        </div>
+                        <div class="tank-body" id="tankABody">
+                            <!-- Items -->
+                        </div>
+                    </div>
+
+                    <!-- Tank B -->
+                    <div class="tank-card">
+                        <div class="tank-header tank-b-header">
+                            <span>📦 БАК Б (Фосфор, Калий, Магний, Био)</span>
+                            <small id="tankBTotalWeight">0 г</small>
+                        </div>
+                        <div class="tank-body" id="tankBBody">
+                            <!-- Items -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foliar Spraying Card -->
+                <div class="foliar-card" id="foliarSection">
+                    <div class="foliar-header">
+                        <div class="foliar-title">
+                            <span>🌿 Листовая обработка (опрыскивание)</span>
+                            <span class="foliar-badge" id="foliarBadge">Рецепт на неделю</span>
+                        </div>
+                        <span style="font-size: 0.84rem; font-weight: 600; color: var(--text-muted);" id="foliarTanksCount"></span>
+                    </div>
+                    <div id="foliarBody">
+                        <!-- Items -->
+                    </div>
+                </div>
+
+                <!-- Water & EC Diagnostics Card -->
+                <div class="water-card">
+                    <h3 style="font-size: 0.96rem; font-weight: 700; margin-bottom: 8px;">📊 Режим полива и концентрация раствора</h3>
+                    <div class="water-grid">
+                        <div class="water-stat">
+                            <div class="water-stat-label">Объем воды на полив</div>
+                            <div class="water-stat-val" id="statWaterVolume">2.67 <small>м³</small></div>
+                        </div>
+                        <div class="water-stat">
+                            <div class="water-stat-label">Концентрация солей</div>
+                            <div class="water-stat-val" id="statConcentration">2.8 <small>г/л</small></div>
+                        </div>
+                        <div class="water-stat">
+                            <div class="water-stat-label">Расчетный EC раствора</div>
+                            <div class="water-stat-val" id="statEC" style="color: var(--secondary);">~1.45 <small>mS/cm</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="actions-bar">
+                    <button class="btn-action btn-primary" id="printJobBtn">
+                        🖨️ Распечатать наряд на полив / PDF
+                    </button>
+                    <button class="btn-action btn-secondary" id="savePresetBtn">
+                        💾 Запомнить параметры участка
+                    </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Handbook Modal -->
+        <div class="modal" id="handbookModal">
+            <div class="modal-card">
+                <div class="modal-top">
+                    <h3 class="modal-title">Справочник удобрений и препаратов (Agrostrimedit)</h3>
+                    <button class="modal-close" id="closeHandbookBtn">&times;</button>
+                </div>
+                <div class="modal-body" id="handbookContent">
+                    <!-- Populated by JS -->
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>&copy; 2025 Калькулятор удобрений для клубники</p>
+            <p>Рекомендации Agrostrimedit SRL (Кишинёв, Молдова) • Программа питания клубники II и III года на капельном поливе</p>
         </footer>
     </div>
-    <!-- Скрипты -->
-    <script src="data/fertilizers.js"></script>
-    <script src="standalone.js"></script>
-    <script src="script.js"></script>
+
+    <!-- Application Script -->
+    <script>
+        // Agronomic Data Model based on Agrostrimedit recommendations
+        const AGRO_STAGES = {
+            growth: {
+                id: "growth",
+                title: "I. Отрастание цветоносов",
+                subtitle: "Температура почвы +8...+10 °C",
+                icon: "🌱",
+                weeks: {
+                    1: {
+                        week: 1,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "nh4no3", name: "Аммиачная селитра (NH4NO3)", formula: "34.4% N", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "rhyzo", name: "Rhyzo (укоренитель/ризосфера)", formula: "Биостимулятор корней", normHa: 1, unit: "кг", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    2: {
+                        week: 2,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "nh4no3", name: "Аммиачная селитра (NH4NO3)", formula: "34.4% N", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты + аминокислоты", normHa: 7, unit: "л", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    3: {
+                        week: 3,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "nh4no3", name: "Аммиачная селитра (NH4NO3)", formula: "34.4% N", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" }
+                        ],
+                        foliar: [
+                            { id: "amifort", name: "Amifort (аминокислоты/антистресс)", normHa: 3, unit: "л" },
+                            { id: "fruka", name: "Fruka (стимулятор цветения/микроэлементы)", normHa: 1, unit: "кг" }
+                        ]
+                    }
+                }
+            },
+            flowering: {
+                id: "flowering",
+                title: "II. Цветение и завязывание",
+                subtitle: "Бутонизация, цветение, образование ягод",
+                icon: "🌸",
+                weeks: {
+                    1: {
+                        week: 1,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S (спец. для ягод)", formula: "NPK + Micro", normHa: 30, unit: "кг", tank: "B" }
+                        ],
+                        foliar: [
+                            { id: "fruka", name: "Fruka (стимулятор цветения/микроэлементы)", normHa: 1, unit: "кг" }
+                        ]
+                    },
+                    2: {
+                        week: 2,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S (спец. для ягод)", formula: "NPK + Micro", normHa: 30, unit: "кг", tank: "B" }
+                        ],
+                        foliar: [
+                            { id: "amifort", name: "Amifort (аминокислоты)", normHa: 3, unit: "л" },
+                            { id: "fruka", name: "Fruka (стимулятор цветения/завязи)", normHa: 1, unit: "кг" }
+                        ]
+                    }
+                }
+            },
+            fruiting: {
+                id: "fruiting",
+                title: "III. Созревание и сбор",
+                subtitle: "Налив ягод, сахаристость и сбор урожая",
+                icon: "🍓",
+                weeks: {
+                    1: {
+                        week: 1,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 20, unit: "кг", tank: "B" },
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    2: {
+                        week: 2,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" },
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "B" }
+                        ],
+                        foliar: [
+                            { id: "amifort", name: "Amifort (аминокислоты/листовое питание)", normHa: 3, unit: "л" }
+                        ]
+                    },
+                    3: {
+                        week: 3,
+                        fertilizers: [
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" },
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    4: {
+                        week: 4,
+                        fertilizers: [
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    5: {
+                        week: 5,
+                        fertilizers: [
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    6: {
+                        week: 6,
+                        fertilizers: [
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 10, unit: "кг", tank: "B" }
+                        ],
+                        foliar: null
+                    }
+                }
+            },
+            budding: {
+                id: "budding",
+                title: "IV. Закладка почек",
+                subtitle: "Август-Сентябрь (задел под будущий сезон)",
+                icon: "🍂",
+                weeks: {
+                    1: {
+                        week: 1,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 13, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 5, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 5, unit: "кг", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    2: {
+                        week: 2,
+                        fertilizers: [
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                        ],
+                        foliar: null
+                    },
+                    3: {
+                        week: 3,
+                        fertilizers: [
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 5, unit: "кг", tank: "A" }
+                        ],
+                        foliar: null
+                    }
+                }
+            }
+        };
+
+        const FERTILIZERS_HANDBOOK = [
+            {
+                name: "Монокалийфосфат (MKP)",
+                formula: "0-52-34 (KH2PO4)",
+                desc: "Высококонцентрированное фосфорно-калийное водорастворимое удобрение. Стимулирует мощное развитие корневой системы на старте, закладку цветоносов и цветение. Вносится строго в Бак Б."
+            },
+            {
+                name: "Калиевая селитра (KNO3)",
+                formula: "13-0-46",
+                desc: "Идеальный источник легкодоступного нитратного азота и калия. Отвечает за налив ягод, накопление сахаров (Brix), плотность мякоти и товарный вид. Отлично сочетается с кальциевой селитрой в Баке А."
+            },
+            {
+                name: "Кальциевая селитра (Ca(NO3)2)",
+                formula: "15.5% N, 26.5% CaO",
+                desc: "Фундаментальный элемент для клубники. Укрепляет стенки клеток, защищает от серой гнили (ботритиса), предотвращает размягчение ягоды при сборе. Нельзя смешивать с сульфатами и фосфатами (выпадает гипс)! Вносится в Бак А."
+            },
+            {
+                name: "Магниевая селитра (Mg(NO3)2)",
+                formula: "11% N, 16% MgO",
+                desc: "Магний входит в состав хлорофилла и активирует фотосинтез. Предотвращает межжилковый хлороз листьев, особенно при высокой нагрузке ягодой. Вносится в Бак Б."
+            },
+            {
+                name: "Аммиачная селитра (NH4NO3)",
+                formula: "34.4% N",
+                desc: "Быстрый весенний старт вегетации при холодной почве (+8...+10 °C). Содержит как аммонийный, так и нитратный азот. Вносится в Бак А."
+            },
+            {
+                name: "Teraflex S (Терафлекс Ягодный)",
+                formula: "Комплекс NPK + Micro",
+                desc: "Специализированное сбалансированное хелатное водорастворимое удобрение, разработанное специально для клубники и ягодных культур. Вносится в Бак Б."
+            },
+            {
+                name: "Bombardier (Бомбардир)",
+                formula: "Фульвокислоты + аминокислоты",
+                desc: "Мощный органический почвенный биостимулятор природного происхождения. Улучшает микрофлору почвы, снимает пестицидный стресс, стимулирует поглощение минеральных элементов. Вносится в Бак Б."
+            },
+            {
+                name: "Rhyzo (Ризо)",
+                formula: "Стимулятор ризосферы",
+                desc: "Специализированный укоренитель для активного пробуждения и деления клеток корневой системы в начале сезона."
+            },
+            {
+                name: "Amifort (Амифорт)",
+                formula: "Аминокислоты по листу",
+                desc: "Листовой антистрессант и стимулятор. Повышает иммунитет растений при перепадах температур и засухе, усиливает фотосинтез."
+            },
+            {
+                name: "Fruka (Фрука)",
+                formula: "Бор, цинк, молибден + стимуляторы",
+                desc: "Листовой комплекс для стимулирования опыления, прорастания пыльцы, дружного цветения и устранения искривления ягод."
+            }
+        ];
+
+        // State
+        let currentStage = 'growth';
+        let currentWeek = 1;
+        let displayMode = 'tanks'; // 'tanks', 'days', 'all'
+
+        // DOM Elements
+        const bedLengthInput = document.getElementById('bedLength');
+        const bedCountInput = document.getElementById('bedCount');
+        const rowWidthInput = document.getElementById('rowWidth');
+        const linesPerRowSelect = document.getElementById('linesPerRow');
+        const plantStepInput = document.getElementById('plantStep');
+        const waterPerPlantInput = document.getElementById('waterPerPlant');
+        const sprayerVolumeInput = document.getElementById('sprayerVolume');
+
+        // Metrics Display
+        const metricTape = document.getElementById('metricTape');
+        const metricArea = document.getElementById('metricArea');
+        const metricPlants = document.getElementById('metricPlants');
+        const metricHaRatio = document.getElementById('metricHaRatio');
+
+        // Containers
+        const stageButtonsContainer = document.getElementById('stageButtonsContainer');
+        const weekChipsContainer = document.getElementById('weekChipsContainer');
+        const tankABody = document.getElementById('tankABody');
+        const tankBBody = document.getElementById('tankBBody');
+        const tankATotalWeight = document.getElementById('tankATotalWeight');
+        const tankBTotalWeight = document.getElementById('tankBTotalWeight');
+        const tanksResultContainer = document.getElementById('tanksResultContainer');
+        const chemicalAlert = document.getElementById('chemicalAlert');
+        const foliarSection = document.getElementById('foliarSection');
+        const foliarBody = document.getElementById('foliarBody');
+        const foliarTanksCount = document.getElementById('foliarTanksCount');
+
+        // Water Stats
+        const statWaterVolume = document.getElementById('statWaterVolume');
+        const statConcentration = document.getElementById('statConcentration');
+        const statEC = document.getElementById('statEC');
+
+        // Init
+        function initApp() {
+            loadSavedSettings();
+            renderStages();
+            renderWeeks();
+            calculateAll();
+            setupEventListeners();
+            setupHandbook();
+        }
+
+        function setupEventListeners() {
+            [bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, plantStepInput, waterPerPlantInput, sprayerVolumeInput].forEach(el => {
+                el.addEventListener('input', calculateAll);
+            });
+
+            document.getElementById('modeTanksBtn').addEventListener('click', () => setDisplayMode('tanks'));
+            document.getElementById('modeDaysBtn').addEventListener('click', () => setDisplayMode('days'));
+            document.getElementById('modeAllBtn').addEventListener('click', () => setDisplayMode('all'));
+
+            document.getElementById('savePresetBtn').addEventListener('click', () => {
+                saveSettings();
+                alert('Параметры вашей плантации успешно сохранены в памяти браузера!');
+            });
+
+            document.getElementById('printJobBtn').addEventListener('click', () => {
+                const stage = AGRO_STAGES[currentStage];
+                const area = (getCalculatedArea() / 100).toFixed(1);
+                const plants = getCalculatedPlants().toLocaleString('ru-RU');
+                document.getElementById('printMeta').textContent = 
+                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${plants} кустов) | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
+                window.print();
+            });
+
+            // Theme toggle
+            const themeBtn = document.getElementById('themeToggleBtn');
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+                localStorage.setItem('starberry_theme', newTheme);
+            });
+
+            const savedTheme = localStorage.getItem('starberry_theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            }
+        }
+
+        function setDisplayMode(mode) {
+            displayMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            if (mode === 'tanks') document.getElementById('modeTanksBtn').classList.add('active');
+            if (mode === 'days') document.getElementById('modeDaysBtn').classList.add('active');
+            if (mode === 'all') document.getElementById('modeAllBtn').classList.add('active');
+            calculateAll();
+        }
+
+        function renderStages() {
+            stageButtonsContainer.innerHTML = '';
+            Object.values(AGRO_STAGES).forEach(stage => {
+                const weeksCount = Object.keys(stage.weeks).length;
+                const btn = document.createElement('div');
+                btn.className = `stage-btn ${stage.id === currentStage ? 'active' : ''}`;
+                btn.dataset.stageId = stage.id;
+                btn.innerHTML = `
+                    <div class="stage-btn-header">
+                        <span class="stage-btn-icon">${stage.icon}</span>
+                        <span class="stage-btn-weeks">${weeksCount} нед.</span>
+                    </div>
+                    <div>
+                        <div class="stage-btn-title">${stage.title}</div>
+                        <div class="stage-btn-subtitle">${stage.subtitle}</div>
+                    </div>
+                `;
+                btn.addEventListener('click', () => {
+                    currentStage = stage.id;
+                    currentWeek = 1;
+                    renderStages();
+                    renderWeeks();
+                    calculateAll();
+                });
+                stageButtonsContainer.appendChild(btn);
+            });
+        }
+
+        function renderWeeks() {
+            weekChipsContainer.innerHTML = '';
+            const stage = AGRO_STAGES[currentStage];
+            Object.keys(stage.weeks).forEach(w => {
+                const weekNum = parseInt(w);
+                const chip = document.createElement('button');
+                chip.className = `week-chip ${weekNum === currentWeek ? 'active' : ''}`;
+                chip.textContent = `Неделя ${weekNum}`;
+                chip.addEventListener('click', () => {
+                    currentWeek = weekNum;
+                    renderWeeks();
+                    calculateAll();
+                });
+                weekChipsContainer.appendChild(chip);
+            });
+        }
+
+        function getCalculatedArea() {
+            const length = parseFloat(bedLengthInput.value) || 0;
+            const count = parseFloat(bedCountInput.value) || 0;
+            const width = parseFloat(rowWidthInput.value) || 1.4;
+            return length * count * width; // m²
+        }
+
+        function getCalculatedPlants() {
+            const length = parseFloat(bedLengthInput.value) || 0;
+            const count = parseFloat(bedCountInput.value) || 0;
+            const lines = parseInt(linesPerRowSelect.value) || 2;
+            const stepMeters = (parseFloat(plantStepInput.value) || 30) / 100;
+            const totalTape = length * count;
+            return Math.round((totalTape * lines) / stepMeters);
+        }
+
+        function calculateAll() {
+            const length = parseFloat(bedLengthInput.value) || 0;
+            const count = parseFloat(bedCountInput.value) || 0;
+            const totalTape = length * count;
+            const areaM2 = getCalculatedArea();
+            const haRatio = areaM2 / 10000;
+            const plants = getCalculatedPlants();
+
+            // Update Metrics Display
+            metricTape.textContent = totalTape.toLocaleString('ru-RU');
+            metricArea.textContent = (areaM2 / 100).toFixed(1);
+            metricPlants.textContent = plants.toLocaleString('ru-RU');
+            metricHaRatio.textContent = haRatio.toFixed(3);
+
+            // Water Calculation
+            const waterPerPlantLiters = parseFloat(waterPerPlantInput.value) || 0.4;
+            const totalWaterLiters = Math.round(plants * waterPerPlantLiters);
+            const totalWaterM3 = (totalWaterLiters / 1000).toFixed(2);
+            statWaterVolume.innerHTML = `${totalWaterM3} <small>м³ (${totalWaterLiters.toLocaleString('ru-RU')} л)</small>`;
+
+            // Fertigation Data
+            const stage = AGRO_STAGES[currentStage];
+            const weekData = stage.weeks[currentWeek];
+            if (!weekData) return;
+
+            let tankAItems = [];
+            let tankBItems = [];
+            let allItems = [];
+            let totalFertGrams = 0;
+
+            weekData.fertilizers.forEach(fert => {
+                const exactDoseKg = fert.normHa * haRatio;
+                let displayDose = "";
+                let gramVal = exactDoseKg * 1000;
+                totalFertGrams += gramVal;
+
+                if (fert.unit === 'л') {
+                    const exactDoseL = fert.normHa * haRatio;
+                    if (exactDoseL < 1) {
+                        displayDose = `${Math.round(exactDoseL * 1000)} мл`;
+                    } else {
+                        displayDose = `${exactDoseL.toFixed(2)} л`;
+                    }
+                } else {
+                    if (exactDoseKg < 1) {
+                        displayDose = `${Math.round(exactDoseKg * 1000)} г`;
+                    } else {
+                        displayDose = `${exactDoseKg.toFixed(2)} кг (${Math.round(exactDoseKg * 1000)} г)`;
+                    }
+                }
+
+                const itemData = {
+                    name: fert.name,
+                    formula: fert.formula,
+                    dose: displayDose,
+                    normHa: `${fert.normHa} ${fert.unit}/га`,
+                    tank: fert.tank
+                };
+
+                allItems.push(itemData);
+                if (fert.tank === 'A') {
+                    tankAItems.push(itemData);
+                } else {
+                    tankBItems.push(itemData);
+                }
+            });
+
+            // Diagnostics (EC and Concentration)
+            if (totalWaterLiters > 0) {
+                const concGL = (totalFertGrams / totalWaterLiters).toFixed(2);
+                statConcentration.innerHTML = `${concGL} <small>г/л</small>`;
+                
+                // Estimated EC: baseline ~0.4 mS/cm from tap water + ~0.9 mS/cm per 1 g/l of salts
+                const estEC = (0.4 + (concGL * 0.85)).toFixed(2);
+                statEC.innerHTML = `~${estEC} <small>mS/cm</small>`;
+                if (estEC > 1.8) {
+                    statEC.style.color = '#ef4444';
+                    statEC.title = "Внимание: Высокая концентрация! Опасность засоления корней. Разделите полив на 2 дня.";
+                } else {
+                    statEC.style.color = 'var(--secondary)';
+                    statEC.title = "Оптимальная концентрация для корневой системы клубники";
+                }
+            }
+
+            // Render Fertigation Output depending on mode
+            renderFertigationResults(tankAItems, tankBItems, allItems);
+
+            // Foliar Spraying Calculation
+            renderFoliarResults(weekData.foliar, haRatio);
+        }
+
+        function renderFertigationResults(tankA, tankB, all) {
+            tankABody.innerHTML = '';
+            tankBBody.innerHTML = '';
+
+            if (displayMode === 'tanks') {
+                chemicalAlert.style.display = 'flex';
+                tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 640 ? 'repeat(2, 1fr)' : '1fr';
+                document.querySelector('.tank-a-header span').textContent = "📦 БАК А (Кальций + Селитры)";
+                document.querySelector('.tank-b-header span').textContent = "📦 БАК Б (Фосфор, Калий, Магний, Био)";
+                
+                populateTankList(tankABody, tankA);
+                populateTankList(tankBBody, tankB);
+                document.querySelector('.tank-b-header').parentElement.style.display = 'block';
+            } else if (displayMode === 'days') {
+                chemicalAlert.style.display = 'flex';
+                chemicalAlert.innerHTML = `
+                    <span style="font-size: 18px;">📅</span>
+                    <div>
+                        <strong>Схема полива по дням (для 1 бака):</strong> Вносите удобрения из Дня 1 и Дня 2 с интервалом в 2–3 дня чистой воды, чтобы предотвратить выпадение осадка в почве.
+                    </div>
+                `;
+                document.querySelector('.tank-a-header span').textContent = "📆 ДЕНЬ 1 (Полив кальцием и селитрой)";
+                document.querySelector('.tank-b-header span').textContent = "📆 ДЕНЬ 2 (Полив калием, фосфором и магнием)";
+                populateTankList(tankABody, tankA);
+                populateTankList(tankBBody, tankB);
+                document.querySelector('.tank-b-header').parentElement.style.display = 'block';
+            } else {
+                chemicalAlert.style.display = 'none';
+                tanksResultContainer.style.gridTemplateColumns = '1fr';
+                document.querySelector('.tank-a-header span').textContent = "📋 ВСЕ УДОБРЕНИЯ НА ЭТУ НЕДЕЛЮ";
+                populateTankList(tankABody, all);
+                document.querySelector('.tank-b-header').parentElement.style.display = 'none';
+            }
+        }
+
+        function populateTankList(container, items) {
+            if (items.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted); font-size: 0.88rem;">В этот бак на текущей неделе препараты не вносятся.</div>`;
+                return;
+            }
+
+            items.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'fert-item';
+                el.innerHTML = `
+                    <div>
+                        <div class="fert-name">${item.name}</div>
+                        <div class="fert-formula">${item.formula}</div>
+                    </div>
+                    <div class="fert-amount-box">
+                        <div class="fert-amount">${item.dose}</div>
+                        <div class="fert-ha-norm">норма: ${item.normHa}</div>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function renderFoliarResults(foliarData, haRatio) {
+            foliarBody.innerHTML = '';
+            if (!foliarData || foliarData.length === 0) {
+                foliarSection.style.display = 'none';
+                return;
+            }
+
+            foliarSection.style.display = 'block';
+            const sprayerVolumeLiters = parseFloat(sprayerVolumeInput.value) || 16;
+            // Standard working fluid rate for strawberry: 300 Liters per 1 ha
+            const haFluidNormLiters = 300;
+            const plantationFluidLiters = haFluidNormLiters * haRatio;
+            const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
+
+            foliarTanksCount.textContent = `На участок: ~${plantationFluidLiters.toFixed(1)} л раствора (~${tanksNeeded} заправок опрыскивателя)`;
+
+            foliarData.forEach(item => {
+                // Calculation on 1 sprayer (e.g. 16L):
+                // Item dose on 1 ha / 300L * sprayerVolume
+                const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters; // in ml or g per liter
+                const dosePerSprayer = dosePerLiter * sprayerVolumeLiters;
+
+                // Total for entire plantation
+                const totalForPlantation = item.normHa * haRatio;
+                let totalDisplay = "";
+                if (item.unit === 'л') {
+                    totalDisplay = totalForPlantation < 1 ? `${Math.round(totalForPlantation * 1000)} мл` : `${totalForPlantation.toFixed(2)} л`;
+                } else {
+                    totalDisplay = totalForPlantation < 1 ? `${Math.round(totalForPlantation * 1000)} г` : `${totalForPlantation.toFixed(2)} кг`;
+                }
+
+                const row = document.createElement('div');
+                row.className = 'fert-item';
+                row.innerHTML = `
+                    <div>
+                        <div class="fert-name" style="color: var(--secondary);">✨ ${item.name}</div>
+                        <div class="fert-formula">Дозировка: <strong>${Math.round(dosePerSprayer)} ${item.unit === 'л' ? 'мл' : 'г'}</strong> на 1 опрыскиватель (${sprayerVolumeLiters} л)</div>
+                    </div>
+                    <div class="fert-amount-box">
+                        <div class="fert-amount" style="color: var(--secondary);">${totalDisplay}</div>
+                        <div class="fert-ha-norm">на всю площадь плантации</div>
+                    </div>
+                `;
+                foliarBody.appendChild(row);
+            });
+        }
+
+        function setupHandbook() {
+            const modal = document.getElementById('handbookModal');
+            const openBtn = document.getElementById('openHandbookBtn');
+            const closeBtn = document.getElementById('closeHandbookBtn');
+            const container = document.getElementById('handbookContent');
+
+            container.innerHTML = '';
+            FERTILIZERS_HANDBOOK.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'handbook-item';
+                el.innerHTML = `
+                    <div class="handbook-name">${item.name} <span class="handbook-formula">${item.formula}</span></div>
+                    <div class="handbook-desc">${item.desc}</div>
+                `;
+                container.appendChild(el);
+            });
+
+            openBtn.addEventListener('click', () => modal.classList.add('open'));
+            closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('open');
+            });
+        }
+
+        function saveSettings() {
+            const settings = {
+                bedLength: bedLengthInput.value,
+                bedCount: bedCountInput.value,
+                rowWidth: rowWidthInput.value,
+                linesPerRow: linesPerRowSelect.value,
+                plantStep: plantStepInput.value,
+                waterPerPlant: waterPerPlantInput.value,
+                sprayerVolume: sprayerVolumeInput.value
+            };
+            localStorage.setItem('starberry_settings', JSON.stringify(settings));
+        }
+
+        function loadSavedSettings() {
+            const saved = localStorage.getItem('starberry_settings');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    if (parsed.bedLength) bedLengthInput.value = parsed.bedLength;
+                    if (parsed.bedCount) bedCountInput.value = parsed.bedCount;
+                    if (parsed.rowWidth) rowWidthInput.value = parsed.rowWidth;
+                    if (parsed.linesPerRow) linesPerRowSelect.value = parsed.linesPerRow;
+                    if (parsed.plantStep) plantStepInput.value = parsed.plantStep;
+                    if (parsed.waterPerPlant) waterPerPlantInput.value = parsed.waterPerPlant;
+                    if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
+                } catch(e) {}
+            }
+        }
+
+        // Start
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
 </body>
 </html>

@@ -2,66 +2,64 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starberry Pro — Профессиональный калькулятор питания и полива клубники</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Starberry Pro 3.5 — Профессиональная агросистема для клубники</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #e11d48;
             --primary-hover: #be123c;
-            --primary-glow: rgba(225, 29, 72, 0.22);
+            --primary-glow: rgba(225, 29, 72, 0.25);
             --primary-light: #fff1f2;
             --secondary: #059669;
             --secondary-light: #ecfdf5;
             --secondary-glow: rgba(5, 150, 105, 0.2);
             --accent: #f59e0b;
             --accent-light: #fffbeb;
-            --tank-a: #2563eb;
-            --tank-a-light: #eff6ff;
-            --tank-a-glow: rgba(37, 99, 235, 0.15);
-            --tank-b: #7c3aed;
-            --tank-b-light: #f5f3ff;
-            --tank-b-glow: rgba(124, 58, 237, 0.15);
-            --bg-main: #f8fafc;
+            --tank-a: #7c3aed;
+            --tank-a-light: #f5f3ff;
+            --tank-a-glow: rgba(124, 58, 237, 0.18);
+            --tank-b: #2563eb;
+            --tank-b-light: #eff6ff;
+            --tank-b-glow: rgba(37, 99, 235, 0.18);
+            --bg-main: #f1f5f9;
             --bg-card: #ffffff;
-            --bg-card-subtle: #f1f5f9;
+            --bg-card-subtle: #f8fafc;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --border: #e2e8f0;
-            --border-hover: #cbd5e1;
-            --radius-sm: 10px;
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --shadow-subtle: 0 1px 3px 0 rgb(0 0 0 / 0.05);
-            --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-            --shadow-float: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
-            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            --border: #cbd5e1;
+            --border-light: #e2e8f0;
+            --radius-sm: 12px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
+            --shadow-btn: 0 4px 12px rgba(225, 29, 72, 0.3);
+            --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         [data-theme="dark"] {
-            --bg-main: #070b14;
-            --bg-card: #0f172a;
-            --bg-card-subtle: #192339;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #22304d;
-            --border-hover: #334469;
-            --primary-light: rgba(225, 29, 72, 0.16);
-            --secondary-light: rgba(5, 150, 105, 0.16);
-            --accent-light: rgba(245, 158, 11, 0.16);
-            --tank-a-light: rgba(37, 99, 235, 0.16);
-            --tank-b-light: rgba(124, 58, 237, 0.16);
-            --shadow-card: 0 4px 25px -2px rgba(0, 0, 0, 0.5);
-            --shadow-float: 0 20px 30px -5px rgba(0, 0, 0, 0.7);
+            --bg-main: #090d16;
+            --bg-card: #111827;
+            --bg-card-subtle: #1f2937;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border: #374151;
+            --border-light: #1f2937;
+            --primary-light: rgba(225, 29, 72, 0.18);
+            --secondary-light: rgba(5, 150, 105, 0.18);
+            --accent-light: rgba(245, 158, 11, 0.18);
+            --tank-a-light: rgba(124, 58, 237, 0.2);
+            --tank-b-light: rgba(37, 99, 235, 0.2);
+            --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -71,16 +69,13 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            line-height: 1.5;
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 24px 24px;
+            padding-bottom: 84px; /* Space for mobile bottom bar */
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1240px;
             margin: 0 auto;
-            padding: 20px 24px 60px;
+            padding: 12px 14px 40px;
             width: 100%;
         }
 
@@ -89,588 +84,546 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 24px;
+            padding: 12px 16px;
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
             box-shadow: var(--shadow-card);
-            margin-bottom: 24px;
-            backdrop-filter: blur(12px);
+            margin-bottom: 14px;
         }
 
-        .header-brand {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
-        .brand-icon-box {
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
-            border-radius: 16px;
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #f43f5e, #be123c);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 8px 18px var(--primary-glow);
-            transform: rotate(-3deg);
-            transition: var(--transition);
+            font-size: 24px;
+            box-shadow: 0 4px 12px var(--primary-glow);
         }
 
-        .brand-icon-box:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-
-        .brand-text h1 {
-            font-size: 1.5rem;
+        .brand-name {
+            font-size: 1.22rem;
             font-weight: 800;
-            color: var(--text-main);
+            letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 8px;
-            letter-spacing: -0.03em;
+            gap: 6px;
         }
 
         .badge-pro {
-            font-size: 0.68rem;
-            padding: 2px 8px;
-            background: linear-gradient(135deg, #e11d48, #f43f5e);
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            background: var(--primary);
             color: white;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            box-shadow: 0 2px 6px rgba(225, 29, 72, 0.3);
         }
 
-        .brand-text p {
-            font-size: 0.85rem;
+        .brand-sub {
+            font-size: 0.76rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        .header-actions {
+        .header-btns {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .btn-header-icon {
-            width: 44px;
-            height: 44px;
+        .icon-btn {
+            width: 42px;
+            height: 42px;
             border-radius: 12px;
             background: var(--bg-card-subtle);
-            border: 1px solid var(--border);
-            color: var(--text-main);
+            border: 1px solid var(--border-light);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 18px;
             cursor: pointer;
-            transition: var(--transition);
-            font-size: 19px;
+            color: var(--text-main);
         }
 
-        .btn-header-icon:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        /* Layout Grid */
-        .layout-grid {
+        /* Responsive Layout */
+        .app-layout {
             display: grid;
-            grid-template-columns: 370px 1fr;
-            gap: 24px;
+            grid-template-columns: 340px 1fr;
+            gap: 20px;
             align-items: start;
         }
 
-        @media (max-width: 1024px) {
-            .layout-grid {
+        @media (max-width: 991px) {
+            .app-layout {
                 grid-template-columns: 1fr;
+            }
+            .tab-page {
+                display: none;
+            }
+            .tab-page.active-page {
+                display: block;
             }
         }
 
-        /* Card Component */
+        /* Cards */
         .card {
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 24px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
             box-shadow: var(--shadow-card);
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
         }
 
         .card-title {
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.05rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 8px;
-            letter-spacing: -0.02em;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-light);
         }
 
+        /* Inputs */
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .form-label {
             display: block;
             font-size: 0.84rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 6px;
             color: var(--text-main);
         }
 
-        .input-group {
+        .input-box {
             position: relative;
             display: flex;
             align-items: center;
         }
 
-        .form-input {
+        .touch-input {
             width: 100%;
-            padding: 11px 14px;
-            padding-right: 56px;
+            height: 48px;
+            padding: 0 54px 0 14px;
             background: var(--bg-card-subtle);
-            border: 1.5px solid var(--border);
+            border: 2px solid var(--border-light);
             border-radius: var(--radius-sm);
             color: var(--text-main);
-            font-size: 0.95rem;
-            font-weight: 700;
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
             transition: var(--transition);
         }
 
-        .form-input:focus {
+        .touch-input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-glow);
             background: var(--bg-card);
+            box-shadow: 0 0 0 3px var(--primary-glow);
         }
 
-        .input-suffix {
+        .input-unit {
             position: absolute;
             right: 14px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: var(--text-muted);
             pointer-events: none;
         }
 
-        /* Metrics Summary Panel */
+        /* Metrics Grid */
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px dashed var(--border);
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border-light);
         }
 
-        .metric-badge {
+        .metric-cell {
             background: var(--bg-card-subtle);
-            padding: 12px 14px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border);
-            transition: var(--transition);
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
         }
 
-        .metric-badge:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-1px);
-        }
-
-        .metric-label {
-            font-size: 0.7rem;
+        .metric-tag {
+            font-size: 0.68rem;
             color: var(--text-muted);
-            text-transform: uppercase;
             font-weight: 800;
-            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
-        .metric-value {
-            font-size: 1.25rem;
+        .metric-val {
+            font-size: 1.22rem;
             font-weight: 800;
             color: var(--text-main);
-            margin-top: 2px;
             font-family: 'JetBrains Mono', monospace;
+            margin-top: 2px;
         }
 
-        .metric-value small {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .plants-highlight-badge {
+        .plants-card {
             grid-column: span 2;
-            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(225, 29, 72, 0.04) 100%);
-            border: 1.5px solid var(--primary);
+            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(225, 29, 72, 0.05) 100%);
+            border: 2px solid var(--primary);
             box-shadow: 0 4px 12px var(--primary-glow);
         }
 
-        .plants-highlight-badge .metric-label {
+        .plants-card .metric-tag {
             color: var(--primary);
         }
 
-        .plants-highlight-badge .metric-value {
+        .plants-card .metric-val {
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 1.45rem;
         }
 
-        /* Stage Selector Carousel */
-        .stages-selector {
+        /* Weather Heat Mode Toggle */
+        .heat-toggle-card {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 2px solid #f59e0b;
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        [data-theme="dark"] .heat-toggle-card {
+            background: rgba(245, 158, 11, 0.12);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        .heat-label {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: #92400e;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        [data-theme="dark"] .heat-label {
+            color: #fde68a;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: .3s;
+            border-radius: 28px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px; width: 22px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #f59e0b;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
+        /* Stages & Weeks */
+        .stage-selector {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 14px;
         }
 
-        @media (max-width: 768px) {
-            .stages-selector {
+        @media (max-width: 600px) {
+            .stage-selector {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        .stage-btn {
+        .stage-card-btn {
             background: var(--bg-card);
-            border: 2px solid var(--border);
+            border: 2px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: 14px 14px;
-            text-align: left;
+            padding: 12px 10px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
+            gap: 6px;
+            text-align: left;
         }
 
-        .stage-btn:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-card);
-        }
-
-        .stage-btn.active {
+        .stage-card-btn.active {
             border-color: var(--primary);
             background: var(--primary-light);
-            box-shadow: 0 6px 18px var(--primary-glow);
+            box-shadow: 0 4px 14px var(--primary-glow);
         }
 
-        .stage-btn-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .stage-card-icon {
+            font-size: 24px;
         }
 
-        .stage-btn-icon {
-            font-size: 26px;
-        }
-
-        .stage-btn-weeks {
-            font-size: 0.72rem;
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 6px;
-            background: var(--bg-card-subtle);
-            color: var(--text-muted);
-        }
-
-        .stage-btn.active .stage-btn-weeks {
-            background: var(--primary);
-            color: white;
-        }
-
-        .stage-btn-title {
-            font-size: 0.95rem;
+        .stage-card-title {
+            font-size: 0.88rem;
             font-weight: 800;
             color: var(--text-main);
-            line-height: 1.25;
-            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
 
-        .stage-btn-subtitle {
-            font-size: 0.72rem;
+        .stage-card-weeks {
+            font-size: 0.7rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 700;
         }
 
-        /* Week Chips */
-        .weeks-container {
+        .weeks-scroll {
             display: flex;
             align-items: center;
             gap: 8px;
             overflow-x: auto;
-            padding: 4px 2px 14px;
-            margin-bottom: 16px;
+            padding: 4px 2px 12px;
+            margin-bottom: 14px;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .week-chip {
-            padding: 9px 20px;
-            border-radius: 30px;
+        .week-btn {
+            height: 44px;
+            padding: 0 20px;
+            border-radius: 24px;
             background: var(--bg-card);
-            border: 1.5px solid var(--border);
-            font-size: 0.88rem;
-            font-weight: 700;
+            border: 2px solid var(--border-light);
+            font-size: 0.95rem;
+            font-weight: 800;
             color: var(--text-muted);
             cursor: pointer;
-            transition: var(--transition);
             white-space: nowrap;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
         }
 
-        .week-chip:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .week-chip.active {
+        .week-btn.active {
             background: var(--primary);
             border-color: var(--primary);
             color: white;
             box-shadow: 0 4px 12px var(--primary-glow);
         }
 
-        /* Target EC & pH Realtime Agro-Monitor */
-        .ec-monitor-card {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(124, 58, 237, 0.04) 100%);
-            border: 1.5px solid var(--tank-a);
+        /* EC Monitor Box */
+        .ec-monitor-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.04) 100%);
+            border: 2px solid #3b82f6;
             border-radius: var(--radius-md);
-            padding: 18px 20px;
-            margin-bottom: 22px;
-            box-shadow: 0 6px 18px var(--tank-a-glow);
-            position: relative;
-            overflow: hidden;
+            padding: 14px 16px;
+            margin-bottom: 14px;
         }
 
-        .ec-monitor-top {
+        .ec-monitor-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .ec-monitor-title {
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--tank-a);
-            display: flex;
-            align-items: center;
             gap: 8px;
+            margin-bottom: 8px;
         }
 
-        .ec-pills-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .target-pill {
-            padding: 6px 14px;
+        .ec-badge {
+            background: #2563eb;
+            color: white;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-weight: 800;
             font-size: 0.88rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .pill-ec {
-            background: var(--tank-a);
-            color: white;
-            box-shadow: 0 2px 8px var(--tank-a-glow);
-        }
-
-        .pill-ph {
+        .ph-badge {
             background: var(--secondary);
             color: white;
-            box-shadow: 0 2px 8px var(--secondary-glow);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        .ec-advice-text {
-            font-size: 0.85rem;
+        .ec-hint {
+            font-size: 0.82rem;
             color: var(--text-main);
-            font-weight: 500;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* Compatibility Warning */
+        .compat-alert {
+            background: #fffbeb;
+            border: 1.5px solid #fde68a;
+            border-left: 5px solid #f59e0b;
+            padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            font-size: 0.84rem;
+            color: #78350f;
             line-height: 1.45;
         }
 
-        /* Mode Selector */
-        .mode-selector {
-            display: flex;
-            gap: 8px;
-            background: var(--bg-card-subtle);
-            padding: 5px;
-            border-radius: var(--radius-md);
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
+        [data-theme="dark"] .compat-alert {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.25);
+            color: #fef3c7;
         }
 
-        .mode-btn {
-            flex: 1;
-            padding: 9px 12px;
-            background: transparent;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 0.86rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .mode-btn.active {
-            background: var(--bg-card);
-            color: var(--text-main);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        /* Result Sections (Tanks A and B) */
-        .tanks-grid {
+        /* Tanks Cards */
+        .tanks-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-            margin-bottom: 24px;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
         @media (max-width: 680px) {
-            .tanks-grid {
+            .tanks-container {
                 grid-template-columns: 1fr;
             }
         }
 
-        .tank-card {
+        .tank-block {
             background: var(--bg-card);
-            border: 1.5px solid var(--border);
+            border: 2px solid var(--border-light);
             border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: var(--shadow-card);
-            transition: var(--transition);
         }
 
-        .tank-card:hover {
-            box-shadow: var(--shadow-float);
-        }
-
-        .tank-header {
-            padding: 14px 18px;
+        .tank-top {
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-weight: 800;
-            font-size: 0.95rem;
-            border-bottom: 1.5px solid transparent;
+            font-size: 0.92rem;
+            border-bottom: 2px solid transparent;
         }
 
-        .tank-a-header {
-            background: linear-gradient(135deg, var(--tank-a-light) 0%, rgba(37, 99, 235, 0.05) 100%);
+        .tank-a-top {
+            background: var(--tank-a-light);
             color: var(--tank-a);
             border-color: var(--tank-a);
         }
 
-        .tank-b-header {
-            background: linear-gradient(135deg, var(--tank-b-light) 0%, rgba(124, 58, 237, 0.05) 100%);
+        .tank-b-top {
+            background: var(--tank-b-light);
             color: var(--tank-b);
             border-color: var(--tank-b);
         }
 
-        .tank-weight-badge {
-            font-size: 0.8rem;
-            padding: 3px 9px;
+        .tank-weight-pill {
+            font-size: 0.82rem;
+            padding: 4px 10px;
             border-radius: 8px;
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-light);
             font-family: 'JetBrains Mono', monospace;
             font-weight: 800;
         }
 
-        .tank-body {
-            padding: 16px 18px;
+        .tank-content {
+            padding: 12px 14px;
         }
 
-        .fert-item {
+        .fert-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .fert-item:last-child {
+        .fert-row:last-child {
             border-bottom: none;
         }
 
-        .fert-name {
-            font-weight: 700;
-            font-size: 0.92rem;
+        .fert-title {
+            font-size: 0.94rem;
+            font-weight: 800;
             color: var(--text-main);
         }
 
-        .fert-formula {
-            font-size: 0.75rem;
+        .fert-sub {
+            font-size: 0.74rem;
             color: var(--text-muted);
+            font-weight: 600;
             margin-top: 2px;
-            font-weight: 500;
         }
 
-        .fert-amount-box {
-            text-align: right;
-        }
-
-        .fert-amount {
-            font-size: 1.25rem;
+        .fert-dose {
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--primary);
             font-family: 'JetBrains Mono', monospace;
-            letter-spacing: -0.02em;
+            text-align: right;
+            line-height: 1.1;
         }
 
-        .fert-ha-norm {
-            font-size: 0.72rem;
+        .fert-norm-tag {
+            font-size: 0.7rem;
             color: var(--text-muted);
-            font-weight: 600;
+            font-weight: 700;
+            text-align: right;
         }
 
         /* Foliar Section */
-        .foliar-card {
+        .foliar-box {
             background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(5, 150, 105, 0.02) 100%);
-            border: 1.5px solid var(--secondary);
+            border: 2px solid var(--secondary);
             border-radius: var(--radius-md);
-            padding: 20px 22px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 16px var(--secondary-glow);
+            padding: 16px 18px;
+            margin-bottom: 18px;
         }
 
-        .foliar-header {
+        .foliar-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 14px;
             flex-wrap: wrap;
             gap: 8px;
+            margin-bottom: 12px;
         }
 
-        .foliar-title {
+        .foliar-headline {
             font-size: 1.05rem;
             font-weight: 800;
             color: var(--secondary);
@@ -679,477 +632,500 @@
             gap: 8px;
         }
 
-        .foliar-badge {
-            font-size: 0.75rem;
-            padding: 3px 9px;
-            border-radius: 6px;
-            background: var(--secondary);
-            color: white;
-            font-weight: 800;
-        }
-
-        /* Lake and Water Diagnostics */
-        .water-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 16px 20px;
-            margin-bottom: 24px;
-        }
-
         /* Action Buttons */
-        .actions-bar {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .btn-action {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: var(--radius-sm);
-            font-size: 0.98rem;
+        .main-action-btn {
+            width: 100%;
+            height: 50px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            color: white;
+            font-size: 1rem;
             font-weight: 800;
             border: none;
             cursor: pointer;
+            box-shadow: var(--shadow-btn);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: var(--transition);
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
-            color: white;
-            box-shadow: 0 4px 14px var(--primary-glow);
+        .btn-log {
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px var(--primary-glow);
-        }
-
-        .btn-secondary {
-            background: var(--bg-card);
-            border: 1.5px solid var(--border);
-            color: var(--text-main);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--border-hover);
+        /* Journal Page */
+        .log-entry {
             background: var(--bg-card-subtle);
-            transform: translateY(-1px);
-        }
-
-        /* Handbook Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(6px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal.open {
-            display: flex;
-        }
-
-        .modal-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 800px;
-            max-height: 88vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-float);
-            overflow: hidden;
-            animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(16px) scale(0.96); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .modal-top {
-            padding: 20px 26px;
-            border-bottom: 1px solid var(--border);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .modal-title {
-            font-size: 1.25rem;
+        .log-date {
+            font-size: 0.8rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
+            color: var(--primary);
         }
 
-        .modal-close {
+        .log-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .log-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* SZR Waiting Time Card */
+        .szr-item {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+
+        .szr-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .szr-name {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .szr-wait {
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .szr-target {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Mobile Bottom Nav */
+        .mobile-nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+            z-index: 999;
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (min-width: 992px) {
+            .mobile-nav-bar {
+                display: none;
+            }
+            body {
+                padding-bottom: 20px;
+            }
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
             background: transparent;
             border: none;
-            font-size: 26px;
             color: var(--text-muted);
+            font-size: 0.72rem;
+            font-weight: 700;
             cursor: pointer;
+            padding: 6px 2px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-item-icon {
+            font-size: 20px;
             line-height: 1;
         }
 
-        .modal-body {
-            padding: 26px;
-            overflow-y: auto;
-        }
-
-        .handbook-item {
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .handbook-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .handbook-name {
-            font-size: 1.05rem;
-            font-weight: 800;
+        .nav-item.active {
             color: var(--primary);
+        }
+
+        .nav-item.active .nav-item-icon {
+            transform: scale(1.15);
+        }
+
+        /* Handbook Modal */
+        .handbook-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            padding: 16px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .handbook-modal.open { display: flex; }
+
+        .handbook-paper {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 650px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .handbook-top {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-light);
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
         }
 
-        .handbook-formula {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            background: var(--bg-card-subtle);
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .handbook-desc {
-            font-size: 0.9rem;
-            color: var(--text-main);
-            margin-top: 6px;
-            line-height: 1.5;
-        }
+        .handbook-top h3 { font-size: 1.2rem; font-weight: 800; }
+        .handbook-close { background: transparent; border: none; font-size: 26px; cursor: pointer; color: var(--text-muted); }
+        .handbook-scroll { padding: 20px; overflow-y: auto; }
+        .handbook-entry { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border-light); }
+        .handbook-entry:last-child { border-bottom: none; }
+        .handbook-entry h4 { font-size: 1.02rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .handbook-entry p { font-size: 0.88rem; color: var(--text-main); margin-top: 6px; line-height: 1.45; }
 
         /* Printable */
         @media print {
-            body {
-                background: white !important;
-                color: black !important;
-            }
-            header, .stages-selector, .weeks-container, .mode-selector, .actions-bar, .btn-header-icon {
-                display: none !important;
-            }
-            .layout-grid {
-                display: block !important;
-            }
-            .card {
-                border: 1px solid #000 !important;
-                box-shadow: none !important;
-                margin-bottom: 16px !important;
-                break-inside: avoid;
-            }
-            .print-only-header {
-                display: block !important;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-        }
-
-        .print-only-header {
-            display: none;
-        }
-
-        footer {
-            margin-top: auto;
-            text-align: center;
-            padding: 24px 0;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 500;
+            body { background: white !important; color: black !important; padding: 0 !important; }
+            header, .stage-selector, .weeks-scroll, .heat-toggle-card, .main-action-btn, .mobile-nav-bar, .icon-btn { display: none !important; }
+            .app-layout { display: block !important; }
+            .card { border: 1px solid #000 !important; box-shadow: none !important; break-inside: avoid; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Print Header -->
-        <div class="print-only-header">
-            <h1 style="font-size: 20pt; margin-bottom: 4px;">Наряд-задание на полив и фертигацию клубники</h1>
-            <p id="printMeta" style="font-size: 11pt; color: #444;"></p>
-        </div>
-
-        <!-- App Header -->
+        <!-- Header -->
         <header>
-            <div class="header-brand">
-                <div class="brand-icon-box">🍓</div>
-                <div class="brand-text">
-                    <h1>Starberry Pro <span class="badge-pro">Agro 2.0</span></h1>
-                    <p>Профессиональный расчет фертигации клубники • Agrostrimedit</p>
+            <div class="brand">
+                <div class="brand-logo">🍓</div>
+                <div>
+                    <div class="brand-name">Starberry <span class="badge-pro">PRO 3.5</span></div>
+                    <div class="brand-sub">Агросистема питания и защиты клубники</div>
                 </div>
             </div>
-            <div class="header-actions">
-                <button class="btn-header-icon" id="openHandbookBtn" title="Справочник удобрений">📖</button>
-                <button class="btn-header-icon" id="themeToggleBtn" title="Сменить тему">🌙</button>
+            <div class="header-btns">
+                <button class="icon-btn" id="openHandbookBtn" title="Справочник удобрений">📖</button>
+                <button class="icon-btn" id="themeToggleBtn" title="Тема">🌙</button>
             </div>
         </header>
 
-        <!-- Main Content -->
-        <div class="layout-grid">
-            <!-- Left Column: Plantation Settings -->
-            <aside>
+        <!-- Main Layout -->
+        <div class="app-layout">
+            <!-- Sidebar / Tab: Parameters -->
+            <aside class="tab-page sidebar-section" id="paramsPage">
                 <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">🌱 Параметры плантации</h2>
-                        <span style="font-size: 0.76rem; font-weight: 800; color: var(--secondary); background: var(--secondary-light); padding: 3px 8px; border-radius: 6px;">II–III ГОД</span>
+                    <div class="card-title">
+                        <span>🌱 Параметры участка</span>
+                        <span style="font-size:0.75rem; background:var(--secondary-light); color:var(--secondary); padding:3px 8px; border-radius:6px; font-weight:800;">II–III ГОД</span>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Длина одного билона (бугра):</label>
-                        <div class="input-group">
-                            <input type="number" id="bedLength" class="form-input" min="1" value="100" step="5">
-                            <span class="input-suffix">метров</span>
+                        <div class="input-box">
+                            <input type="number" id="bedLength" class="touch-input" min="1" value="100" step="5">
+                            <span class="input-unit">метров</span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Количество билонов:</label>
-                        <div class="input-group">
-                            <input type="number" id="bedCount" class="form-input" min="1" value="10" step="1">
-                            <span class="input-suffix">шт</span>
+                        <div class="input-box">
+                            <input type="number" id="bedCount" class="touch-input" min="1" value="10" step="1">
+                            <span class="input-unit">шт</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Ширина междурядья (по центрам бугров):</label>
-                        <div class="input-group">
-                            <input type="number" id="rowWidth" class="form-input" min="0.2" max="3.0" value="1.4" step="0.05">
-                            <span class="input-suffix">м</span>
+                        <label class="form-label">Ширина междурядья (по центрам):</label>
+                        <div class="input-box">
+                            <input type="number" id="rowWidth" class="touch-input" min="0.2" max="3.0" value="1.35" step="0.05">
+                            <span class="input-unit">м</span>
                         </div>
-                        <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 3px;">
-                            Стандарт в поле: 1.2 – 1.5 м
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Строчек на бугре и шаг кустов:</label>
-                        <div style="display: flex; gap: 8px;">
-                            <select id="linesPerRow" class="form-input" style="flex: 1; padding-right: 10px;">
-                                <option value="2" selected>2 строчки (шахматка)</option>
-                                <option value="1">1 строчка</option>
-                            </select>
-                            <div class="input-group" style="width: 125px;">
-                                <input type="number" id="plantStep" class="form-input" min="10" max="60" value="19" step="1">
-                                <span class="input-suffix">см</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Основа расчёта питания:</label>
-                        <select id="calcBasis" class="form-input">
-                            <option value="area" selected>По площади участка (стандарт на 1 га)</option>
-                            <option value="plants">По числу кустов (с поправкой на густоту)</option>
-                        </select>
-                        <div id="basisHintText" style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">
-                            Ширина междурядья напрямую меняет площадь и граммы удобрений
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Распределение по бочкам:</label>
-                        <select id="tankDistribution" class="form-input">
-                            <option value="split_nitrates" selected>Бочка А: Кальций + Селитры | Бочка Б: Фосфор + Терафлекс</option>
-                            <option value="solo_calcium">В бочке А — ТОЛЬКО Кальциевая селитра</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Объем каждой бочки у помпы (А и Б):</label>
-                        <div class="input-group">
-                            <input type="number" id="barrelVolume" class="form-input" min="20" max="2000" value="160" step="10">
-                            <span class="input-suffix">литров</span>
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:3px;">
+                            Меняет общую площадь поля в сотках и вес удобрений
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Объем опрыскивателя (по листу):</label>
-                        <div class="input-group">
-                            <input type="number" id="sprayerVolume" class="form-input" min="5" max="600" value="16" step="1">
-                            <span class="input-suffix">литров</span>
-                        </div>
-                        <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 3px;">
-                            Стандартный ранцевый бак: 16 л
+                        <div class="input-box">
+                            <input type="number" id="sprayerVolume" class="touch-input" min="5" max="600" value="16" step="1">
+                            <span class="input-unit">литров</span>
                         </div>
                     </div>
 
-                    <!-- Calculated Plantation Metrics -->
                     <div class="metrics-grid">
-                        <div class="metric-badge">
-                            <div class="metric-label">Длина бугров</div>
-                            <div class="metric-value"><span id="metricTape">1 000</span> <small>м</small></div>
+                        <div class="metric-cell">
+                            <div class="metric-tag">Длина бугров</div>
+                            <div class="metric-val"><span id="metricTape">1 000</span> <small style="font-size:0.75rem;">м</small></div>
                         </div>
-                        <div class="metric-badge">
-                            <div class="metric-label">Площадь</div>
-                            <div class="metric-value"><span id="metricArea">14.0</span> <small>соток</small></div>
+                        <div class="metric-cell">
+                            <div class="metric-tag">Площадь</div>
+                            <div class="metric-val"><span id="metricArea">13.5</span> <small style="font-size:0.75rem;">сот</small></div>
                         </div>
-                        <div class="metric-badge plants-highlight-badge">
-                            <div class="metric-label">🍓 ВСЕГО КУСТОВ НА УЧАСТКЕ</div>
-                            <div class="metric-value"><span id="metricPlants">10 526</span> <small>кустов</small></div>
+                        <div class="metric-cell plants-card">
+                            <div class="metric-tag">🍓 ВСЕГО КУСТОВ (2 ряда × 25 см)</div>
+                            <div class="metric-val"><span id="metricPlants">8 000</span> <small style="font-size:0.8rem;">кустов</small></div>
                         </div>
                     </div>
+
+                    <button type="button" class="main-action-btn" id="saveParamsBtn">
+                        💾 Запомнить параметры
+                    </button>
                 </div>
             </aside>
 
-            <!-- Right Column: Interactive Calculator -->
-            <main>
-                <!-- Stage Buttons -->
-                <div class="stages-selector" id="stageButtonsContainer"></div>
-
-                <!-- Week Selector Chips -->
-                <div class="weeks-container" id="weekChipsContainer"></div>
-
-                <!-- Dynamic Target EC & pH Realtime Agro-Monitor -->
-                <div class="ec-monitor-card" id="ecMonitorCard">
-                    <div class="ec-monitor-top">
-                        <div class="ec-monitor-title">
-                            <span>🎯 Норма раствора в капельнице для этой недели</span>
+            <!-- Main Calculation Screen / Tab: Fertigation -->
+            <main class="tab-page active-page main-section" id="calcPage">
+                <!-- Heat Stress Weather Mode -->
+                <div class="heat-toggle-card">
+                    <div>
+                        <div class="heat-label">
+                            <span>☀️ Режим «Жара выше +30 °C»</span>
                         </div>
-                        <div class="ec-pills-row">
-                            <div class="target-pill pill-ec">
-                                <span>⚡ Целевой EC:</span>
-                                <span id="targetEcVal">1.2 – 1.4 mS/cm</span>
-                            </div>
-                            <div class="target-pill pill-ph">
-                                <span>🧪 Целевой pH:</span>
-                                <span id="targetPhVal">5.8 – 6.2</span>
-                            </div>
+                        <div style="font-size:0.76rem; color:var(--text-muted); margin-top:2px;" id="heatDescText">
+                            Снижает EC раствора на 25% для защиты корней от солевого ожога
                         </div>
                     </div>
-                    <div class="ec-advice-text" id="targetEcAdvice">
-                        Начало сезона: корневая система нежная, держите EC мягким, чтобы не обжечь молодые всасывающие волоски.
+                    <label class="switch">
+                        <input type="checkbox" id="heatModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <!-- Growth Stages Grid -->
+                <div class="stage-selector" id="stageSelector"></div>
+
+                <!-- Weeks Selector Chips -->
+                <div class="weeks-scroll" id="weekSelector"></div>
+
+                <!-- Target EC & pH Live Monitor -->
+                <div class="ec-monitor-box">
+                    <div class="ec-monitor-header">
+                        <span style="font-weight:800; font-size:0.95rem; color:#2563eb;">🎯 Норма раствора в капельнице:</span>
+                        <div style="display:flex; gap:8px;">
+                            <span class="ec-badge" id="targetEcVal">1.0 – 1.2 mS/cm</span>
+                            <span class="ph-badge" id="targetPhVal">5.8 – 6.2 pH</span>
+                        </div>
+                    </div>
+                    <div class="ec-hint" id="targetEcAdvice">
+                        Начало сезона: корни нежные, держите ЕС мягким, чтобы не обжечь молодые волоски корней.
                     </div>
                 </div>
 
-                <!-- Display Mode Switcher -->
-                <div class="mode-selector">
-                    <button class="mode-btn active" data-mode="tanks" id="modeTanksBtn">
-                        🛡️ Разделение на Бочку А и Бочку Б
-                    </button>
-                    <button class="mode-btn" data-mode="days" id="modeDaysBtn">
-                        📅 Раздельный полив по дням (для 1 бочки)
-                    </button>
-                    <button class="mode-btn" data-mode="all" id="modeAllBtn">
-                        📋 Общий список
-                    </button>
+                <!-- Compatibility Notice -->
+                <div class="compat-alert">
+                    <strong>⚠️ Правило разделения бочек:</strong><br>
+                    • <strong>БАК А:</strong> NPK, калий, магний, селитры, Терафлекс и биопрепараты.<br>
+                    • <strong>БАК Б:</strong> ТОЛЬКО Кальциевая селитра Ca(NO₃)₂! Не смешивать с фосфатами и сульфатами.<br>
+                    • <span id="compatNoticeText" style="font-weight:700;"></span>
                 </div>
 
-                <!-- Results: Tanks A and B -->
-                <div class="tanks-grid" id="tanksResultContainer">
+                <!-- Tanks Grid -->
+                <div class="tanks-container">
                     <!-- Tank A -->
-                    <div class="tank-card">
-                        <div class="tank-header tank-a-header">
-                            <span id="tankATitleText">📦 БОЧКА А: Кальций + Селитры</span>
-                            <span class="tank-weight-badge" id="tankATotalWeight">0 г</span>
+                    <div class="tank-block">
+                        <div class="tank-top tank-a-top">
+                            <span>📦 БАК А (Основное питание)</span>
+                            <span class="tank-weight-pill" id="tankAWeight">0 г</span>
                         </div>
-                        <div class="tank-body" id="tankABody"></div>
+                        <div class="tank-content" id="tankABody"></div>
                     </div>
 
                     <!-- Tank B -->
-                    <div class="tank-card">
-                        <div class="tank-header tank-b-header">
-                            <span id="tankBTitleText">📦 БОЧКА Б: Фосфор, Калий, Магний, Био</span>
-                            <span class="tank-weight-badge" id="tankBTotalWeight">0 г</span>
+                    <div class="tank-block">
+                        <div class="tank-top tank-b-top">
+                            <span>📦 БАК Б (ТОЛЬКО Кальций)</span>
+                            <span class="tank-weight-pill" id="tankBWeight">0 г</span>
                         </div>
-                        <div class="tank-body" id="tankBBody"></div>
+                        <div class="tank-content" id="tankBBody"></div>
                     </div>
                 </div>
 
-                <!-- Foliar Spraying Card -->
-                <div class="foliar-card" id="foliarSection">
-                    <div class="foliar-header">
-                        <div class="foliar-title">
+                <!-- Foliar Spraying -->
+                <div class="foliar-box" id="foliarBox">
+                    <div class="foliar-top">
+                        <div class="foliar-headline">
                             <span>🌿 Листовая обработка (опрыскивание)</span>
-                            <span class="foliar-badge" id="foliarBadge">Рецепт на неделю</span>
+                            <span style="font-size:0.75rem; background:var(--secondary); color:white; padding:3px 8px; border-radius:6px; font-weight:800;">ПО ЛИСТУ</span>
                         </div>
-                        <span style="font-size: 0.85rem; font-weight: 700; color: var(--secondary);" id="foliarTanksCount"></span>
+                        <span style="font-size:0.85rem; font-weight:700; color:var(--secondary);" id="foliarFluidInfo"></span>
                     </div>
-                    <div id="foliarBody"></div>
+                    <div id="foliarContent"></div>
                 </div>
 
-                <!-- Lake Water & Agronomy Footnote Card -->
-                <div class="water-card">
-                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                        <span style="font-size: 0.88rem; font-weight: 600; color: var(--text-main);">
-                            💧 На ваши <strong id="summaryAreaText">14.0 соток</strong> расход рабочей жидкости по листу: <strong id="summaryFluidText" style="color:var(--secondary);">~42 л</strong> (~3 заправки ранца).
-                        </span>
-                        <span style="font-size: 0.84rem; font-weight: 700; color: var(--text-muted);">
-                            Озёрная вода (pH 7.8–8.5) подкисляется кислотой до 5.8–6.2
-                        </span>
-                    </div>
-                </div>
+                <!-- Action: Log Feeding for Today -->
+                <button type="button" class="main-action-btn btn-log" id="logTodayBtn">
+                    ✅ Записать этот полив в журнал
+                </button>
 
-                <!-- Actions -->
-                <div class="actions-bar">
-                    <button class="btn-action btn-primary" id="printJobBtn">
-                        🖨️ Распечатать наряд на полив / PDF
-                    </button>
-                    <button class="btn-action btn-secondary" id="savePresetBtn">
-                        💾 Запомнить параметры участка
-                    </button>
-                </div>
+                <!-- Print Action Button -->
+                <button type="button" class="main-action-btn" id="printBtn" style="background:var(--bg-card); color:var(--text-main); border:2px solid var(--border-light); box-shadow:none;">
+                    🖨️ Распечатать наряд на полив / PDF
+                </button>
             </main>
-        </div>
 
-        <!-- Handbook Modal -->
-        <div class="modal" id="handbookModal">
-            <div class="modal-card">
-                <div class="modal-top">
-                    <h3 class="modal-title">Справочник удобрений и препаратов (Agrostrimedit)</h3>
-                    <button class="modal-close" id="closeHandbookBtn">&times;</button>
+            <!-- Tab: Protection & SZR Waiting Times -->
+            <div class="tab-page" id="szrPage">
+                <div class="card">
+                    <div class="card-title">
+                        <span>🛡️ Календарь защиты и сроки ожидания (Каренция)</span>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">
+                        Срок ожидания — это минимальное количество дней от обработки до безопасного сбора ягоды на продажу:
+                    </p>
+
+                    <div class="szr-item">
+                        <div class="szr-top">
+                            <span class="szr-name">Свитч (Switch)</span>
+                            <span class="szr-wait">Ожидание: 7 дней</span>
+                        </div>
+                        <div class="szr-target">Серая гниль (Botrytis), антракноз. Обработка строго по цветению!</div>
+                    </div>
+
+                    <div class="szr-item">
+                        <div class="szr-top">
+                            <span class="szr-name">Сигнум (Signum)</span>
+                            <span class="szr-wait">Ожидание: 3 дня</span>
+                        </div>
+                        <div class="szr-target">Серая гниль, мучнистая роса. Мягкий препарат с коротким сроком.</div>
+                    </div>
+
+                    <div class="szr-item">
+                        <div class="szr-top">
+                            <span class="szr-name">Вертимек / Маврик</span>
+                            <span class="szr-wait">Ожидание: 7–10 дней</span>
+                        </div>
+                        <div class="szr-target">Трипс и земляничный клещ. Применять ТОЛЬКО до массового созревания ягод!</div>
+                    </div>
+
+                    <div class="szr-item">
+                        <div class="szr-top">
+                            <span class="szr-name">Актофит / Фитоверм (Био)</span>
+                            <span class="szr-wait" style="background:var(--secondary-light); color:var(--secondary);">Ожидание: 2 дня</span>
+                        </div>
+                        <div class="szr-target">Биопрепарат от трипса и клеща прямо во время сбора урожая. Безопасно.</div>
+                    </div>
+
+                    <div class="szr-item">
+                        <div class="szr-top">
+                            <span class="szr-name">Фитоспорин / Триходерма (Био)</span>
+                            <span class="szr-wait" style="background:var(--secondary-light); color:var(--secondary);">Ожидание: 0 дней</span>
+                        </div>
+                        <div class="szr-target">Биозащита от гнили. Можно обрабатывать за день до сбора ягоды.</div>
+                    </div>
                 </div>
-                <div class="modal-body" id="handbookContent"></div>
+            </div>
+
+            <!-- Tab: Agronomist Journal -->
+            <div class="tab-page" id="journalPage">
+                <div class="card">
+                    <div class="card-title">
+                        <span>📝 Журнал поливов и подкормок</span>
+                        <button type="button" id="clearJournalBtn" style="background:transparent; border:none; color:var(--primary); font-size:0.8rem; font-weight:800; cursor:pointer;">Очистить</button>
+                    </div>
+                    <div id="journalListContainer">
+                        <p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">
+                            В журнале пока нет записей. Нажмите зелёную кнопку «Записать полив» на главном экране!
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <footer>
-            <p>Технологическая карта Agrostrimedit SRL (Кишинёв, Молдова) • Профессиональная программа питания клубники II и III года</p>
-        </footer>
+        <!-- Mobile Bottom Navigation Bar -->
+        <nav class="mobile-nav-bar">
+            <button type="button" class="nav-item active" id="tabFertBtn">
+                <span class="nav-item-icon">🍓</span>
+                <span>Питание</span>
+            </button>
+            <button type="button" class="nav-item" id="tabParamsBtn">
+                <span class="nav-item-icon">⚙️</span>
+                <span>Поле</span>
+            </button>
+            <button type="button" class="nav-item" id="tabSzrBtn">
+                <span class="nav-item-icon">🛡️</span>
+                <span>Защита</span>
+            </button>
+            <button type="button" class="nav-item" id="tabJournalBtn">
+                <span class="nav-item-icon">📝</span>
+                <span>Журнал</span>
+            </button>
+            <button type="button" class="nav-item" id="tabHandbookNavBtn">
+                <span class="nav-item-icon">📖</span>
+                <span>Справочник</span>
+            </button>
+        </nav>
+
+        <!-- Handbook Modal -->
+        <div class="handbook-modal" id="handbookModal">
+            <div class="handbook-paper">
+                <div class="handbook-top">
+                    <h3>Справочник препаратов Agrostrimedit</h3>
+                    <button class="handbook-close" id="closeHandbookModal">&times;</button>
+                </div>
+                <div class="handbook-scroll" id="handbookScroll"></div>
+            </div>
+        </div>
     </div>
 
+    <!-- Application Script -->
     <script>
         const AGRO_STAGES = {
             growth: {
                 id: "growth",
-                title: "I. Отрастание цветоносов",
-                subtitle: "Температура почвы +8...+10 °C",
+                title: "I. Отрастание",
+                subtitle: "+8...+10 °C в почве",
                 icon: "🌱",
                 weeks: {
                     1: {
                         week: 1,
                         targetEC: "1.0 – 1.2 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Начало сезона: корни только просыпаются в холодной почве. Держите ЕС мягким (1.0–1.2), чтобы не обжечь молодые волоски корней.",
+                        ecAdvice: "Начало сезона: корни нежные, держите ЕС мягким (1.0–1.2), чтобы не обжечь молодые волоски корней.",
+                        compatNotice: "На 1-й неделе кальциевая селитра не вносится. Всё питание идёт через Бак А (МКФ, селитры, Rhyzo).",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
                             { id: "nh4no3", name: "Аммиачная селитра (NH4NO3)", formula: "34.4% N", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "rhyzo", name: "Rhyzo (укоренитель/ризосфера)", formula: "Биостимулятор корней", normHa: 1, unit: "кг", tank: "B" }
+                            { id: "rhyzo", name: "Rhyzo (укоренитель/ризосфера)", formula: "Биостимулятор корней", normHa: 1, unit: "кг", tank: "A" }
                         ],
                         foliar: null
                     },
@@ -1157,13 +1133,14 @@
                         week: 2,
                         targetEC: "1.2 – 1.3 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Активный рост молодых листьев. Включается кальциевая селитра в Бочку А и Bombardier в Бочку Б для активации микрофлоры.",
+                        ecAdvice: "Активный рост молодых листьев. Включается кальциевая селитра в Бак Б и Bombardier в Бак А.",
+                        compatNotice: "Внимание: в Баке Б растворяется ТОЛЬКО Кальциевая селитра. Всё остальное — в Бак А!",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
                             { id: "nh4no3", name: "Аммиачная селитра (NH4NO3)", formula: "34.4% N", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты + аминокислоты", normHa: 7, unit: "л", tank: "B" }
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты + аминокислоты", normHa: 7, unit: "л", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     },
@@ -1171,12 +1148,13 @@
                         week: 3,
                         targetEC: "1.2 – 1.4 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Выдвижение цветоносов. Обязательна первая листовая обработка (Amifort + Fruka) для защиты от температурных стрессов.",
+                        ecAdvice: "Выдвижение цветоносов. Обязательна первая листовая обработка (Amifort + Fruka) для защиты от перепадов температур.",
+                        compatNotice: "Кальций — в Бак Б, фосфор и селитры — в Бак А. Опрыскивание Amifort + Fruka проводится отдельно по листу!",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
                             { id: "nh4no3", name: "Аммиачная селитра (NH4NO3)", formula: "34.4% N", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" }
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: [
                             { id: "amifort", name: "Amifort (аминокислоты/антистресс)", normHa: 3, unit: "л" },
@@ -1187,20 +1165,21 @@
             },
             flowering: {
                 id: "flowering",
-                title: "II. Цветение и завязывание",
-                subtitle: "Бутонизация, цветение, образование ягод",
+                title: "II. Цветение",
+                subtitle: "Бутонизация и завязь",
                 icon: "🌸",
                 weeks: {
                     1: {
                         week: 1,
                         targetEC: "1.3 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Бутонизация и раскрытие первых цветков. Подключается Teraflex S с микроэлементами. Fruka по листу улучшает прорастание пыльцы.",
+                        ecAdvice: "Бутонизация и цветение. В Бак А идёт Teraflex S с микроэлементами. Fruka по листу улучшает опыление.",
+                        compatNotice: "Teraflex S содержит фосфаты и серу — строго в Бак А! В Бак Б только Кальций.",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S (спец. для ягод)", formula: "NPK + Micro", normHa: 30, unit: "кг", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S (спец. для ягод)", formula: "NPK + Micro", normHa: 30, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: [
                             { id: "fruka", name: "Fruka (стимулятор цветения/микроэлементы)", normHa: 1, unit: "кг" }
@@ -1211,11 +1190,12 @@
                         targetEC: "1.4 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Массовое цветение и завязывание. Кальций формирует плотную клеточную структуру будущей ягоды.",
+                        compatNotice: "В Бак Б — только Кальций. В Бак А — Терафлекс, МКФ и калий.",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S (спец. для ягод)", formula: "NPK + Micro", normHa: 30, unit: "кг", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S (спец. для ягод)", formula: "NPK + Micro", normHa: 30, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: [
                             { id: "amifort", name: "Amifort (аминокислоты)", normHa: 3, unit: "л" },
@@ -1226,22 +1206,23 @@
             },
             fruiting: {
                 id: "fruiting",
-                title: "III. Созревание и сбор",
-                subtitle: "Налив ягод, сахаристость и сбор урожая",
+                title: "III. Сбор ягоды",
+                subtitle: "Налив и сахаристость",
                 icon: "🍓",
                 weeks: {
                     1: {
                         week: 1,
                         targetEC: "1.5 – 1.6 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Налив первых ягод. Добавляется магниевая селитра для стимуляции фотосинтеза при растущей нагрузке урожаем.",
+                        ecAdvice: "Налив первых ягод. Магниевая селитра стимулирует фотосинтез при высокой нагрузке ягодой.",
+                        compatNotice: "Бак А: МКФ, калий, магний, Терафлекс и Bombardier. Бак Б: только Кальций.",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 20, unit: "кг", tank: "B" },
-                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "B" },
-                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 20, unit: "кг", tank: "A" },
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     },
@@ -1249,13 +1230,14 @@
                         week: 2,
                         targetEC: "1.5 – 1.7 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Массовый налив и первые спелые ягоды. Калий (KNO3) отвечает за сладость и аромат. Листовая подкормка Amifort снимает стресс.",
+                        ecAdvice: "Массовый налив и первые спелые ягоды. Калий (KNO3) отвечает за сладость и плотность.",
+                        compatNotice: "Кальций защищает ягоду от серой гнили и мягкости — держите его отдельно в Баке Б.",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" },
-                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: [
                             { id: "amifort", name: "Amifort (аминокислоты/листовое питание)", normHa: 3, unit: "л" }
@@ -1265,13 +1247,14 @@
                         week: 3,
                         targetEC: "1.6 – 1.8 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Пик плодоношения. Высокий ЕС даёт плотную транспортабельную ягоду с высоким сахаром (Brix). В жару выше +30°C держите ЕС около 1.4–1.5.",
+                        ecAdvice: "Пик сбора ягоды. Высокий ЕС даёт плотную сладкую ягоду. В сильную жару (>30°C) держите ЕС около 1.4–1.5.",
+                        compatNotice: "На пике сбора доза кальция увеличена до 15 кг/га в Бак Б.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" },
-                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "B" },
-                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     },
@@ -1280,10 +1263,11 @@
                         targetEC: "1.5 – 1.7 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Продолжение сбора урожая. Кальций 15 кг/га предотвращает размягчение ягоды в жару.",
+                        compatNotice: "Бак А: калиевая селитра + Терафлекс. Бак Б: 15 кг/га кальциевой селитры.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     },
@@ -1291,12 +1275,13 @@
                         week: 5,
                         targetEC: "1.4 – 1.6 mS/cm",
                         targetPH: "5.8 – 6.2",
-                        ecAdvice: "Вторая волна сбора. Повторный ввод Bombardier поддерживает микрофлору и корни при длительной нагрузке.",
+                        ecAdvice: "Вторая волна сбора. Повторный ввод Bombardier поддерживает микрофлору и корни.",
+                        compatNotice: "Bombardier добавляется в Бак А к калию и Терафлексу. В Баке Б — чистый кальций.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "B" },
-                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 15, unit: "кг", tank: "A" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 15, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     },
@@ -1305,10 +1290,11 @@
                         targetEC: "1.3 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Завершающие сборы. Дозировки плавно снижаются, подготавливая растения к послеуборочному периоду.",
+                        compatNotice: "Завершение сбора. Бак А: калий + Терафлекс. Бак Б: кальций.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 10, unit: "кг", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     }
@@ -1316,20 +1302,21 @@
             },
             budding: {
                 id: "budding",
-                title: "IV. Закладка почек",
-                subtitle: "Август-Сентябрь (задел под будущий сезон)",
+                title: "IV. Почки",
+                subtitle: "Август-Сентябрь",
                 icon: "🍂",
                 weeks: {
                     1: {
                         week: 1,
                         targetEC: "1.2 – 1.4 mS/cm",
                         targetPH: "6.0 – 6.4",
-                        ecAdvice: "Закладка цветоносов на следующий год. Высокий фосфор (MKP 13 кг/га) стимулирует дифференциацию генеративных почек.",
+                        ecAdvice: "Закладка цветоносов на следующий год. Высокий фосфор (MKP 13 кг/га) стимулирует закладку урожая.",
+                        compatNotice: "Фосфор (MKP) строго в Бак А, Кальций — в Бак Б.",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 13, unit: "кг", tank: "B" },
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 13, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 5, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 5, unit: "кг", tank: "B" }
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 5, unit: "кг", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 5, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     },
@@ -1338,11 +1325,12 @@
                         targetEC: "1.2 – 1.3 mS/cm",
                         targetPH: "6.0 – 6.4",
                         ecAdvice: "Укрепление корневой шейки и корней перед осенним охлаждением почвы.",
+                        compatNotice: "Бак А: MKP + Терафлекс + Bombardier. Бак Б: Кальциевая селитра.",
                         fertilizers: [
-                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "B" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "A" },
-                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 5, unit: "кг", tank: "B" },
-                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "B" }
+                            { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
+                            { id: "teraflex", name: "Teraflex S", formula: "NPK + Micro", normHa: 5, unit: "кг", tank: "A" },
+                            { id: "bombardier", name: "Bombardier (биостимулятор)", formula: "Фульвокислоты", normHa: 7, unit: "л", tank: "A" },
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 10, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     },
@@ -1350,11 +1338,12 @@
                         week: 3,
                         targetEC: "1.1 – 1.3 mS/cm",
                         targetPH: "6.0 – 6.4",
-                        ecAdvice: "Финальная подкормка сезона. Калий и магний повышают зимостойкость и предотвращают вымерзание сердечка куста.",
+                        ecAdvice: "Финальная подкормка сезона. Калий и магний повышают зимостойкость сердечка куста.",
+                        compatNotice: "Завершающий осенний полив: Бак А (магний и калиевая селитра), Бак Б (кальциевая селитра).",
                         fertilizers: [
-                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 5, unit: "кг", tank: "B" },
+                            { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 5, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
-                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 5, unit: "кг", tank: "A" }
+                            { id: "cano3", name: "Кальциевая селитра (Ca(NO3)2)", formula: "15.5% N, 26.5% CaO", normHa: 5, unit: "кг", tank: "B" }
                         ],
                         foliar: null
                     }
@@ -1366,69 +1355,67 @@
             {
                 name: "Монокалийфосфат (MKP)",
                 formula: "0-52-34 (KH2PO4)",
-                desc: "Высококонцентрированное фосфорно-калийное водорастворимое удобрение. Стимулирует мощное развитие корневой системы на старте, закладку цветоносов и цветение. Вносится строго в Бочку Б."
+                desc: "Высококонцентрированное фосфорно-калийное удобрение. Вносится строго в БАК А (вместе с NPK), ни в коем случае не с кальцием!"
             },
             {
                 name: "Калиевая селитра (KNO3)",
                 formula: "13-0-46",
-                desc: "Идеальный источник легкодоступного нитратного азота и калия. Отвечает за налив ягод, накопление сахаров (Brix), плотность мякоти и товарный вид. Отлично сочетается с кальциевой селитрой в Бочке А."
+                desc: "Источник нитратного азота и калия. Отвечает за налив ягод, сахаристость (Brix) и плотность. Вносится в Бак А."
             },
             {
                 name: "Кальциевая селитра (Ca(NO3)2)",
                 formula: "15.5% N, 26.5% CaO",
-                desc: "Фундаментальный элемент для клубники. Укрепляет стенки клеток, защищает от серой гнили (ботритиса), предотвращает размягчение ягоды при сборе. Нельзя смешивать с сульфатами и фосфатами (выпадает гипс)! Вносится в Бочку А."
+                desc: "Фундаментальный элемент для клубники. Укрепляет стенки клеток, защищает от серой гнили. Растворяется строго изолированно в БАКЕ Б."
             },
             {
                 name: "Магниевая селитра (Mg(NO3)2)",
                 formula: "11% N, 16% MgO",
-                desc: "Магний входит в состав хлорофилла и активирует фотосинтез. Предотвращает межжилковый хлороз листьев, особенно при высокой нагрузке ягодой. Вносится в Бочку Б."
+                desc: "Магний активирует фотосинтез и предотвращает хлороз листьев при нагрузке ягодой. Вносится в Бак А."
             },
             {
                 name: "Аммиачная селитра (NH4NO3)",
                 formula: "34.4% N",
-                desc: "Быстрый весенний старт вегетации при холодной почве (+8...+10 °C). Содержит как аммонийный, так и нитратный азот. Вносится в Бочку А."
+                desc: "Быстрый весенний старт вегетации при холодной почве (+8...+10 °C). Вносится в Бак А."
             },
             {
                 name: "Teraflex S (Терафлекс Ягодный)",
                 formula: "Комплекс NPK + Micro",
-                desc: "Специализированное сбалансированное хелатное водорастворимое удобрение, разработанное специально для клубники и ягодных культур. Вносится в Бочку Б."
+                desc: "Сбалансированное хелатное удобрение для ягодных культур. Вносится строго в Бак А."
             },
             {
                 name: "Bombardier (Бомбардир)",
                 formula: "Фульвокислоты + аминокислоты",
-                desc: "Мощный органический почвенный биостимулятор природного происхождения. Улучшает микрофлору почвы, снимает пестицидный стресс, стимулирует поглощение минеральных элементов. Вносится в Бочку Б."
+                desc: "Органический почвенный биостимулятор. Улучшает микрофлору, стимулирует поглощение элементов. Вносится в Бак А."
             },
             {
                 name: "Rhyzo (Ризо)",
                 formula: "Стимулятор ризосферы",
-                desc: "Специализированный укоренитель для активного пробуждения и деления клеток корневой системы в начале сезона."
+                desc: "Укоренитель для активного деления клеток корневой системы в начале сезона. Вносится в Бак А."
             },
             {
                 name: "Amifort (Амифорт)",
                 formula: "Аминокислоты по листу",
-                desc: "Листовой антистрессант и стимулятор. Повышает иммунитет растений при перепадах температур и засухе, усиливает фотосинтез."
+                desc: "Листовой антистрессант. Повышает иммунитет при перепадах температур и засухе."
             },
             {
                 name: "Fruka (Фрука)",
                 formula: "Бор, цинк, молибден + стимуляторы",
-                desc: "Листовой комплекс для стимулирования опыления, прорастания пыльцы, дружного цветения и устранения искривления ягод."
+                desc: "Листовой комплекс для стимулирования опыления, цветения и устранения деформации ягод."
             }
         ];
 
         // State
         let currentStage = 'growth';
         let currentWeek = 1;
-        let displayMode = 'tanks';
+        let isHeatMode = false;
+        let journalEntries = [];
 
         // DOM Inputs
         const bedLengthInput = document.getElementById('bedLength');
         const bedCountInput = document.getElementById('bedCount');
         const rowWidthInput = document.getElementById('rowWidth');
-        const linesPerRowSelect = document.getElementById('linesPerRow');
-        const plantStepInput = document.getElementById('plantStep');
-        const calcBasisSelect = document.getElementById('calcBasis');
-        const barrelVolumeInput = document.getElementById('barrelVolume');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
+        const heatModeToggle = document.getElementById('heatModeToggle');
 
         // Metrics Display
         const metricTape = document.getElementById('metricTape');
@@ -1439,59 +1426,63 @@
         const targetEcVal = document.getElementById('targetEcVal');
         const targetPhVal = document.getElementById('targetPhVal');
         const targetEcAdvice = document.getElementById('targetEcAdvice');
+        const compatNoticeText = document.getElementById('compatNoticeText');
 
         // Containers
-        const stageButtonsContainer = document.getElementById('stageButtonsContainer');
-        const weekChipsContainer = document.getElementById('weekChipsContainer');
+        const stageSelector = document.getElementById('stageSelector');
+        const weekSelector = document.getElementById('weekSelector');
         const tankABody = document.getElementById('tankABody');
         const tankBBody = document.getElementById('tankBBody');
-        const tankATotalWeight = document.getElementById('tankATotalWeight');
-        const tankBTotalWeight = document.getElementById('tankBTotalWeight');
-        const tanksResultContainer = document.getElementById('tanksResultContainer');
-        const foliarSection = document.getElementById('foliarSection');
-        const foliarBody = document.getElementById('foliarBody');
-        const foliarTanksCount = document.getElementById('foliarTanksCount');
-        const summaryAreaText = document.getElementById('summaryAreaText');
-        const summaryFluidText = document.getElementById('summaryFluidText');
+        const tankAWeight = document.getElementById('tankAWeight');
+        const tankBWeight = document.getElementById('tankBWeight');
+        const foliarBox = document.getElementById('foliarBox');
+        const foliarContent = document.getElementById('foliarContent');
+        const foliarFluidInfo = document.getElementById('foliarFluidInfo');
 
         function initApp() {
             loadSavedSettings();
+            loadJournal();
             renderStages();
             renderWeeks();
             calculateAll();
             setupEventListeners();
             setupHandbook();
+            setupNavigationTabs();
         }
 
         function setupEventListeners() {
-            const inputs = [
-                bedLengthInput, bedCountInput, rowWidthInput, linesPerRowSelect, 
-                plantStepInput, calcBasisSelect, barrelVolumeInput, sprayerVolumeInput
-            ];
-
-            inputs.forEach(el => {
+            [bedLengthInput, bedCountInput, rowWidthInput, sprayerVolumeInput].forEach(el => {
                 if (el) el.addEventListener('input', calculateAll);
             });
 
-            document.getElementById('modeTanksBtn').addEventListener('click', () => setDisplayMode('tanks'));
-            document.getElementById('modeDaysBtn').addEventListener('click', () => setDisplayMode('days'));
-            document.getElementById('modeAllBtn').addEventListener('click', () => setDisplayMode('all'));
-
-            document.getElementById('savePresetBtn').addEventListener('click', () => {
-                saveSettings();
-                alert('Параметры плантации успешно сохранены в памяти браузера!');
+            heatModeToggle?.addEventListener('change', (e) => {
+                isHeatMode = e.target.checked;
+                calculateAll();
             });
 
-            document.getElementById('printJobBtn').addEventListener('click', () => {
-                const stage = AGRO_STAGES[currentStage];
-                const area = (getCalculatedArea() / 100).toFixed(1);
-                document.getElementById('printMeta').textContent = 
-                    `${stage.title} • Неделя ${currentWeek} | Участок: ${area} соток (${getCalculatedPlants().toLocaleString('ru-RU')} кустов) | Целевой EC: ${stage.weeks[currentWeek].targetEC} | Дата: ${new Date().toLocaleDateString('ru-RU')}`;
+            document.getElementById('saveParamsBtn')?.addEventListener('click', () => {
+                saveSettings();
+                alert('Параметры участка сохранены!');
+            });
+
+            document.getElementById('logTodayBtn')?.addEventListener('click', () => {
+                addJournalEntry();
+            });
+
+            document.getElementById('clearJournalBtn')?.addEventListener('click', () => {
+                if (confirm('Очистить все записи журнала?')) {
+                    journalEntries = [];
+                    localStorage.removeItem('starberry_journal');
+                    renderJournal();
+                }
+            });
+
+            document.getElementById('printBtn')?.addEventListener('click', () => {
                 window.print();
             });
 
             const themeBtn = document.getElementById('themeToggleBtn');
-            themeBtn.addEventListener('click', () => {
+            themeBtn?.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', newTheme);
@@ -1502,35 +1493,47 @@
             const savedTheme = localStorage.getItem('starberry_theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
-                themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+                if (themeBtn) themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
             }
         }
 
-        function setDisplayMode(mode) {
-            displayMode = mode;
-            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-            if (mode === 'tanks') document.getElementById('modeTanksBtn').classList.add('active');
-            if (mode === 'days') document.getElementById('modeDaysBtn').classList.add('active');
-            if (mode === 'all') document.getElementById('modeAllBtn').classList.add('active');
-            calculateAll();
+        function setupNavigationTabs() {
+            const tabs = [
+                { btn: 'tabFertBtn', page: 'calcPage' },
+                { btn: 'tabParamsBtn', page: 'paramsPage' },
+                { btn: 'tabSzrBtn', page: 'szrPage' },
+                { btn: 'tabJournalBtn', page: 'journalPage' }
+            ];
+
+            tabs.forEach(t => {
+                const b = document.getElementById(t.btn);
+                b?.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                    document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
+                    b.classList.add('active');
+                    document.getElementById(t.page)?.classList.add('active-page');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            document.getElementById('tabHandbookNavBtn')?.addEventListener('click', () => {
+                document.getElementById('handbookModal')?.classList.add('open');
+            });
         }
 
         function renderStages() {
-            stageButtonsContainer.innerHTML = '';
+            stageSelector.innerHTML = '';
             Object.values(AGRO_STAGES).forEach(stage => {
                 const weeksCount = Object.keys(stage.weeks).length;
                 const btn = document.createElement('div');
-                btn.className = `stage-btn ${stage.id === currentStage ? 'active' : ''}`;
-                btn.dataset.stageId = stage.id;
+                btn.className = `stage-card-btn ${stage.id === currentStage ? 'active' : ''}`;
                 btn.innerHTML = `
-                    <div class="stage-btn-header">
-                        <span class="stage-btn-icon">${stage.icon}</span>
-                        <span class="stage-btn-weeks">${weeksCount} нед.</span>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span class="stage-card-icon">${stage.icon}</span>
+                        <span class="stage-card-weeks">${weeksCount} нед.</span>
                     </div>
-                    <div>
-                        <div class="stage-btn-title">${stage.title}</div>
-                        <div class="stage-btn-subtitle">${stage.subtitle}</div>
-                    </div>
+                    <div class="stage-card-title">${stage.title}</div>
+                    <div class="stage-card-weeks">${stage.subtitle}</div>
                 `;
                 btn.addEventListener('click', () => {
                     currentStage = stage.id;
@@ -1539,42 +1542,41 @@
                     renderWeeks();
                     calculateAll();
                 });
-                stageButtonsContainer.appendChild(btn);
+                stageSelector.appendChild(btn);
             });
         }
 
         function renderWeeks() {
-            weekChipsContainer.innerHTML = '';
+            weekSelector.innerHTML = '';
             const stage = AGRO_STAGES[currentStage];
             Object.keys(stage.weeks).forEach(w => {
                 const weekNum = parseInt(w);
-                const chip = document.createElement('button');
-                chip.className = `week-chip ${weekNum === currentWeek ? 'active' : ''}`;
-                chip.textContent = `Неделя ${weekNum}`;
-                chip.addEventListener('click', () => {
+                const btn = document.createElement('button');
+                btn.className = `week-btn ${weekNum === currentWeek ? 'active' : ''}`;
+                btn.textContent = `Неделя ${weekNum}`;
+                btn.addEventListener('click', () => {
                     currentWeek = weekNum;
                     renderWeeks();
                     calculateAll();
                 });
-                weekChipsContainer.appendChild(chip);
+                weekSelector.appendChild(btn);
             });
         }
 
         function getCalculatedArea() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
-            const width = parseFloat(rowWidthInput.value) || 1.4;
+            const width = parseFloat(rowWidthInput.value) || 1.35;
             return Math.round(length * count * width * 100) / 100;
         }
 
         function getCalculatedPlants() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
-            const lines = parseInt(linesPerRowSelect?.value) || 2;
-            const stepMeters = (parseFloat(plantStepInput?.value) || 19) / 100;
-            const totalTape = length * count;
-            if (stepMeters <= 0) return 0;
-            return Math.round((totalTape * lines) / stepMeters);
+            const totalBedMeters = length * count;
+            const lines = 2;
+            const stepMeters = 0.25;
+            return Math.round((totalBedMeters * lines) / stepMeters);
         }
 
         function calculateAll() {
@@ -1585,184 +1587,123 @@
             const areaSotkas = (areaM2 / 100).toFixed(1);
             const totalPlants = getCalculatedPlants();
 
-            // Calculation basis: by pure area vs plants density
-            const STANDARD_HA_PLANTS = 45000;
-            const basis = calcBasisSelect?.value || 'area';
-            const basisHint = document.getElementById('basisHintText');
-            
-            let effectiveHaRatio = areaM2 / 10000;
-            if (basis === 'plants') {
-                effectiveHaRatio = totalPlants / STANDARD_HA_PLANTS;
-                if (basisHint) basisHint.textContent = `Расчёт по кустам: норма пересчитана на ${totalPlants.toLocaleString('ru-RU')} кустов`;
-            } else {
-                if (basisHint) basisHint.textContent = `Расчёт по площади: ${areaSotkas} соток (${areaM2} м²). Ширина междурядья меняет граммы.`;
+            // Direct area ratio from 1 hectare (10,000 m2)
+            let haRatio = areaM2 / 10000;
+
+            // In Heat mode, fertilizer concentration is reduced by 25% to protect roots from osmotic stress
+            if (isHeatMode) {
+                haRatio = haRatio * 0.75;
             }
 
-            const tankDist = document.getElementById('tankDistribution')?.value || 'split_nitrates';
-
-            // Plantation Metrics
+            // Metrics Display
             if (metricTape) metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
             if (metricArea) metricArea.textContent = areaSotkas;
             if (metricPlants) metricPlants.textContent = totalPlants.toLocaleString('ru-RU');
-
-            const bVol = barrelVolumeInput?.value || 160;
 
             // Fertigation Data
             const stage = AGRO_STAGES[currentStage];
             const weekData = stage.weeks[currentWeek];
             if (!weekData) return;
 
-            // Update Target EC and pH Monitor
-            if (targetEcVal) targetEcVal.textContent = weekData.targetEC;
+            // Target EC & pH Monitor
+            if (targetEcVal) {
+                if (isHeatMode) {
+                    targetEcVal.textContent = "1.1 – 1.3 mS/cm (ЖАРА)";
+                } else {
+                    targetEcVal.textContent = weekData.targetEC;
+                }
+            }
             if (targetPhVal) targetPhVal.textContent = weekData.targetPH;
-            if (targetEcAdvice) targetEcAdvice.textContent = weekData.ecAdvice;
+            if (targetEcAdvice) {
+                if (isHeatMode) {
+                    targetEcAdvice.innerHTML = "🔥 <strong style='color:#b45309;'>Включен режим жары:</strong> дозировка солей снижена на 25%. Поливайте рано утром (до 8:00) или вечером. Увеличьте пролив чистой водой.";
+                } else {
+                    targetEcAdvice.textContent = weekData.ecAdvice;
+                }
+            }
+            if (compatNoticeText) compatNoticeText.textContent = weekData.compatNotice || "";
 
             let tankAItems = [];
             let tankBItems = [];
-            let allItems = [];
-            let totalFertGrams = 0;
             let tankAWeightGrams = 0;
             let tankBWeightGrams = 0;
 
             weekData.fertilizers.forEach(fert => {
-                const exactDoseKg = fert.normHa * effectiveHaRatio;
+                const exactDoseKg = fert.normHa * haRatio;
                 let displayDose = "";
                 let gramVal = exactDoseKg * 1000;
-                totalFertGrams += gramVal;
 
                 if (fert.unit === 'л') {
-                    const exactDoseL = fert.normHa * effectiveHaRatio;
-                    if (exactDoseL < 1) {
-                        displayDose = `${Math.round(exactDoseL * 1000)} мл`;
-                    } else {
-                        displayDose = `${exactDoseL.toFixed(2)} л`;
-                    }
+                    const exactDoseL = fert.normHa * haRatio;
+                    displayDose = exactDoseL < 1 ? `${Math.round(exactDoseL * 1000)} мл` : `${exactDoseL.toFixed(2)} л`;
                 } else {
-                    if (exactDoseKg < 1) {
-                        displayDose = `${Math.round(exactDoseKg * 1000)} г`;
-                    } else {
-                        displayDose = `${exactDoseKg.toFixed(2)} кг (${Math.round(exactDoseKg * 1000)} г)`;
-                    }
+                    displayDose = exactDoseKg < 1 ? `${Math.round(exactDoseKg * 1000)} г` : `${exactDoseKg.toFixed(2)} кг (${Math.round(exactDoseKg * 1000)} г)`;
                 }
 
                 const itemData = {
                     name: fert.name,
                     formula: fert.formula,
                     dose: displayDose,
-                    normHa: `${fert.normHa} ${fert.unit}/га`,
-                    tank: fert.tank
+                    normHa: `${fert.normHa} ${fert.unit}/га`
                 };
 
-                allItems.push(itemData);
-                // Tank distribution logic:
-                let targetTank = fert.tank;
-                if (tankDist === 'solo_calcium') {
-                    // In solo_calcium mode, Tank A has ONLY Calcium nitrate!
-                    // KNO3 and NH4NO3 go to Tank B with MKP and Teraflex
-                    if (fert.id === 'cano3') {
-                        targetTank = 'A';
-                    } else {
-                        targetTank = 'B';
-                    }
-                }
-
-                if (targetTank === 'A') {
-                    tankAItems.push(itemData);
-                    tankAWeightGrams += gramVal;
-                } else {
+                if (fert.id === 'cano3') {
                     tankBItems.push(itemData);
                     tankBWeightGrams += gramVal;
+                } else {
+                    tankAItems.push(itemData);
+                    tankAWeightGrams += gramVal;
                 }
             });
 
             // Update Tank Header Totals
-            if (tankATotalWeight) tankATotalWeight.textContent = tankAWeightGrams >= 1000 ? `${(tankAWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankAWeightGrams)} г`;
-            if (tankBTotalWeight) tankBTotalWeight.textContent = tankBWeightGrams >= 1000 ? `${(tankBWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankBWeightGrams)} г`;
+            if (tankAWeight) tankAWeight.textContent = tankAWeightGrams >= 1000 ? `${(tankAWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankAWeightGrams)} г`;
+            if (tankBWeight) tankBWeight.textContent = tankBWeightGrams >= 1000 ? `${(tankBWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankBWeightGrams)} г`;
 
-            renderFertigationResults(tankAItems, tankBItems, allItems, bVol);
-            renderFoliarResults(weekData.foliar, effectiveHaRatio);
-
-            // Water Diagnostics text
-            const haFluidNormLiters = 300;
-            const plantationFluidLiters = haFluidNormLiters * (areaM2 / 10000);
-            const sprayerVolumeLiters = parseFloat(sprayerVolumeInput.value) || 16;
-            const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
-
-            if (summaryAreaText) summaryAreaText.textContent = `${areaSotkas} соток`;
-            if (summaryFluidText) summaryFluidText.textContent = `~${plantationFluidLiters.toFixed(1)} л (~${tanksNeeded} заправок ранца)`;
+            renderTankItems(tankABody, tankAItems);
+            renderTankItems(tankBBody, tankBItems);
+            renderFoliarItems(weekData.foliar, (areaM2 / 10000));
         }
 
-        function renderFertigationResults(tankA, tankB, all, bVol) {
-            tankABody.innerHTML = '';
-            tankBBody.innerHTML = '';
-
-            const tankDist = document.getElementById('tankDistribution')?.value || 'split_nitrates';
-            const tankATitle = document.getElementById('tankATitleText');
-            const tankBTitle = document.getElementById('tankBTitleText');
-
-            if (displayMode === 'tanks') {
-                tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 680 ? 'repeat(2, 1fr)' : '1fr';
-                if (tankDist === 'solo_calcium') {
-                    if (tankATitle) tankATitle.textContent = `📦 БОЧКА А (${bVol} л): ТОЛЬКО Кальций`;
-                    if (tankBTitle) tankBTitle.textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
-                } else {
-                    if (tankATitle) tankATitle.textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
-                    if (tankBTitle) tankBTitle.textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
-                }
-                populateTankList(tankABody, tankA);
-                populateTankList(tankBBody, tankB);
-                document.querySelector('.tank-b-header').parentElement.style.display = 'block';
-            } else if (displayMode === 'days') {
-                if (tankATitle) tankATitle.textContent = "📆 ДЕНЬ 1 (Полив кальцием и селитрой)";
-                if (tankBTitle) tankBTitle.textContent = "📆 ДЕНЬ 2 (Полив калием, фосфором и магнием)";
-                populateTankList(tankABody, tankA);
-                populateTankList(tankBBody, tankB);
-                document.querySelector('.tank-b-header').parentElement.style.display = 'block';
-            } else {
-                tanksResultContainer.style.gridTemplateColumns = '1fr';
-                if (tankATitle) tankATitle.textContent = "📋 ВСЕ УДОБРЕНИЯ НА ЭТУ НЕДЕЛЮ";
-                populateTankList(tankABody, all);
-                document.querySelector('.tank-b-header').parentElement.style.display = 'none';
-            }
-        }
-
-        function populateTankList(container, items) {
+        function renderTankItems(container, items) {
+            container.innerHTML = '';
             if (items.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.9rem;">В этот бак на текущей неделе препараты не вносятся.</div>`;
+                container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted); font-size: 0.88rem; font-weight:600;">В этот бак на текущей неделе препараты не вносятся.</div>`;
                 return;
             }
 
             items.forEach(item => {
                 const el = document.createElement('div');
-                el.className = 'fert-item';
+                el.className = 'fert-row';
                 el.innerHTML = `
                     <div>
-                        <div class="fert-name">${item.name}</div>
-                        <div class="fert-formula">${item.formula}</div>
+                        <div class="fert-title">${item.name}</div>
+                        <div class="fert-sub">${item.formula} • норма: ${item.normHa}</div>
                     </div>
-                    <div class="fert-amount-box">
-                        <div class="fert-amount">${item.dose}</div>
-                        <div class="fert-ha-norm">норма: ${item.normHa}</div>
+                    <div>
+                        <div class="fert-dose">${item.dose}</div>
                     </div>
                 `;
                 container.appendChild(el);
             });
         }
 
-        function renderFoliarResults(foliarData, haRatio) {
-            foliarBody.innerHTML = '';
+        function renderFoliarItems(foliarData, haRatio) {
+            foliarContent.innerHTML = '';
             if (!foliarData || foliarData.length === 0) {
-                foliarSection.style.display = 'none';
+                foliarBox.style.display = 'none';
                 return;
             }
 
-            foliarSection.style.display = 'block';
+            foliarBox.style.display = 'block';
             const sprayerVolumeLiters = parseFloat(sprayerVolumeInput.value) || 16;
             const haFluidNormLiters = 300;
             const plantationFluidLiters = haFluidNormLiters * haRatio;
             const tanksNeeded = Math.max(1, (plantationFluidLiters / sprayerVolumeLiters)).toFixed(1);
 
-            foliarTanksCount.textContent = `Расход на плантацию: ~${plantationFluidLiters.toFixed(1)} л (~${tanksNeeded} заправок)`;
+            if (foliarFluidInfo) {
+                foliarFluidInfo.textContent = `~${plantationFluidLiters.toFixed(1)} л на всё поле (~${tanksNeeded} заправок)`;
+            }
 
             foliarData.forEach(item => {
                 const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters;
@@ -1777,41 +1718,96 @@
                 }
 
                 const row = document.createElement('div');
-                row.className = 'fert-item';
+                row.className = 'fert-row';
                 row.innerHTML = `
                     <div>
-                        <div class="fert-name" style="color: var(--secondary);">✨ ${item.name}</div>
-                        <div class="fert-formula">Дозировка: <strong>${Math.round(dosePerSprayer)} ${item.unit === 'л' ? 'мл' : 'г'}</strong> на 1 опрыскиватель (${sprayerVolumeLiters} л)</div>
+                        <div class="fert-title" style="color: var(--secondary);">✨ ${item.name}</div>
+                        <div class="fert-sub">Дозировка: <strong>${Math.round(dosePerSprayer)} ${item.unit === 'л' ? 'мл' : 'г'}</strong> на 1 опрыскиватель (${sprayerVolumeLiters} л)</div>
                     </div>
-                    <div class="fert-amount-box">
-                        <div class="fert-amount" style="color: var(--secondary);">${totalDisplay}</div>
-                        <div class="fert-ha-norm">на всю площадь плантации</div>
+                    <div>
+                        <div class="fert-dose" style="color: var(--secondary);">${totalDisplay}</div>
+                        <div class="fert-norm-tag">на всё поле</div>
                     </div>
                 `;
-                foliarBody.appendChild(row);
+                foliarContent.appendChild(row);
             });
+        }
+
+        function addJournalEntry() {
+            const stage = AGRO_STAGES[currentStage];
+            const dateStr = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+            const entry = {
+                id: Date.now(),
+                date: dateStr,
+                stageTitle: stage.title,
+                weekNum: currentWeek,
+                tankA: tankAWeight.textContent,
+                tankB: tankBWeight.textContent,
+                isHeat: isHeatMode
+            };
+            journalEntries.unshift(entry);
+            saveJournal();
+            renderJournal();
+            alert('Полив успешно занесён в журнал агронома!');
+        }
+
+        function renderJournal() {
+            const list = document.getElementById('journalListContainer');
+            if (!list) return;
+            if (journalEntries.length === 0) {
+                list.innerHTML = `<p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">В журнале пока нет записей. Нажмите зелёную кнопку «Записать полив» на главном экране!</p>`;
+                return;
+            }
+
+            list.innerHTML = '';
+            journalEntries.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'log-entry';
+                el.innerHTML = `
+                    <div>
+                        <div class="log-date">${item.date} ${item.isHeat ? '🔥 ЖАРА' : ''}</div>
+                        <div class="log-title">${item.stageTitle} • Неделя ${item.weekNum}</div>
+                        <div class="log-sub">Бак А: ${item.tankA} | Бак Б (кальций): ${item.tankB}</div>
+                    </div>
+                `;
+                list.appendChild(el);
+            });
+        }
+
+        function saveJournal() {
+            localStorage.setItem('starberry_journal', JSON.stringify(journalEntries));
+        }
+
+        function loadJournal() {
+            const saved = localStorage.getItem('starberry_journal');
+            if (saved) {
+                try {
+                    journalEntries = JSON.parse(saved);
+                    renderJournal();
+                } catch(e) {}
+            }
         }
 
         function setupHandbook() {
             const modal = document.getElementById('handbookModal');
             const openBtn = document.getElementById('openHandbookBtn');
-            const closeBtn = document.getElementById('closeHandbookBtn');
-            const container = document.getElementById('handbookContent');
+            const closeBtn = document.getElementById('closeHandbookModal');
+            const scrollBox = document.getElementById('handbookScroll');
 
-            container.innerHTML = '';
+            scrollBox.innerHTML = '';
             FERTILIZERS_HANDBOOK.forEach(item => {
                 const el = document.createElement('div');
-                el.className = 'handbook-item';
+                el.className = 'handbook-entry';
                 el.innerHTML = `
-                    <div class="handbook-name">${item.name} <span class="handbook-formula">${item.formula}</span></div>
-                    <div class="handbook-desc">${item.desc}</div>
+                    <h4>${item.name} <span style="font-size:0.75rem; background:var(--bg-card-subtle); padding:2px 6px; border-radius:4px; font-weight:700;">${item.formula}</span></h4>
+                    <p>${item.desc}</p>
                 `;
-                container.appendChild(el);
+                scrollBox.appendChild(el);
             });
 
-            openBtn.addEventListener('click', () => modal.classList.add('open'));
-            closeBtn.addEventListener('click', () => modal.classList.remove('open'));
-            modal.addEventListener('click', (e) => {
+            openBtn?.addEventListener('click', () => modal?.classList.add('open'));
+            closeBtn?.addEventListener('click', () => modal?.classList.remove('open'));
+            modal?.addEventListener('click', (e) => {
                 if (e.target === modal) modal.classList.remove('open');
             });
         }
@@ -1821,29 +1817,19 @@
                 bedLength: bedLengthInput.value,
                 bedCount: bedCountInput.value,
                 rowWidth: rowWidthInput.value,
-                linesPerRow: linesPerRowSelect?.value || '2',
-                plantStep: plantStepInput?.value || '19',
-                calcBasis: calcBasisSelect?.value || 'area',
-                tankDist: document.getElementById('tankDistribution')?.value || 'solo_calcium',
-                barrelVolume: barrelVolumeInput.value,
                 sprayerVolume: sprayerVolumeInput.value
             };
-            localStorage.setItem('starberry_settings', JSON.stringify(settings));
+            localStorage.setItem('starberry_settings_v35', JSON.stringify(settings));
         }
 
         function loadSavedSettings() {
-            const saved = localStorage.getItem('starberry_settings');
+            const saved = localStorage.getItem('starberry_settings_v35');
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
                     if (parsed.bedLength) bedLengthInput.value = parsed.bedLength;
                     if (parsed.bedCount) bedCountInput.value = parsed.bedCount;
                     if (parsed.rowWidth) rowWidthInput.value = parsed.rowWidth;
-                    if (parsed.linesPerRow && linesPerRowSelect) linesPerRowSelect.value = parsed.linesPerRow;
-                    if (parsed.plantStep && plantStepInput) plantStepInput.value = parsed.plantStep;
-                    if (parsed.calcBasis && calcBasisSelect) calcBasisSelect.value = parsed.calcBasis;
-                    if (parsed.tankDist && document.getElementById('tankDistribution')) document.getElementById('tankDistribution').value = parsed.tankDist;
-                    if (parsed.barrelVolume) barrelVolumeInput.value = parsed.barrelVolume;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
                 } catch(e) {}
             }

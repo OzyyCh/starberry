@@ -974,8 +974,8 @@
                     <div class="form-group">
                         <label class="form-label">Распределение по бочкам:</label>
                         <select id="tankDistribution" class="form-input">
-                            <option value="solo_calcium" selected>В бочке кальция — ТОЛЬКО Кальций</option>
-                            <option value="split_nitrates">Калиевая селитра разделена между бочками</option>
+                            <option value="split_nitrates" selected>Бочка А: Кальций + Селитры | Бочка Б: Фосфор + Терафлекс</option>
+                            <option value="solo_calcium">В бочке А — ТОЛЬКО Кальциевая селитра</option>
                         </select>
                     </div>
 
@@ -1598,7 +1598,7 @@
                 if (basisHint) basisHint.textContent = `Расчёт по площади: ${areaSotkas} соток (${areaM2} м²). Ширина междурядья меняет граммы.`;
             }
 
-            const tankDist = document.getElementById('tankDistribution')?.value || 'solo_calcium';
+            const tankDist = document.getElementById('tankDistribution')?.value || 'split_nitrates';
 
             // Plantation Metrics
             if (metricTape) metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
@@ -1696,6 +1696,7 @@
             tankABody.innerHTML = '';
             tankBBody.innerHTML = '';
 
+            const tankDist = document.getElementById('tankDistribution')?.value || 'split_nitrates';
             const tankATitle = document.getElementById('tankATitleText');
             const tankBTitle = document.getElementById('tankBTitleText');
 

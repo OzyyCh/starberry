@@ -450,15 +450,20 @@ const AGRO_STAGES = {
             const areaSotkas = (areaM2 / 100).toFixed(1);
             const totalPlants = getCalculatedPlants();
 
-            // Calculation basis: by plants density vs pure area
-            // Standard strawberry density on 1 ha is ~45,000 plants
+            // Calculation basis: by pure area vs plants density
             const STANDARD_HA_PLANTS = 45000;
-            const basis = calcBasisSelect?.value || 'plants';
+            const basis = calcBasisSelect?.value || 'area';
+            const basisHint = document.getElementById('basisHintText');
             
             let effectiveHaRatio = areaM2 / 10000;
             if (basis === 'plants') {
                 effectiveHaRatio = totalPlants / STANDARD_HA_PLANTS;
+                if (basisHint) basisHint.textContent = `Расчёт по кустам: норма пересчитана на ${totalPlants.toLocaleString('ru-RU')} кустов`;
+            } else {
+                if (basisHint) basisHint.textContent = `Расчёт по площади: ${areaSotkas} соток (${areaM2} м²). Ширина междурядья меняет граммы.`;
             }
+
+            const tankDist = document.getElementById('tankDistribution')?.value || 'split_nitrates';
 
             // Plantation Metrics
             if (metricTape) metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
@@ -514,7 +519,19 @@ const AGRO_STAGES = {
                 };
 
                 allItems.push(itemData);
-                if (fert.tank === 'A') {
+                // Tank distribution logic:
+                let targetTank = fert.tank;
+                if (tankDist === 'solo_calcium') {
+                    // In solo_calcium mode, Tank A has ONLY Calcium nitrate!
+                    // KNO3 and NH4NO3 go to Tank B with MKP and Teraflex
+                    if (fert.id === 'cano3') {
+                        targetTank = 'A';
+                    } else {
+                        targetTank = 'B';
+                    }
+                }
+
+                if (targetTank === 'A') {
                     tankAItems.push(itemData);
                     tankAWeightGrams += gramVal;
                 } else {
@@ -544,13 +561,19 @@ const AGRO_STAGES = {
             tankABody.innerHTML = '';
             tankBBody.innerHTML = '';
 
+            const tankDist = document.getElementById('tankDistribution')?.value || 'split_nitrates';
             const tankATitle = document.getElementById('tankATitleText');
             const tankBTitle = document.getElementById('tankBTitleText');
 
             if (displayMode === 'tanks') {
                 tanksResultContainer.style.gridTemplateColumns = window.innerWidth > 680 ? 'repeat(2, 1fr)' : '1fr';
-                if (tankATitle) tankATitle.textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
-                if (tankBTitle) tankBTitle.textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
+                if (tankDist === 'solo_calcium') {
+                    if (tankATitle) tankATitle.textContent = `📦 БОЧКА А (${bVol} л): ТОЛЬКО Кальций`;
+                    if (tankBTitle) tankBTitle.textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
+                } else {
+                    if (tankATitle) tankATitle.textContent = `📦 БОЧКА А (${bVol} л): Кальций + Селитры`;
+                    if (tankBTitle) tankBTitle.textContent = `📦 БОЧКА Б (${bVol} л): Фосфор, Калий, Магний, Био`;
+                }
                 populateTankList(tankABody, tankA);
                 populateTankList(tankBBody, tankB);
                 document.querySelector('.tank-b-header').parentElement.style.display = 'block';
@@ -665,7 +688,8 @@ const AGRO_STAGES = {
                 rowWidth: rowWidthInput.value,
                 linesPerRow: linesPerRowSelect?.value || '2',
                 plantStep: plantStepInput?.value || '19',
-                calcBasis: calcBasisSelect?.value || 'plants',
+                calcBasis: calcBasisSelect?.value || 'area',
+                tankDist: document.getElementById('tankDistribution')?.value || 'solo_calcium',
                 barrelVolume: barrelVolumeInput.value,
                 sprayerVolume: sprayerVolumeInput.value
             };
@@ -683,6 +707,7 @@ const AGRO_STAGES = {
                     if (parsed.linesPerRow && linesPerRowSelect) linesPerRowSelect.value = parsed.linesPerRow;
                     if (parsed.plantStep && plantStepInput) plantStepInput.value = parsed.plantStep;
                     if (parsed.calcBasis && calcBasisSelect) calcBasisSelect.value = parsed.calcBasis;
+                    if (parsed.tankDist && document.getElementById('tankDistribution')) document.getElementById('tankDistribution').value = parsed.tankDist;
                     if (parsed.barrelVolume) barrelVolumeInput.value = parsed.barrelVolume;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
                 } catch(e) {}

@@ -849,7 +849,7 @@
         <!-- Main Layout -->
         <div class="app-layout">
             <!-- Sidebar / Tab: Parameters -->
-            <aside class="tab-page sidebar-section" id="paramsPage">
+            <aside class="tab-page active-page sidebar-section" id="paramsPage">
                 <div class="card">
                     <div class="card-title">
                         <span>🌱 Параметры участка</span>
@@ -875,7 +875,7 @@
                     <div class="form-group">
                         <label class="form-label">Ширина междурядья (по центрам):</label>
                         <div class="input-box">
-                            <input type="number" id="rowWidth" class="touch-input" min="0.2" max="3.0" value="1.35" step="0.05">
+                            <input type="number" id="rowWidth" class="touch-input" min="0.2" max="3.0" value="1.40" step="0.05">
                             <span class="input-unit">м</span>
                         </div>
                         <div style="font-size:0.75rem; color:var(--text-muted); margin-top:3px;">
@@ -898,7 +898,7 @@
                         </div>
                         <div class="metric-cell">
                             <div class="metric-tag">Площадь</div>
-                            <div class="metric-val"><span id="metricArea">13.5</span> <small style="font-size:0.75rem;">сот</small></div>
+                            <div class="metric-val"><span id="metricArea">14.0</span> <small style="font-size:0.75rem;">сот</small></div>
                         </div>
                         <div class="metric-cell plants-card">
                             <div class="metric-tag">🍓 ВСЕГО КУСТОВ (2 ряда × 25 см)</div>
@@ -906,28 +906,48 @@
                         </div>
                     </div>
 
-                    <button type="button" class="main-action-btn" id="saveParamsBtn">
+                    <button type="button" class="main-action-btn" id="calculateAndGoBtn" style="background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);">
+                        🚀 Рассчитать и перейти к питанию
+                    </button>
+                    <button type="button" class="main-action-btn" id="saveParamsBtn" style="background: var(--bg-card); color: var(--text-main); border: 2px solid var(--border-light); box-shadow: none;">
                         💾 Запомнить параметры
                     </button>
                 </div>
             </aside>
 
             <!-- Main Calculation Screen / Tab: Fertigation -->
-            <main class="tab-page active-page main-section" id="calcPage">
-                <!-- Heat Stress Weather Mode -->
-                <div class="heat-toggle-card">
-                    <div>
-                        <div class="heat-label">
-                            <span>☀️ Режим «Жара выше +30 °C»</span>
+            <main class="tab-page main-section" id="calcPage">
+                <!-- Weather Switches (Heat & Rain/Wet) -->
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:14px;">
+                    <div class="heat-toggle-card" style="margin-bottom:0; padding:10px 12px;">
+                        <div>
+                            <div class="heat-label" style="font-size:0.82rem;">
+                                <span>☀️ Жара &gt;30°C</span>
+                            </div>
+                            <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">
+                                Снизить EC на 25%
+                            </div>
                         </div>
-                        <div style="font-size:0.76rem; color:var(--text-muted); margin-top:2px;" id="heatDescText">
-                            Снижает EC раствора на 25% для защиты корней от солевого ожога
-                        </div>
+                        <label class="switch" style="width:44px; height:24px;">
+                            <input type="checkbox" id="heatModeToggle">
+                            <span class="slider"></span>
+                        </label>
                     </div>
-                    <label class="switch">
-                        <input type="checkbox" id="heatModeToggle">
-                        <span class="slider"></span>
-                    </label>
+
+                    <div class="heat-toggle-card" id="rainCardBox" style="margin-bottom:0; padding:10px 12px; background:linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color:#3b82f6;">
+                        <div>
+                            <div class="heat-label" style="font-size:0.82rem; color:#1d4ed8;">
+                                <span>🌧️ Дожди/сырость</span>
+                            </div>
+                            <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">
+                                Риск серой гнили
+                            </div>
+                        </div>
+                        <label class="switch" style="width:44px; height:24px;">
+                            <input type="checkbox" id="rainModeToggle">
+                            <span class="slider" style="background-color:#93c5fd;"></span>
+                        </label>
+                    </div>
                 </div>
 
                 <!-- Growth Stages Grid -->
@@ -936,7 +956,7 @@
                 <!-- Weeks Selector Chips -->
                 <div class="weeks-scroll" id="weekSelector"></div>
 
-                <!-- Target EC & pH Live Monitor -->
+                <!-- Target EC, pH & Weekly Protection Live Monitor -->
                 <div class="ec-monitor-box">
                     <div class="ec-monitor-header">
                         <span style="font-weight:800; font-size:0.95rem; color:#2563eb;">🎯 Норма раствора в капельнице:</span>
@@ -945,8 +965,26 @@
                             <span class="ph-badge" id="targetPhVal">5.8 – 6.2 pH</span>
                         </div>
                     </div>
-                    <div class="ec-hint" id="targetEcAdvice">
+                    <div class="ec-hint" id="targetEcAdvice" style="margin-bottom:8px;">
                         Начало сезона: корни нежные, держите ЕС мягким, чтобы не обжечь молодые волоски корней.
+                    </div>
+
+                    <!-- Dynamic Weekly Protection Bar -->
+                    <div style="padding-top:10px; border-top:1px dashed rgba(37,99,235,0.25); display:flex; flex-direction:column; gap:4px;">
+                        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+                            <span style="font-size:0.8rem; font-weight:800; color:#1d4ed8; display:flex; align-items:center; gap:5px;">
+                                🛡️ Защита (СЗР) на эту неделю:
+                            </span>
+                            <span id="szrActionBadge" style="font-size:0.72rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 8px; border-radius:6px;">
+                                Профилактика
+                            </span>
+                        </div>
+                        <div id="targetSzrAdvice" style="font-size:0.82rem; color:var(--text-main); font-weight:600; line-height:1.4;">
+                            Обязательная обработка от трипса и клеща до цветения!
+                        </div>
+                        <div id="rainAlertNotice" style="display:none; margin-top:6px; padding:6px 10px; background:#eff6ff; border-left:3px solid #2563eb; border-radius:4px; font-size:0.78rem; color:#1e40af; font-weight:700;">
+                            🌧️ Внимание: из-за дождей полив чистой водой уменьшить на 40%, срочно дать биофунгицид (Триходерма / Фитоспорин) по ягоде от ботритиса!
+                        </div>
                     </div>
                 </div>
 
@@ -991,9 +1029,11 @@
                     <div id="foliarContent"></div>
                 </div>
 
-                <!-- Action: Log Feeding for Today -->
                 <button type="button" class="main-action-btn btn-log" id="logTodayBtn">
                     ✅ Записать этот полив в журнал
+                </button>
+                <button type="button" class="main-action-btn" id="backToParamsBtn" style="background: var(--bg-card); color: var(--text-main); border: 2px solid var(--border-light); box-shadow: none;">
+                    ⚙️ Изменить параметры поля
                 </button>
 
                 <!-- Print Action Button -->
@@ -1070,15 +1110,15 @@
             </div>
         </div>
 
-        <!-- Mobile Bottom Navigation Bar -->
+        <!-- Mobile Bottom Navigation Bar (Поле first, then Питание) -->
         <nav class="mobile-nav-bar">
-            <button type="button" class="nav-item active" id="tabFertBtn">
-                <span class="nav-item-icon">🍓</span>
-                <span>Питание</span>
-            </button>
-            <button type="button" class="nav-item" id="tabParamsBtn">
+            <button type="button" class="nav-item active" id="tabParamsBtn">
                 <span class="nav-item-icon">⚙️</span>
                 <span>Поле</span>
+            </button>
+            <button type="button" class="nav-item" id="tabFertBtn">
+                <span class="nav-item-icon">🍓</span>
+                <span>Питание</span>
             </button>
             <button type="button" class="nav-item" id="tabSzrBtn">
                 <span class="nav-item-icon">🛡️</span>
@@ -1121,6 +1161,8 @@
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Начало сезона: корни нежные, держите ЕС мягким (1.0–1.2), чтобы не обжечь молодые волоски корней.",
                         compatNotice: "На 1-й неделе кальциевая селитра не вносится. Всё питание идёт через Бак А (МКФ, селитры, Rhyzo).",
+                        szrBadge: "Старт / Очистка",
+                        szrAdvice: "Искореняющая обработка после зимы: медные препараты (Косайд / Медян Экстра) от пятнистостей до выдвижения бутонов. Пролив корней стимулятором Rhyzo.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -1134,6 +1176,8 @@
                         targetEC: "1.2 – 1.3 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Активный рост молодых листьев. Включается кальциевая селитра в Бак Б и Bombardier в Бак А.",
+                        szrBadge: "Клещ и долгоносик",
+                        szrAdvice: "Просыпается земляничный клещ и долгоносик! Обязательная обработка до цветения: Вертимек или Маврик. Через 7–10 дней повторить от отрождающихся личинок.",
                         compatNotice: "Внимание: в Баке Б растворяется ТОЛЬКО Кальциевая селитра. Всё остальное — в Бак А!",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -1149,6 +1193,8 @@
                         targetEC: "1.2 – 1.4 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Выдвижение цветоносов. Обязательна первая листовая обработка (Amifort + Fruka) для защиты от перепадов температур.",
+                        szrBadge: "Перед цветением",
+                        szrAdvice: "Последнее окно перед раскрытием цветков! Чистка от трипса (Маврик/Вертимек). По листу: Amifort + Fruka для защиты завязи от заморозков.",
                         compatNotice: "Кальций — в Бак Б, фосфор и селитры — в Бак А. Опрыскивание Amifort + Fruka проводится отдельно по листу!",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -1174,6 +1220,8 @@
                         targetEC: "1.3 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Бутонизация и цветение. В Бак А идёт Teraflex S с микроэлементами. Fruka по листу улучшает опыление.",
+                        szrBadge: "Серая гниль (Switch)",
+                        szrAdvice: "Раскрытие 20–30% цветков: главная обработка от серой гнили (Свитч или Сигнум). Работать строго вечером, чтобы не навредить пчёлам! При сырости обработка критична.",
                         compatNotice: "Teraflex S содержит фосфаты и серу — строго в Бак А! В Бак Б только Кальций.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -1190,6 +1238,8 @@
                         targetEC: "1.4 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Массовое цветение и завязывание. Кальций формирует плотную клеточную структуру будущей ягоды.",
+                        szrBadge: "Цветение 80%",
+                        szrAdvice: "Массовое цветение: повторить защиту от серой гнили другим фунгицидом (Сигнум или Скала). Опрыскивание Fruka для идеальной ровной ягоды без уродливости.",
                         compatNotice: "В Бак Б — только Кальций. В Бак А — Терафлекс, МКФ и калий.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -1215,6 +1265,8 @@
                         targetEC: "1.5 – 1.6 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Налив первых ягод. Магниевая селитра стимулирует фотосинтез при высокой нагрузке ягодой.",
+                        szrBadge: "БИО-защита ягоды",
+                        szrAdvice: "Химия ЗАПРЕЩЕНА! Только биопрепараты: Триходерма / Фитоспорин по ягоде от гнилей. От трипса — Актофит / Фитоверм (срок ожидания всего 2 дня).",
                         compatNotice: "Бак А: МКФ, калий, магний, Терафлекс и Bombardier. Бак Б: только Кальций.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -1231,6 +1283,8 @@
                         targetEC: "1.5 – 1.7 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Массовый налив и первые спелые ягоды. Калий (KNO3) отвечает за сладость и плотность.",
+                        szrBadge: "Сбор / Контроль гнили",
+                        szrAdvice: "При сырости серая гниль сжигает ягоду за сутки. Своевременно снимайте перезревшие ягоды. После каждой волны сбора — профилактика биофунгицидом!",
                         compatNotice: "Кальций защищает ягоду от серой гнили и мягкости — держите его отдельно в Баке Б.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -1248,6 +1302,8 @@
                         targetEC: "1.6 – 1.8 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Пик сбора ягоды. Высокий ЕС даёт плотную сладкую ягоду. В сильную жару (>30°C) держите ЕС около 1.4–1.5.",
+                        szrBadge: "Трипс во время сбора",
+                        szrAdvice: "Если ягода становится бронзовой/матовой — это трипс! Обработайте вечером Актофитом (80–100 мл на 10 л). Сбор возможен уже через 48 часов.",
                         compatNotice: "На пике сбора доза кальция увеличена до 15 кг/га в Бак Б.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
@@ -1263,6 +1319,8 @@
                         targetEC: "1.5 – 1.7 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Продолжение сбора урожая. Кальций 15 кг/га предотвращает размягчение ягоды в жару.",
+                        szrBadge: "Плотность ягоды",
+                        szrAdvice: "В жару ягода быстро размягчается. Кальций в Бак Б держит стенку ягоды. Полив строго под корень, не мочите ягоду сверху!",
                         compatNotice: "Бак А: калиевая селитра + Терафлекс. Бак Б: 15 кг/га кальциевой селитры.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -1276,6 +1334,8 @@
                         targetEC: "1.4 – 1.6 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Вторая волна сбора. Повторный ввод Bombardier поддерживает микрофлору и корни.",
+                        szrBadge: "Вторая волна",
+                        szrAdvice: "Поддержите куст биопрепаратом Триходерма под корень. От паутинного клеща — биоакарициды.",
                         compatNotice: "Bombardier добавляется в Бак А к калию и Терафлексу. В Баке Б — чистый кальций.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -1290,6 +1350,8 @@
                         targetEC: "1.3 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Завершающие сборы. Дозировки плавно снижаются, подготавливая растения к послеуборочному периоду.",
+                        szrBadge: "Финал сбора",
+                        szrAdvice: "Снимите остатки ягоды, подготовьте плантацию к чистке и скашиванию старых листьев.",
                         compatNotice: "Завершение сбора. Бак А: калий + Терафлекс. Бак Б: кальций.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
@@ -1311,6 +1373,8 @@
                         targetEC: "1.2 – 1.4 mS/cm",
                         targetPH: "6.0 – 6.4",
                         ecAdvice: "Закладка цветоносов на следующий год. Высокий фосфор (MKP 13 кг/га) стимулирует закладку урожая.",
+                        szrBadge: "Чистка и скашивание",
+                        szrAdvice: "После скашивания листа: мощная искореняющая обработка от пятнистостей и клеща (Фалькон / Топсин-М + акарицид).",
                         compatNotice: "Фосфор (MKP) строго в Бак А, Кальций — в Бак Б.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 13, unit: "кг", tank: "A" },
@@ -1325,6 +1389,8 @@
                         targetEC: "1.2 – 1.3 mS/cm",
                         targetPH: "6.0 – 6.4",
                         ecAdvice: "Укрепление корневой шейки и корней перед осенним охлаждением почвы.",
+                        szrBadge: "Молодой лист",
+                        szrAdvice: "Защита нового нарастающего листа от мучнистой росы и клещей. Обработка серой или биофунгицидом.",
                         compatNotice: "Бак А: MKP + Терафлекс + Bombardier. Бак Б: Кальциевая селитра.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -1339,6 +1405,8 @@
                         targetEC: "1.1 – 1.3 mS/cm",
                         targetPH: "6.0 – 6.4",
                         ecAdvice: "Финальная подкормка сезона. Калий и магний повышают зимостойкость сердечка куста.",
+                        szrBadge: "Подготовка к зиме",
+                        szrAdvice: "Финальная промывка капельной ленты кислотой от солей перед консервацией. Осенняя защита от корневых гнилей.",
                         compatNotice: "Завершающий осенний полив: Бак А (магний и калиевая селитра), Бак Б (кальциевая селитра).",
                         fertilizers: [
                             { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 5, unit: "кг", tank: "A" },
@@ -1408,6 +1476,39 @@
         let currentStage = 'growth';
         let currentWeek = 1;
         let isHeatMode = false;
+
+        let isRainMode = false;
+        const rainModeToggle = document.getElementById('rainModeToggle');
+        const rainAlertNotice = document.getElementById('rainAlertNotice');
+        const targetSzrAdvice = document.getElementById('targetSzrAdvice');
+        const szrActionBadge = document.getElementById('szrActionBadge');
+
+        rainModeToggle?.addEventListener('change', (e) => {
+            isRainMode = e.target.checked;
+            if (rainAlertNotice) rainAlertNotice.style.display = isRainMode ? 'block' : 'none';
+            calculateAll();
+        });
+
+        // Calculate and go to feeding tab
+        document.getElementById('calculateAndGoBtn')?.addEventListener('click', () => {
+            saveSettings();
+            calculateAll();
+            // Switch to Fertigation tab
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
+            document.getElementById('tabFertBtn')?.classList.add('active');
+            document.getElementById('calcPage')?.classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('backToParamsBtn')?.addEventListener('click', () => {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
+            document.getElementById('tabParamsBtn')?.classList.add('active');
+            document.getElementById('paramsPage')?.classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         let journalEntries = [];
 
         // DOM Inputs
@@ -1566,7 +1667,7 @@
         function getCalculatedArea() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
-            const width = parseFloat(rowWidthInput.value) || 1.35;
+            const width = parseFloat(rowWidthInput.value) || 1.40;
             return Math.round(length * count * width * 100) / 100;
         }
 
@@ -1621,6 +1722,8 @@
                     targetEcAdvice.textContent = weekData.ecAdvice;
                 }
             }
+            if (targetSzrAdvice) targetSzrAdvice.textContent = weekData.szrAdvice || "";
+            if (szrActionBadge) szrActionBadge.textContent = weekData.szrBadge || "Защита";
             if (compatNoticeText) compatNoticeText.textContent = weekData.compatNotice || "";
 
             let tankAItems = [];

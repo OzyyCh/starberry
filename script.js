@@ -11,6 +11,8 @@ const AGRO_STAGES = {
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Начало сезона: корни нежные, держите ЕС мягким (1.0–1.2), чтобы не обжечь молодые волоски корней.",
                         compatNotice: "На 1-й неделе кальциевая селитра не вносится. Всё питание идёт через Бак А (МКФ, селитры, Rhyzo).",
+                        szrBadge: "Старт / Очистка",
+                        szrAdvice: "Искореняющая обработка после зимы: медные препараты (Косайд / Медян Экстра) от пятнистостей до выдвижения бутонов. Пролив корней стимулятором Rhyzo.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -24,6 +26,8 @@ const AGRO_STAGES = {
                         targetEC: "1.2 – 1.3 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Активный рост молодых листьев. Включается кальциевая селитра в Бак Б и Bombardier в Бак А.",
+                        szrBadge: "Клещ и долгоносик",
+                        szrAdvice: "Просыпается земляничный клещ и долгоносик! Обязательная обработка до цветения: Вертимек или Маврик. Через 7–10 дней повторить от отрождающихся личинок.",
                         compatNotice: "Внимание: в Баке Б растворяется ТОЛЬКО Кальциевая селитра. Всё остальное — в Бак А!",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -39,6 +43,8 @@ const AGRO_STAGES = {
                         targetEC: "1.2 – 1.4 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Выдвижение цветоносов. Обязательна первая листовая обработка (Amifort + Fruka) для защиты от перепадов температур.",
+                        szrBadge: "Перед цветением",
+                        szrAdvice: "Последнее окно перед раскрытием цветков! Чистка от трипса (Маврик/Вертимек). По листу: Amifort + Fruka для защиты завязи от заморозков.",
                         compatNotice: "Кальций — в Бак Б, фосфор и селитры — в Бак А. Опрыскивание Amifort + Fruka проводится отдельно по листу!",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -64,6 +70,8 @@ const AGRO_STAGES = {
                         targetEC: "1.3 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Бутонизация и цветение. В Бак А идёт Teraflex S с микроэлементами. Fruka по листу улучшает опыление.",
+                        szrBadge: "Серая гниль (Switch)",
+                        szrAdvice: "Раскрытие 20–30% цветков: главная обработка от серой гнили (Свитч или Сигнум). Работать строго вечером, чтобы не навредить пчёлам! При сырости обработка критична.",
                         compatNotice: "Teraflex S содержит фосфаты и серу — строго в Бак А! В Бак Б только Кальций.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -80,6 +88,8 @@ const AGRO_STAGES = {
                         targetEC: "1.4 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Массовое цветение и завязывание. Кальций формирует плотную клеточную структуру будущей ягоды.",
+                        szrBadge: "Цветение 80%",
+                        szrAdvice: "Массовое цветение: повторить защиту от серой гнили другим фунгицидом (Сигнум или Скала). Опрыскивание Fruka для идеальной ровной ягоды без уродливости.",
                         compatNotice: "В Бак Б — только Кальций. В Бак А — Терафлекс, МКФ и калий.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -105,6 +115,8 @@ const AGRO_STAGES = {
                         targetEC: "1.5 – 1.6 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Налив первых ягод. Магниевая селитра стимулирует фотосинтез при высокой нагрузке ягодой.",
+                        szrBadge: "БИО-защита ягоды",
+                        szrAdvice: "Химия ЗАПРЕЩЕНА! Только биопрепараты: Триходерма / Фитоспорин по ягоде от гнилей. От трипса — Актофит / Фитоверм (срок ожидания всего 2 дня).",
                         compatNotice: "Бак А: МКФ, калий, магний, Терафлекс и Bombardier. Бак Б: только Кальций.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -121,6 +133,8 @@ const AGRO_STAGES = {
                         targetEC: "1.5 – 1.7 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Массовый налив и первые спелые ягоды. Калий (KNO3) отвечает за сладость и плотность.",
+                        szrBadge: "Сбор / Контроль гнили",
+                        szrAdvice: "При сырости серая гниль сжигает ягоду за сутки. Своевременно снимайте перезревшие ягоды. После каждой волны сбора — профилактика биофунгицидом!",
                         compatNotice: "Кальций защищает ягоду от серой гнили и мягкости — держите его отдельно в Баке Б.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -138,6 +152,8 @@ const AGRO_STAGES = {
                         targetEC: "1.6 – 1.8 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Пик сбора ягоды. Высокий ЕС даёт плотную сладкую ягоду. В сильную жару (>30°C) держите ЕС около 1.4–1.5.",
+                        szrBadge: "Трипс во время сбора",
+                        szrAdvice: "Если ягода становится бронзовой/матовой — это трипс! Обработайте вечером Актофитом (80–100 мл на 10 л). Сбор возможен уже через 48 часов.",
                         compatNotice: "На пике сбора доза кальция увеличена до 15 кг/га в Бак Б.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 20, unit: "кг", tank: "A" },
@@ -153,6 +169,8 @@ const AGRO_STAGES = {
                         targetEC: "1.5 – 1.7 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Продолжение сбора урожая. Кальций 15 кг/га предотвращает размягчение ягоды в жару.",
+                        szrBadge: "Плотность ягоды",
+                        szrAdvice: "В жару ягода быстро размягчается. Кальций в Бак Б держит стенку ягоды. Полив строго под корень, не мочите ягоду сверху!",
                         compatNotice: "Бак А: калиевая селитра + Терафлекс. Бак Б: 15 кг/га кальциевой селитры.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -166,6 +184,8 @@ const AGRO_STAGES = {
                         targetEC: "1.4 – 1.6 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Вторая волна сбора. Повторный ввод Bombardier поддерживает микрофлору и корни.",
+                        szrBadge: "Вторая волна",
+                        szrAdvice: "Поддержите куст биопрепаратом Триходерма под корень. От паутинного клеща — биоакарициды.",
                         compatNotice: "Bombardier добавляется в Бак А к калию и Терафлексу. В Баке Б — чистый кальций.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -180,6 +200,8 @@ const AGRO_STAGES = {
                         targetEC: "1.3 – 1.5 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Завершающие сборы. Дозировки плавно снижаются, подготавливая растения к послеуборочному периоду.",
+                        szrBadge: "Финал сбора",
+                        szrAdvice: "Снимите остатки ягоды, подготовьте плантацию к чистке и скашиванию старых листьев.",
                         compatNotice: "Завершение сбора. Бак А: калий + Терафлекс. Бак Б: кальций.",
                         fertilizers: [
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 10, unit: "кг", tank: "A" },
@@ -201,6 +223,8 @@ const AGRO_STAGES = {
                         targetEC: "1.2 – 1.4 mS/cm",
                         targetPH: "6.0 – 6.4",
                         ecAdvice: "Закладка цветоносов на следующий год. Высокий фосфор (MKP 13 кг/га) стимулирует закладку урожая.",
+                        szrBadge: "Чистка и скашивание",
+                        szrAdvice: "После скашивания листа: мощная искореняющая обработка от пятнистостей и клеща (Фалькон / Топсин-М + акарицид).",
                         compatNotice: "Фосфор (MKP) строго в Бак А, Кальций — в Бак Б.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 13, unit: "кг", tank: "A" },
@@ -215,6 +239,8 @@ const AGRO_STAGES = {
                         targetEC: "1.2 – 1.3 mS/cm",
                         targetPH: "6.0 – 6.4",
                         ecAdvice: "Укрепление корневой шейки и корней перед осенним охлаждением почвы.",
+                        szrBadge: "Молодой лист",
+                        szrAdvice: "Защита нового нарастающего листа от мучнистой росы и клещей. Обработка серой или биофунгицидом.",
                         compatNotice: "Бак А: MKP + Терафлекс + Bombardier. Бак Б: Кальциевая селитра.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -229,6 +255,8 @@ const AGRO_STAGES = {
                         targetEC: "1.1 – 1.3 mS/cm",
                         targetPH: "6.0 – 6.4",
                         ecAdvice: "Финальная подкормка сезона. Калий и магний повышают зимостойкость сердечка куста.",
+                        szrBadge: "Подготовка к зиме",
+                        szrAdvice: "Финальная промывка капельной ленты кислотой от солей перед консервацией. Осенняя защита от корневых гнилей.",
                         compatNotice: "Завершающий осенний полив: Бак А (магний и калиевая селитра), Бак Б (кальциевая селитра).",
                         fertilizers: [
                             { id: "mgno3", name: "Магниевая селитра (Mg(NO3)2)", formula: "11% N, 16% MgO", normHa: 5, unit: "кг", tank: "A" },
@@ -298,6 +326,39 @@ const AGRO_STAGES = {
         let currentStage = 'growth';
         let currentWeek = 1;
         let isHeatMode = false;
+
+        let isRainMode = false;
+        const rainModeToggle = document.getElementById('rainModeToggle');
+        const rainAlertNotice = document.getElementById('rainAlertNotice');
+        const targetSzrAdvice = document.getElementById('targetSzrAdvice');
+        const szrActionBadge = document.getElementById('szrActionBadge');
+
+        rainModeToggle?.addEventListener('change', (e) => {
+            isRainMode = e.target.checked;
+            if (rainAlertNotice) rainAlertNotice.style.display = isRainMode ? 'block' : 'none';
+            calculateAll();
+        });
+
+        // Calculate and go to feeding tab
+        document.getElementById('calculateAndGoBtn')?.addEventListener('click', () => {
+            saveSettings();
+            calculateAll();
+            // Switch to Fertigation tab
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
+            document.getElementById('tabFertBtn')?.classList.add('active');
+            document.getElementById('calcPage')?.classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('backToParamsBtn')?.addEventListener('click', () => {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
+            document.getElementById('tabParamsBtn')?.classList.add('active');
+            document.getElementById('paramsPage')?.classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         let journalEntries = [];
 
         // DOM Inputs
@@ -456,7 +517,7 @@ const AGRO_STAGES = {
         function getCalculatedArea() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
-            const width = parseFloat(rowWidthInput.value) || 1.35;
+            const width = parseFloat(rowWidthInput.value) || 1.40;
             return Math.round(length * count * width * 100) / 100;
         }
 
@@ -511,6 +572,8 @@ const AGRO_STAGES = {
                     targetEcAdvice.textContent = weekData.ecAdvice;
                 }
             }
+            if (targetSzrAdvice) targetSzrAdvice.textContent = weekData.szrAdvice || "";
+            if (szrActionBadge) szrActionBadge.textContent = weekData.szrBadge || "Защита";
             if (compatNoticeText) compatNoticeText.textContent = weekData.compatNotice || "";
 
             let tankAItems = [];

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Starberry Pro 6.1 Enterprise — Профессиональная агросистема клубники</title>
+    <title>Starberry Pro 8.0 — Профессиональная агросистема клубники</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e11d48">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,31 +16,31 @@
         :root {
             --primary: #e11d48;
             --primary-hover: #be123c;
-            --primary-glow: rgba(225, 29, 72, 0.25);
+            --primary-glow: rgba(225, 29, 72, 0.28);
             --primary-light: #fff1f2;
             --secondary: #059669;
             --secondary-light: #ecfdf5;
             --secondary-glow: rgba(5, 150, 105, 0.2);
-            --accent: #f59e0b;
+            --accent: #d97706;
             --accent-light: #fffbeb;
             --tank-a: #7c3aed;
             --tank-a-light: #f5f3ff;
-            --tank-a-glow: rgba(124, 58, 237, 0.18);
+            --tank-a-glow: rgba(124, 58, 237, 0.2);
             --tank-b: #2563eb;
             --tank-b-light: #eff6ff;
-            --tank-b-glow: rgba(37, 99, 235, 0.18);
-            --bg-main: #f1f5f9;
+            --tank-b-glow: rgba(37, 99, 235, 0.2);
+            --bg-main: #f8fafc;
             --bg-card: #ffffff;
-            --bg-card-subtle: #f8fafc;
+            --bg-card-subtle: #f1f5f9;
             --text-main: #0f172a;
-            --text-muted: #64748b;
+            --text-muted: #334155;
             --border: #cbd5e1;
             --border-light: #e2e8f0;
-            --radius-sm: 12px;
+            --radius-sm: 10px;
             --radius-md: 16px;
-            --radius-lg: 24px;
-            --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
-            --shadow-btn: 0 4px 12px rgba(225, 29, 72, 0.3);
+            --radius-lg: 22px;
+            --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
+            --shadow-btn: 0 4px 14px rgba(225, 29, 72, 0.32);
             --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -48,16 +48,16 @@
             --bg-main: #090d16;
             --bg-card: #111827;
             --bg-card-subtle: #1f2937;
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-            --border: #374151;
-            --border-light: #1f2937;
-            --primary-light: rgba(225, 29, 72, 0.18);
-            --secondary-light: rgba(5, 150, 105, 0.18);
-            --accent-light: rgba(245, 158, 11, 0.18);
-            --tank-a-light: rgba(124, 58, 237, 0.2);
-            --tank-b-light: rgba(37, 99, 235, 0.2);
-            --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --border-light: #1e293b;
+            --primary-light: rgba(225, 29, 72, 0.2);
+            --secondary-light: rgba(5, 150, 105, 0.2);
+            --accent-light: rgba(217, 119, 6, 0.2);
+            --tank-a-light: rgba(124, 58, 237, 0.22);
+            --tank-b-light: rgba(37, 99, 235, 0.22);
+            --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -74,13 +74,15 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-bottom: 84px;
+            padding-bottom: 90px;
+            font-size: 15px;
+            line-height: 1.5;
         }
 
         .container {
-            max-width: 1240px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 12px 14px 40px;
+            padding: 16px 20px 40px;
             width: 100%;
         }
 
@@ -89,12 +91,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 16px;
+            padding: 14px 20px;
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-card);
-            margin-bottom: 14px;
+            margin-bottom: 20px;
+            gap: 16px;
         }
 
         .brand {
@@ -104,78 +107,159 @@
         }
 
         .brand-logo {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             background: linear-gradient(135deg, #f43f5e, #be123c);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 26px;
             box-shadow: 0 4px 12px var(--primary-glow);
+            flex-shrink: 0;
         }
 
         .brand-name {
-            font-size: 1.22rem;
+            font-size: 1.3rem;
             font-weight: 800;
             letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .badge-pro {
-            font-size: 0.65rem;
-            padding: 2px 6px;
+            font-size: 0.72rem;
+            padding: 3px 8px;
             background: var(--primary);
             color: white;
             border-radius: 6px;
             font-weight: 800;
+            letter-spacing: 0.04em;
         }
 
         .brand-sub {
-            font-size: 0.76rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
             font-weight: 600;
         }
 
-        .header-btns {
+        /* Desktop Nav Bar in Header */
+        .desktop-nav-bar {
             display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-card-subtle);
+            padding: 5px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-item-desktop {
+            display: flex;
+            align-items: center;
             gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-item-desktop:hover {
+            color: var(--text-main);
+            background: rgba(0,0,0,0.04);
+        }
+
+        .nav-item-desktop.active {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .icon-btn {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 12px;
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 1.15rem;
             cursor: pointer;
+            transition: var(--transition);
             color: var(--text-main);
         }
 
-        /* Responsive Layout */
-        .app-layout {
+        .icon-btn:hover {
+            background: var(--border-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-header-operator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e293b;
+            color: #f8fafc;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-header-operator:hover {
+            background: #0f172a;
+            transform: translateY(-1px);
+        }
+
+        /* Unified Tab Page Structure */
+        .tab-page {
+            display: none;
+            animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tab-page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modern 2-Column Dashboard on Desktop */
+        .calc-dashboard {
             display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 20px;
+            grid-template-columns: 380px 1fr;
+            gap: 24px;
             align-items: start;
         }
 
-        @media (max-width: 991px) {
-            .app-layout {
-                grid-template-columns: 1fr;
-            }
-            .tab-page {
-                display: none;
-            }
-            .tab-page.active-page {
-                display: block;
-            }
+        .calc-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .calc-main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         /* Cards */
@@ -183,36 +267,48 @@
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: 16px 18px;
+            padding: 20px;
             box-shadow: var(--shadow-card);
             margin-bottom: 16px;
         }
 
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
         .card-title {
-            font-size: 1.05rem;
-            font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 14px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-light);
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            letter-spacing: -0.01em;
         }
 
-        /* Large Touch Inputs */
-        .form-group {
+        /* Inputs & Form Elements */
+        .input-group {
             margin-bottom: 14px;
         }
 
-        .form-label {
-            display: block;
-            font-size: 0.84rem;
+        .input-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 6px;
             color: var(--text-main);
         }
 
-        .input-box {
+        .input-label small {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .input-wrapper {
             position: relative;
             display: flex;
             align-items: center;
@@ -221,15 +317,15 @@
         .touch-input {
             width: 100%;
             height: 48px;
-            padding: 0 54px 0 14px;
             background: var(--bg-card-subtle);
-            border: 2px solid var(--border-light);
+            border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
-            color: var(--text-main);
+            padding: 0 14px;
             font-size: 1.05rem;
-            font-weight: 800;
-            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--text-main);
             transition: var(--transition);
+            font-variant-numeric: tabular-nums;
         }
 
         .touch-input:focus {
@@ -242,7 +338,7 @@
         .input-unit {
             position: absolute;
             right: 14px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--text-muted);
             pointer-events: none;
@@ -251,116 +347,134 @@
         /* Metrics Grid */
         .metrics-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             margin-top: 14px;
-            padding-top: 14px;
-            border-top: 1px dashed var(--border-light);
         }
 
         .metric-cell {
             background: var(--bg-card-subtle);
-            padding: 10px 12px;
-            border-radius: var(--radius-sm);
             border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            text-align: center;
         }
 
         .metric-tag {
-            font-size: 0.68rem;
-            color: var(--text-muted);
+            font-size: 0.78rem;
             font-weight: 800;
+            color: var(--text-muted);
             text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
         }
 
         .metric-val {
-            font-size: 1.22rem;
+            font-size: 1.55rem;
             font-weight: 800;
             color: var(--text-main);
-            font-family: 'JetBrains Mono', monospace;
-            margin-top: 2px;
+            font-variant-numeric: tabular-nums;
         }
 
         .plants-card {
             grid-column: span 2;
-            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(225, 29, 72, 0.05) 100%);
-            border: 2px solid var(--primary);
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .plants-card .metric-tag {
-            color: var(--primary);
+            background: var(--primary-light);
+            border-color: rgba(225, 29, 72, 0.3);
         }
 
         .plants-card .metric-val {
             color: var(--primary);
-            font-size: 1.45rem;
+            font-size: 1.85rem;
         }
 
-        /* Standard Schema Box */
-        .standard-schema-box {
-            background: var(--bg-card-subtle);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            margin-bottom: 16px;
-            font-size: 0.82rem;
-            color: var(--text-main);
+        /* Action Buttons */
+        .main-action-btn {
+            width: 100%;
+            height: 52px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.05rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: var(--shadow-btn);
+            transition: var(--transition);
+            margin-top: 12px;
+        }
+
+        .main-action-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-log {
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+        }
+
+        .btn-log:hover {
+            background: #047857;
+        }
+
+        /* Weather Modes Grid */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
 
-        .schema-badge {
-            background: var(--secondary-light);
-            color: var(--secondary);
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 6px;
-            font-size: 0.74rem;
-            white-space: nowrap;
-        }
-
-        /* Spoon-Feeding (Split Frequency) Component */
-        .spoon-feed-card {
-            background: var(--bg-card);
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 12px 14px;
-            margin-bottom: 14px;
-            box-shadow: var(--shadow-card);
-        }
-
-        .spoon-feed-top {
+        .weather-toggle-btn {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .spoon-title {
-            font-size: 0.85rem;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--border-light);
+            background: var(--bg-card-subtle);
+            font-size: 0.92rem;
             font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .split-buttons {
+        .weather-toggle-btn.heat-active {
+            background: var(--accent-light);
+            border-color: var(--accent);
+            color: #b45309;
+        }
+
+        .weather-toggle-btn.rain-active {
+            background: var(--tank-b-light);
+            border-color: var(--tank-b);
+            color: #1d4ed8;
+        }
+
+        /* Spoon Feeding (Split) Buttons */
+        .split-buttons-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .split-btn {
-            height: 38px;
+            padding: 10px 6px;
             border-radius: var(--radius-sm);
             border: 1.5px solid var(--border-light);
             background: var(--bg-card-subtle);
-            color: var(--text-main);
-            font-size: 0.82rem;
-            font-weight: 700;
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--text-muted);
             cursor: pointer;
             transition: var(--transition);
+            text-align: center;
         }
 
         .split-btn.active {
@@ -370,222 +484,109 @@
             box-shadow: 0 2px 8px var(--primary-glow);
         }
 
-        /* Operator Mode Banner & Quick Toggle */
-        .operator-toggle-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-            color: white;
-            padding: 10px 14px;
-            border-radius: var(--radius-md);
-            margin-bottom: 14px;
-            box-shadow: 0 4px 14px rgba(49, 46, 129, 0.3);
-        }
-
-        .btn-operator-toggle {
-            background: #4f46e5;
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-
-        .btn-operator-toggle:hover {
-            background: #6366f1;
-        }
-
-        /* Fullscreen Operator Overlay */
-        .operator-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #0f172a;
-            color: #f8fafc;
-            z-index: 20000;
-            padding: 16px;
-            overflow-y: auto;
-        }
-
-        .operator-overlay.active {
-            display: block;
-        }
-
-        .op-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #334155;
-            margin-bottom: 14px;
-        }
-
-        .op-tank-card {
-            background: #1e293b;
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-bottom: 14px;
-            border-left: 6px solid #a855f7;
-        }
-
-        .op-tank-card.tank-b {
-            border-left-color: #3b82f6;
-        }
-
-        .op-fert-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #334155;
-        }
-
-        .op-fert-row:last-child { border-bottom: none; }
-        .op-fert-name { font-size: 1.15rem; font-weight: 800; }
-        .op-fert-val { font-size: 1.6rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: #f43f5e; }
-
-        /* Weather Heat Mode Toggle */
-        .heat-toggle-card {
-            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-            border: 2px solid #f59e0b;
-            border-radius: var(--radius-md);
-            padding: 10px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        [data-theme="dark"] .heat-toggle-card {
-            background: rgba(245, 158, 11, 0.12);
-            border-color: rgba(245, 158, 11, 0.4);
-        }
-
-        .heat-label {
-            font-size: 0.82rem;
-            font-weight: 800;
-            color: #92400e;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        [data-theme="dark"] .heat-label { color: #fde68a; }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 44px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-
-        .switch input { opacity: 0; width: 0; height: 0; }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #cbd5e1;
-            transition: .3s;
-            border-radius: 28px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px; width: 18px;
-            left: 3px; bottom: 3px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider { background-color: #f59e0b; }
-        input:checked + .slider:before { transform: translateX(20px); }
-
-        /* Stages & Weeks */
+        /* Phenological Stage Cards */
         .stage-selector {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 12px;
             margin-bottom: 14px;
-        }
-
-        @media (max-width: 600px) {
-            .stage-selector { grid-template-columns: repeat(2, 1fr); }
         }
 
         .stage-card-btn {
             background: var(--bg-card);
             border: 2px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: 12px 10px;
+            padding: 14px 12px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            text-align: left;
+            justify-content: space-between;
+            min-height: 100px;
+        }
+
+        .stage-card-btn:hover {
+            border-color: var(--border);
+            transform: translateY(-2px);
         }
 
         .stage-card-btn.active {
             border-color: var(--primary);
             background: var(--primary-light);
-            box-shadow: 0 4px 14px var(--primary-glow);
+            box-shadow: 0 4px 16px var(--primary-glow);
         }
 
-        .stage-card-icon { font-size: 24px; }
-        .stage-card-title { font-size: 0.88rem; font-weight: 800; color: var(--text-main); line-height: 1.2; }
-        .stage-card-weeks { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; }
+        .stage-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
 
+        .stage-card-title {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+
+        .stage-card-sub {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Weeks Selector Chips */
         .weeks-scroll {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            gap: 10px;
             overflow-x: auto;
-            padding: 4px 2px 12px;
-            margin-bottom: 14px;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
             -webkit-overflow-scrolling: touch;
         }
 
-        .week-btn {
-            height: 44px;
-            padding: 0 20px;
-            border-radius: 24px;
+        .week-chip {
+            flex: 0 0 auto;
+            min-width: 100px;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
             background: var(--bg-card);
             border: 2px solid var(--border-light);
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--text-muted);
             cursor: pointer;
-            white-space: nowrap;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
+            text-align: center;
         }
 
-        .week-btn.active {
+        .week-chip:hover {
+            border-color: var(--border);
+        }
+
+        .week-chip.active {
             background: var(--primary);
             border-color: var(--primary);
             color: white;
             box-shadow: 0 4px 12px var(--primary-glow);
         }
 
-        /* EC Monitor Box */
+        .week-chip-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .week-chip-date {
+            font-size: 0.78rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        /* EC, pH & SZR Live Monitor */
         .ec-monitor-box {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.04) 100%);
-            border: 2px solid #3b82f6;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(5, 150, 105, 0.08));
+            border: 1.5px solid rgba(37, 99, 235, 0.25);
             border-radius: var(--radius-md);
-            padding: 14px 16px;
-            margin-bottom: 14px;
+            padding: 18px 20px;
+            margin-bottom: 16px;
         }
 
         .ec-monitor-header {
@@ -593,80 +594,78 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         .ec-badge {
             background: #2563eb;
             color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.88rem;
+            padding: 6px 14px;
+            border-radius: 999px;
             font-weight: 800;
-            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            font-variant-numeric: tabular-nums;
         }
 
         .ph-badge {
-            background: var(--secondary);
+            background: #059669;
             color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.88rem;
+            padding: 6px 14px;
+            border-radius: 999px;
             font-weight: 800;
-            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            font-variant-numeric: tabular-nums;
         }
 
-        .ec-hint {
-            font-size: 0.82rem;
-            color: var(--text-main);
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        /* Brix & Fruit Quality Indicator */
+        /* Brix & Quality Meter */
         .brix-indicator-box {
-            background: var(--bg-card-subtle);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 10px 12px;
-            margin-top: 10px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .brix-bar-wrapper {
+            margin: 12px 0 8px;
+        }
+
+        .brix-bar-track {
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
             display: flex;
-            align-items: center;
+        }
+
+        [data-theme="dark"] .brix-bar-track {
+            background: #1e293b;
+        }
+
+        .brix-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #7c3aed, #e11d48);
+            border-radius: 999px;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .brix-bar-labels {
+            display: flex;
             justify-content: space-between;
-            gap: 8px;
             font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-top: 6px;
         }
 
-        /* Compatibility Warning */
-        .compat-alert {
-            background: #fffbeb;
-            border: 1.5px solid #fde68a;
-            border-left: 5px solid #f59e0b;
-            padding: 12px 14px;
-            border-radius: var(--radius-sm);
-            margin-bottom: 16px;
-            font-size: 0.84rem;
-            color: #78350f;
-            line-height: 1.45;
-        }
-
-        [data-theme="dark"] .compat-alert {
-            background: rgba(245, 158, 11, 0.1);
-            border-color: rgba(245, 158, 11, 0.25);
-            color: #fef3c7;
-        }
-
-        /* Tanks Cards */
+        /* Tanks Layout */
         .tanks-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 18px;
-        }
-
-        @media (max-width: 680px) {
-            .tanks-container { grid-template-columns: 1fr; }
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .tank-block {
@@ -678,213 +677,207 @@
         }
 
         .tank-top {
-            padding: 12px 16px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            font-size: 1.15rem;
             font-weight: 800;
-            font-size: 0.92rem;
-            border-bottom: 2px solid transparent;
+            color: white;
         }
 
         .tank-a-top {
-            background: var(--tank-a-light);
-            color: var(--tank-a);
-            border-color: var(--tank-a);
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
         }
 
         .tank-b-top {
-            background: var(--tank-b-light);
-            color: var(--tank-b);
-            border-color: var(--tank-b);
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
         }
 
         .tank-weight-pill {
-            font-size: 0.82rem;
-            padding: 4px 10px;
-            border-radius: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.45rem;
             font-weight: 800;
+            background: rgba(255, 255, 255, 0.22);
+            padding: 6px 16px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-variant-numeric: tabular-nums;
         }
 
         .tank-content {
-            padding: 12px 14px;
+            padding: 16px 18px;
         }
 
         .fert-row {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .fert-row:last-child { border-bottom: none; }
-        .fert-title { font-size: 0.94rem; font-weight: 800; color: var(--text-main); }
-        .fert-sub { font-size: 0.74rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
-        .fert-dose { font-size: 1.3rem; font-weight: 800; color: var(--primary); font-family: 'JetBrains Mono', monospace; text-align: right; line-height: 1.1; }
-        .fert-norm-tag { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; text-align: right; }
-
-        /* Foliar Section */
-        .foliar-box {
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(5, 150, 105, 0.02) 100%);
-            border: 2px solid var(--secondary);
-            border-radius: var(--radius-md);
-            padding: 16px 18px;
-            margin-bottom: 18px;
-        }
-
-        .foliar-top {
-            display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 12px;
+            padding: 14px 16px;
+            background: var(--bg-card-subtle);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-light);
         }
 
-        .foliar-headline {
+        .fert-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .fert-title {
             font-size: 1.05rem;
             font-weight: 800;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: var(--text-main);
+            margin-bottom: 3px;
         }
 
-        /* Action Buttons */
-        .main-action-btn {
-            width: 100%;
-            height: 50px;
-            border-radius: var(--radius-md);
-            background: linear-gradient(135deg, #e11d48, #be123c);
-            color: white;
-            font-size: 1rem;
+        .fert-sub {
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .fert-dose {
+            font-size: 1.25rem;
             font-weight: 800;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-btn);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 8px;
-            margin-bottom: 8px;
-            text-decoration: none;
+            color: #0f172a;
+            font-variant-numeric: tabular-nums;
+            background: #ffffff;
+            padding: 6px 14px;
+            border-radius: 10px;
+            border: 1.5px solid var(--border);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            white-space: nowrap;
         }
 
-        .btn-log {
-            background: linear-gradient(135deg, #059669, #047857);
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        [data-theme="dark"] .fert-dose {
+            background: #1e293b;
+            color: #f8fafc;
+            border-color: #334155;
         }
 
+        /* Share Buttons Grid */
         .share-buttons-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 6px;
-            margin-bottom: 8px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
         }
 
         .share-btn {
-            height: 44px;
-            border-radius: var(--radius-sm);
+            height: 50px;
+            border-radius: 12px;
             border: none;
-            color: white;
             font-weight: 800;
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            text-decoration: none;
+            gap: 8px;
+            color: white;
+            transition: var(--transition);
         }
 
-        .share-tg { background: #229ED9; }
-        .share-wa { background: #25D366; }
-
-        /* Journal Page */
-        .log-entry {
-            background: var(--bg-card-subtle);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            margin-bottom: 10px;
+        .share-btn:hover {
+            transform: translateY(-2px);
         }
 
-        .log-date { font-size: 0.8rem; font-weight: 800; color: var(--primary); }
-        .log-title { font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 2px; }
-        .log-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; font-weight: 600; }
+        .share-tg { background: #0284c7; }
+        .share-tg:hover { background: #0369a1; }
+        .share-wa { background: #16a34a; }
+        .share-wa:hover { background: #15803d; }
+        .share-copy { background: #475569; }
+        .share-copy:hover { background: #334155; }
 
-        /* SZR Diagnosis & Protection Items */
+        /* Diagnostics & SZR Cards */
+        .diag-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
         .diag-item {
-            background: var(--bg-card-subtle);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            padding: 14px;
-            margin-bottom: 14px;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            box-shadow: var(--shadow-card);
         }
 
         .diag-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
         .diag-name {
+            font-size: 1.12rem;
             font-weight: 800;
-            font-size: 1rem;
             color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .diag-badge {
-            font-size: 0.72rem;
+            font-size: 0.78rem;
             font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 6px;
             background: var(--primary-light);
             color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 6px;
         }
 
         .diag-symptoms {
-            font-size: 0.85rem;
-            color: var(--text-main);
+            font-size: 0.92rem;
+            color: var(--text-muted);
             line-height: 1.45;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .diag-treatment {
-            font-size: 0.82rem;
-            color: var(--secondary);
-            font-weight: 700;
-            background: var(--secondary-light);
-            padding: 6px 10px;
-            border-radius: 6px;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            background: var(--bg-card-subtle);
+            border-radius: 10px;
+            padding: 10px 12px;
+            border-left: 4px solid var(--secondary);
+            line-height: 1.45;
         }
 
-        /* Mobile Bottom Nav */
-        .mobile-nav-bar {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
+        /* Handbook Styling */
+        .handbook-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .handbook-entry {
             background: var(--bg-card);
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
-            z-index: 999;
-            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: var(--transition);
         }
 
-        @media (min-width: 992px) {
-            .mobile-nav-bar { display: none; }
-            body { padding-bottom: 20px; }
+        .handbook-entry:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        /* Mobile Bottom Nav Bar */
+        .mobile-nav-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-light);
+            padding: 8px 12px;
+            justify-content: space-around;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+            z-index: 100;
         }
 
         .nav-item {
@@ -896,313 +889,500 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            font-size: 0.72rem;
+            font-size: 0.78rem;
             font-weight: 700;
             cursor: pointer;
-            padding: 6px 2px;
-            border-radius: 8px;
+            padding: 6px 4px;
+            border-radius: 10px;
             transition: var(--transition);
         }
 
-        .nav-item-icon { font-size: 20px; line-height: 1; }
-        .nav-item.active { color: var(--primary); }
-        .nav-item.active .nav-item-icon { transform: scale(1.15); }
-
-        /* Printable */
-        @media print {
-            body { background: white !important; color: black !important; padding: 0 !important; }
-            header, .stage-selector, .weeks-scroll, .heat-toggle-card, .main-action-btn, .mobile-nav-bar, .icon-btn, .share-buttons-grid, .spoon-feed-card { display: none !important; }
-            .app-layout { display: block !important; }
-            .card { border: 1px solid #000 !important; box-shadow: none !important; break-inside: avoid; }
+        .nav-item.active {
+            color: var(--primary);
+            background: var(--primary-light);
         }
 
-        /* Handbook Page Styling */
-        .handbook-entry {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 10px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-        .handbook-entry:hover {
-            border-color: var(--primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        .nav-item-icon {
+            font-size: 1.35rem;
         }
 
+        /* Mobile Sticky Top Bar */
+        .mobile-sticky-bar {
+            display: none;
+        }
+
+        /* Fullscreen Operator Mode Overlay */
+        .operator-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #090d16;
+            z-index: 9999;
+            color: #ffffff;
+            padding: 24px 20px;
+            overflow-y: auto;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .operator-overlay.active {
+            display: flex;
+        }
+
+        .op-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 16px;
+        }
+
+        .op-tank-card {
+            background: #111827;
+            border: 2px solid #7c3aed;
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+
+        .op-tank-card.tank-b {
+            border-color: #2563eb;
+        }
+
+        .op-fert-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #f8fafc;
+        }
+
+        .op-fert-val {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #38bdf8;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 991px) {
+            body { padding-bottom: 84px; }
+            .desktop-nav-bar { display: none; }
+            .mobile-nav-bar { display: flex; }
+            .btn-header-operator { display: none; }
+            .calc-dashboard { grid-template-columns: 1fr; }
+            .stage-selector { grid-template-columns: repeat(2, 1fr); }
+            .tanks-container { grid-template-columns: 1fr; }
+            .diag-grid { grid-template-columns: 1fr; }
+            .handbook-grid { grid-template-columns: 1fr; }
+
+            .mobile-sticky-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: sticky;
+                top: 0;
+                z-index: 80;
+                background: var(--bg-card);
+                border-bottom: 2px solid var(--border-light);
+                padding: 10px 16px;
+                margin: -16px -20px 16px -20px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+                font-size: 0.92rem;
+            }
+
+            .sticky-val {
+                font-size: 1.15rem;
+                font-weight: 800;
+                font-variant-numeric: tabular-nums;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .share-buttons-grid { grid-template-columns: 1fr; }
+            .weather-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .plants-card { grid-column: span 1; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        <!-- Top Header -->
         <header>
             <div class="brand">
                 <div class="brand-logo">🍓</div>
                 <div>
-                    <div class="brand-name">Starberry <span class="badge-pro">PRO 5.0</span></div>
-                    <div class="brand-sub">Профессиональная агросистема клубники</div>
+                    <div class="brand-name">Starberry <span class="badge-pro">PRO 8.0</span></div>
+                    <div class="brand-sub">Агросистема земляники садовой • Сороки</div>
                 </div>
             </div>
+
+            <!-- Desktop Nav Bar -->
+            <nav class="desktop-nav-bar">
+                <button type="button" class="nav-item-desktop active" data-page="paramsPage">
+                    <span>⚙️ Поле</span>
+                </button>
+                <button type="button" class="nav-item-desktop" data-page="calcPage">
+                    <span>🍓 Питание</span>
+                </button>
+                <button type="button" class="nav-item-desktop" data-page="szrPage">
+                    <span>🛡️ Защита</span>
+                </button>
+                <button type="button" class="nav-item-desktop" data-page="journalPage">
+                    <span>📝 Журнал</span>
+                </button>
+                <button type="button" class="nav-item-desktop" data-page="handbookPage">
+                    <span>📖 Справочник</span>
+                </button>
+            </nav>
+
             <div class="header-actions">
-                <button class="icon-btn" id="openHandbookBtn" title="Справочник удобрений">📖</button>
-                <button class="icon-btn" id="themeToggleBtn" title="Тема">🌙</button>
+                <button type="button" class="btn-header-operator" id="openOperatorHeaderBtn">
+                    <span>📱 У насоса</span>
+                </button>
+                <button class="icon-btn" id="themeToggleBtn" title="Сменить тему">🌙</button>
             </div>
         </header>
 
-        <!-- Main Layout -->
-        <div class="app-layout">
-            <!-- Tab 1: Parameters (Starts first on mobile!) -->
-            <aside class="tab-page active-page sidebar-section" id="paramsPage">
+        <!-- PAGE 1: Поле и параметры (Default active on mobile and PC) -->
+        <div class="tab-page active-page" id="paramsPage">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:20px;">
                 <div class="card">
                     <div class="card-title">
                         <span>🌱 Параметры участка</span>
-                        <span style="font-size:0.75rem; background:var(--secondary-light); color:var(--secondary); padding:3px 8px; border-radius:6px; font-weight:800;">II–III ГОД</span>
+                        <span style="font-size:0.8rem; background:var(--secondary-light); color:var(--secondary); padding:4px 10px; border-radius:6px; font-weight:800;">II–III ГОД</span>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Длина одного билона (бугра):</label>
-                        <div class="input-box">
-                            <input type="number" id="bedLength" class="touch-input" min="1" value="100" step="5">
-                            <span class="input-unit">метров</span>
+                    <div class="input-group">
+                        <label class="input-label" for="bedLength">
+                            <span>Длина одного бугра:</span>
+                            <small>пог. метров</small>
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="number" id="bedLength" value="100" min="1" max="1000" class="touch-input">
+                            <span class="input-unit">м</span>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Количество билонов:</label>
-                        <div class="input-box">
-                            <input type="number" id="bedCount" class="touch-input" min="1" value="10" step="1">
+                    <div class="input-group">
+                        <label class="input-label" for="bedCount">
+                            <span>Количество бугров:</span>
+                            <small>штук</small>
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="number" id="bedCount" value="10" min="1" max="500" class="touch-input">
                             <span class="input-unit">шт</span>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Ширина междурядья (по центрам):</label>
-                        <div class="input-box">
-                            <input type="number" id="rowWidth" class="touch-input" min="0.2" max="3.0" value="1.40" step="0.05">
+                    <div class="input-group">
+                        <label class="input-label" for="rowWidth">
+                            <span>Ширина междурядья (по центрам):</span>
+                            <small>влияет на площадь и удобрения</small>
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="number" id="rowWidth" value="1.40" step="0.05" min="0.5" max="3.0" class="touch-input">
                             <span class="input-unit">м</span>
                         </div>
-                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:3px;">
-                            Стандарт на буграх: 1.40 м (меняет площадь и дозу солей)
-                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Объем опрыскивателя (по листу):</label>
-                        <div class="input-box">
-                            <input type="number" id="sprayerVolume" class="touch-input" min="5" max="600" value="16" step="1">
-                            <span class="input-unit">литров</span>
+                    <div class="input-group">
+                        <label class="input-label" for="sprayerVolume">
+                            <span>Объём опрыскивателя (по листу):</span>
+                            <small>ранцевый</small>
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="number" id="sprayerVolume" value="16" min="1" max="1000" class="touch-input">
+                            <span class="input-unit">л</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Acid lake water calculator block -->
-                    <div style="background:var(--bg-card-subtle); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:12px; margin-bottom:14px;">
-                        <span style="font-size:0.82rem; font-weight:800; color:#2563eb; display:block; margin-bottom:6px;">💧 Подкисление озёрной воды (pH)</span>
-                        <div style="display:flex; gap:8px; margin-bottom:6px;">
-                            <div style="flex:1;">
-                                <label style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Исходный pH озера:</label>
-                                <input type="number" id="lakePhInput" value="8.1" step="0.1" class="touch-input" style="height:38px; font-size:0.9rem; padding-right:10px;">
+                <div class="card">
+                    <div class="card-title">
+                        <span>💧 Вода озера и расчётные метрики</span>
+                    </div>
+
+                    <div style="background:var(--bg-card-subtle); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:14px; margin-bottom:14px;">
+                        <span style="font-size:0.92rem; font-weight:800; color:var(--text-main); display:block; margin-bottom:8px;">💧 Подкисление озёрной воды (pH)</span>
+                        <div style="display:grid; grid-template-columns: 1fr 1.3fr; gap:10px; margin-bottom:10px;">
+                            <div>
+                                <label style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">pH озера:</label>
+                                <input type="number" id="lakePhInput" value="8.1" step="0.1" class="touch-input" style="height:42px;">
                             </div>
-                            <div style="flex:1.2;">
-                                <label style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Кислота:</label>
-                                <select id="acidTypeSelect" class="touch-input" style="height:38px; font-size:0.8rem; padding:0 6px;">
+                            <div>
+                                <label style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">Кислота:</label>
+                                <select id="acidTypeSelect" class="touch-input" style="height:42px;">
                                     <option value="ortho" selected>Ортофосфорная 85%</option>
                                     <option value="nitric">Азотная 65%</option>
                                 </select>
                             </div>
                         </div>
-                        <div id="acidDoseResult" style="font-size:0.78rem; font-weight:700; color:var(--secondary);">
-                            ~100 мл кислоты на 1 м³ воды озера для выхода на pH 5.8
+                        <div id="acidDoseResult" style="font-size:0.88rem; font-weight:800; color:var(--secondary);">
+                            ~253 мл кислоты на 1 м³ воды озера для pH 5.8-6.0
                         </div>
                     </div>
 
-                    <!-- Metrics Grid -->
                     <div class="metrics-grid">
                         <div class="metric-cell">
                             <div class="metric-tag">Длина бугров</div>
-                            <div class="metric-val"><span id="metricTape">1 000</span> <small style="font-size:0.75rem;">м</small></div>
+                            <div class="metric-val"><span id="metricTape">1 000</span> <small style="font-size:0.8rem;">м</small></div>
                         </div>
                         <div class="metric-cell">
                             <div class="metric-tag">Площадь</div>
-                            <div class="metric-val"><span id="metricArea">14.0</span> <small style="font-size:0.75rem;">сот</small></div>
+                            <div class="metric-val"><span id="metricArea">14.0</span> <small style="font-size:0.8rem;">сот</small></div>
                         </div>
                         <div class="metric-cell plants-card">
                             <div class="metric-tag">🍓 ВСЕГО КУСТОВ (2 ряда × 25 см)</div>
-                            <div class="metric-val"><span id="metricPlants">8 000</span> <small style="font-size:0.8rem;">кустов</small></div>
+                            <div class="metric-val" id="metricPlants">8 000</div>
                         </div>
                     </div>
 
-                    <!-- Big Action: Calculate and teleport to Feeding -->
-                    <button type="button" class="main-action-btn" id="calculateAndGoBtn" style="background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35); height:52px; font-size:1.05rem;">
+                    <button type="button" class="main-action-btn" id="calculateAndGoBtn" style="background: linear-gradient(135deg, #059669, #047857); margin-top:20px;">
                         🚀 Рассчитать и перейти к питанию
                     </button>
-                    <button type="button" class="main-action-btn" id="saveParamsBtn" style="background: var(--bg-card); color: var(--text-main); border: 2px solid var(--border-light); box-shadow: none; height:42px; font-size:0.9rem;">
-                        💾 Запомнить параметры поля
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: Питание (Main Feeding Dashboard) -->
+        <div class="tab-page" id="calcPage">
+            <!-- Mobile Sticky Top Bar -->
+            <div class="mobile-sticky-bar" id="mobileStickyBar">
+                <div>
+                    <span style="font-size:0.75rem; color:var(--tank-a); font-weight:800; display:block;">БАК А</span>
+                    <strong id="stickyTankA" class="sticky-val" style="color:var(--tank-a);">0 г</strong>
+                </div>
+                <div>
+                    <span style="font-size:0.75rem; color:var(--tank-b); font-weight:800; display:block;">БАК Б</span>
+                    <strong id="stickyTankB" class="sticky-val" style="color:var(--tank-b);">0 г</strong>
+                </div>
+                <div>
+                    <span style="font-size:0.75rem; color:var(--text-muted); font-weight:800; display:block;">ЦЕЛЕВОЙ EC</span>
+                    <strong id="stickyEc" class="sticky-val" style="color:#2563eb;">1.5</strong>
+                </div>
+            </div>
+
+            <div class="calc-dashboard">
+                <!-- Left Sidebar on Desktop -->
+                <div class="calc-sidebar">
+                    <!-- Field Summary Card -->
+                    <div class="card">
+                        <div class="card-title">
+                            <span>🌱 Участок</span>
+                            <button type="button" id="editParamsQuickBtn" style="background:transparent; border:none; color:var(--primary); font-size:0.88rem; font-weight:800; cursor:pointer;">
+                                ⚙️ Изменить
+                            </button>
+                        </div>
+                        <div style="font-size:1.05rem; font-weight:800; color:var(--text-main); margin-bottom:4px;">
+                            <span id="quickAreaText">14.0 соток</span> • <span id="quickPlantsText">8 000 кустов</span>
+                        </div>
+                        <div style="font-size:0.86rem; color:var(--text-muted); font-weight:600;">
+                            1 000 м бугров • междурядье 1.40 м • шахматка 25 см
+                        </div>
+                    </div>
+
+                    <!-- Spoon Feeding Card -->
+                    <div class="card">
+                        <div class="card-title">
+                            <span>🥄 Кратность полива</span>
+                            <span id="splitNoticeTag" style="font-size:0.76rem; background:var(--primary-light); color:var(--primary); padding:3px 8px; border-radius:6px; font-weight:800;">
+                                100% на 1 полив
+                            </span>
+                        </div>
+                        <div class="split-buttons-grid">
+                            <button type="button" class="split-btn active" data-split="1">1 раз/нед<br>(100%)</button>
+                            <button type="button" class="split-btn" data-split="2">2 раза/нед<br>(50%)</button>
+                            <button type="button" class="split-btn" data-split="3">3 раза/нед<br>(33%)</button>
+                        </div>
+                    </div>
+
+                    <!-- Weather Adjustments Card -->
+                    <div class="card">
+                        <div class="card-title">
+                            <span>🌤️ Погодные режимы</span>
+                        </div>
+                        <div class="weather-grid">
+                            <button type="button" class="weather-toggle-btn" id="heatModeBtn">
+                                <span>🔥 Жара >30°C</span>
+                            </button>
+                            <button type="button" class="weather-toggle-btn" id="rainModeBtn">
+                                <span>🌧️ Сырость / Дождь</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Acid summary card -->
+                    <div class="card">
+                        <div class="card-title">
+                            <span>💧 Вода озера</span>
+                        </div>
+                        <div id="quickAcidDoseText" style="font-size:0.92rem; font-weight:700; color:var(--secondary); line-height:1.45;">
+                            Подкисление: ~253 мл кислоты на 1 м³
+                        </div>
+                    </div>
+
+                    <!-- Operator Trigger -->
+                    <button type="button" class="main-action-btn" id="openOperatorBtn" style="background:#1e293b; color:#ffffff;">
+                        📱 Экран оператора у помпы
+                    </button>
+                    <button type="button" class="main-action-btn btn-log" id="logTodayBtn">
+                        ✅ Записать этот полив в журнал
                     </button>
                 </div>
-            </aside>
 
-            <!-- Tab 2: Fertigation / Feeding Calculator -->
-            <main class="tab-page main-section" id="calcPage">
-                <!-- Operator Mode Quick Banner -->
-                <div class="operator-toggle-bar">
-                    <span style="font-size:0.86rem; font-weight:800;">👨‍🌾 Режим у помпы (для поля):</span>
-                    <button type="button" class="btn-operator-toggle" id="openOperatorBtn">
-                        📱 Открыть экран оператора
-                    </button>
-                </div>
+                <!-- Right Main Feed Area -->
+                <div class="calc-main">
+                    <!-- Phenological Stages -->
+                    <div>
+                        <div style="font-size:1.15rem; font-weight:800; margin-bottom:10px;">
+                            Фенологическая фаза:
+                        </div>
+                        <div class="stage-selector" id="stageSelector"></div>
+                    </div>
 
-                <!-- Weather Switches (Heat & Rain/Wet) -->
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
-                    <div class="heat-toggle-card">
-                        <div>
-                            <div class="heat-label">
-                                <span>☀️ Жара &gt;30°C</span>
-                            </div>
-                            <div style="font-size:0.68rem; color:var(--text-muted); margin-top:2px;">
-                                Снизить EC на 25%
+                    <!-- Weeks selector -->
+                    <div>
+                        <div style="font-size:1.05rem; font-weight:800; margin-bottom:8px;">
+                            Неделя питания:
+                        </div>
+                        <div class="weeks-scroll" id="weekSelector"></div>
+                    </div>
+
+                    <!-- Target EC & pH Monitor -->
+                    <div class="ec-monitor-box">
+                        <div class="ec-monitor-header">
+                            <span style="font-weight:800; font-size:1.1rem; color:#1d4ed8;">🎯 Норма раствора в капельнице:</span>
+                            <div style="display:flex; gap:10px;">
+                                <span class="ec-badge" id="targetEcVal">1.5 – 1.6 mS/cm</span>
+                                <span class="ph-badge" id="targetPhVal">5.8 – 6.2 pH</span>
                             </div>
                         </div>
-                        <label class="switch">
-                            <input type="checkbox" id="heatModeToggle">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
+                        <div class="ec-hint" id="targetEcAdvice" style="font-size:0.95rem; font-weight:600; color:var(--text-main); margin-bottom:10px;">
+                            Налив первых ягод.
+                        </div>
 
-                    <div class="heat-toggle-card" style="background:linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color:#3b82f6;">
-                        <div>
-                            <div class="heat-label" style="color:#1d4ed8;">
-                                <span>🌧️ Дожди/сырость</span>
+                        <!-- Weekly SZR recommendation -->
+                        <div style="border-top:1px dashed rgba(37,99,235,0.25); padding-top:10px; margin-top:8px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+                                <span style="font-weight:800; font-size:0.9rem; color:#1d4ed8;">🛡️ Защита (СЗР) на эту неделю:</span>
+                                <span id="szrActionBadge" style="font-size:0.78rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 8px; border-radius:6px;">Защита</span>
                             </div>
-                            <div style="font-size:0.68rem; color:var(--text-muted); margin-top:2px;">
-                                Риск серой гнили
+                            <div id="targetSzrAdvice" style="font-size:0.9rem; color:var(--text-main); font-weight:600; line-height:1.4;"></div>
+                            <div id="rainAlertNotice" style="display:none; margin-top:8px; padding:8px 12px; background:#eff6ff; border-left:4px solid #2563eb; border-radius:6px; font-size:0.86rem; color:#1e40af; font-weight:700;">
+                                🌧️ Внимание: из-за сырости полив чистой водой уменьшить, дать биофунгицид по ягоде от ботритиса!
                             </div>
                         </div>
-                        <label class="switch">
-                            <input type="checkbox" id="rainModeToggle">
-                            <span class="slider" style="background-color:#93c5fd;"></span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Spoon-Feeding (Split Frequency) Card -->
-                <div class="spoon-feed-card">
-                    <div class="spoon-feed-top">
-                        <span class="spoon-title">🥄 Кратность полива (дробное питание):</span>
-                        <span id="splitNoticeTag" style="font-size:0.75rem; font-weight:800; color:var(--primary);">100% за 1 полив</span>
-                    </div>
-                    <div class="split-buttons">
-                        <button type="button" class="split-btn active" data-split="1" id="split1Btn">1 раз / нед</button>
-                        <button type="button" class="split-btn" data-split="2" id="split2Btn">2 раза (по 50%)</button>
-                        <button type="button" class="split-btn" data-split="3" id="split3Btn">3 раза (по 33%)</button>
-                    </div>
-                </div>
-
-                <!-- Growth Stages Grid -->
-                <div class="stage-selector" id="stageSelector"></div>
-
-                <!-- Weeks Selector Chips -->
-                <div class="weeks-scroll" id="weekSelector"></div>
-
-                <!-- Target EC, pH & Weekly Protection Live Monitor -->
-                <div class="ec-monitor-box">
-                    <div class="ec-monitor-header">
-                        <span style="font-weight:800; font-size:0.95rem; color:#2563eb;">🎯 Норма раствора в капельнице:</span>
-                        <div style="display:flex; gap:8px;">
-                            <span class="ec-badge" id="targetEcVal">1.0 – 1.2 mS/cm</span>
-                            <span class="ph-badge" id="targetPhVal">5.8 – 6.2 pH</span>
-                        </div>
-                    </div>
-                    <div class="ec-hint" id="targetEcAdvice" style="margin-bottom:8px;">
-                        Начало сезона: корни нежные, держите ЕС мягким, чтобы не обжечь молодые волоски корней.
                     </div>
 
-                    <!-- Brix & Firmness Monitor -->
+                    <!-- Brix & Quality Meter -->
                     <div class="brix-indicator-box" id="brixIndicatorBox">
-                        <span>🍇 Баланс качества: <strong id="nkRatioText">N:K = 1:1.0</strong></span>
-                        <span id="firmnessStatusText" style="font-weight:800; color:var(--secondary);">Вегетативный рост</span>
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <span style="font-size:1.4rem;">🍇</span>
+                                <div>
+                                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                                        <div style="font-size:1.02rem; font-weight:800; color:var(--text-main);">
+                                            Баланс питания: <span id="nkRatioText" style="color:var(--tank-a);">N:K = 1:1.0</span>
+                                        </div>
+                                        <span id="stageAccuracyBadge" style="font-size:0.76rem; font-weight:800; background:var(--secondary-light); color:var(--secondary); padding:3px 8px; border-radius:6px;">
+                                            ✅ Точная норма Agrostrimedit
+                                        </span>
+                                    </div>
+                                    <div id="firmnessStatusText" style="font-size:0.86rem; font-weight:700; color:var(--text-muted); margin-top:3px;">
+                                        Вегетативный рост
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" id="toggleBrixHelpBtn" style="background:var(--bg-card-subtle); border:1px solid var(--border); border-radius:8px; padding:6px 12px; font-size:0.84rem; font-weight:800; color:var(--text-main); cursor:pointer;">
+                                ℹ️ Зачем это?
+                            </button>
+                        </div>
+
+                        <!-- Visual phase gauge -->
+                        <div class="brix-bar-wrapper">
+                            <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); margin-bottom:4px;">
+                                Направленность питания по фазам развития:
+                            </div>
+                            <div class="brix-bar-track">
+                                <div id="brixBarFill" class="brix-bar-fill" style="width: 25%;"></div>
+                            </div>
+                            <div class="brix-bar-labels">
+                                <span>🌱 1. Вегетация (N=K)</span>
+                                <span>🌸 2. Цветение (K x1.5)</span>
+                                <span>🍓 3. Сбор ягод (K x2)</span>
+                            </div>
+                        </div>
+
+                        <div id="brixPlainExplainer" style="font-size:0.9rem; color:var(--text-muted); line-height:1.45; border-top:1px dashed var(--border-light); padding-top:8px; margin-top:8px;"></div>
+
+                        <div id="brixHelpContent" style="display:none; margin-top:10px; padding:12px; background:var(--bg-card-subtle); border:1px solid var(--border); border-radius:10px; font-size:0.86rem; line-height:1.5;">
+                            <strong style="color:var(--text-main);">Зачем фермеру следить за этим балансом?</strong><br>
+                            • <strong>Brix (Брикс)</strong> — процент сахара в ягоде (сладость).<br>
+                            • <strong>Азот (N):</strong> надувает размер ягоды. Но если дать много азота при сборе, ягода станет водянистой «кашей», потечёт в лотках и мгновенно сгниёт от серой гнили при перевозке до Кишинёва или Бельц.<br>
+                            • <strong>Калий (K):</strong> забирает сахара из листьев и накапливает в ягоде, делает мякоть плотной и упругой («хрустящая» транспортабельная ягода).<br>
+                            • <strong>В программе Agrostrimedit</strong> на сборе калия ровно <strong>в 2 раза больше азота (N:K = 1:2.0)</strong>, чтобы ягода была максимально сладкой и транспортабельной.
+                        </div>
                     </div>
 
-                    <!-- Dynamic Weekly Protection Bar -->
-                    <div style="padding-top:10px; margin-top:8px; border-top:1px dashed rgba(37,99,235,0.25); display:flex; flex-direction:column; gap:4px;">
-                        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-                            <span style="font-size:0.8rem; font-weight:800; color:#1d4ed8; display:flex; align-items:center; gap:5px;">
-                                🛡️ Защита (СЗР) на эту неделю:
+                    <!-- Tanks Grid -->
+                    <div class="tanks-container">
+                        <!-- Tank A -->
+                        <div class="tank-block">
+                            <div class="tank-top tank-a-top">
+                                <span>📦 БАК А (Основное питание)</span>
+                                <span class="tank-weight-pill" id="tankAWeight">0 г</span>
+                            </div>
+                            <div class="tank-content" id="tankABody"></div>
+                        </div>
+
+                        <!-- Tank B -->
+                        <div class="tank-block">
+                            <div class="tank-top tank-b-top">
+                                <span>📦 БАК Б (ТОЛЬКО Кальций)</span>
+                                <span class="tank-weight-pill" id="tankBWeight">0 г</span>
+                            </div>
+                            <div class="tank-content" id="tankBBody"></div>
+                        </div>
+                    </div>
+
+                    <!-- Foliar Box -->
+                    <div class="card" id="foliarBox">
+                        <div class="card-title">
+                            <span>🌿 Внекорневое питание (по листу)</span>
+                            <span style="font-size:0.82rem; background:var(--secondary-light); color:var(--secondary); padding:4px 10px; border-radius:6px; font-weight:800;" id="foliarFluidInfo">
+                                ~42 л раствора
                             </span>
-                            <span id="szrActionBadge" style="font-size:0.72rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 8px; border-radius:6px;">
-                                Старт / Очистка
-                            </span>
                         </div>
-                        <div id="targetSzrAdvice" style="font-size:0.82rem; color:var(--text-main); font-weight:600; line-height:1.4;">
-                            Искореняющая обработка после зимы: медные препараты (Косайд / Медян Экстра) от пятнистостей.
+                        <div id="foliarContent"></div>
+                    </div>
+
+                    <!-- Share Buttons -->
+                    <div class="card">
+                        <div style="font-size:1.05rem; font-weight:800; margin-bottom:8px;">
+                            📤 Отправить наряд рабочим:
                         </div>
-                        <div id="rainAlertNotice" style="display:none; margin-top:6px; padding:6px 10px; background:#eff6ff; border-left:3px solid #2563eb; border-radius:4px; font-size:0.78rem; color:#1e40af; font-weight:700;">
-                            🌧️ Внимание: из-за сырости полив чистой водой уменьшить на 40%, срочно дать биофунгицид (Триходерма / Фитоспорин) по ягоде от ботритиса!
+                        <div class="share-buttons-grid">
+                            <button type="button" class="share-btn share-tg" id="shareTgBtn">
+                                ✈️ В Telegram
+                            </button>
+                            <button type="button" class="share-btn share-wa" id="shareWaBtn">
+                                🟢 В WhatsApp
+                            </button>
+                            <button type="button" class="share-btn share-copy" id="copyTaskBtn">
+                                📋 Скопировать наряд
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Tanks Grid -->
-                <div class="tanks-container">
-                    <!-- Tank A -->
-                    <div class="tank-block">
-                        <div class="tank-top tank-a-top">
-                            <span>📦 БАК А (Основное питание)</span>
-                            <span class="tank-weight-pill" id="tankAWeight">0 г</span>
-                        </div>
-                        <div class="tank-content" id="tankABody"></div>
-                    </div>
-
-                    <!-- Tank B -->
-                    <div class="tank-block">
-                        <div class="tank-top tank-b-top">
-                            <span>📦 БАК Б (ТОЛЬКО Кальций)</span>
-                            <span class="tank-weight-pill" id="tankBWeight">0 г</span>
-                        </div>
-                        <div class="tank-content" id="tankBBody"></div>
-                    </div>
+        <!-- PAGE 3: Защита (СЗР & Диагностика) -->
+        <div class="tab-page" id="szrPage">
+            <div class="card">
+                <div class="card-title">
+                    <span>🔬 Диагностика вредителей, болезней и солевого стресса</span>
                 </div>
-
-                <!-- Foliar Spraying -->
-                <div class="foliar-box" id="foliarBox">
-                    <div class="foliar-top">
-                        <div class="foliar-headline">
-                            <span>🌿 Листовая обработка (опрыскивание)</span>
-                            <span style="font-size:0.75rem; background:var(--secondary); color:white; padding:3px 8px; border-radius:6px; font-weight:800;">ПО ЛИСТУ</span>
-                        </div>
-                        <span style="font-size:0.85rem; font-weight:700; color:var(--secondary);" id="foliarFluidInfo"></span>
-                    </div>
-                    <div id="foliarContent"></div>
-                </div>
-
-                <!-- Share Buttons for Telegram / WhatsApp / Clipboard -->
-                <div class="share-buttons-grid">
-                    <button type="button" class="share-btn share-tg" id="shareTgBtn">
-                        ✈️ Telegram
-                    </button>
-                    <button type="button" class="share-btn share-wa" id="shareWaBtn">
-                        🟢 WhatsApp
-                    </button>
-                    <button type="button" class="share-btn share-copy" id="copyTaskBtn">
-                        📋 Наряд
-                    </button>
-                </div>
-
-                <!-- Action: Log Feeding for Today -->
-                <button type="button" class="main-action-btn btn-log" id="logTodayBtn">
-                    ✅ Записать этот полив в журнал
-                </button>
-                <button type="button" class="main-action-btn" id="backToParamsBtn" style="background: var(--bg-card); color: var(--text-main); border: 2px solid var(--border-light); box-shadow: none;">
-                    ⚙️ Изменить параметры поля
-                </button>
-            </main>
-
-            <!-- Tab 3: Protection & SZR Diagnostics -->
-            <div class="tab-page" id="szrPage">
-                <div class="card">
-                    <div class="card-title">
-                        <span>🔬 Диагностика вредителей и болезней</span>
-                    </div>
-
+                <div class="diag-grid">
                     <div class="diag-item">
                         <div class="diag-header">
                             <span class="diag-name">🐛 Западный цветочный трипс</span>
@@ -1212,7 +1392,7 @@
                             <strong>Симптомы:</strong> Цветки буреют, тычинки засыхают. Ягода становится бронзовой, тусклой, бурой, кожица огрубевает («резиновая» мелкая ягода).
                         </div>
                         <div class="diag-treatment">
-                            <strong>Лечение:</strong> До цветения — Вертимек (10 мл/10 л), Маврик. При сборе ягоды — биопрепарат Актофит (100 мл/10 л, ожидание 2 дня). Повторить через 7 дней!
+                            <strong>Лечение:</strong> До цветения — Вертимек (10 мл/10 л), Маврик. При сборе ягоды — биопрепарат Актофит (100 мл/10 л, срок ожидания 2 дня). Повторить через 7 дней!
                         </div>
                     </div>
 
@@ -1231,7 +1411,7 @@
 
                     <div class="diag-item">
                         <div class="diag-header">
-                            <span class="diag-name">🍄 Серая гниль (Botrytis)</span>
+                            <span class="diag-name">🍄 Серая гниль (Botrytis cinerea)</span>
                             <span class="diag-badge">Опасно в дожди</span>
                         </div>
                         <div class="diag-symptoms">
@@ -1262,7 +1442,7 @@
                             <span class="diag-badge">Угроза бутонам</span>
                         </div>
                         <div class="diag-symptoms">
-                            <strong>Симптомы:</strong> Надломленные, увядающие и повисшие бутоны перед самым цветением. Самка подгрызает цветоножку после откладки яйца. Потеря самого раннего и крупного урожая!
+                            <strong>Симптомы:</strong> Надломленные, увядающие и повисшие бутоны перед самым цветением. Самка подгрызает цветоножку после откладки яйца. Потеря раннего урожая!
                         </div>
                         <div class="diag-treatment">
                             <strong>Лечение:</strong> Обработка при выдвижении цветоносов (до раскрытия бутонов!): Карате Зеон, Децис Профи или Маврик. В период цветения — только биоинсектициды (Битоксибациллин / Актофит).
@@ -1282,7 +1462,7 @@
                         </div>
                     </div>
 
-                    <div class="diag-item">
+                    <div class="diag-item" style="grid-column: span 2;">
                         <div class="diag-header">
                             <span class="diag-name">🍁 Белая и бурая пятнистости листьев</span>
                             <span class="diag-badge">Потеря листвы</span>
@@ -1296,15 +1476,86 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Tab 4: Agronomist Journal -->
-            <div class="tab-page" id="journalPage">
+        <!-- PAGE 4: Журнал агронома -->
+        <div class="tab-page" id="journalPage">
+            <div class="card">
+                <div class="card-title">
+                    <span>📝 Журнал поливов и подкормок</span>
+                    <button type="button" id="clearJournalBtn" style="background:transparent; border:none; color:var(--primary); font-size:0.9rem; font-weight:800; cursor:pointer;">
+                        Очистить историю
+                    </button>
+                </div>
+                <div id="journalListContainer"></div>
+            </div>
+        </div>
+
+        <!-- PAGE 5: Справочник препаратов и правил (First-Class Tab) -->
+        <div class="tab-page" id="handbookPage">
+            <div class="handbook-grid">
+                <!-- Two Tanks Rule Card -->
+                <div class="card" style="border-left: 5px solid var(--tank-b);">
+                    <div class="card-title" style="color:var(--tank-b);">
+                        <span>⚠️ Золотое правило двух баков (А и Б)</span>
+                    </div>
+                    <div style="font-size:0.95rem; line-height:1.55; color:var(--text-main);">
+                        <div style="background:var(--tank-a-light); border:1px solid rgba(124,58,237,0.25); border-radius:12px; padding:14px; margin-bottom:12px;">
+                            <strong style="color:var(--tank-a); font-size:1.05rem;">📦 БАК А (Основной раствор):</strong><br>
+                            Комплекс NPK (Терафлекс С), Монокалийфосфат (MKP), Калиевая и Аммиачная селитры, Магний (MgSO4 / Mg(NO3)2), Биостимуляторы (Bombardier, Rhyzo).
+                        </div>
+                        <div style="background:var(--tank-b-light); border:1px solid rgba(37,99,235,0.25); border-radius:12px; padding:14px; margin-bottom:12px;">
+                            <strong style="color:var(--tank-b); font-size:1.05rem;">📦 БАК Б (ТОЛЬКО КАЛЬЦИЙ):</strong><br>
+                            Строго изолированно растворяется <strong>Кальциевая селитра Ca(NO3)2</strong>. Никаких фосфатов или сульфатов сюда добавлять нельзя!
+                        </div>
+                        <div style="background:#fff1f2; border:1px solid rgba(225,29,72,0.25); border-radius:12px; padding:14px; font-size:0.9rem; color:#9f1239;">
+                            <strong>🚫 ПОЧЕМУ КАТЕГОРИЧЕСКИ НЕЛЬЗЯ СМЕШИВАТЬ:</strong><br>
+                            При контакте кальция с сульфатами мгновенно выпадает <strong>нерастворимый гипс (CaSO4↓)</strong>, а с фосфатами — <strong>фосфат кальция (Ca3(PO4)2↓)</strong>. Белый осадок за считанные минуты наглухо забивает капельные трубки по всей длине бугров!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lake Water Acidification Card -->
                 <div class="card">
                     <div class="card-title">
-                        <span>📝 Журнал поливов и подкормок</span>
-                        <button type="button" id="clearJournalBtn" style="background:transparent; border:none; color:var(--primary); font-size:0.8rem; font-weight:800; cursor:pointer;">Очистить</button>
+                        <span>💧 Подкисление озёрной воды (рН 5.8 - 6.0)</span>
                     </div>
-                    <div id="journalListContainer"></div>
+                    <div style="font-size:0.95rem; line-height:1.55; color:var(--text-main);">
+                        Озёрная вода в Сорокском районе имеет высокую щелочность (pH 7.8–8.5) из-за гидрокарбонатов (HCO3-).
+                        <ul style="margin: 10px 0 10px 22px; padding: 0;">
+                            <li><strong>Ортофосфорная кислота (85%):</strong> нейтрализует гидрокарбонаты и одновременно питает растение доступным фосфором (P).</li>
+                            <li><strong>Азотная кислота (65%):</strong> нейтрализует pH и даёт дополнительный нитратный азот (N). Отличный выбор для весеннего старта.</li>
+                            <li><strong>Оптимальный диапазон:</strong> рН раствора в капельнице должен быть строго <strong>5.8 – 6.2</strong>. При рН выше 6.5 фосфор, железо и цинк блокируются и корни их не усваивают (хлороз).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Brix & Quality Card -->
+                <div class="card">
+                    <div class="card-title">
+                        <span>🍇 Сахар (Brix) и баланс N:K</span>
+                    </div>
+                    <div style="font-size:0.95rem; line-height:1.55; color:var(--text-main);">
+                        <div style="margin-bottom:8px;">
+                            <strong>Что такое Брикс (Brix)?</strong> Это процент содержания сахара в соке клубники. Чем выше Brix, тем слаще и ароматнее ягода.
+                        </div>
+                        <div>
+                            <strong>Почему баланс N:K решает судьбу урожая:</strong>
+                            <ul style="margin: 6px 0 6px 22px; padding: 0;">
+                                <li><strong>Азот (N):</strong> отвечает за размер и рост листьев. Избыток азота при сборе делает ягоду водянистой «кашей» — она мнётся в ящиках и моментально поражается серой гнилью.</li>
+                                <li><strong>Калий (K):</strong> транспортирует сахара в плоды, создаёт плотную упругую мякоть и прочную кожицу («хрустящая» транспортабельная ягода).</li>
+                                <li><strong>В фазе сбора (Фаза III):</strong> дозировка калия в схеме Agrostrimedit в 2 раза превышает азот (N:K = 1:2.0), что гарантирует максимальный Brix и безупречную перевозку.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fertilizers Catalog Card -->
+                <div class="card">
+                    <div class="card-title">
+                        <span>📖 Каталог препаратов схемы Agrostrimedit</span>
+                    </div>
+                    <div id="handbookCatalogContainer"></div>
                 </div>
             </div>
         </div>
@@ -1313,131 +1564,64 @@
         <div class="operator-overlay" id="operatorOverlay">
             <div class="op-header">
                 <div>
-                    <h2 style="font-size:1.4rem; font-weight:800; color:#f43f5e;">🍓 Starberry • ЭКРАН У ПОМПЫ</h2>
-                    <span id="opMetaSubtitle" style="font-size:0.85rem; color:#94a3b8;">Фаза I • Неделя 1 (1 полив из 2)</span>
+                    <h2 style="font-size:1.6rem; font-weight:800; color:#f43f5e;">🍓 Starberry • ЭКРАН У ПОМПЫ</h2>
+                    <span id="opMetaSubtitle" style="font-size:1rem; color:#94a3b8;">Фаза I • Неделя 1 (1 полив из 2)</span>
                 </div>
-                <button type="button" id="closeOperatorBtn" style="background:#e11d48; color:white; border:none; padding:10px 18px; border-radius:12px; font-weight:800; font-size:0.95rem; cursor:pointer;">
+                <button type="button" id="closeOperatorBtn" style="background:#e11d48; color:white; border:none; padding:12px 22px; border-radius:14px; font-weight:800; font-size:1.1rem; cursor:pointer;">
                     ✕ Выйти
                 </button>
             </div>
 
             <div class="op-tank-card">
-                <h3 style="font-size:1.2rem; font-weight:800; color:#c084fc; margin-bottom:8px;">📦 БАК А (ОСНОВНОЙ): засыпать сейчас:</h3>
+                <h3 style="font-size:1.3rem; font-weight:800; color:#c084fc; margin-bottom:12px;">📦 БАК А (ОСНОВНОЙ): засыпать сейчас:</h3>
                 <div id="opTankABody"></div>
             </div>
 
             <div class="op-tank-card tank-b">
-                <h3 style="font-size:1.2rem; font-weight:800; color:#60a5fa; margin-bottom:8px;">📦 БАК Б (ТОЛЬКО КАЛЬЦИЙ): засыпать сейчас:</h3>
+                <h3 style="font-size:1.3rem; font-weight:800; color:#60a5fa; margin-bottom:12px;">📦 БАК Б (ТОЛЬКО КАЛЬЦИЙ): засыпать сейчас:</h3>
                 <div id="opTankBBody"></div>
             </div>
 
             <div class="op-tank-card" style="background:#0f172a; border-color:#0284c7;">
-                <h3 style="font-size:1.15rem; font-weight:800; color:#38bdf8; margin-bottom:6px;">💧 ПОДКИСЛЕНИЕ ОЗЁРНОЙ ВОДЫ (pH 5.8):</h3>
-                <div id="opAcidDoseText" style="font-size:1.05rem; font-weight:700; color:#f1f5f9; line-height:1.4;"></div>
+                <h3 style="font-size:1.25rem; font-weight:800; color:#38bdf8; margin-bottom:6px;">💧 ПОДКИСЛЕНИЕ ОЗЁРНОЙ ВОДЫ (pH 5.8):</h3>
+                <div id="opAcidDoseText" style="font-size:1.15rem; font-weight:700; color:#f1f5f9; line-height:1.4;"></div>
             </div>
 
-            <div style="background:#1e293b; border-radius:16px; padding:16px; display:flex; justify-content:space-around; text-align:center;">
+            <div style="background:#1e293b; border-radius:16px; padding:18px; display:flex; justify-content:space-around; text-align:center;">
                 <div>
-                    <span style="font-size:0.8rem; color:#94a3b8; text-transform:uppercase; font-weight:800;">Целевой EC:</span>
-                    <div id="opEcVal" style="font-size:1.4rem; font-weight:800; color:#3b82f6;">1.2 mS/cm</div>
+                    <span style="font-size:0.9rem; color:#94a3b8; text-transform:uppercase; font-weight:800;">Целевой EC:</span>
+                    <div id="opEcVal" style="font-size:1.8rem; font-weight:800; color:#3b82f6;">1.5 mS/cm</div>
                 </div>
                 <div>
-                    <span style="font-size:0.8rem; color:#94a3b8; text-transform:uppercase; font-weight:800;">Целевой pH:</span>
-                    <div style="font-size:1.4rem; font-weight:800; color:#10b981;">5.8 – 6.2</div>
+                    <span style="font-size:0.9rem; color:#94a3b8; text-transform:uppercase; font-weight:800;">Целевой pH:</span>
+                    <div style="font-size:1.8rem; font-weight:800; color:#10b981;">5.8 – 6.2</div>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Bottom Navigation Bar (Поле is first!) -->
+        <!-- Mobile Floating Bottom Navigation Bar -->
         <nav class="mobile-nav-bar">
-            <button type="button" class="nav-item active" id="tabParamsBtn">
+            <button type="button" class="nav-item active" data-page="paramsPage">
                 <span class="nav-item-icon">⚙️</span>
                 <span>Поле</span>
             </button>
-            <button type="button" class="nav-item" id="tabFertBtn">
+            <button type="button" class="nav-item" data-page="calcPage">
                 <span class="nav-item-icon">🍓</span>
                 <span>Питание</span>
             </button>
-            <button type="button" class="nav-item" id="tabSzrBtn">
+            <button type="button" class="nav-item" data-page="szrPage">
                 <span class="nav-item-icon">🛡️</span>
                 <span>Защита</span>
             </button>
-            <button type="button" class="nav-item" id="tabJournalBtn">
+            <button type="button" class="nav-item" data-page="journalPage">
                 <span class="nav-item-icon">📝</span>
                 <span>Журнал</span>
             </button>
-            <button type="button" class="nav-item" id="tabHandbookNavBtn">
+            <button type="button" class="nav-item" data-page="handbookPage">
                 <span class="nav-item-icon">📖</span>
                 <span>Справочник</span>
             </button>
         </nav>
-
-        <!-- Tab 5: Handbook Page (First-Class Tab) -->
-        <div class="tab-page" id="handbookPage">
-            <!-- Two Tanks Rule Card -->
-            <div class="card" style="border-left: 4px solid var(--tank-b);">
-                <div class="card-title" style="color:var(--tank-b);">
-                    <span>⚠️ Золотое правило двух баков (А и Б)</span>
-                </div>
-                <div style="font-size:0.88rem; line-height:1.5; color:var(--text-main);">
-                    <div style="background:var(--tank-a-light); border:1px solid rgba(124,58,237,0.25); border-radius:12px; padding:12px; margin-bottom:10px;">
-                        <strong style="color:var(--tank-a);">📦 БАК А (Основной раствор):</strong><br>
-                        Комплекс NPK (Терафлекс С), Монокалийфосфат (MKP), Калиевая и Аммиачная селитры, Магний (MgSO4 / Mg(NO3)2), Биостимуляторы (Bombardier, Rhyzo).
-                    </div>
-                    <div style="background:var(--tank-b-light); border:1px solid rgba(37,99,235,0.25); border-radius:12px; padding:12px; margin-bottom:10px;">
-                        <strong style="color:var(--tank-b);">📦 БАК Б (ТОЛЬКО КАЛЬЦИЙ):</strong><br>
-                        Строго изолированно растворяется <strong>Кальциевая селитра Ca(NO3)2</strong>. Никаких фосфатов или сульфатов сюда добавлять нельзя!
-                    </div>
-                    <div style="background:#fff1f2; border:1px solid rgba(225,29,72,0.25); border-radius:12px; padding:12px; font-size:0.82rem; color:#9f1239;">
-                        <strong>🚫 ПОЧЕМУ КАТЕГОРИЧЕСКИ НЕЛЬЗЯ СМЕШИВАТЬ:</strong><br>
-                        При контакте кальция с сульфатами мгновенно выпадает <strong>нерастворимый гипс (CaSO4↓)</strong>, а с фосфатами — <strong>фосфат кальция (Ca3(PO4)2↓)</strong>. Белый хлопьевидный осадок за считанные минуты наглухо забивает капельные эмиттеры по всей длине бугров!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Lake Water Acidification Card -->
-            <div class="card">
-                <div class="card-title">
-                    <span>💧 Подкисление озёрной воды (рН 5.8 - 6.0)</span>
-                </div>
-                <div style="font-size:0.86rem; line-height:1.5; color:var(--text-main);">
-                    Озёрная вода в Сорокском районе имеет высокую щелочность (pH 7.8–8.5) из-за гидрокарбонатов (HCO3-).
-                    <ul style="margin: 8px 0 8px 20px; padding: 0;">
-                        <li><strong>Ортофосфорная кислота (85%):</strong> нейтрализует гидрокарбонаты и одновременно питает растение доступным фосфором (P).</li>
-                        <li><strong>Азотная кислота (65%):</strong> нейтрализует pH и даёт дополнительный нитратный азот (N). Отличный выбор для весеннего старта.</li>
-                        <li><strong>Оптимальный диапазон:</strong> рН раствора в капельнице должен быть строго <strong>5.8 – 6.2</strong>. При рН выше 6.5 фосфор, железо и цинк блокируются и корни их не усваивают (хлороз).</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Brix & Quality Card -->
-            <div class="card">
-                <div class="card-title">
-                    <span>🍇 Сахар (Brix) и баланс N:K</span>
-                </div>
-                <div style="font-size:0.86rem; line-height:1.5; color:var(--text-main);">
-                    <div style="margin-bottom:8px;">
-                        <strong>Что такое Брикс (Brix)?</strong> Это процент содержания сахара в соке клубники. Чем выше Brix, тем слаще и ароматнее ягода.
-                    </div>
-                    <div style="margin-bottom:8px;">
-                        <strong>Почему баланс N:K решает судьбу урожая:</strong>
-                        <ul style="margin: 4px 0 4px 20px; padding: 0;">
-                            <li><strong>Азот (N):</strong> отвечает за размер и рост вегетативной массы. Избыток азота при сборе делает ягоду водянистой «кашей» — она мнётся в ящиках и моментально поражается серой гнили.</li>
-                            <li><strong>Калий (K):</strong> транспортирует сахара в плоды, создаёт плотную упругую мякоть и прочную кожицу («хрустящая» транспортабельная ягода).</li>
-                            <li><strong>В фазе налива и сбора (Фаза III):</strong> дозировка калия в схеме Agrostrimedit в 2 раза превышает азот (N:K = 1:2.0), что гарантирует максимальный Brix и безупречную перевозку.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fertilizers Catalog Card -->
-            <div class="card">
-                <div class="card-title">
-                    <span>📖 Каталог препаратов схемы Agrostrimedit</span>
-                </div>
-                <div id="handbookCatalogContainer"></div>
-            </div>
-        </div>
     </div>
 
     <!-- Application Script -->
@@ -1720,7 +1904,6 @@
                 }
             }
         };
-
         const FERTILIZERS_HANDBOOK = [
             {
                 name: "Монокалийфосфат (MKP)",
@@ -1777,27 +1960,29 @@
         // State
         let currentStage = 'growth';
         let currentWeek = 1;
-        let currentSplit = 1; // 1, 2, or 3 times per week
         let isHeatMode = false;
         let isRainMode = false;
+        let currentSplit = 1; // 1, 2, or 3 times per week
+        let currentTankAItems = [];
+        let currentTankBItems = [];
         let journalEntries = [];
 
-        // DOM Inputs
+        // DOM Elements
         const bedLengthInput = document.getElementById('bedLength');
         const bedCountInput = document.getElementById('bedCount');
         const rowWidthInput = document.getElementById('rowWidth');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
         const lakePhInput = document.getElementById('lakePhInput');
         const acidTypeSelect = document.getElementById('acidTypeSelect');
-        const heatModeToggle = document.getElementById('heatModeToggle');
-        const rainModeToggle = document.getElementById('rainModeToggle');
 
-        // Metrics Display
         const metricTape = document.getElementById('metricTape');
         const metricArea = document.getElementById('metricArea');
         const metricPlants = document.getElementById('metricPlants');
 
-        // Monitor elements
+        const quickAreaText = document.getElementById('quickAreaText');
+        const quickPlantsText = document.getElementById('quickPlantsText');
+        const quickAcidDoseText = document.getElementById('quickAcidDoseText');
+
         const targetEcVal = document.getElementById('targetEcVal');
         const targetPhVal = document.getElementById('targetPhVal');
         const targetEcAdvice = document.getElementById('targetEcAdvice');
@@ -1833,125 +2018,107 @@
         }
 
         function setupEventListeners() {
-            [bedLengthInput, bedCountInput, rowWidthInput, sprayerVolumeInput, lakePhInput, acidTypeSelect].forEach(el => {
-                if (el) el.addEventListener('input', calculateAll);
-            });
-
-            heatModeToggle?.addEventListener('change', (e) => {
-                isHeatMode = e.target.checked;
-                calculateAll();
-            });
-
-            rainModeToggle?.addEventListener('change', (e) => {
-                isRainMode = e.target.checked;
-                if (rainAlertNotice) rainAlertNotice.style.display = isRainMode ? 'block' : 'none';
-                calculateAll();
-            });
-
-            // Split Feeding Buttons (1x, 2x, 3x)
-            [1, 2, 3].forEach(split => {
-                document.getElementById(`split${split}Btn`)?.addEventListener('click', () => {
-                    setSplitFeeding(split);
+            [bedLengthInput, bedCountInput, rowWidthInput, sprayerVolumeInput, lakePhInput, acidTypeSelect].forEach(input => {
+                input?.addEventListener('input', () => {
+                    calculateAll();
+                    saveSettings();
                 });
             });
 
-            // Teleport Button from Params to Fertigation
             document.getElementById('calculateAndGoBtn')?.addEventListener('click', () => {
-                saveSettings();
                 calculateAll();
-                switchToTab('tabFertBtn', 'calcPage');
+                switchToTab('calcPage');
             });
 
-            document.getElementById('backToParamsBtn')?.addEventListener('click', () => {
-                switchToTab('tabParamsBtn', 'paramsPage');
+            document.getElementById('editParamsQuickBtn')?.addEventListener('click', () => {
+                switchToTab('paramsPage');
             });
 
-            document.getElementById('saveParamsBtn')?.addEventListener('click', () => {
-                saveSettings();
-                alert('Параметры участка сохранены!');
+            // Split Feeding Buttons
+            document.querySelectorAll('.split-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const splitVal = parseInt(btn.dataset.split) || 1;
+                    setSplitFeeding(splitVal);
+                });
             });
 
-            document.getElementById('logTodayBtn')?.addEventListener('click', () => {
-                addJournalEntry();
+            // Weather Modes
+            const heatBtn = document.getElementById('heatModeBtn');
+            const rainBtn = document.getElementById('rainModeBtn');
+
+            heatBtn?.addEventListener('click', () => {
+                isHeatMode = !isHeatMode;
+                heatBtn.classList.toggle('heat-active', isHeatMode);
+                calculateAll();
             });
 
-            document.getElementById('clearJournalBtn')?.addEventListener('click', () => {
-                if (confirm('Очистить все записи журнала?')) {
-                    journalEntries = [];
-                    localStorage.removeItem('starberry_journal');
-                    renderJournal();
-                }
+            rainBtn?.addEventListener('click', () => {
+                isRainMode = !isRainMode;
+                rainBtn.classList.toggle('rain-active', isRainMode);
+                calculateAll();
             });
 
-            // Share buttons
+            // Dark Mode Toggle
+            document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('starberry_theme', next);
+            });
+
+            // Share Buttons
             document.getElementById('shareTgBtn')?.addEventListener('click', shareToTelegram);
             document.getElementById('shareWaBtn')?.addEventListener('click', shareToWhatsApp);
             document.getElementById('copyTaskBtn')?.addEventListener('click', copyTaskToClipboard);
 
-            document.getElementById('printBtn')?.addEventListener('click', () => {
-                window.print();
-            });
-
-            const themeBtn = document.getElementById('themeToggleBtn');
-            themeBtn?.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-                localStorage.setItem('starberry_theme', newTheme);
-            });
-
-            const savedTheme = localStorage.getItem('starberry_theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                if (themeBtn) themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-            }
-        }
-
-        function setSplitFeeding(split) {
-            currentSplit = split;
-            [1, 2, 3].forEach(s => {
-                const btn = document.getElementById(`split${s}Btn`);
-                if (btn) {
-                    if (s === split) btn.classList.add('active');
-                    else btn.classList.remove('active');
+            // Journal & Logging
+            document.getElementById('logTodayBtn')?.addEventListener('click', addJournalEntry);
+            document.getElementById('clearJournalBtn')?.addEventListener('click', () => {
+                if (confirm('Очистить все записи журнала?')) {
+                    journalEntries = [];
+                    saveJournal();
+                    renderJournal();
                 }
             });
+        }
+
+        function setSplitFeeding(splitCount) {
+            currentSplit = splitCount;
+            document.querySelectorAll('.split-btn').forEach(b => {
+                b.classList.toggle('active', parseInt(b.dataset.split) === currentSplit);
+            });
+
             if (splitNoticeTag) {
-                if (split === 1) splitNoticeTag.textContent = "100% за 1 полив";
-                if (split === 2) splitNoticeTag.textContent = "50% на 1 полив (2 полива/нед)";
-                if (split === 3) splitNoticeTag.textContent = "33% на 1 полив (3 полива/нед)";
+                if (currentSplit === 1) {
+                    splitNoticeTag.textContent = "100% на 1 полив";
+                } else if (currentSplit === 2) {
+                    splitNoticeTag.textContent = "50% на 1 полив (2 полива/нед)";
+                } else {
+                    splitNoticeTag.textContent = "33% на 1 полив (3 полива/нед)";
+                }
             }
             calculateAll();
         }
 
-        function switchToTab(navBtnId, pageId) {
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        // Unified Tab Switching Function
+        function switchToTab(pageId) {
             document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
-            document.getElementById(navBtnId)?.classList.add('active');
-            document.getElementById(pageId)?.classList.add('active-page');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.nav-item, .nav-item-desktop').forEach(el => {
+                el.classList.toggle('active', el.dataset.page === pageId);
+            });
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
         function setupNavigationTabs() {
-            const tabs = [
-                { btn: 'tabParamsBtn', page: 'paramsPage' },
-                { btn: 'tabFertBtn', page: 'calcPage' },
-                { btn: 'tabSzrBtn', page: 'szrPage' },
-                { btn: 'tabJournalBtn', page: 'journalPage' },
-                { btn: 'tabHandbookNavBtn', page: 'handbookPage' }
-            ];
-
-            tabs.forEach(t => {
-                const b = document.getElementById(t.btn);
-                b?.addEventListener('click', () => {
-                    switchToTab(t.btn, t.page);
+            document.querySelectorAll('.nav-item, .nav-item-desktop').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const pageId = btn.dataset.page;
+                    if (pageId) switchToTab(pageId);
                 });
-            });
-
-            // Top Header Book Icon opens Handbook Tab
-            document.getElementById('openHandbookBtn')?.addEventListener('click', () => {
-                switchToTab('tabHandbookNavBtn', 'handbookPage');
             });
 
             // Brix Help Toggle
@@ -1965,9 +2132,12 @@
 
         function setupOperatorMode() {
             const overlay = document.getElementById('operatorOverlay');
-            document.getElementById('openOperatorBtn')?.addEventListener('click', () => {
-                updateOperatorView();
-                overlay?.classList.add('active');
+            const openBtns = [document.getElementById('openOperatorBtn'), document.getElementById('openOperatorHeaderBtn')];
+            openBtns.forEach(b => {
+                b?.addEventListener('click', () => {
+                    updateOperatorView();
+                    overlay?.classList.add('active');
+                });
             });
             document.getElementById('closeOperatorBtn')?.addEventListener('click', () => {
                 overlay?.classList.remove('active');
@@ -1984,11 +2154,11 @@
             if (opA) {
                 opA.innerHTML = '';
                 if (currentTankAItems.length === 0) {
-                    opA.innerHTML = '<div style="color:#94a3b8; padding:8px 0; font-size:1rem;">В этот бак препараты не вносятся</div>';
+                    opA.innerHTML = '<div style="color:#94a3b8; padding:8px 0; font-size:1.1rem;">В этот бак препараты не вносятся</div>';
                 } else {
                     currentTankAItems.forEach(it => {
                         const row = document.createElement('div');
-                        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08);';
+                        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08);';
                         row.innerHTML = `<span class="op-fert-name">${it.name}</span><span class="op-fert-val">${it.dose}</span>`;
                         opA.appendChild(row);
                     });
@@ -1997,11 +2167,11 @@
             if (opB) {
                 opB.innerHTML = '';
                 if (currentTankBItems.length === 0) {
-                    opB.innerHTML = '<div style="color:#94a3b8; padding:8px 0; font-size:1rem;">В этот бак препараты не вносятся</div>';
+                    opB.innerHTML = '<div style="color:#94a3b8; padding:8px 0; font-size:1.1rem;">В этот бак препараты не вносятся</div>';
                 } else {
                     currentTankBItems.forEach(it => {
                         const row = document.createElement('div');
-                        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08);';
+                        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08);';
                         row.innerHTML = `<span class="op-fert-name">${it.name}</span><span class="op-fert-val">${it.dose}</span>`;
                         opB.appendChild(row);
                     });
@@ -2018,12 +2188,14 @@
                 const btn = document.createElement('div');
                 btn.className = `stage-card-btn ${stage.id === currentStage ? 'active' : ''}`;
                 btn.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span class="stage-card-icon">${stage.icon}</span>
-                        <span class="stage-card-weeks">${weeksCount} нед.</span>
+                    <div>
+                        <div class="stage-card-icon">${stage.icon}</div>
+                        <div class="stage-card-title">${stage.title}</div>
+                        <div class="stage-card-sub">${stage.subtitle}</div>
                     </div>
-                    <div class="stage-card-title">${stage.title}</div>
-                    <div class="stage-card-weeks">${stage.subtitle}</div>
+                    <div style="font-size:0.75rem; font-weight:800; color:var(--text-muted); margin-top:8px;">
+                        ${weeksCount} ${weeksCount === 1 ? 'неделя' : 'недели'}
+                    </div>
                 `;
                 btn.addEventListener('click', () => {
                     currentStage = stage.id;
@@ -2039,34 +2211,36 @@
         function renderWeeks() {
             weekSelector.innerHTML = '';
             const stage = AGRO_STAGES[currentStage];
-            Object.keys(stage.weeks).forEach(w => {
-                const weekNum = parseInt(w);
-                const btn = document.createElement('button');
-                btn.className = `week-btn ${weekNum === currentWeek ? 'active' : ''}`;
-                btn.textContent = `Неделя ${weekNum}`;
-                btn.addEventListener('click', () => {
-                    currentWeek = weekNum;
+            Object.values(stage.weeks).forEach(w => {
+                const chip = document.createElement('div');
+                chip.className = `week-chip ${w.week === currentWeek ? 'active' : ''}`;
+                chip.innerHTML = `
+                    <div class="week-chip-title">Неделя ${w.week}</div>
+                    <div class="week-chip-date">${w.targetEC}</div>
+                `;
+                chip.addEventListener('click', () => {
+                    currentWeek = w.week;
                     renderWeeks();
                     calculateAll();
                 });
-                weekSelector.appendChild(btn);
+                weekSelector.appendChild(chip);
             });
         }
 
         function getCalculatedArea() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
-            const width = parseFloat(rowWidthInput.value) || 1.40;
-            return Math.round(length * count * width * 100) / 100;
+            const rowWidth = parseFloat(rowWidthInput.value) || 1.40;
+            return length * count * rowWidth;
         }
 
         function getCalculatedPlants() {
             const length = parseFloat(bedLengthInput.value) || 0;
             const count = parseFloat(bedCountInput.value) || 0;
             const totalBedMeters = length * count;
-            const lines = 2;
-            const stepMeters = 0.25;
-            return Math.round((totalBedMeters * lines) / stepMeters);
+            const step = 0.25;
+            const rowsOnBed = 2;
+            return Math.round(totalBedMeters * (rowsOnBed / step));
         }
 
         function calculateAll() {
@@ -2088,21 +2262,23 @@
             // Spoon-Feeding division (divide by 1, 2, or 3)
             haRatio = haRatio / currentSplit;
 
-            // Metrics Display
+            // Metrics Display on Page 1 & 2
             if (metricTape) metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
             if (metricArea) metricArea.textContent = areaSotkas;
             if (metricPlants) metricPlants.textContent = totalPlants.toLocaleString('ru-RU');
+
+            if (quickAreaText) quickAreaText.textContent = `${areaSotkas} соток`;
+            if (quickPlantsText) quickPlantsText.textContent = `${totalPlants.toLocaleString('ru-RU')} кустов`;
 
             // Acid Lake water calculation
             const rawPh = parseFloat(lakePhInput?.value) || 8.1;
             const acidType = acidTypeSelect?.value || 'ortho';
             const deltaPh = Math.max(0, rawPh - 5.9);
-            // Rough rule of thumb: ~90ml ortho or ~120ml nitric per delta 1.0 pH per 1m3
             const coeff = acidType === 'ortho' ? 85 : 115;
             const mlPerM3 = Math.round(deltaPh * coeff);
-            if (acidDoseResult) {
-                acidDoseResult.textContent = `~${mlPerM3} мл ${acidType === 'ortho' ? 'ортофосфорной' : 'азотной'} кислоты на 1 м³ воды озера для целевого pH 5.8-6.0`;
-            }
+            const acidMsg = `~${mlPerM3} мл ${acidType === 'ortho' ? 'ортофосфорной' : 'азотной'} кислоты на 1 м³ воды озера для pH 5.8-6.0`;
+            if (acidDoseResult) acidDoseResult.textContent = acidMsg;
+            if (quickAcidDoseText) quickAcidDoseText.textContent = `Подкисление: ${acidMsg}`;
 
             // Fertigation Data
             const stage = AGRO_STAGES[currentStage];
@@ -2111,11 +2287,7 @@
 
             // Update Target EC and pH Monitor
             if (targetEcVal) {
-                if (isHeatMode) {
-                    targetEcVal.textContent = "1.1 – 1.3 mS/cm (ЖАРА)";
-                } else {
-                    targetEcVal.textContent = weekData.targetEC;
-                }
+                targetEcVal.textContent = isHeatMode ? "1.1 – 1.3 mS/cm (ЖАРА)" : weekData.targetEC;
             }
             if (targetPhVal) targetPhVal.textContent = weekData.targetPH;
             if (targetEcAdvice) {
@@ -2135,16 +2307,35 @@
                 }
             }
 
+            // Visual Phase Gauge & Accuracy Badge
+            const brixBarFill = document.getElementById('brixBarFill');
+            const stageAccuracyBadge = document.getElementById('stageAccuracyBadge');
+            if (brixBarFill) {
+                if (currentStage === 'growth') {
+                    brixBarFill.style.width = '20%';
+                    if (stageAccuracyBadge) stageAccuracyBadge.textContent = '✅ Норма Фазы I: фокус на корень и лист';
+                } else if (currentStage === 'budding') {
+                    brixBarFill.style.width = '55%';
+                    if (stageAccuracyBadge) stageAccuracyBadge.textContent = '✅ Норма Фазы II: фокус на цветки и бутоны';
+                } else if (currentStage === 'fruiting') {
+                    brixBarFill.style.width = '100%';
+                    if (stageAccuracyBadge) stageAccuracyBadge.textContent = '✅ Норма Фазы III: калий х2 на сахар и плотность';
+                } else {
+                    brixBarFill.style.width = '40%';
+                    if (stageAccuracyBadge) stageAccuracyBadge.textContent = '✅ Норма Фазы IV: закладка почек';
+                }
+            }
+
             const brixExplainer = document.getElementById('brixPlainExplainer');
             if (brixExplainer) {
                 if (currentStage === 'growth') {
-                    brixExplainer.innerHTML = "🌱 <strong>Старт сезона:</strong> Азот и калий равны (1:1.0). Наращиваем мощные листья и корни, плотность ягоды пока не требуется.";
+                    brixExplainer.innerHTML = "🌱 <strong>Фаза I (Отрастание):</strong> Всё рассчитано строго по схеме Agrostrimedit! Сейчас у куста ещё нет ягод, поэтому калий для сладости не нужен. Удобрения сбалансированы 1:1.0, чтобы направить 100% сил на наращивание мощных листьев и новых белых корней.";
                 } else if (currentStage === 'budding') {
-                    brixExplainer.innerHTML = "🌸 <strong>Цветение:</strong> Калия больше в 1.5 раза (1:1.5). Подготовка к завязыванию плодов, укрепление стенок будущих ягод.";
+                    brixExplainer.innerHTML = "🌸 <strong>Фаза II (Цветение):</strong> Баланс 1:1.5. Доля калия повышена в 1.5 раза для подготовки к завязыванию плодов и укрепления стенок будущих ягод.";
                 } else if (currentStage === 'fruiting') {
-                    brixExplainer.innerHTML = "🍓 <strong>Налив и сбор:</strong> Калия в 2 раза больше азота (1:2.0)! Это даёт максимальный сахар (Brix) и плотность — <strong>ягода не течёт в ящиках при перевозке</strong>.";
+                    brixExplainer.innerHTML = "🍓 <strong>Фаза III (Сбор ягоды):</strong> Шкала на максимуме! Калия в 2 с лишним раза больше азота (1:2.0 – 1:2.2). Это даёт максимальный сахар (Brix) и плотность — <strong>ягода не течёт в ящиках при перевозке</strong>.";
                 } else if (currentStage === 'post') {
-                    brixExplainer.innerHTML = "🌿 <strong>После сбора:</strong> Баланс 1:1.2 для восстановления куста и закладки цветочных почек на следующий сезон.";
+                    brixExplainer.innerHTML = "🌿 <strong>Фаза IV (После сбора):</strong> Баланс 1:1.2 для восстановления куста и закладки цветочных почек на следующий сезон.";
                 }
                 if (isRainMode) {
                     brixExplainer.innerHTML += "<br><span style='color:#ef4444; font-weight:700;'>🌧️ Сырая погода: риск размягчения мякоти. Кальций из Бака Б защитит от растрескивания и серой гнили!</span>";
@@ -2153,6 +2344,7 @@
 
             if (targetSzrAdvice) targetSzrAdvice.textContent = weekData.szrAdvice || "";
             if (szrActionBadge) szrActionBadge.textContent = weekData.szrBadge || "Защита";
+            if (rainAlertNotice) rainAlertNotice.style.display = isRainMode ? 'block' : 'none';
 
             let tankAItems = [];
             let tankBItems = [];
@@ -2187,12 +2379,23 @@
                 }
             });
 
-            // Update Tank Header Totals
-            if (tankAWeight) tankAWeight.textContent = tankAWeightGrams >= 1000 ? `${(tankAWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankAWeightGrams)} г`;
-            if (tankBWeight) tankBWeight.textContent = tankBWeightGrams >= 1000 ? `${(tankBWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankBWeightGrams)} г`;
-
             currentTankAItems = tankAItems;
             currentTankBItems = tankBItems;
+
+            const tankAFormatted = tankAWeightGrams >= 1000 ? `${(tankAWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankAWeightGrams)} г`;
+            const tankBFormatted = tankBWeightGrams >= 1000 ? `${(tankBWeightGrams/1000).toFixed(2)} кг` : `${Math.round(tankBWeightGrams)} г`;
+
+            if (tankAWeight) tankAWeight.textContent = tankAFormatted;
+            if (tankBWeight) tankBWeight.textContent = tankBFormatted;
+
+            // Mobile Sticky Bar update
+            const stickyA = document.getElementById('stickyTankA');
+            const stickyB = document.getElementById('stickyTankB');
+            const stickyEc = document.getElementById('stickyEc');
+            if (stickyA) stickyA.textContent = tankAFormatted;
+            if (stickyB) stickyB.textContent = tankBFormatted;
+            if (stickyEc) stickyEc.textContent = isHeatMode ? '1.2' : (weekData.targetEC.split('–')[0].trim());
+
             renderTankItems(tankABody, tankAItems);
             renderTankItems(tankBBody, tankBItems);
             renderFoliarItems(weekData.foliar, (areaM2 / 10000));
@@ -2201,7 +2404,7 @@
         function renderTankItems(container, items) {
             container.innerHTML = '';
             if (items.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted); font-size: 0.88rem; font-weight:600;">В этот бак на текущий полив препараты не вносятся.</div>`;
+                container.innerHTML = `<div style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.95rem; font-weight:700;">В этот бак на текущий полив препараты не вносятся.</div>`;
                 return;
             }
 
@@ -2241,28 +2444,23 @@
             foliarData.forEach(item => {
                 const dosePerLiter = (item.normHa * (item.unit === 'л' ? 1000 : 1000)) / haFluidNormLiters;
                 const dosePerSprayer = dosePerLiter * sprayerVolumeLiters;
-
                 const totalForPlantation = item.normHa * haRatio;
-                let totalDisplay = "";
-                if (item.unit === 'л') {
-                    totalDisplay = totalForPlantation < 1 ? `${Math.round(totalForPlantation * 1000)} мл` : `${totalForPlantation.toFixed(2)} л`;
-                } else {
-                    totalDisplay = totalForPlantation < 1 ? `${Math.round(totalForPlantation * 1000)} г` : `${totalForPlantation.toFixed(2)} кг`;
-                }
 
-                const row = document.createElement('div');
-                row.className = 'fert-row';
-                row.innerHTML = `
+                const displayPerSprayer = dosePerSprayer < 1000 ? `${Math.round(dosePerSprayer)} ${item.unit === 'л' ? 'мл' : 'г'}` : `${(dosePerSprayer/1000).toFixed(2)} ${item.unit}`;
+                const displayTotal = totalForPlantation < 1 ? `${Math.round(totalForPlantation * (item.unit === 'л' ? 1000 : 1000))} ${item.unit === 'л' ? 'мл' : 'г'}` : `${totalForPlantation.toFixed(2)} ${item.unit}`;
+
+                const el = document.createElement('div');
+                el.className = 'fert-row';
+                el.innerHTML = `
                     <div>
-                        <div class="fert-title" style="color: var(--secondary);">✨ ${item.name}</div>
-                        <div class="fert-sub">Дозировка: <strong>${Math.round(dosePerSprayer)} ${item.unit === 'л' ? 'мл' : 'г'}</strong> на 1 опрыскиватель (${sprayerVolumeLiters} л)</div>
+                        <div class="fert-title">${item.name}</div>
+                        <div class="fert-sub">${item.formula} • всего на поле: ${displayTotal}</div>
                     </div>
                     <div>
-                        <div class="fert-dose" style="color: var(--secondary);">${totalDisplay}</div>
-                        <div class="fert-norm-tag">на всё поле</div>
+                        <div class="fert-dose" style="border-color:var(--secondary); color:var(--secondary);">${displayPerSprayer} <small style="font-size:0.75rem;">/ 16 л</small></div>
                     </div>
                 `;
-                foliarContent.appendChild(row);
+                foliarContent.appendChild(el);
             });
         }
 
@@ -2277,7 +2475,6 @@
             msg += `📅 ${new Date().toLocaleDateString('ru-RU')} | ${stage.title} • Неделя ${currentWeek}\n`;
             msg += `🌱 Поле: ${area} сот. (${plants} кустов) | Режим: ${portionText}\n\n`;
 
-            // Tank A details
             msg += `📦 БАК А (Основной) — всего ${tankAWeight.textContent}:\n`;
             if (currentTankAItems.length > 0) {
                 currentTankAItems.forEach(it => {
@@ -2287,7 +2484,6 @@
                 msg += `  (нет удобрений)\n`;
             }
 
-            // Tank B details
             msg += `\n📦 БАК Б (ТОЛЬКО Кальций) — всего ${tankBWeight.textContent}:\n`;
             if (currentTankBItems.length > 0) {
                 currentTankBItems.forEach(it => {
@@ -2297,13 +2493,11 @@
                 msg += `  (в этот полив не вносится)\n`;
             }
 
-            // Acid and target parameters
             if (acidDoseResult) {
                 msg += `\n💧 Озеро: ${acidDoseResult.textContent.replace('~', '')}\n`;
             }
             msg += `🎯 Раствор в капельнице: EC ${targetEcVal?.textContent || ''}, pH ${targetPhVal?.textContent || '5.8-6.2'}\n`;
 
-            // Foliar if present
             if (weekData && weekData.foliar && weekData.foliar.length > 0) {
                 msg += `\n🌿 ОПРЫСКИВАТЕЛЬ (по листу):\n`;
                 weekData.foliar.forEach(item => {
@@ -2320,18 +2514,10 @@
             const siteUrl = window.location.href ? window.location.href.split('#')[0] : 'https://ozyych.github.io/starberry/';
             const encodedUrl = encodeURIComponent(siteUrl);
 
-            // 1. Copy to clipboard synchronously as guaranteed backup
             copyTextToClipboardSilently(rawText);
 
-            // 2. Official Telegram Universal Share URL (MUST include url parameter to avoid homepage redirect)
             const tgUrl = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
             window.open(tgUrl, '_blank');
-        }
-
-        function copyTextToClipboardSilently(text) {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).catch(() => {});
-            }
         }
 
         function shareToWhatsApp() {
@@ -2360,6 +2546,12 @@
             alert('📋 Наряд на полив скопирован в буфер обмена!');
         }
 
+        function copyTextToClipboardSilently(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(() => {});
+            }
+        }
+
         function addJournalEntry() {
             const stage = AGRO_STAGES[currentStage];
             const dateStr = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
@@ -2384,21 +2576,25 @@
             const list = document.getElementById('journalListContainer');
             if (!list) return;
             if (journalEntries.length === 0) {
-                list.innerHTML = `<p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">В журнале пока нет записей. Нажмите зелёную кнопку «Записать полив» на экране питания!</p>`;
+                list.innerHTML = `<p style="text-align:center; padding:30px; color:var(--text-muted); font-size:1rem; font-weight:600;">В журнале пока нет записей. Нажмите зелёную кнопку «Записать полив» на экране питания!</p>`;
                 return;
             }
 
             list.innerHTML = '';
             journalEntries.forEach(item => {
                 const el = document.createElement('div');
-                el.className = 'log-entry';
+                el.className = 'fert-row';
+                el.style.cssText = 'flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:12px;';
                 el.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span class="log-date">${item.date}</span>
-                        <span style="font-size:0.75rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px;">Доза: ${item.portion}</span>
+                    <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+                        <strong style="font-size:1.05rem; color:var(--primary);">${item.date} — ${item.stageTitle}, Неделя ${item.weekNum}</strong>
+                        <span style="font-size:0.8rem; background:var(--primary-light); color:var(--primary); padding:3px 8px; border-radius:6px; font-weight:800;">Порция ${item.portion}</span>
                     </div>
-                    <div class="log-title">${item.stageTitle} • Неделя ${item.weekNum} ${item.isHeat ? '☀️' : ''} ${item.isRain ? '🌧️' : ''}</div>
-                    <div class="log-sub">Бак А: ${item.tankA} | Бак Б (кальций): ${item.tankB}</div>
+                    <div style="font-size:0.95rem; color:var(--text-main);">
+                        БАК А: <strong>${item.tankA}</strong> | БАК Б: <strong>${item.tankB}</strong>
+                        ${item.isHeat ? ' • <span style="color:#b45309; font-weight:700;">ЖАРА</span>' : ''}
+                        ${item.isRain ? ' • <span style="color:#2563eb; font-weight:700;">СЫРОСТЬ</span>' : ''}
+                    </div>
                 `;
                 list.appendChild(el);
             });
@@ -2411,11 +2607,9 @@
         function loadJournal() {
             const saved = localStorage.getItem('starberry_journal');
             if (saved) {
-                try {
-                    journalEntries = JSON.parse(saved);
-                    renderJournal();
-                } catch(e) {}
+                try { journalEntries = JSON.parse(saved); } catch(e) {}
             }
+            renderJournal();
         }
 
         function setupHandbook() {
@@ -2426,30 +2620,35 @@
                 const el = document.createElement('div');
                 el.className = 'handbook-entry';
                 el.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; flex-wrap:wrap; gap:4px;">
-                        <h4 style="font-size:0.92rem; font-weight:800; color:var(--text-main); margin:0;">${item.name}</h4>
-                        <span style="font-size:0.72rem; font-weight:700; background:var(--primary-light); color:var(--primary); padding:2px 8px; border-radius:6px;">${item.formula}</span>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:4px;">
+                        <h4 style="font-size:1.05rem; font-weight:800; color:var(--text-main); margin:0;">${item.name}</h4>
+                        <span style="font-size:0.8rem; font-weight:700; background:var(--primary-light); color:var(--primary); padding:3px 10px; border-radius:6px;">${item.formula}</span>
                     </div>
-                    <p style="font-size:0.82rem; color:var(--text-muted); margin:0; line-height:1.4;">${item.desc}</p>
+                    <p style="font-size:0.92rem; color:var(--text-muted); margin:0; line-height:1.45;">${item.desc}</p>
                 `;
                 container.appendChild(el);
             });
         }
 
         function saveSettings() {
-            const settings = {
+            const data = {
                 bedLength: bedLengthInput.value,
                 bedCount: bedCountInput.value,
                 rowWidth: rowWidthInput.value,
                 sprayerVolume: sprayerVolumeInput.value,
-                lakePh: lakePhInput?.value || '8.1',
-                acidType: acidTypeSelect?.value || 'ortho'
+                lakePh: lakePhInput?.value,
+                acidType: acidTypeSelect?.value
             };
-            localStorage.setItem('starberry_settings_v50', JSON.stringify(settings));
+            localStorage.setItem('starberry_settings', JSON.stringify(data));
         }
 
         function loadSavedSettings() {
-            const saved = localStorage.getItem('starberry_settings_v50');
+            const savedTheme = localStorage.getItem('starberry_theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+
+            const saved = localStorage.getItem('starberry_settings');
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);

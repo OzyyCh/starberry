@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Starberry Pro 3.5 — Профессиональная агросистема для клубники</title>
+    <title>Starberry Pro 6.0 Enterprise — Профессиональная агросистема клубники</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e11d48">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
@@ -69,7 +74,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-bottom: 84px; /* Space for mobile bottom bar */
+            padding-bottom: 84px;
         }
 
         .container {
@@ -156,7 +161,7 @@
         /* Responsive Layout */
         .app-layout {
             display: grid;
-            grid-template-columns: 340px 1fr;
+            grid-template-columns: 350px 1fr;
             gap: 20px;
             align-items: start;
         }
@@ -194,7 +199,7 @@
             border-bottom: 1px solid var(--border-light);
         }
 
-        /* Inputs */
+        /* Large Touch Inputs */
         .form-group {
             margin-bottom: 14px;
         }
@@ -291,17 +296,171 @@
             font-size: 1.45rem;
         }
 
+        /* Standard Schema Box */
+        .standard-schema-box {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            font-size: 0.82rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .schema-badge {
+            background: var(--secondary-light);
+            color: var(--secondary);
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            white-space: nowrap;
+        }
+
+        /* Spoon-Feeding (Split Frequency) Component */
+        .spoon-feed-card {
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .spoon-feed-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .spoon-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .split-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .split-btn {
+            height: 38px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border-light);
+            background: var(--bg-card-subtle);
+            color: var(--text-main);
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .split-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        /* Operator Mode Banner & Quick Toggle */
+        .operator-toggle-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            color: white;
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            margin-bottom: 14px;
+            box-shadow: 0 4px 14px rgba(49, 46, 129, 0.3);
+        }
+
+        .btn-operator-toggle {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .btn-operator-toggle:hover {
+            background: #6366f1;
+        }
+
+        /* Fullscreen Operator Overlay */
+        .operator-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #0f172a;
+            color: #f8fafc;
+            z-index: 20000;
+            padding: 16px;
+            overflow-y: auto;
+        }
+
+        .operator-overlay.active {
+            display: block;
+        }
+
+        .op-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 14px;
+        }
+
+        .op-tank-card {
+            background: #1e293b;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 14px;
+            border-left: 6px solid #a855f7;
+        }
+
+        .op-tank-card.tank-b {
+            border-left-color: #3b82f6;
+        }
+
+        .op-fert-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .op-fert-row:last-child { border-bottom: none; }
+        .op-fert-name { font-size: 1.15rem; font-weight: 800; }
+        .op-fert-val { font-size: 1.6rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: #f43f5e; }
+
         /* Weather Heat Mode Toggle */
         .heat-toggle-card {
             background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
             border: 2px solid #f59e0b;
             border-radius: var(--radius-md);
-            padding: 14px 16px;
-            margin-bottom: 14px;
+            padding: 10px 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            gap: 8px;
         }
 
         [data-theme="dark"] .heat-toggle-card {
@@ -310,23 +469,21 @@
         }
 
         .heat-label {
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             font-weight: 800;
             color: #92400e;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
-        [data-theme="dark"] .heat-label {
-            color: #fde68a;
-        }
+        [data-theme="dark"] .heat-label { color: #fde68a; }
 
         .switch {
             position: relative;
             display: inline-block;
-            width: 50px;
-            height: 28px;
+            width: 44px;
+            height: 24px;
             flex-shrink: 0;
         }
 
@@ -344,20 +501,15 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 22px; width: 22px;
+            height: 18px; width: 18px;
             left: 3px; bottom: 3px;
             background-color: white;
             transition: .3s;
             border-radius: 50%;
         }
 
-        input:checked + .slider {
-            background-color: #f59e0b;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(22px);
-        }
+        input:checked + .slider { background-color: #f59e0b; }
+        input:checked + .slider:before { transform: translateX(20px); }
 
         /* Stages & Weeks */
         .stage-selector {
@@ -368,9 +520,7 @@
         }
 
         @media (max-width: 600px) {
-            .stage-selector {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .stage-selector { grid-template-columns: repeat(2, 1fr); }
         }
 
         .stage-card-btn {
@@ -392,22 +542,9 @@
             box-shadow: 0 4px 14px var(--primary-glow);
         }
 
-        .stage-card-icon {
-            font-size: 24px;
-        }
-
-        .stage-card-title {
-            font-size: 0.88rem;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.2;
-        }
-
-        .stage-card-weeks {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
+        .stage-card-icon { font-size: 24px; }
+        .stage-card-title { font-size: 0.88rem; font-weight: 800; color: var(--text-main); line-height: 1.2; }
+        .stage-card-weeks { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; }
 
         .weeks-scroll {
             display: flex;
@@ -487,6 +624,20 @@
             line-height: 1.4;
         }
 
+        /* Brix & Fruit Quality Indicator */
+        .brix-indicator-box {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
         /* Compatibility Warning */
         .compat-alert {
             background: #fffbeb;
@@ -515,9 +666,7 @@
         }
 
         @media (max-width: 680px) {
-            .tanks-container {
-                grid-template-columns: 1fr;
-            }
+            .tanks-container { grid-template-columns: 1fr; }
         }
 
         .tank-block {
@@ -572,38 +721,11 @@
             border-bottom: 1px solid var(--border-light);
         }
 
-        .fert-row:last-child {
-            border-bottom: none;
-        }
-
-        .fert-title {
-            font-size: 0.94rem;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .fert-sub {
-            font-size: 0.74rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-top: 2px;
-        }
-
-        .fert-dose {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
-            text-align: right;
-            line-height: 1.1;
-        }
-
-        .fert-norm-tag {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            text-align: right;
-        }
+        .fert-row:last-child { border-bottom: none; }
+        .fert-title { font-size: 0.94rem; font-weight: 800; color: var(--text-main); }
+        .fert-sub { font-size: 0.74rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+        .fert-dose { font-size: 1.3rem; font-weight: 800; color: var(--primary); font-family: 'JetBrains Mono', monospace; text-align: right; line-height: 1.1; }
+        .fert-norm-tag { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; text-align: right; }
 
         /* Foliar Section */
         .foliar-box {
@@ -648,14 +770,41 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            text-decoration: none;
         }
 
         .btn-log {
             background: linear-gradient(135deg, #059669, #047857);
             box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
         }
+
+        .share-buttons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 6px;
+            margin-bottom: 8px;
+        }
+
+        .share-btn {
+            height: 44px;
+            border-radius: var(--radius-sm);
+            border: none;
+            color: white;
+            font-weight: 800;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .share-tg { background: #229ED9; }
+        .share-wa { background: #25D366; }
 
         /* Journal Page */
         .log-entry {
@@ -664,71 +813,66 @@
             border-radius: var(--radius-sm);
             padding: 12px 14px;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
-        .log-date {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
+        .log-date { font-size: 0.8rem; font-weight: 800; color: var(--primary); }
+        .log-title { font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-top: 2px; }
+        .log-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; font-weight: 600; }
 
-        .log-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .log-sub {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* SZR Waiting Time Card */
-        .szr-item {
+        /* SZR Diagnosis & Protection Items */
+        .diag-item {
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            margin-bottom: 10px;
+            padding: 14px;
+            margin-bottom: 14px;
         }
 
-        .szr-top {
+        .diag-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
-        .szr-name {
+        .diag-name {
             font-weight: 800;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .szr-wait {
-            font-size: 0.78rem;
+        .diag-badge {
+            font-size: 0.72rem;
             font-weight: 800;
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 6px;
             background: var(--primary-light);
             color: var(--primary);
         }
 
-        .szr-target {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 600;
+        .diag-symptoms {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            line-height: 1.45;
+            margin-bottom: 6px;
+        }
+
+        .diag-treatment {
+            font-size: 0.82rem;
+            color: var(--secondary);
+            font-weight: 700;
+            background: var(--secondary-light);
+            padding: 6px 10px;
+            border-radius: 6px;
         }
 
         /* Mobile Bottom Nav */
         .mobile-nav-bar {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background: var(--bg-card);
             border-top: 1px solid var(--border);
             display: flex;
@@ -739,12 +883,8 @@
         }
 
         @media (min-width: 992px) {
-            .mobile-nav-bar {
-                display: none;
-            }
-            body {
-                padding-bottom: 20px;
-            }
+            .mobile-nav-bar { display: none; }
+            body { padding-bottom: 20px; }
         }
 
         .nav-item {
@@ -764,66 +904,14 @@
             transition: var(--transition);
         }
 
-        .nav-item-icon {
-            font-size: 20px;
-            line-height: 1;
-        }
-
-        .nav-item.active {
-            color: var(--primary);
-        }
-
-        .nav-item.active .nav-item-icon {
-            transform: scale(1.15);
-        }
-
-        /* Handbook Modal */
-        .handbook-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
-            padding: 16px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .handbook-modal.open { display: flex; }
-
-        .handbook-paper {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 650px;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .handbook-top {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-light);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .handbook-top h3 { font-size: 1.2rem; font-weight: 800; }
-        .handbook-close { background: transparent; border: none; font-size: 26px; cursor: pointer; color: var(--text-muted); }
-        .handbook-scroll { padding: 20px; overflow-y: auto; }
-        .handbook-entry { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border-light); }
-        .handbook-entry:last-child { border-bottom: none; }
-        .handbook-entry h4 { font-size: 1.02rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .handbook-entry p { font-size: 0.88rem; color: var(--text-main); margin-top: 6px; line-height: 1.45; }
+        .nav-item-icon { font-size: 20px; line-height: 1; }
+        .nav-item.active { color: var(--primary); }
+        .nav-item.active .nav-item-icon { transform: scale(1.15); }
 
         /* Printable */
         @media print {
             body { background: white !important; color: black !important; padding: 0 !important; }
-            header, .stage-selector, .weeks-scroll, .heat-toggle-card, .main-action-btn, .mobile-nav-bar, .icon-btn { display: none !important; }
+            header, .stage-selector, .weeks-scroll, .heat-toggle-card, .main-action-btn, .mobile-nav-bar, .icon-btn, .share-buttons-grid, .spoon-feed-card { display: none !important; }
             .app-layout { display: block !important; }
             .card { border: 1px solid #000 !important; box-shadow: none !important; break-inside: avoid; }
         }
@@ -836,11 +924,11 @@
             <div class="brand">
                 <div class="brand-logo">🍓</div>
                 <div>
-                    <div class="brand-name">Starberry <span class="badge-pro">PRO 3.5</span></div>
-                    <div class="brand-sub">Агросистема питания и защиты клубники</div>
+                    <div class="brand-name">Starberry <span class="badge-pro">PRO 5.0</span></div>
+                    <div class="brand-sub">Профессиональная агросистема клубники</div>
                 </div>
             </div>
-            <div class="header-btns">
+            <div class="header-actions">
                 <button class="icon-btn" id="openHandbookBtn" title="Справочник удобрений">📖</button>
                 <button class="icon-btn" id="themeToggleBtn" title="Тема">🌙</button>
             </div>
@@ -848,7 +936,7 @@
 
         <!-- Main Layout -->
         <div class="app-layout">
-            <!-- Sidebar / Tab: Parameters -->
+            <!-- Tab 1: Parameters (Starts first on mobile!) -->
             <aside class="tab-page active-page sidebar-section" id="paramsPage">
                 <div class="card">
                     <div class="card-title">
@@ -879,7 +967,7 @@
                             <span class="input-unit">м</span>
                         </div>
                         <div style="font-size:0.75rem; color:var(--text-muted); margin-top:3px;">
-                            Меняет общую площадь поля в сотках и вес удобрений
+                            Стандарт на буграх: 1.40 м (меняет площадь и дозу солей)
                         </div>
                     </div>
 
@@ -891,6 +979,28 @@
                         </div>
                     </div>
 
+                    <!-- Acid lake water calculator block -->
+                    <div style="background:var(--bg-card-subtle); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:12px; margin-bottom:14px;">
+                        <span style="font-size:0.82rem; font-weight:800; color:#2563eb; display:block; margin-bottom:6px;">💧 Подкисление озёрной воды (pH)</span>
+                        <div style="display:flex; gap:8px; margin-bottom:6px;">
+                            <div style="flex:1;">
+                                <label style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Исходный pH озера:</label>
+                                <input type="number" id="lakePhInput" value="8.1" step="0.1" class="touch-input" style="height:38px; font-size:0.9rem; padding-right:10px;">
+                            </div>
+                            <div style="flex:1.2;">
+                                <label style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Кислота:</label>
+                                <select id="acidTypeSelect" class="touch-input" style="height:38px; font-size:0.8rem; padding:0 6px;">
+                                    <option value="ortho" selected>Ортофосфорная 85%</option>
+                                    <option value="nitric">Азотная 65%</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="acidDoseResult" style="font-size:0.78rem; font-weight:700; color:var(--secondary);">
+                            ~100 мл кислоты на 1 м³ воды озера для выхода на pH 5.8
+                        </div>
+                    </div>
+
+                    <!-- Metrics Grid -->
                     <div class="metrics-grid">
                         <div class="metric-cell">
                             <div class="metric-tag">Длина бугров</div>
@@ -906,47 +1016,69 @@
                         </div>
                     </div>
 
-                    <button type="button" class="main-action-btn" id="calculateAndGoBtn" style="background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);">
+                    <!-- Big Action: Calculate and teleport to Feeding -->
+                    <button type="button" class="main-action-btn" id="calculateAndGoBtn" style="background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35); height:52px; font-size:1.05rem;">
                         🚀 Рассчитать и перейти к питанию
                     </button>
-                    <button type="button" class="main-action-btn" id="saveParamsBtn" style="background: var(--bg-card); color: var(--text-main); border: 2px solid var(--border-light); box-shadow: none;">
-                        💾 Запомнить параметры
+                    <button type="button" class="main-action-btn" id="saveParamsBtn" style="background: var(--bg-card); color: var(--text-main); border: 2px solid var(--border-light); box-shadow: none; height:42px; font-size:0.9rem;">
+                        💾 Запомнить параметры поля
                     </button>
                 </div>
             </aside>
 
-            <!-- Main Calculation Screen / Tab: Fertigation -->
+            <!-- Tab 2: Fertigation / Feeding Calculator -->
             <main class="tab-page main-section" id="calcPage">
+                <!-- Operator Mode Quick Banner -->
+                <div class="operator-toggle-bar">
+                    <span style="font-size:0.86rem; font-weight:800;">👨‍🌾 Режим у помпы (для поля):</span>
+                    <button type="button" class="btn-operator-toggle" id="openOperatorBtn">
+                        📱 Открыть экран оператора
+                    </button>
+                </div>
+
                 <!-- Weather Switches (Heat & Rain/Wet) -->
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:14px;">
-                    <div class="heat-toggle-card" style="margin-bottom:0; padding:10px 12px;">
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
+                    <div class="heat-toggle-card">
                         <div>
-                            <div class="heat-label" style="font-size:0.82rem;">
+                            <div class="heat-label">
                                 <span>☀️ Жара &gt;30°C</span>
                             </div>
-                            <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">
+                            <div style="font-size:0.68rem; color:var(--text-muted); margin-top:2px;">
                                 Снизить EC на 25%
                             </div>
                         </div>
-                        <label class="switch" style="width:44px; height:24px;">
+                        <label class="switch">
                             <input type="checkbox" id="heatModeToggle">
                             <span class="slider"></span>
                         </label>
                     </div>
 
-                    <div class="heat-toggle-card" id="rainCardBox" style="margin-bottom:0; padding:10px 12px; background:linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color:#3b82f6;">
+                    <div class="heat-toggle-card" style="background:linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color:#3b82f6;">
                         <div>
-                            <div class="heat-label" style="font-size:0.82rem; color:#1d4ed8;">
+                            <div class="heat-label" style="color:#1d4ed8;">
                                 <span>🌧️ Дожди/сырость</span>
                             </div>
-                            <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">
+                            <div style="font-size:0.68rem; color:var(--text-muted); margin-top:2px;">
                                 Риск серой гнили
                             </div>
                         </div>
-                        <label class="switch" style="width:44px; height:24px;">
+                        <label class="switch">
                             <input type="checkbox" id="rainModeToggle">
                             <span class="slider" style="background-color:#93c5fd;"></span>
                         </label>
+                    </div>
+                </div>
+
+                <!-- Spoon-Feeding (Split Frequency) Card -->
+                <div class="spoon-feed-card">
+                    <div class="spoon-feed-top">
+                        <span class="spoon-title">🥄 Кратность полива (дробное питание):</span>
+                        <span id="splitNoticeTag" style="font-size:0.75rem; font-weight:800; color:var(--primary);">100% за 1 полив</span>
+                    </div>
+                    <div class="split-buttons">
+                        <button type="button" class="split-btn active" data-split="1" id="split1Btn">1 раз / нед</button>
+                        <button type="button" class="split-btn" data-split="2" id="split2Btn">2 раза (по 50%)</button>
+                        <button type="button" class="split-btn" data-split="3" id="split3Btn">3 раза (по 33%)</button>
                     </div>
                 </div>
 
@@ -969,31 +1101,29 @@
                         Начало сезона: корни нежные, держите ЕС мягким, чтобы не обжечь молодые волоски корней.
                     </div>
 
+                    <!-- Brix & Firmness Monitor -->
+                    <div class="brix-indicator-box" id="brixIndicatorBox">
+                        <span>🍇 Баланс качества: <strong id="nkRatioText">N:K = 1:1.0</strong></span>
+                        <span id="firmnessStatusText" style="font-weight:800; color:var(--secondary);">Вегетативный рост</span>
+                    </div>
+
                     <!-- Dynamic Weekly Protection Bar -->
-                    <div style="padding-top:10px; border-top:1px dashed rgba(37,99,235,0.25); display:flex; flex-direction:column; gap:4px;">
+                    <div style="padding-top:10px; margin-top:8px; border-top:1px dashed rgba(37,99,235,0.25); display:flex; flex-direction:column; gap:4px;">
                         <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
                             <span style="font-size:0.8rem; font-weight:800; color:#1d4ed8; display:flex; align-items:center; gap:5px;">
                                 🛡️ Защита (СЗР) на эту неделю:
                             </span>
                             <span id="szrActionBadge" style="font-size:0.72rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 8px; border-radius:6px;">
-                                Профилактика
+                                Старт / Очистка
                             </span>
                         </div>
                         <div id="targetSzrAdvice" style="font-size:0.82rem; color:var(--text-main); font-weight:600; line-height:1.4;">
-                            Обязательная обработка от трипса и клеща до цветения!
+                            Искореняющая обработка после зимы: медные препараты (Косайд / Медян Экстра) от пятнистостей.
                         </div>
                         <div id="rainAlertNotice" style="display:none; margin-top:6px; padding:6px 10px; background:#eff6ff; border-left:3px solid #2563eb; border-radius:4px; font-size:0.78rem; color:#1e40af; font-weight:700;">
-                            🌧️ Внимание: из-за дождей полив чистой водой уменьшить на 40%, срочно дать биофунгицид (Триходерма / Фитоспорин) по ягоде от ботритиса!
+                            🌧️ Внимание: из-за сырости полив чистой водой уменьшить на 40%, срочно дать биофунгицид (Триходерма / Фитоспорин) по ягоде от ботритиса!
                         </div>
                     </div>
-                </div>
-
-                <!-- Compatibility Notice -->
-                <div class="compat-alert">
-                    <strong>⚠️ Правило разделения бочек:</strong><br>
-                    • <strong>БАК А:</strong> NPK, калий, магний, селитры, Терафлекс и биопрепараты.<br>
-                    • <strong>БАК Б:</strong> ТОЛЬКО Кальциевая селитра Ca(NO₃)₂! Не смешивать с фосфатами и сульфатами.<br>
-                    • <span id="compatNoticeText" style="font-weight:700;"></span>
                 </div>
 
                 <!-- Tanks Grid -->
@@ -1029,88 +1159,181 @@
                     <div id="foliarContent"></div>
                 </div>
 
+                <!-- Share Buttons for Telegram / WhatsApp / Clipboard -->
+                <div class="share-buttons-grid">
+                    <button type="button" class="share-btn share-tg" id="shareTgBtn">
+                        ✈️ Telegram
+                    </button>
+                    <button type="button" class="share-btn share-wa" id="shareWaBtn">
+                        🟢 WhatsApp
+                    </button>
+                    <button type="button" class="share-btn share-copy" id="copyTaskBtn">
+                        📋 Наряд
+                    </button>
+                </div>
+
+                <!-- Action: Log Feeding for Today -->
                 <button type="button" class="main-action-btn btn-log" id="logTodayBtn">
                     ✅ Записать этот полив в журнал
                 </button>
                 <button type="button" class="main-action-btn" id="backToParamsBtn" style="background: var(--bg-card); color: var(--text-main); border: 2px solid var(--border-light); box-shadow: none;">
                     ⚙️ Изменить параметры поля
                 </button>
-
-                <!-- Print Action Button -->
-                <button type="button" class="main-action-btn" id="printBtn" style="background:var(--bg-card); color:var(--text-main); border:2px solid var(--border-light); box-shadow:none;">
-                    🖨️ Распечатать наряд на полив / PDF
-                </button>
             </main>
 
-            <!-- Tab: Protection & SZR Waiting Times -->
+            <!-- Tab 3: Protection & SZR Diagnostics -->
             <div class="tab-page" id="szrPage">
                 <div class="card">
                     <div class="card-title">
-                        <span>🛡️ Календарь защиты и сроки ожидания (Каренция)</span>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">
-                        Срок ожидания — это минимальное количество дней от обработки до безопасного сбора ягоды на продажу:
-                    </p>
-
-                    <div class="szr-item">
-                        <div class="szr-top">
-                            <span class="szr-name">Свитч (Switch)</span>
-                            <span class="szr-wait">Ожидание: 7 дней</span>
-                        </div>
-                        <div class="szr-target">Серая гниль (Botrytis), антракноз. Обработка строго по цветению!</div>
+                        <span>🔬 Диагностика вредителей и болезней</span>
                     </div>
 
-                    <div class="szr-item">
-                        <div class="szr-top">
-                            <span class="szr-name">Сигнум (Signum)</span>
-                            <span class="szr-wait">Ожидание: 3 дня</span>
+                    <div class="diag-item">
+                        <div class="diag-header">
+                            <span class="diag-name">🐛 Западный цветочный трипс</span>
+                            <span class="diag-badge">Опасно при цветении</span>
                         </div>
-                        <div class="szr-target">Серая гниль, мучнистая роса. Мягкий препарат с коротким сроком.</div>
+                        <div class="diag-symptoms">
+                            <strong>Симптомы:</strong> Цветки буреют, тычинки засыхают. Ягода становится бронзовой, тусклой, бурой, кожица огрубевает («резиновая» мелкая ягода).
+                        </div>
+                        <div class="diag-treatment">
+                            <strong>Лечение:</strong> До цветения — Вертимек (10 мл/10 л), Маврик. При сборе ягоды — биопрепарат Актофит (100 мл/10 л, ожидание 2 дня). Повторить через 7 дней!
+                        </div>
                     </div>
 
-                    <div class="szr-item">
-                        <div class="szr-top">
-                            <span class="szr-name">Вертимек / Маврик</span>
-                            <span class="szr-wait">Ожидание: 7–10 дней</span>
+                    <div class="diag-item">
+                        <div class="diag-header">
+                            <span class="diag-name">🕷️ Земляничный клещ</span>
+                            <span class="diag-badge">Слабость куста</span>
                         </div>
-                        <div class="szr-target">Трипс и земляничный клещ. Применять ТОЛЬКО до массового созревания ягод!</div>
+                        <div class="diag-symptoms">
+                            <strong>Симптомы:</strong> Молодые листья в центре розетки сморщенные, гофрированные, мелкие, с маслянистым желтоватым оттенком. Куст становится карликовым.
+                        </div>
+                        <div class="diag-treatment">
+                            <strong>Лечение:</strong> Весной при отрастании: Вертимек, Энвидор, Маврик. После скашивания листа — искореняющая обработка акарицидом.
+                        </div>
                     </div>
 
-                    <div class="szr-item">
-                        <div class="szr-top">
-                            <span class="szr-name">Актофит / Фитоверм (Био)</span>
-                            <span class="szr-wait" style="background:var(--secondary-light); color:var(--secondary);">Ожидание: 2 дня</span>
+                    <div class="diag-item">
+                        <div class="diag-header">
+                            <span class="diag-name">🍄 Серая гниль (Botrytis)</span>
+                            <span class="diag-badge">Опасно в дожди</span>
                         </div>
-                        <div class="szr-target">Биопрепарат от трипса и клеща прямо во время сбора урожая. Безопасно.</div>
+                        <div class="diag-symptoms">
+                            <strong>Симптомы:</strong> Бурые водянистые пятна на ягоде, быстро покрывающиеся густым серым пылящим налётом. За 24 часа сжигает урожай при сырости.
+                        </div>
+                        <div class="diag-treatment">
+                            <strong>Лечение:</strong> По цветку — Свитч (Switch 62.5 WG), Сигнум, Скала. По спелой ягоде — биофунгицид Триходерма / Фитоспорин. Кальций под корень!
+                        </div>
                     </div>
 
-                    <div class="szr-item">
-                        <div class="szr-top">
-                            <span class="szr-name">Фитоспорин / Триходерма (Био)</span>
-                            <span class="szr-wait" style="background:var(--secondary-light); color:var(--secondary);">Ожидание: 0 дней</span>
+                    <div class="diag-item">
+                        <div class="diag-header">
+                            <span class="diag-name">🍂 Краевой ожог (EC) vs Нехватка калия</span>
+                            <span class="diag-badge">Диагностика солей</span>
                         </div>
-                        <div class="szr-target">Биозащита от гнили. Можно обрабатывать за день до сбора ягоды.</div>
+                        <div class="diag-symptoms">
+                            • <strong>Солевой ожог (высокий EC):</strong> Кончики листьев сохнут внезапно сразу после полива удобрениями. Лист хрупкий.<br>
+                            • <strong>Дефицит калия:</strong> Краевой некроз развивается медленно снизу вверх по старым листьям, лист темнеет с бронзовым отливом.
+                        </div>
+                        <div class="diag-treatment">
+                            <strong>Действие:</strong> При солевом ожоге — пролить поле чистой водой озера. При дефиците — дать сульфат или нитрат калия (Бак А).
+                        </div>
+                    </div>
+
+                    <div class="diag-item">
+                        <div class="diag-header">
+                            <span class="diag-name">🪲 Малинно-земляничный долгоносик</span>
+                            <span class="diag-badge">Угроза бутонам</span>
+                        </div>
+                        <div class="diag-symptoms">
+                            <strong>Симптомы:</strong> Надломленные, увядающие и повисшие бутоны перед самым цветением. Самка подгрызает цветоножку после откладки яйца. Потеря самого раннего и крупного урожая!
+                        </div>
+                        <div class="diag-treatment">
+                            <strong>Лечение:</strong> Обработка при выдвижении цветоносов (до раскрытия бутонов!): Карате Зеон, Децис Профи или Маврик. В период цветения — только биоинсектициды (Битоксибациллин / Актофит).
+                        </div>
+                    </div>
+
+                    <div class="diag-item">
+                        <div class="diag-header">
+                            <span class="diag-name">🌾 Мучнистая роса (Sphaerotheca)</span>
+                            <span class="diag-badge">Опасно в жару</span>
+                        </div>
+                        <div class="diag-symptoms">
+                            <strong>Симптомы:</strong> Края листьев заворачиваются кверху «лодочкой», с нижней стороны белесый мучнистый налет. Ягоды сизые, мелкие, засыхают с запахом плесени.
+                        </div>
+                        <div class="diag-treatment">
+                            <strong>Лечение:</strong> Профилактика в начале цветения: Топаз, Луна Транквилити, Квадрис. При сборе ягоды: серосодержащий Тиовит Джет (при температуре до +28°C) или биофунгицид Бактофит.
+                        </div>
+                    </div>
+
+                    <div class="diag-item">
+                        <div class="diag-header">
+                            <span class="diag-name">🍁 Белая и бурая пятнистости листьев</span>
+                            <span class="diag-badge">Потеря листвы</span>
+                        </div>
+                        <div class="diag-symptoms">
+                            <strong>Симптомы:</strong> Округлые пятна с белым центром и пурпурной каймой (белая) или угловатые красно-коричневые пятна (бурая). Ослабляет зимостойкость и закладку почек.
+                        </div>
+                        <div class="diag-treatment">
+                            <strong>Лечение:</strong> Ранневесенняя искореняющая обработка: Медян Экстра / Косайд / Бордоская смесь 1%. После сбора урожая: Скор, Хорус, Фалькон.
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab: Agronomist Journal -->
+            <!-- Tab 4: Agronomist Journal -->
             <div class="tab-page" id="journalPage">
                 <div class="card">
                     <div class="card-title">
                         <span>📝 Журнал поливов и подкормок</span>
                         <button type="button" id="clearJournalBtn" style="background:transparent; border:none; color:var(--primary); font-size:0.8rem; font-weight:800; cursor:pointer;">Очистить</button>
                     </div>
-                    <div id="journalListContainer">
-                        <p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">
-                            В журнале пока нет записей. Нажмите зелёную кнопку «Записать полив» на главном экране!
-                        </p>
-                    </div>
+                    <div id="journalListContainer"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Bottom Navigation Bar (Поле first, then Питание) -->
+        <!-- Fullscreen Operator Mode Overlay -->
+        <div class="operator-overlay" id="operatorOverlay">
+            <div class="op-header">
+                <div>
+                    <h2 style="font-size:1.4rem; font-weight:800; color:#f43f5e;">🍓 Starberry • ЭКРАН У ПОМПЫ</h2>
+                    <span id="opMetaSubtitle" style="font-size:0.85rem; color:#94a3b8;">Фаза I • Неделя 1 (1 полив из 2)</span>
+                </div>
+                <button type="button" id="closeOperatorBtn" style="background:#e11d48; color:white; border:none; padding:10px 18px; border-radius:12px; font-weight:800; font-size:0.95rem; cursor:pointer;">
+                    ✕ Выйти
+                </button>
+            </div>
+
+            <div class="op-tank-card">
+                <h3 style="font-size:1.2rem; font-weight:800; color:#c084fc; margin-bottom:8px;">📦 БАК А (ОСНОВНОЙ): засыпать сейчас:</h3>
+                <div id="opTankABody"></div>
+            </div>
+
+            <div class="op-tank-card tank-b">
+                <h3 style="font-size:1.2rem; font-weight:800; color:#60a5fa; margin-bottom:8px;">📦 БАК Б (ТОЛЬКО КАЛЬЦИЙ): засыпать сейчас:</h3>
+                <div id="opTankBBody"></div>
+            </div>
+
+            <div class="op-tank-card" style="background:#0f172a; border-color:#0284c7;">
+                <h3 style="font-size:1.15rem; font-weight:800; color:#38bdf8; margin-bottom:6px;">💧 ПОДКИСЛЕНИЕ ОЗЁРНОЙ ВОДЫ (pH 5.8):</h3>
+                <div id="opAcidDoseText" style="font-size:1.05rem; font-weight:700; color:#f1f5f9; line-height:1.4;"></div>
+            </div>
+
+            <div style="background:#1e293b; border-radius:16px; padding:16px; display:flex; justify-content:space-around; text-align:center;">
+                <div>
+                    <span style="font-size:0.8rem; color:#94a3b8; text-transform:uppercase; font-weight:800;">Целевой EC:</span>
+                    <div id="opEcVal" style="font-size:1.4rem; font-weight:800; color:#3b82f6;">1.2 mS/cm</div>
+                </div>
+                <div>
+                    <span style="font-size:0.8rem; color:#94a3b8; text-transform:uppercase; font-weight:800;">Целевой pH:</span>
+                    <div style="font-size:1.4rem; font-weight:800; color:#10b981;">5.8 – 6.2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Bottom Navigation Bar (Поле is first!) -->
         <nav class="mobile-nav-bar">
             <button type="button" class="nav-item active" id="tabParamsBtn">
                 <span class="nav-item-icon">⚙️</span>
@@ -1154,15 +1377,17 @@
                 title: "I. Отрастание",
                 subtitle: "+8...+10 °C в почве",
                 icon: "🌱",
+                nkRatio: "N:K = 1:1.0",
+                firmness: "Вегетативный рост",
                 weeks: {
                     1: {
                         week: 1,
                         targetEC: "1.0 – 1.2 mS/cm",
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Начало сезона: корни нежные, держите ЕС мягким (1.0–1.2), чтобы не обжечь молодые волоски корней.",
-                        compatNotice: "На 1-й неделе кальциевая селитра не вносится. Всё питание идёт через Бак А (МКФ, селитры, Rhyzo).",
                         szrBadge: "Старт / Очистка",
                         szrAdvice: "Искореняющая обработка после зимы: медные препараты (Косайд / Медян Экстра) от пятнистостей до выдвижения бутонов. Пролив корней стимулятором Rhyzo.",
+                        compatNotice: "На 1-й неделе кальциевая селитра не вносится. Всё питание идёт через Бак А (МКФ, селитры, Rhyzo).",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
                             { id: "kno3", name: "Калиевая селитра (KNO3)", formula: "13-0-46", normHa: 15, unit: "кг", tank: "A" },
@@ -1214,6 +1439,8 @@
                 title: "II. Цветение",
                 subtitle: "Бутонизация и завязь",
                 icon: "🌸",
+                nkRatio: "N:K = 1:1.5",
+                firmness: "Закладка плотности",
                 weeks: {
                     1: {
                         week: 1,
@@ -1221,7 +1448,7 @@
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Бутонизация и цветение. В Бак А идёт Teraflex S с микроэлементами. Fruka по листу улучшает опыление.",
                         szrBadge: "Серая гниль (Switch)",
-                        szrAdvice: "Раскрытие 20–30% цветков: главная обработка от серой гнили (Свитч или Сигнум). Работать строго вечером, чтобы не навредить пчёлам! При сырости обработка критична.",
+                        szrAdvice: "Раскрытие 20–30% цветков: главная обработка от серой гнили (Свитч или Сигнум). Работать строго вечером, чтобы не навредить пчёлам!",
                         compatNotice: "Teraflex S содержит фосфаты и серу — строго в Бак А! В Бак Б только Кальций.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -1239,7 +1466,7 @@
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Массовое цветение и завязывание. Кальций формирует плотную клеточную структуру будущей ягоды.",
                         szrBadge: "Цветение 80%",
-                        szrAdvice: "Массовое цветение: повторить защиту от серой гнили другим фунгицидом (Сигнум или Скала). Опрыскивание Fruka для идеальной ровной ягоды без уродливости.",
+                        szrAdvice: "Массовое цветение: повторить защиту от серой гнили другим фунгицидом (Сигнум или Скала). Опрыскивание Fruka для идеальной ровной ягоды.",
                         compatNotice: "В Бак Б — только Кальций. В Бак А — Терафлекс, МКФ и калий.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 5, unit: "кг", tank: "A" },
@@ -1259,6 +1486,8 @@
                 title: "III. Сбор ягоды",
                 subtitle: "Налив и сахаристость",
                 icon: "🍓",
+                nkRatio: "N:K = 1:2.2 (Высокий сахар)",
+                firmness: "Плотность и Brix",
                 weeks: {
                     1: {
                         week: 1,
@@ -1266,7 +1495,7 @@
                         targetPH: "5.8 – 6.2",
                         ecAdvice: "Налив первых ягод. Магниевая селитра стимулирует фотосинтез при высокой нагрузке ягодой.",
                         szrBadge: "БИО-защита ягоды",
-                        szrAdvice: "Химия ЗАПРЕЩЕНА! Только биопрепараты: Триходерма / Фитоспорин по ягоде от гнилей. От трипса — Актофит / Фитоверм (срок ожидания всего 2 дня).",
+                        szrAdvice: "Химия ЗАПРЕЩЕНА! Только биопрепараты: Триходерма / Фитоспорин по ягоде от гнилей. От трипса — Актофит / Фитоверм (ожидание 2 дня).",
                         compatNotice: "Бак А: МКФ, калий, магний, Терафлекс и Bombardier. Бак Б: только Кальций.",
                         fertilizers: [
                             { id: "mkp", name: "Монокалийфосфат (MKP)", formula: "0-52-34", normHa: 10, unit: "кг", tank: "A" },
@@ -1367,6 +1596,8 @@
                 title: "IV. Почки",
                 subtitle: "Август-Сентябрь",
                 icon: "🍂",
+                nkRatio: "N:K = 1:1.2",
+                firmness: "Подготовка к зиме",
                 weeks: {
                     1: {
                         week: 1,
@@ -1475,40 +1706,9 @@
         // State
         let currentStage = 'growth';
         let currentWeek = 1;
+        let currentSplit = 1; // 1, 2, or 3 times per week
         let isHeatMode = false;
-
         let isRainMode = false;
-        const rainModeToggle = document.getElementById('rainModeToggle');
-        const rainAlertNotice = document.getElementById('rainAlertNotice');
-        const targetSzrAdvice = document.getElementById('targetSzrAdvice');
-        const szrActionBadge = document.getElementById('szrActionBadge');
-
-        rainModeToggle?.addEventListener('change', (e) => {
-            isRainMode = e.target.checked;
-            if (rainAlertNotice) rainAlertNotice.style.display = isRainMode ? 'block' : 'none';
-            calculateAll();
-        });
-
-        // Calculate and go to feeding tab
-        document.getElementById('calculateAndGoBtn')?.addEventListener('click', () => {
-            saveSettings();
-            calculateAll();
-            // Switch to Fertigation tab
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
-            document.getElementById('tabFertBtn')?.classList.add('active');
-            document.getElementById('calcPage')?.classList.add('active-page');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        document.getElementById('backToParamsBtn')?.addEventListener('click', () => {
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
-            document.getElementById('tabParamsBtn')?.classList.add('active');
-            document.getElementById('paramsPage')?.classList.add('active-page');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
         let journalEntries = [];
 
         // DOM Inputs
@@ -1516,7 +1716,10 @@
         const bedCountInput = document.getElementById('bedCount');
         const rowWidthInput = document.getElementById('rowWidth');
         const sprayerVolumeInput = document.getElementById('sprayerVolume');
+        const lakePhInput = document.getElementById('lakePhInput');
+        const acidTypeSelect = document.getElementById('acidTypeSelect');
         const heatModeToggle = document.getElementById('heatModeToggle');
+        const rainModeToggle = document.getElementById('rainModeToggle');
 
         // Metrics Display
         const metricTape = document.getElementById('metricTape');
@@ -1527,7 +1730,13 @@
         const targetEcVal = document.getElementById('targetEcVal');
         const targetPhVal = document.getElementById('targetPhVal');
         const targetEcAdvice = document.getElementById('targetEcAdvice');
-        const compatNoticeText = document.getElementById('compatNoticeText');
+        const nkRatioText = document.getElementById('nkRatioText');
+        const firmnessStatusText = document.getElementById('firmnessStatusText');
+        const targetSzrAdvice = document.getElementById('targetSzrAdvice');
+        const szrActionBadge = document.getElementById('szrActionBadge');
+        const rainAlertNotice = document.getElementById('rainAlertNotice');
+        const acidDoseResult = document.getElementById('acidDoseResult');
+        const splitNoticeTag = document.getElementById('splitNoticeTag');
 
         // Containers
         const stageSelector = document.getElementById('stageSelector');
@@ -1549,16 +1758,41 @@
             setupEventListeners();
             setupHandbook();
             setupNavigationTabs();
+            setupOperatorMode();
         }
 
         function setupEventListeners() {
-            [bedLengthInput, bedCountInput, rowWidthInput, sprayerVolumeInput].forEach(el => {
+            [bedLengthInput, bedCountInput, rowWidthInput, sprayerVolumeInput, lakePhInput, acidTypeSelect].forEach(el => {
                 if (el) el.addEventListener('input', calculateAll);
             });
 
             heatModeToggle?.addEventListener('change', (e) => {
                 isHeatMode = e.target.checked;
                 calculateAll();
+            });
+
+            rainModeToggle?.addEventListener('change', (e) => {
+                isRainMode = e.target.checked;
+                if (rainAlertNotice) rainAlertNotice.style.display = isRainMode ? 'block' : 'none';
+                calculateAll();
+            });
+
+            // Split Feeding Buttons (1x, 2x, 3x)
+            [1, 2, 3].forEach(split => {
+                document.getElementById(`split${split}Btn`)?.addEventListener('click', () => {
+                    setSplitFeeding(split);
+                });
+            });
+
+            // Teleport Button from Params to Fertigation
+            document.getElementById('calculateAndGoBtn')?.addEventListener('click', () => {
+                saveSettings();
+                calculateAll();
+                switchToTab('tabFertBtn', 'calcPage');
+            });
+
+            document.getElementById('backToParamsBtn')?.addEventListener('click', () => {
+                switchToTab('tabParamsBtn', 'paramsPage');
             });
 
             document.getElementById('saveParamsBtn')?.addEventListener('click', () => {
@@ -1577,6 +1811,11 @@
                     renderJournal();
                 }
             });
+
+            // Share buttons
+            document.getElementById('shareTgBtn')?.addEventListener('click', shareToTelegram);
+            document.getElementById('shareWaBtn')?.addEventListener('click', shareToWhatsApp);
+            document.getElementById('copyTaskBtn')?.addEventListener('click', copyTaskToClipboard);
 
             document.getElementById('printBtn')?.addEventListener('click', () => {
                 window.print();
@@ -1598,10 +1837,35 @@
             }
         }
 
+        function setSplitFeeding(split) {
+            currentSplit = split;
+            [1, 2, 3].forEach(s => {
+                const btn = document.getElementById(`split${s}Btn`);
+                if (btn) {
+                    if (s === split) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                }
+            });
+            if (splitNoticeTag) {
+                if (split === 1) splitNoticeTag.textContent = "100% за 1 полив";
+                if (split === 2) splitNoticeTag.textContent = "50% на 1 полив (2 полива/нед)";
+                if (split === 3) splitNoticeTag.textContent = "33% на 1 полив (3 полива/нед)";
+            }
+            calculateAll();
+        }
+
+        function switchToTab(navBtnId, pageId) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
+            document.getElementById(navBtnId)?.classList.add('active');
+            document.getElementById(pageId)?.classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function setupNavigationTabs() {
             const tabs = [
-                { btn: 'tabFertBtn', page: 'calcPage' },
                 { btn: 'tabParamsBtn', page: 'paramsPage' },
+                { btn: 'tabFertBtn', page: 'calcPage' },
                 { btn: 'tabSzrBtn', page: 'szrPage' },
                 { btn: 'tabJournalBtn', page: 'journalPage' }
             ];
@@ -1609,17 +1873,38 @@
             tabs.forEach(t => {
                 const b = document.getElementById(t.btn);
                 b?.addEventListener('click', () => {
-                    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-                    document.querySelectorAll('.tab-page').forEach(el => el.classList.remove('active-page'));
-                    b.classList.add('active');
-                    document.getElementById(t.page)?.classList.add('active-page');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    switchToTab(t.btn, t.page);
                 });
             });
 
             document.getElementById('tabHandbookNavBtn')?.addEventListener('click', () => {
                 document.getElementById('handbookModal')?.classList.add('open');
             });
+        }
+
+        function setupOperatorMode() {
+            const overlay = document.getElementById('operatorOverlay');
+            document.getElementById('openOperatorBtn')?.addEventListener('click', () => {
+                updateOperatorView();
+                overlay?.classList.add('active');
+            });
+            document.getElementById('closeOperatorBtn')?.addEventListener('click', () => {
+                overlay?.classList.remove('active');
+            });
+        }
+
+        function updateOperatorView() {
+            const stage = AGRO_STAGES[currentStage];
+            document.getElementById('opMetaSubtitle').textContent = `${stage.title} • Неделя ${currentWeek} (Полив: ${currentSplit === 1 ? '100% нормы' : 'порция 1 из ' + currentSplit})`;
+            document.getElementById('opEcVal').textContent = isHeatMode ? '1.2 mS/cm (Жара)' : stage.weeks[currentWeek].targetEC;
+            
+            // Clone items to Operator overlay
+            const opA = document.getElementById('opTankABody');
+            const opB = document.getElementById('opTankBBody');
+            if (opA) opA.innerHTML = tankABody.innerHTML.replaceAll('fert-dose', 'op-fert-val').replaceAll('fert-title', 'op-fert-name');
+            if (opB) opB.innerHTML = tankBBody.innerHTML.replaceAll('fert-dose', 'op-fert-val').replaceAll('fert-title', 'op-fert-name');
+            const opAcid = document.getElementById('opAcidDoseText');
+            if (opAcid) opAcid.textContent = acidDoseResult ? acidDoseResult.textContent : '';
         }
 
         function renderStages() {
@@ -1691,22 +1976,36 @@
             // Direct area ratio from 1 hectare (10,000 m2)
             let haRatio = areaM2 / 10000;
 
-            // In Heat mode, fertilizer concentration is reduced by 25% to protect roots from osmotic stress
+            // In Heat mode, fertilizer concentration is reduced by 25%
             if (isHeatMode) {
                 haRatio = haRatio * 0.75;
             }
+
+            // Spoon-Feeding division (divide by 1, 2, or 3)
+            haRatio = haRatio / currentSplit;
 
             // Metrics Display
             if (metricTape) metricTape.textContent = totalBedMeters.toLocaleString('ru-RU');
             if (metricArea) metricArea.textContent = areaSotkas;
             if (metricPlants) metricPlants.textContent = totalPlants.toLocaleString('ru-RU');
 
+            // Acid Lake water calculation
+            const rawPh = parseFloat(lakePhInput?.value) || 8.1;
+            const acidType = acidTypeSelect?.value || 'ortho';
+            const deltaPh = Math.max(0, rawPh - 5.9);
+            // Rough rule of thumb: ~90ml ortho or ~120ml nitric per delta 1.0 pH per 1m3
+            const coeff = acidType === 'ortho' ? 85 : 115;
+            const mlPerM3 = Math.round(deltaPh * coeff);
+            if (acidDoseResult) {
+                acidDoseResult.textContent = `~${mlPerM3} мл ${acidType === 'ortho' ? 'ортофосфорной' : 'азотной'} кислоты на 1 м³ воды озера для целевого pH 5.8-6.0`;
+            }
+
             // Fertigation Data
             const stage = AGRO_STAGES[currentStage];
             const weekData = stage.weeks[currentWeek];
             if (!weekData) return;
 
-            // Target EC & pH Monitor
+            // Update Target EC and pH Monitor
             if (targetEcVal) {
                 if (isHeatMode) {
                     targetEcVal.textContent = "1.1 – 1.3 mS/cm (ЖАРА)";
@@ -1717,14 +2016,23 @@
             if (targetPhVal) targetPhVal.textContent = weekData.targetPH;
             if (targetEcAdvice) {
                 if (isHeatMode) {
-                    targetEcAdvice.innerHTML = "🔥 <strong style='color:#b45309;'>Включен режим жары:</strong> дозировка солей снижена на 25%. Поливайте рано утром (до 8:00) или вечером. Увеличьте пролив чистой водой.";
+                    targetEcAdvice.innerHTML = "🔥 <strong style='color:#b45309;'>Включен режим жары:</strong> дозировка солей снижена на 25%. Поливайте рано утром (до 8:00) или вечером.";
                 } else {
                     targetEcAdvice.textContent = weekData.ecAdvice;
                 }
             }
+
+            if (nkRatioText) nkRatioText.textContent = stage.nkRatio || "N:K = 1:1.5";
+            if (firmnessStatusText) {
+                if (isRainMode) {
+                    firmnessStatusText.innerHTML = "⚠️ <strong style='color:#ef4444;'>Сырость: риск мягкости и серой гнили!</strong>";
+                } else {
+                    firmnessStatusText.textContent = stage.firmness || "Оптимум";
+                }
+            }
+
             if (targetSzrAdvice) targetSzrAdvice.textContent = weekData.szrAdvice || "";
             if (szrActionBadge) szrActionBadge.textContent = weekData.szrBadge || "Защита";
-            if (compatNoticeText) compatNoticeText.textContent = weekData.compatNotice || "";
 
             let tankAItems = [];
             let tankBItems = [];
@@ -1771,7 +2079,7 @@
         function renderTankItems(container, items) {
             container.innerHTML = '';
             if (items.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted); font-size: 0.88rem; font-weight:600;">В этот бак на текущей неделе препараты не вносятся.</div>`;
+                container.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted); font-size: 0.88rem; font-weight:600;">В этот бак на текущий полив препараты не вносятся.</div>`;
                 return;
             }
 
@@ -1836,6 +2144,55 @@
             });
         }
 
+        function buildShareText() {
+            const stage = AGRO_STAGES[currentStage];
+            const area = (getCalculatedArea() / 100).toFixed(1);
+            const plants = getCalculatedPlants().toLocaleString('ru-RU');
+            const portionText = currentSplit === 1 ? '100% нормы' : `порция 1 из ${currentSplit}`;
+
+            let msg = `🍓 *Starberry Pro • Наряд на полив*\n`;
+            msg += `📅 ${new Date().toLocaleDateString('ru-RU')} | ${stage.title}, Неделя ${currentWeek} (${portionText})\n`;
+            msg += `🌱 Участок: ${area} сот. (${plants} кустов)\n\n`;
+            msg += `📦 *БОЧКА А (Основная):* ${tankAWeight.textContent}\n`;
+            msg += `📦 *БОЧКА Б (Кальций):* ${tankBWeight.textContent}\n`;
+            msg += `🎯 Целевой EC: ${targetEcVal.textContent} | pH: 5.8-6.2\n`;
+            if (stage.weeks[currentWeek].foliar) {
+                msg += `🌿 *Опрыскиватель (16 л):* по рецепту приложения\n`;
+            }
+            return msg;
+        }
+
+        function shareToTelegram() {
+            const text = encodeURIComponent(buildShareText());
+            window.open(`https://t.me/share/url?text=${text}`, '_blank');
+        }
+
+        function shareToWhatsApp() {
+            const text = encodeURIComponent(buildShareText());
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function copyTaskToClipboard() {
+            const text = buildShareText();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('📋 Наряд на полив скопирован в буфер обмена!\nМожно отправить рабочим в любой мессенджер (Viber, SMS и др.).');
+                }).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            alert('📋 Наряд на полив скопирован в буфер обмена!');
+        }
+
         function addJournalEntry() {
             const stage = AGRO_STAGES[currentStage];
             const dateStr = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
@@ -1844,9 +2201,11 @@
                 date: dateStr,
                 stageTitle: stage.title,
                 weekNum: currentWeek,
+                portion: currentSplit === 1 ? '100%' : `1/${currentSplit}`,
                 tankA: tankAWeight.textContent,
                 tankB: tankBWeight.textContent,
-                isHeat: isHeatMode
+                isHeat: isHeatMode,
+                isRain: isRainMode
             };
             journalEntries.unshift(entry);
             saveJournal();
@@ -1858,7 +2217,7 @@
             const list = document.getElementById('journalListContainer');
             if (!list) return;
             if (journalEntries.length === 0) {
-                list.innerHTML = `<p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">В журнале пока нет записей. Нажмите зелёную кнопку «Записать полив» на главном экране!</p>`;
+                list.innerHTML = `<p style="text-align:center; padding:20px; color:var(--text-muted); font-size:0.9rem;">В журнале пока нет записей. Нажмите зелёную кнопку «Записать полив» на экране питания!</p>`;
                 return;
             }
 
@@ -1867,11 +2226,12 @@
                 const el = document.createElement('div');
                 el.className = 'log-entry';
                 el.innerHTML = `
-                    <div>
-                        <div class="log-date">${item.date} ${item.isHeat ? '🔥 ЖАРА' : ''}</div>
-                        <div class="log-title">${item.stageTitle} • Неделя ${item.weekNum}</div>
-                        <div class="log-sub">Бак А: ${item.tankA} | Бак Б (кальций): ${item.tankB}</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span class="log-date">${item.date}</span>
+                        <span style="font-size:0.75rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px;">Доза: ${item.portion}</span>
                     </div>
+                    <div class="log-title">${item.stageTitle} • Неделя ${item.weekNum} ${item.isHeat ? '☀️' : ''} ${item.isRain ? '🌧️' : ''}</div>
+                    <div class="log-sub">Бак А: ${item.tankA} | Бак Б (кальций): ${item.tankB}</div>
                 `;
                 list.appendChild(el);
             });
@@ -1920,13 +2280,15 @@
                 bedLength: bedLengthInput.value,
                 bedCount: bedCountInput.value,
                 rowWidth: rowWidthInput.value,
-                sprayerVolume: sprayerVolumeInput.value
+                sprayerVolume: sprayerVolumeInput.value,
+                lakePh: lakePhInput?.value || '8.1',
+                acidType: acidTypeSelect?.value || 'ortho'
             };
-            localStorage.setItem('starberry_settings_v35', JSON.stringify(settings));
+            localStorage.setItem('starberry_settings_v50', JSON.stringify(settings));
         }
 
         function loadSavedSettings() {
-            const saved = localStorage.getItem('starberry_settings_v35');
+            const saved = localStorage.getItem('starberry_settings_v50');
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -1934,8 +2296,19 @@
                     if (parsed.bedCount) bedCountInput.value = parsed.bedCount;
                     if (parsed.rowWidth) rowWidthInput.value = parsed.rowWidth;
                     if (parsed.sprayerVolume) sprayerVolumeInput.value = parsed.sprayerVolume;
+                    if (parsed.lakePh && lakePhInput) lakePhInput.value = parsed.lakePh;
+                    if (parsed.acidType && acidTypeSelect) acidTypeSelect.value = parsed.acidType;
                 } catch(e) {}
             }
+        }
+
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Starberry Pro PWA active!'))
+                    .catch(err => console.log('SW error:', err));
+            });
         }
 
         window.addEventListener('DOMContentLoaded', initApp);

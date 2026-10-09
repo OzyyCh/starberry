@@ -389,7 +389,138 @@ const AGRO_STAGES = {
             }
         ];
 
-                // Exact Chemical Element Percentages in Fertilizers
+                        // Full Agronomic Database of Crop Protection (SZR) mapped to Agrostrimedit schedule
+        const SZR_DATABASE = [
+            {
+                id: "copper_clean",
+                name: "Искореняющая ранневесенняя обработка (Медь)",
+                stages: ["growth"],
+                stageTitle: "🌱 Фаза I (Отрастание), Недели 1–2",
+                timing: "Ранняя весна (март — начало апреля), среднесуточная t > +5...+6 °C. Строго ДО выдвижения цветоносов!",
+                target: "Пятнистости листьев (белая, бурая), антракноз, бактериозы, зимующие споры грибов.",
+                preparations: [
+                    { name: "Косайд 2000 (гидроксид меди)", dose: "20–25 г на 10 л воды (или 35–40 г на 16 л опрыскиватель)" },
+                    { name: "Медян Экстра 350 SC", dose: "25–30 мл на 10 л воды (40–48 мл на 16 л)" },
+                    { name: "Бордоская смесь (1%)", dose: "100 г медного купороса + 100 г извести на 10 л" }
+                ],
+                waitPeriod: "До цветения (срок ожидания не лимитирует)",
+                waitType: "wait-chem",
+                rules: "КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО работать медью по открытым цветкам — сожжёт пыльцу и тычинки! Обработка проводится сразу после очистки плантации от старых сухих листьев."
+            },
+            {
+                id: "strawberry_mite",
+                name: "Земляничный прозрачный клещ (Phytonemus pallidus)",
+                stages: ["growth", "post"],
+                stageTitle: "🌱 Фаза I (Недели 2–3) и 🍂 Фаза IV (После сбора)",
+                timing: "Весной — при разворачивании первых молодых листочков из центра розетки. Летом — сразу после скашивания старых листьев.",
+                target: "Симптомы: Молодые листья в центре сморщенные, гофрированные, мелкие, с маслянисто-жёлтым оттенком. Куст становится карликовым.",
+                preparations: [
+                    { name: "Вертимек (абамектин)", dose: "10–12 мл на 10 л воды (16–20 мл на 16 л опрыскиватель)" },
+                    { name: "Маврик (тау-флувалинат)", dose: "5–6 мл на 10 л воды (8–10 мл на 16 л) — безопасен для пчёл" },
+                    { name: "Энвидор / Масаи", dose: "5–6 мл (г) на 10 л воды" }
+                ],
+                waitPeriod: "Срок ожидания: 14–20 дней (до цветения!)",
+                waitType: "wait-chem",
+                rules: "Клещ прячется в самом сердечке розетки. Опрыскивать с максимальным расходом воды, направляя форсунку строго в центр куста. Повторить через 7–10 дней для уничтожения отродившихся личинок."
+            },
+            {
+                id: "weevil",
+                name: "Малинно-земляничный долгоносик (Anthonomus rubi)",
+                stages: ["growth", "budding"],
+                stageTitle: "🌱 Фаза I (Неделя 3) → 🌸 Фаза II (Цветение, Неделя 1)",
+                timing: "Период выдвижения цветоносов и обособления бутонов (строго ДО раскрытия первых цветков!).",
+                target: "Симптомы: Надломленные, повисшие и увядающие бутоны. Самка подгрызает цветоножку после откладки яйца. Потеря самых ранних и крупных ягод!",
+                preparations: [
+                    { name: "Карате Зеон (лямбда-цигалотрин)", dose: "4 мл на 10 л воды (6–7 мл на 16 л опрыскиватель)" },
+                    { name: "Децис Профи", dose: "1 г на 10 л воды (1.5 г на 16 л)" },
+                    { name: "Маврик", dose: "5 мл на 10 л воды" }
+                ],
+                waitPeriod: "Строго до раскрытия цветков!",
+                waitType: "wait-chem",
+                rules: "Как только раскрылся первый цветок — синтетические инсектициды полностью закрываются! В цветение летают пчёлы-опылители."
+            },
+            {
+                id: "thrips",
+                name: "Западный цветочный трипс (Frankliniella occidentalis)",
+                stages: ["budding", "fruiting"],
+                stageTitle: "🌸 Фаза II (Цветение, Неделя 2) и 🍓 Фаза III (Сбор, Недели 1–6)",
+                timing: "До цветения — профилактика; в цветение и весь период сбора урожая — регулярный био-контроль каждые 7 дней.",
+                target: "Симптомы: Цветки буреют, тычинки засыхают. Ягода становится бронзово-бурой, тусклой, кожица грубеет («резиновая» мелкая ягода без товарного вида).",
+                preparations: [
+                    { name: "Актофит (биоинсектицид)", dose: "80–100 мл на 10 л воды (130–160 мл на 16 л опрыскиватель)" },
+                    { name: "Фитоверм (1% или 0.2%)", dose: "20–30 мл на 10 л воды" },
+                    { name: "Вертимек (до цветения)", dose: "10 мл на 10 л воды (только по бутону!)" }
+                ],
+                waitPeriod: "Актофит: СРОК ОЖИДАНИЯ ВСЕГО 2 ДНЯ (48 часов)!",
+                waitType: "wait-bio",
+                rules: "Актофит — биологический препарат природного происхождения. Работает при температуре воздуха от +18 °C (в жару эффективность возрастает). Обработку проводить вечером. Можно безопасно работать прямо между сборами ягод!"
+            },
+            {
+                id: "botrytis",
+                name: "Серая гниль (Botrytis cinerea)",
+                stages: ["budding", "fruiting"],
+                stageTitle: "🌸 Фаза II (Цветение, Недели 1–2) и 🍓 Фаза III (Сбор, в дожди)",
+                timing: "1-я обработка: начало цветения (раскрыто 10-20% цветков). 2-я: массовое цветение. В сбор — при сырой погоде.",
+                target: "Симптомы: Бурые водянистые пятна на ягоде, стремительно покрывающиеся серым пылящим налётом спор. За 24 часа способна уничтожить до 70% урожая при сырости.",
+                preparations: [
+                    { name: "Свитч (Switch 62.5 WG)", dose: "10 г на 10 л воды (16 г на 16 л) — эталон по цветку!" },
+                    { name: "Сигнум / Скала", dose: "12–15 г (мл) на 10 л воды" },
+                    { name: "Биофунгицид Триходерма / Фитоспорин-М", dose: "По инструкции производителя (по спелой ягоде в сбор)" }
+                ],
+                waitPeriod: "Свитч по цветку: 10-14 дней. Биопрепараты в сбор: 0-1 день!",
+                waitType: "wait-bio",
+                rules: "В период цветения инфекция проникает через увядающие лепестки в завязь. Обработка Свитчем в цветение спасает весь будущий сбор! Во время сбора ягоды химию не применять — работать только Триходермой или Фитоспорином, и держать Кальциевую селитру в Баке Б."
+            },
+            {
+                id: "powdery_mildew",
+                name: "Мучнистая роса (Sphaerotheca macularis)",
+                stages: ["budding", "post"],
+                stageTitle: "🌸 Фаза II (Цветение) и 🍂 Фаза IV (После сбора)",
+                timing: "При установлении устойчиво тёплой сухой погоды (+22...+28 °C), особенно при резких перепадах день/ночь.",
+                target: "Симптомы: Края листьев заворачиваются «лодочкой» вверх, снизу белесый мучнистый налёт. Ягоды сизые, мелкие, засыхают с плесневелым привкусом.",
+                preparations: [
+                    { name: "Топаз (пенконазол)", dose: "5 мл на 10 л воды (8 мл на 16 л опрыскиватель)" },
+                    { name: "Луна Транквилити", dose: "8–10 мл на 10 л воды" },
+                    { name: "Тиовит Джет (коллоидная сера)", dose: "30–40 г на 10 л воды (только при t < +28 °C, чтобы не сжечь лист)" }
+                ],
+                waitPeriod: "Топаз: 14 дней. Тиовит Джет: 1 день.",
+                waitType: "wait-chem",
+                rules: "Мучнистая роса активно развивается при недостатке влаги в воздухе и загущенных посадках. Не допускать перекорма чистым азотом."
+            },
+            {
+                id: "leaf_spots",
+                name: "Белая и бурая пятнистости листьев",
+                stages: ["growth", "post"],
+                stageTitle: "🌱 Фаза I (Отрастание, Неделя 1) и 🍂 Фаза IV (После сбора)",
+                timing: "Ранняя весна (сразу после схода снега) и вторая половина лета (после уборки урожая и скашивания плантации).",
+                target: "Симптомы: Округлые пятна с белым центром и малиновой каймой (белая) или угловатые коричневые пятна (бурая). Ослабляет зимостойкость и закладку почек.",
+                preparations: [
+                    { name: "Скор 250 EC (дифеноконазол)", dose: "5 мл на 10 л воды (8 мл на 16 л опрыскиватель)" },
+                    { name: "Хорус 75 WG (ципродинил)", dose: "6 г на 10 л воды (работает даже при +5 °C)" },
+                    { name: "Фалькон", dose: "6 мл на 10 л воды" }
+                ],
+                waitPeriod: "Срок ожидания: 14–20 дней.",
+                waitType: "wait-chem",
+                rules: "После сбора ягоды обязательно скосить старую листву, убрать растительные остатки с бугров и провести сплошное искореняющее опрыскивание Скором или Хорусом."
+            },
+            {
+                id: "salt_burn",
+                name: "Краевой солевой ожог (высокий EC) vs Дефицит калия",
+                stages: ["fruiting", "budding"],
+                stageTitle: "🍓 Любая фаза (чаще всего Фаза III в жаркую погоду)",
+                timing: "Диагностируется при ошибках полива или внезапном наступлении жары (+30...+35 °C).",
+                target: "Диагностика: • Солевой ожог (EC): кончики листьев сохнут внезапно сразу после полива удобрениями, лист хрустит. • Дефицит калия: некроз развивается медленно снизу вверх по старым листьям, лист темнеет с бронзовым отливом.",
+                preparations: [
+                    { name: "При солевом ожоге (высокий EC)", dose: "НЕМЕДЛЕННО промыть поле чистой водой озера 2-3 часа без единого грамма удобрений!" },
+                    { name: "При дефиците калия", dose: "Увеличить подачу Калиевой селитры (Бак А) или дать монокалийфосфат под корень." }
+                ],
+                waitPeriod: "Физиологический стресс (химия не требуется)",
+                waitType: "wait-bio",
+                rules: "В жару выше +28 °C концентрацию солей в капельной ленте ВСЕГДА снижайте на 25% (включайте тумблер «Жара» в приложении)!"
+            }
+        ];
+
+        // Exact Chemical Element Percentages in Fertilizers
         const FERT_COMPOSITION = {
             mkp: { n: 0, p2o5: 0.52, k2o: 0.34, ca: 0, name: 'Монокалийфосфат', tank: 'A' },
             kno3: { n: 0.135, p2o5: 0, k2o: 0.46, ca: 0, name: 'Калиевая селитра', tank: 'A' },
@@ -458,6 +589,7 @@ const AGRO_STAGES = {
             calculateAll();
             setupEventListeners();
             setupHandbook();
+            setupSzrModule();
             setupNavigationTabs();
             setupOperatorMode();
         }
@@ -1143,6 +1275,95 @@ const AGRO_STAGES = {
                 try { journalEntries = JSON.parse(saved); } catch(e) {}
             }
             renderJournal();
+        }
+
+                function setupSzrModule() {
+            renderSzrCards();
+            
+            const searchInput = document.getElementById('szrSearchInput');
+            searchInput?.addEventListener('input', filterSzr);
+
+            document.querySelectorAll('.szr-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.szr-filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterSzr();
+                });
+            });
+        }
+
+        function renderSzrCards(stageFilter = 'all', searchQuery = '') {
+            const container = document.getElementById('szrCardsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const query = (searchQuery || '').toLowerCase().trim();
+
+            let matched = 0;
+            SZR_DATABASE.forEach(item => {
+                const matchesStage = (stageFilter === 'all') || item.stages.includes(stageFilter);
+                const searchText = `${item.name} ${item.stageTitle} ${item.timing} ${item.target} ${item.rules} ${item.preparations.map(p => p.name + ' ' + p.dose).join(' ')}`.toLowerCase();
+                const matchesSearch = !query || searchText.includes(query);
+
+                if (matchesStage && matchesSearch) {
+                    matched++;
+                    const card = document.createElement('div');
+                    card.className = 'szr-card';
+
+                    let prepsHtml = '';
+                    item.preparations.forEach(p => {
+                        prepsHtml += `
+                            <div class="szr-prep-row">
+                                <div class="szr-prep-title">💊 ${p.name}</div>
+                                <div class="szr-prep-dose"><strong>Дозировка:</strong> ${p.dose}</div>
+                            </div>
+                        `;
+                    });
+
+                    card.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+                            <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-main); margin:0;">${item.name}</h3>
+                            <span class="szr-wait-pill ${item.waitType}">${item.waitPeriod}</span>
+                        </div>
+
+                        <!-- Timing Box -->
+                        <div class="szr-timing-box">
+                            <div class="szr-timing-title">
+                                <span>📅 СРОКИ ПО ГРАФИКУ:</span>
+                                <strong>${item.stageTitle}</strong>
+                            </div>
+                            <div style="font-size:0.86rem; color:var(--text-muted);">${item.timing}</div>
+                        </div>
+
+                        <!-- Target Symptoms -->
+                        <div style="font-size:0.95rem; line-height:1.55; color:var(--text-main); margin-bottom:12px;">
+                            <strong>🔍 Что поражает и симптомы:</strong> ${item.target}
+                        </div>
+
+                        <!-- Preparations -->
+                        <div style="margin-bottom:12px;">
+                            <div style="font-size:0.95rem; font-weight:800; color:var(--text-main); margin-bottom:6px;">Рекомендуемые препараты и дозы:</div>
+                            ${prepsHtml}
+                        </div>
+
+                        <!-- Rules -->
+                        <div style="font-size:0.9rem; line-height:1.5; color:var(--text-muted); background:var(--bg-card-subtle); padding:12px 14px; border-radius:10px; border-left:4px solid var(--border);">
+                            <strong>⚠️ Важные агро-правила:</strong> ${item.rules}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+
+            if (matched === 0) {
+                container.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted); font-size:1.05rem; font-weight:700;">По вашему запросу препаратов не найдено.</div>';
+            }
+        }
+
+        function filterSzr() {
+            const activeStage = document.querySelector('.szr-filter-btn.active')?.dataset.stage || 'all';
+            const searchQuery = document.getElementById('szrSearchInput')?.value || '';
+            renderSzrCards(activeStage, searchQuery);
         }
 
         function setupHandbook() {

@@ -986,3 +986,79 @@
             .metrics-grid { grid-template-columns: 1fr; }
             .plants-card { grid-column: span 1; }
         }
+
+        /* Handbook Search & Filter Bar */
+        .handbook-filter-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .hb-filter-btn {
+            flex: 0 0 auto;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1.5px solid var(--border-light);
+            background: var(--bg-card);
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .hb-filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        .hb-tank-badge {
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.02em;
+        }
+
+        .hb-badge-tank-a {
+            background: var(--tank-a-light);
+            color: var(--tank-a);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .hb-badge-tank-b {
+            background: var(--tank-b-light);
+            color: var(--tank-b);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .hb-badge-foliar {
+            background: var(--secondary-light);
+            color: var(--secondary);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+        }
+
+        /* Nutrient Chemistry Details Box */
+        .nutrient-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        .nutrient-details-table th, .nutrient-details-table td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.88rem;
+        }
+
+        .nutrient-details-table th {
+            font-weight: 800;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.02);
+        }

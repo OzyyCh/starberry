@@ -278,56 +278,129 @@ const AGRO_STAGES = {
         };
         const FERTILIZERS_HANDBOOK = [
             {
+                id: "cano3",
+                name: "Кальциевая селитра",
+                formula: "15.5% N, 26.5% CaO (19% Ca)",
+                tank: "tank-b",
+                tankBadgeClass: "hb-badge-tank-b",
+                tankLabel: "📦 БАК Б (ТОЛЬКО КАЛЬЦИЙ)",
+                action: "Фундаментальный строительный элемент клеточных стенок ягоды. Отвечает за плотность мякоти, прочность кожицы, защищает от растрескивания и серой гнили.",
+                rules: "Растворяется СТРОГО ИЗОЛИРОВАННО в Баке Б! Ни в коем случае не смешивать в концентрированном виде с фосфатами (MKP) или сульфатами (Терафлекс) — выпадет нерастворимый гипс, который намертво забьёт капельницы.",
+                stage: "Вносится со 2-й недели отрастания и на протяжении всего сбора ягод."
+            },
+            {
+                id: "mkp",
                 name: "Монокалийфосфат (MKP)",
-                formula: "0-52-34 (KH2PO4)",
-                desc: "Высококонцентрированное фосфорно-калийное удобрение. Вносится строго в БАК А (вместе с NPK), ни в коем случае не с кальцием!"
+                formula: "0-52-34 (52% P2O5, 34% K2O)",
+                tank: "tank-a",
+                tankBadgeClass: "hb-badge-tank-a",
+                tankLabel: "📦 БАК А (NPK + Фосфор)",
+                action: "Концентрированный источник легкоусвояемого фосфора и калия. Запускает взрывное деление клеток корней весной и стимулирует дружное цветение.",
+                rules: "Растворяется в Баке А. Совместим с калиевой, аммиачной селитрой, сульфатом магния и Терафлексом.",
+                stage: "Старт сезона (для корней) и фаза бутонизации / цветения."
             },
             {
-                name: "Калиевая селитра (KNO3)",
-                formula: "13-0-46",
-                desc: "Источник нитратного азота и калия. Отвечает за налив ягод, сахаристость (Brix) и плотность. Вносится в Бак А."
+                id: "kno3",
+                name: "Калиевая селитра",
+                formula: "13.5% N, 46% K2O",
+                tank: "tank-a",
+                tankBadgeClass: "hb-badge-tank-a",
+                tankLabel: "📦 БАК А (NPK + Калий)",
+                action: "Главный двигатель сладости (градусы Brix), аромата и плотности ягод. Азот в ней нитратный — безопасен во время сбора.",
+                rules: "Растворяется в Баке А. Отличная растворимость в воде озера.",
+                stage: "Используется весь сезон, максимальные нормы — во время налива и сбора ягод."
             },
             {
-                name: "Кальциевая селитра (Ca(NO3)2)",
-                formula: "15.5% N, 26.5% CaO",
-                desc: "Фундаментальный элемент для клубники. Укрепляет стенки клеток, защищает от серой гнили. Растворяется строго изолированно в БАКЕ Б."
+                id: "nh4no3",
+                name: "Аммиачная селитра",
+                formula: "34.4% N (17.2% NO3 + 17.2% NH4)",
+                tank: "tank-a",
+                tankBadgeClass: "hb-badge-tank-a",
+                tankLabel: "📦 БАК А (NPK + Азот)",
+                action: "Быстрый азотный импульс для пробуждения кустов в холодной почве (+8...+10 °C).",
+                rules: "Вносится строго в Бак А. КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНА в фазу сбора ягод (избыток аммония делает ягоду водянистой «кашей» и провоцирует гнили).",
+                stage: "Строго первые 3 недели ранней весны (Фаза I. Отрастание)."
             },
             {
-                name: "Магниевая селитра (Mg(NO3)2)",
-                formula: "11% N, 16% MgO",
-                desc: "Магний активирует фотосинтез и предотвращает хлороз листьев при нагрузке ягодой. Вносится в Бак А."
-            },
-            {
-                name: "Аммиачная селитра (NH4NO3)",
-                formula: "34.4% N",
-                desc: "Быстрый весенний старт вегетации при холодной почве (+8...+10 °C). Вносится в Бак А."
-            },
-            {
+                id: "teraflex",
                 name: "Teraflex S (Терафлекс Ягодный)",
-                formula: "Комплекс NPK + Micro",
-                desc: "Сбалансированное хелатное удобрение для ягодных культур. Вносится строго в Бак А."
+                formula: "17-17-17 + микроэлементы EDTA",
+                tank: "tank-a",
+                tankBadgeClass: "hb-badge-tank-a",
+                tankLabel: "📦 БАК А (NPK Комплекс)",
+                action: "Комплексное питание со сбалансированным NPK и полным набором хелатных микроэлементов (Fe, Mn, Zn, Cu, B, Mo).",
+                rules: "Растворяется в Баке А. Содержит серу, поэтому запрещён к смешиванию с кальциевой селитрой.",
+                stage: "Фаза цветения и налива ягод."
             },
             {
+                id: "mgno3",
+                name: "Магниевая селитра",
+                formula: "11% N, 16% MgO (9.6% Mg)",
+                tank: "tank-a",
+                tankBadgeClass: "hb-badge-tank-a",
+                tankLabel: "📦 БАК А (NPK + Магний)",
+                action: "Основа молекулы хлорофилла. Предотвращает пожелтение листьев (хлороз) при высокой нагрузке урожаем.",
+                rules: "Растворяется в Баке А. Отлично усваивается корнями вместе с калием.",
+                stage: "Фаза бутонизации и налива ягод."
+            },
+            {
+                id: "bombardier",
                 name: "Bombardier (Бомбардир)",
-                formula: "Фульвокислоты + аминокислоты",
-                desc: "Органический почвенный биостимулятор. Улучшает микрофлору, стимулирует поглощение элементов. Вносится в Бак А."
+                formula: "Фульвокислоты (23%) + Аминокислоты (13%)",
+                tank: "tank-a",
+                tankBadgeClass: "hb-badge-tank-a",
+                tankLabel: "📦 БАК А (Биостимулятор)",
+                action: "Органический кондиционер почвы и антистрессант. Активизирует почвенную микрофлору, снижает солевой стресс от минеральных солей.",
+                rules: "Заливается в Бак А. Переводит минеральные элементы в легкодоступную форму.",
+                stage: "Регулярно со 2-й недели вегетации и на сборе ягод."
             },
             {
+                id: "rhyzo",
                 name: "Rhyzo (Ризо)",
-                formula: "Стимулятор ризосферы",
-                desc: "Укоренитель для активного деления клеток корневой системы в начале сезона. Вносится в Бак А."
+                formula: "Аминокислоты + водоросли + фосфор",
+                tank: "tank-a",
+                tankBadgeClass: "hb-badge-tank-a",
+                tankLabel: "📦 БАК А (Укоренитель)",
+                action: "Мощный стимулятор ризосферы. Запускает нарастание новых белых всасывающих корней после зимней спячки.",
+                rules: "Вносится под корень в Бак А в первой декаде возобновления вегетации.",
+                stage: "Неделя 1 (Фаза I. Отрастание)."
             },
             {
+                id: "amifort",
                 name: "Amifort (Амифорт)",
-                formula: "Аминокислоты по листу",
-                desc: "Листовой антистрессант. Повышает иммунитет при перепадах температур и засухе."
+                formula: "Свободные L-аминокислоты (24%)",
+                tank: "foliar",
+                tankBadgeClass: "hb-badge-foliar",
+                tankLabel: "🌿 ПО ЛИСТУ (Опрыскиватель)",
+                action: "Листовой антистрессант скорой помощи. Реанимирует кусты при ночных заморозках, жаре или химическом стрессе.",
+                rules: "Опрыскивание по листу вечером или в пасмурную погоду (норма 20-30 мл на 16 л опрыскиватель).",
+                stage: "При выдвижении цветоносов и любых стрессовых погодных условиях."
             },
             {
+                id: "fruka",
                 name: "Fruka (Фрука)",
-                formula: "Бор, цинк, молибден + стимуляторы",
-                desc: "Листовой комплекс для стимулирования опыления, цветения и устранения деформации ягод."
+                formula: "Бор (B) + Цинк (Zn) + Молибден (Mo)",
+                tank: "foliar",
+                tankBadgeClass: "hb-badge-foliar",
+                tankLabel: "🌿 ПО ЛИСТУ (Опрыскиватель)",
+                action: "Стимулятор опыления и завязывания плодов. Гарантирует жизнеспособность пыльцы, устраняет деформированные («крючковатые») ягоды.",
+                rules: "Листовая обработка в начале массового цветения.",
+                stage: "Перед цветением и по первым раскрывшимся цветкам."
             }
         ];
+
+                // Exact Chemical Element Percentages in Fertilizers
+        const FERT_COMPOSITION = {
+            mkp: { n: 0, p2o5: 0.52, k2o: 0.34, ca: 0, name: 'Монокалийфосфат', tank: 'A' },
+            kno3: { n: 0.135, p2o5: 0, k2o: 0.46, ca: 0, name: 'Калиевая селитра', tank: 'A' },
+            nh4no3: { n: 0.344, p2o5: 0, k2o: 0, ca: 0, name: 'Аммиачная селитра', tank: 'A' },
+            cano3: { n: 0.155, p2o5: 0, k2o: 0, ca: 0.19, name: 'Кальциевая селитра', tank: 'B' },
+            mgno3: { n: 0.11, p2o5: 0, k2o: 0, ca: 0, name: 'Магниевая селитра', tank: 'A' },
+            mgso4: { n: 0, p2o5: 0, k2o: 0, ca: 0, name: 'Сульфат магния', tank: 'A' },
+            teraflex: { n: 0.17, p2o5: 0.17, k2o: 0.17, ca: 0, name: 'Teraflex S', tank: 'A' },
+            bombardier: { n: 0.02, p2o5: 0, k2o: 0.04, ca: 0, name: 'Bombardier', tank: 'A' },
+            rhyzo: { n: 0.01, p2o5: 0.05, k2o: 0.01, ca: 0, name: 'Rhyzo', tank: 'A' }
+        };
 
         // State
         let currentStage = 'growth';
@@ -500,6 +573,26 @@ const AGRO_STAGES = {
                     help.style.display = help.style.display === 'none' ? 'block' : 'none';
                 }
             });
+
+            // Nutrient Chemistry Details Toggle
+            document.getElementById('toggleNutrientDetailsBtn')?.addEventListener('click', () => {
+                const box = document.getElementById('nutrientDetailsBox');
+                if (box) {
+                    box.style.display = box.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+
+            // Handbook Live Search & Filtering
+            const hbSearchInput = document.getElementById('handbookSearchInput');
+            hbSearchInput?.addEventListener('input', filterHandbook);
+
+            document.querySelectorAll('.hb-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.hb-filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterHandbook();
+                });
+            });
         }
 
         function setupOperatorMode() {
@@ -670,7 +763,75 @@ const AGRO_STAGES = {
                 }
             }
 
-            if (nkRatioText) nkRatioText.textContent = stage.nkRatio || "N:K = 1:1.5";
+            // Exact Nutrient Chemistry Calculation (from all fertilizers in Tank A and Tank B!)
+            let totalPureN = 0;
+            let totalPureK2O = 0;
+            let totalPureP2O5 = 0;
+            let totalPureCa = 0;
+            let nSources = [];
+            let kSources = [];
+
+            weekData.fertilizers.forEach(fert => {
+                const comp = FERT_COMPOSITION[fert.id] || { n: 0, p2o5: 0, k2o: 0, ca: 0 };
+                const doseKg = fert.normHa * haRatio;
+                const pureN = doseKg * comp.n;
+                const pureK2O = doseKg * comp.k2o;
+                const pureP2O5 = doseKg * comp.p2o5;
+                const pureCa = doseKg * comp.ca;
+
+                totalPureN += pureN;
+                totalPureK2O += pureK2O;
+                totalPureP2O5 += pureP2O5;
+                totalPureCa += pureCa;
+
+                if (pureN > 0) {
+                    nSources.push({
+                        name: fert.name,
+                        grams: Math.round(pureN * 1000),
+                        tank: fert.id === 'cano3' ? 'БАК Б' : 'БАК А',
+                        pct: (comp.n * 100).toFixed(1)
+                    });
+                }
+                if (pureK2O > 0) {
+                    kSources.push({
+                        name: fert.name,
+                        grams: Math.round(pureK2O * 1000),
+                        tank: fert.id === 'cano3' ? 'БАК Б' : 'БАК А',
+                        pct: (comp.k2o * 100).toFixed(1)
+                    });
+                }
+            });
+
+            const realRatio = totalPureN > 0 ? (totalPureK2O / totalPureN).toFixed(2) : "1.00";
+            if (nkRatioText) nkRatioText.textContent = `N:K = 1:${realRatio}`;
+
+            // Update details badge and breakdown table
+            const detailsRatioBadge = document.getElementById('detailsRatioBadge');
+            if (detailsRatioBadge) detailsRatioBadge.textContent = `1 : ${realRatio}`;
+
+            const breakdownBox = document.getElementById('nutrientBreakdownContent');
+            if (breakdownBox) {
+                let htmlStr = '<div style="margin-bottom:10px;">';
+                htmlStr += `<div style="font-weight:800; color:#1e293b; margin-bottom:4px;">🔵 Чистый АЗОТ (N): всего <strong>${Math.round(totalPureN * 1000)} г</strong> на полив:</div>`;
+                nSources.forEach(s => {
+                    htmlStr += `<div style="display:flex; justify-content:space-between; font-size:0.85rem; padding:2px 0;"><span>• ${s.name} (${s.tank}, ${s.pct}% N):</span><strong>${s.grams} г N</strong></div>`;
+                });
+                htmlStr += '</div>';
+
+                htmlStr += '<div>';
+                htmlStr += `<div style="font-weight:800; color:#7c3aed; margin-bottom:4px;">🟣 Чистый КАЛИЙ (K2O): всего <strong>${Math.round(totalPureK2O * 1000)} г</strong> на полив:</div>`;
+                kSources.forEach(s => {
+                    htmlStr += `<div style="display:flex; justify-content:space-between; font-size:0.85rem; padding:2px 0;"><span>• ${s.name} (${s.tank}, ${s.pct}% K2O):</span><strong>${s.grams} г K2O</strong></div>`;
+                });
+                htmlStr += '</div>';
+
+                if (totalPureCa > 0) {
+                    htmlStr += `<div style="margin-top:8px; padding-top:6px; border-top:1px dashed var(--border-light); font-size:0.85rem; color:#2563eb;"><strong>🛡️ Кальций (Ca) из Бака Б:</strong> ${Math.round(totalPureCa * 1000)} г чистого Ca (укрепляет ягоду против гнили).</div>`;
+                }
+
+                breakdownBox.innerHTML = htmlStr;
+            }
+
             if (firmnessStatusText) {
                 if (isRainMode) {
                     firmnessStatusText.innerHTML = "⚠️ <strong style='color:#ef4444;'>Сырость: риск водянистости и серой гнили!</strong>";
@@ -985,21 +1146,77 @@ const AGRO_STAGES = {
         }
 
         function setupHandbook() {
+            renderHandbookCatalog();
+        }
+
+        function renderHandbookCatalog(filterCategory = 'all', searchQuery = '') {
             const container = document.getElementById('handbookCatalogContainer');
             if (!container) return;
             container.innerHTML = '';
+
+            const query = (searchQuery || '').toLowerCase().trim();
+
+            let matchedCount = 0;
             FERTILIZERS_HANDBOOK.forEach(item => {
-                const el = document.createElement('div');
-                el.className = 'handbook-entry';
-                el.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:4px;">
-                        <h4 style="font-size:1.05rem; font-weight:800; color:var(--text-main); margin:0;">${item.name}</h4>
-                        <span style="font-size:0.8rem; font-weight:700; background:var(--primary-light); color:var(--primary); padding:3px 10px; border-radius:6px;">${item.formula}</span>
-                    </div>
-                    <p style="font-size:0.92rem; color:var(--text-muted); margin:0; line-height:1.45;">${item.desc}</p>
-                `;
-                container.appendChild(el);
+                const matchesCat = (filterCategory === 'all') || (item.tank === filterCategory);
+                const textToSearch = `${item.name} ${item.formula} ${item.action || ''} ${item.rules || ''} ${item.tankLabel || ''}`.toLowerCase();
+                const matchesSearch = !query || textToSearch.includes(query);
+
+                if (matchesCat && matchesSearch) {
+                    matchedCount++;
+                    const el = document.createElement('div');
+                    el.className = 'handbook-entry';
+                    el.setAttribute('data-tank', item.tank);
+                    el.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+                            <div>
+                                <h4 style="font-size:1.15rem; font-weight:800; color:var(--text-main); margin:0;">${item.name}</h4>
+                                <div style="font-size:0.85rem; font-weight:700; color:var(--primary); margin-top:2px;">${item.formula}</div>
+                            </div>
+                            <span class="hb-tank-badge ${item.tankBadgeClass}">${item.tankLabel}</span>
+                        </div>
+                        <div style="font-size:0.95rem; line-height:1.55; color:var(--text-main); margin-bottom:8px;">
+                            <strong>🎯 Назначение:</strong> ${item.action}
+                        </div>
+                        <div style="font-size:0.9rem; line-height:1.5; color:var(--text-muted); background:var(--bg-card-subtle); padding:10px 12px; border-radius:8px; border-left:3px solid var(--border);">
+                            <strong>⚠️ Правила и бак:</strong> ${item.rules}
+                        </div>
+                        <div style="font-size:0.84rem; font-weight:700; color:var(--secondary); margin-top:6px;">
+                            📅 <strong>Когда вносить:</strong> ${item.stage}
+                        </div>
+                    `;
+                    container.appendChild(el);
+                }
             });
+
+            if (matchedCount === 0) {
+                container.innerHTML = '<div style="text-align:center; padding:30px; color:var(--text-muted); font-size:1rem; font-weight:700;">Ничего не найдено по вашему запросу.</div>';
+            }
+        }
+
+        function filterHandbook() {
+            const activeFilter = document.querySelector('.hb-filter-btn.active')?.dataset.filter || 'all';
+            const searchQuery = document.getElementById('handbookSearchInput')?.value || '';
+
+            // Handle special sections (rules, acid)
+            const rulesSection = document.querySelector('.hb-section[data-category="rules"]');
+            const acidSection = document.querySelector('.hb-section[data-category="acid"]');
+            const catalogSection = document.querySelector('.hb-section[data-category="catalog"]');
+
+            if (activeFilter === 'rules') {
+                if (rulesSection) rulesSection.style.display = 'block';
+                if (acidSection) acidSection.style.display = 'none';
+                if (catalogSection) catalogSection.style.display = 'none';
+            } else if (activeFilter === 'acid') {
+                if (rulesSection) rulesSection.style.display = 'none';
+                if (acidSection) acidSection.style.display = 'block';
+                if (catalogSection) catalogSection.style.display = 'none';
+            } else {
+                if (rulesSection) rulesSection.style.display = searchQuery ? 'none' : 'block';
+                if (acidSection) acidSection.style.display = searchQuery ? 'none' : 'block';
+                if (catalogSection) catalogSection.style.display = 'block';
+                renderHandbookCatalog(activeFilter, searchQuery);
+            }
         }
 
         function saveSettings() {
